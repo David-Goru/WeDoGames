@@ -152,8 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridSize: 7
   VertexSize: 1.5
-  GreenColor: {fileID: 2100000, guid: a1e9a1e94f9cb244eb66d95331df36c5, type: 2}
-  RedColor: {fileID: 2100000, guid: 297ba6ef68ae01b4dac4b9c39e21a463, type: 2}
   BuildingGrid: {fileID: 2800000, guid: f7b82bac1d296f144924f1ab22bae71e, type: 3}
 --- !u!4 &124524770
 Transform:

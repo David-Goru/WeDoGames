@@ -8,10 +8,6 @@ public class BuildObject : MonoBehaviour
     public int GridSize;
     public float VertexSize;
 
-    [Header("Materials")]
-    public Material GreenColor;
-    public Material RedColor;
-
     [Header("Other")]
     public Texture BuildingGrid;
     Texture groundSprite;
@@ -28,13 +24,6 @@ public class BuildObject : MonoBehaviour
         if (BuildingGrid == null)
         {
             Debug.Log("Building grid not set");
-            this.enabled = false;
-            return;
-        }
-
-        if (GreenColor == null || RedColor == null)
-        {
-            Debug.Log("Building materials not set");
             this.enabled = false;
             return;
         }
@@ -88,7 +77,8 @@ public class BuildObject : MonoBehaviour
             {
                 objectBlueprint = (GameObject)Instantiate(objectBuilding, pos, Quaternion.Euler(0, 0, 0));
                 lastPos = pos;
-                objectBlueprint.GetComponent<Renderer>().material = RedColor;
+                objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                objectBlueprint.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
                 checkPosition(pos, vPos);
             }
             else if (lastPos != pos && lastPos != vPos) checkPosition(pos, vPos);
@@ -102,13 +92,13 @@ public class BuildObject : MonoBehaviour
         if (Physics.CheckSphere(vPos, 0.05f, 1 << LayerMask.NameToLayer("Object")))
         {
             lastPos = pos;
-            objectBlueprint.GetComponent<Renderer>().material = RedColor;
+            objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
             buildable = false;
         }
         else
         {
             lastPos = vPos;
-            objectBlueprint.GetComponent<Renderer>().material = GreenColor;
+            objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
             buildable = true;
         }
         objectBlueprint.transform.position = lastPos;
@@ -126,6 +116,10 @@ public class BuildObject : MonoBehaviour
     {
         // If object blueprint is not on the map or it can't be built, do nothing
         if (objectBlueprint == null || buildable == false) return;
+
+        objectBlueprint.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+        objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+
 
         // Activate turret (should call an external function)
         objectBlueprint.GetComponent<BoxCollider>().enabled = true;
