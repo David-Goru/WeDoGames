@@ -2,35 +2,41 @@
 
 public class EnemyDetection : MonoBehaviour
 {
-    const float RANGE = 5f; //provisional
     const float TIME_OFFSET_FOR_CHECKING_RANGE = 0.2f;
 
     Collider[] collidersCache = new Collider[32];
     LayerMask collisionMask;
 
-    GameObject currentEnemy;
+    Transform currentEnemy;
+    Collider enemyCollider;
+    
     bool isTargetingEnemy;
 
-    Collider enemyCollider;
-
     float timer = 0;
+    float range;
 
     private void Start()
     {
         collisionMask = LayerMask.GetMask("Enemy");
     }
 
-    void Update()
+    public void SetRange(float range)
     {
-        if(!isTargetingEnemy)
+        this.range = range;
+    }
+
+    public Transform UpdateTarget()
+    {
+        if (!isTargetingEnemy)
             detectEnemiesOnRangeAndSelectTheNearest();
         else
         {
             checkIfEnemyIsStillTargetableAndInRange();
             if (isTargetingEnemy)
                 Debug.DrawLine(transform.position, currentEnemy.transform.position, Color.green);
-            
+
         }
+        return currentEnemy;
     }
 
     void detectEnemiesOnRangeAndSelectTheNearest()
@@ -45,7 +51,7 @@ public class EnemyDetection : MonoBehaviour
     
     int detectEnemies()
     {
-        return Physics.OverlapSphereNonAlloc(this.transform.position, RANGE, collidersCache, collisionMask);
+        return Physics.OverlapSphereNonAlloc(this.transform.position, range, collidersCache, collisionMask);
     }
 
     void selectTheNearestEnemy(int enemiesOnRange)
@@ -57,7 +63,7 @@ public class EnemyDetection : MonoBehaviour
             if (newDistanceToTurret < minDistanceToTurret)
             {
                 minDistanceToTurret = newDistanceToTurret;
-                currentEnemy = collidersCache[i].gameObject;
+                currentEnemy = collidersCache[i].transform;
                 enemyCollider = collidersCache[i];
             }
         }
@@ -67,16 +73,16 @@ public class EnemyDetection : MonoBehaviour
     {
         if (!checkIfEnemyIsStillTargetable())
         {
-            isTargetingEnemy = false;
+            deleteCurrentEnemy();
             timer = 0;
         }
         
-        //this part of code is called each a certain amount of time in order of increase the performance
+        //this part of code is called each a certain amount of time in order to increase the performance
         else if (timer > TIME_OFFSET_FOR_CHECKING_RANGE)
         {
             if (!checkIfEnemyIsStillInRange())
             {
-                isTargetingEnemy = false;
+                deleteCurrentEnemy();
             }
             timer = 0;
         }
@@ -88,7 +94,7 @@ public class EnemyDetection : MonoBehaviour
 
     bool checkIfEnemyIsStillTargetable()
     {
-        if (currentEnemy == null || !currentEnemy.activeSelf)
+        if (currentEnemy == null || !currentEnemy.gameObject.activeSelf)
             return false;
         return true;
     }
@@ -105,9 +111,15 @@ public class EnemyDetection : MonoBehaviour
         return false;
     }
 
+    void deleteCurrentEnemy()
+    {
+        isTargetingEnemy = false;
+        currentEnemy = null;
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, RANGE);
+        Gizmos.DrawWireSphere(this.transform.position, range);
     }
 }

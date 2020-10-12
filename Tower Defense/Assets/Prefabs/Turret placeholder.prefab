@@ -105,7 +105,9 @@ GameObject:
   - component: {fileID: 203977237394951714}
   - component: {fileID: 203977237394951715}
   - component: {fileID: 203977237394951716}
+  - component: {fileID: 1765199945282005843}
   - component: {fileID: 203977237394951717}
+  - component: {fileID: 7763915629435823088}
   m_Layer: 10
   m_Name: Turret placeholder
   m_TagString: Untagged
@@ -188,6 +190,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1765199945282005843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203977237394951718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa67b9782a2b7d4c8566b0834419a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretInfo: {fileID: 0}
+  enemyDetection: {fileID: 203977237394951717}
+  rotationToEnemy: {fileID: 7763915629435823088}
 --- !u!114 &203977237394951717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,5 +215,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f35f6b31ca543254baa3d0cc6244ba3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7763915629435823088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203977237394951718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95423ec0ac064dc4a885d3ba8cf27a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
