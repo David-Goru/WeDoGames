@@ -14,10 +14,13 @@ public class BuildObject : MonoBehaviour
     Renderer ground;
 
     // Object info
+    string buildingName;
     GameObject objectBuilding;
     GameObject objectBlueprint;
     Vector3 lastPos;
     bool buildable;
+
+    ObjectPooler objectPooler;
 
     void Start()
     {
@@ -37,6 +40,8 @@ public class BuildObject : MonoBehaviour
         }
         groundSprite = ground.material.mainTexture;
 
+        objectPooler = ObjectPooler.GetInstance();
+
         this.enabled = false;
     }
 
@@ -52,11 +57,9 @@ public class BuildObject : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) placeObject();
     }
 
-    public void StartBuilding(GameObject objectToBuild)
+    public void StartBuilding(string buildingName)
     {
-        objectBuilding = objectToBuild;
-        ground.material.SetTexture("_MainTex", BuildingGrid);
-        ground.material.SetTextureScale("_MainTex", new Vector2(GridSize, GridSize));
+        this.buildingName = buildingName;
         this.enabled = true;
     }
 
@@ -75,7 +78,7 @@ public class BuildObject : MonoBehaviour
             // If object blueprint is not already on the map, build it
             if (objectBlueprint == null)
             {
-                objectBlueprint = (GameObject)Instantiate(objectBuilding, pos, Quaternion.Euler(0, 0, 0));
+                objectBlueprint = objectPooler.SpawnObject(buildingName, pos, Quaternion.Euler(0, 0, 0));
                 lastPos = pos;
                 objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
                 objectBlueprint.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
@@ -83,7 +86,11 @@ public class BuildObject : MonoBehaviour
             }
             else if (lastPos != pos && lastPos != vPos) checkPosition(pos, vPos);
         }
-        else if (objectBlueprint) Destroy(objectBlueprint); // Mouse out of the map, delete object blueprint
+        else if (objectBlueprint)
+        {
+            objectPooler.returnToThePool(objectBlueprint.transform);
+            objectBlueprint = null; // Mouse out of the map, delete object blueprint
+        }
     }
 
     void checkPosition(Vector3 pos, Vector3 vPos)
