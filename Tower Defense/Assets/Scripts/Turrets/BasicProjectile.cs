@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicProjectile : MonoBehaviour, IPooledObject
 {
+    [SerializeField] float speed;
     float damage;
     Transform target;
     TurretBehaviour turret;
@@ -18,9 +19,10 @@ public class BasicProjectile : MonoBehaviour, IPooledObject
     void Update()
     {
         transform.LookAt(target);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.transform == target)
         {

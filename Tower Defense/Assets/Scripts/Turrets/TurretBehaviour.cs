@@ -16,7 +16,7 @@ public class TurretBehaviour : MonoBehaviour, IPooledObject
     {
         turretStats = new TurretStats(turretInfo);
         enemyDetection.SetRange(turretStats.AttackRange);
-        
+        shootToEnemy.SetAttackRate(turretStats.AttackRate);
     }
 
     void Update()
@@ -41,11 +41,16 @@ public class TurretBehaviour : MonoBehaviour, IPooledObject
     {
         if (currentEnemy != null)
             shootToEnemy.ShootEnemy(currentEnemy, turretStats.AttackDamage, this);
+        else
+        {
+            shootToEnemy.ResetTimer();
+        }
     }
 
     public void OnObjectSpawn()
     {
         turretStats = new TurretStats(turretInfo);
         enemyDetection.SetRange(turretStats.AttackRange);
+        shootToEnemy.SetAttackRate(turretStats.AttackRate);
     }
 }

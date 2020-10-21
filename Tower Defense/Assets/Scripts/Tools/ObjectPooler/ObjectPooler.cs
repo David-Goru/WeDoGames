@@ -49,26 +49,52 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
+    public GameObject SpawnObject(string tag, Vector3 position)
+    {
+        obj = checkIfPoolHasAnUnusedItem(tag);
+
+        if (obj == null)
+            obj = instansiateNewObject(tag);
+        obj.transform.position = position;
+        obj.SetActive(true);
+        checkIPooledObjectInterface(obj);
+        return obj;
+
+    }
+
     public GameObject SpawnObject(string tag, Vector3 position, Quaternion rotation)
+    {
+        obj = checkIfPoolHasAnUnusedItem(tag);
+
+        if (obj == null)
+            obj = instansiateNewObject(tag);
+        obj.transform.SetPositionAndRotation(position, rotation);
+        obj.SetActive(true);
+        checkIPooledObjectInterface(obj);
+        return obj;
+        
+    }
+
+    GameObject checkIfPoolHasAnUnusedItem(string tag)
     {
         foreach (GameObject item in PoolDictionary[tag])
         {
             if (!item.activeSelf) // If there is an unused item in the pool
             {
-                item.SetActive(true);
-                item.transform.SetPositionAndRotation(position, rotation);
-                IPooledObject pooledObject = item.GetComponent<IPooledObject>();
-                if (pooledObject != null)
-                {
-                    pooledObject.OnObjectSpawn();
-                }
                 return item;
             }
-        }
 
-        obj = instansiateNewObject(tag);
-        return obj;
-        
+        }
+        return null;
+    }
+
+    void checkIPooledObjectInterface(GameObject obj)
+    {
+        IPooledObject pooledObject = obj.GetComponent<IPooledObject>();
+        if (pooledObject != null)
+        {
+            pooledObject.OnObjectSpawn();
+        }
     }
 
     GameObject instansiateNewObject(string tag)
