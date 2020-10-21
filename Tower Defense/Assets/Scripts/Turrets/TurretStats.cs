@@ -12,7 +12,7 @@ public class TurretStats
 
     public TurretStats(TurretInfo turretInfo)
     {
-        maxHp = turretInfo.GetHp(); ;
+        maxHp = turretInfo.GetHp();
         AttackRate = turretInfo.GetAttackRate();
         AttackDamage = turretInfo.GetAttackDamage();
         AttackRange = turretInfo.GetAttackRange();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretBehaviour : MonoBehaviour
+public class TurretBehaviour : MonoBehaviour, IPooledObject
 {
     [SerializeField] TurretInfo turretInfo;
     [SerializeField] EnemyDetection enemyDetection;
@@ -15,6 +15,7 @@ public class TurretBehaviour : MonoBehaviour
     {
         turretStats = new TurretStats(turretInfo);
         enemyDetection.SetRange(turretStats.AttackRange);
+        
     }
 
     void Update()
@@ -32,5 +33,11 @@ public class TurretBehaviour : MonoBehaviour
     {
         if (currentEnemy != null)
             rotationToEnemy.RotateToEnemy(currentEnemy);
+    }
+
+    public void OnObjectSpawn()
+    {
+        turretStats = new TurretStats(turretInfo);
+        enemyDetection.SetRange(turretStats.AttackRange);
     }
 }
