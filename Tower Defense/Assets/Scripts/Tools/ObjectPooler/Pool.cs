@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Turret", menuName = "ScriptableObjects/Pool", order = 1)]
 public class Pool : ScriptableObject
 {
     public GameObject prefab;

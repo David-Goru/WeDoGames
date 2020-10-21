@@ -88,7 +88,7 @@ public class BuildObject : MonoBehaviour
         }
         else if (objectBlueprint)
         {
-            objectPooler.returnToThePool(objectBlueprint.transform);
+            objectPooler.ReturnToThePool(objectBlueprint.transform);
             objectBlueprint = null; // Mouse out of the map, delete object blueprint
         }
     }

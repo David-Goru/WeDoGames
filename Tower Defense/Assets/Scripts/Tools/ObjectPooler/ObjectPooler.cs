@@ -4,8 +4,8 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour
 {
     static ObjectPooler poolerInstance;
-    public Pool[] pools;
-    public Dictionary<string, List<GameObject>> poolDictionary;
+    public Pool[] Pools;
+    public Dictionary<string, List<GameObject>> PoolDictionary;
     GameObject pooledObjects;
     GameObject obj;
 
@@ -13,7 +13,7 @@ public class ObjectPooler : MonoBehaviour
     {
         poolerInstance = this;
         pooledObjects = new GameObject("PooledObjects");
-        CreatePools();
+        createPools();
     }
 
     public static ObjectPooler GetInstance()
@@ -32,10 +32,10 @@ public class ObjectPooler : MonoBehaviour
         return poolerInstance;
     }
 
-    void CreatePools()
+    void createPools()
     {
-        poolDictionary = new Dictionary<string, List<GameObject>>();
-        foreach (Pool pool in pools)
+        PoolDictionary = new Dictionary<string, List<GameObject>>();
+        foreach (Pool pool in Pools)
         {
             List<GameObject> list = new List<GameObject>();
             for (int i = 0; i < pool.size; i++)
@@ -45,13 +45,13 @@ public class ObjectPooler : MonoBehaviour
                 list.Add(obj);
                 obj.SetActive(false);
             }
-            poolDictionary[pool.tag] = list;
+            PoolDictionary[pool.tag] = list;
         }
     }
 
     public GameObject SpawnObject(string tag, Vector3 position, Quaternion rotation)
     {
-        foreach (GameObject item in poolDictionary[tag])
+        foreach (GameObject item in PoolDictionary[tag])
         {
             if (!item.activeSelf) // If there is an unused item in the pool
             {
@@ -66,27 +66,27 @@ public class ObjectPooler : MonoBehaviour
             }
         }
 
-        obj = InstansiateNewObject(tag);
+        obj = instansiateNewObject(tag);
         return obj;
         
     }
 
-    GameObject InstansiateNewObject(string tag)
+    GameObject instansiateNewObject(string tag)
     {
-        for (int i = 0; i < pools.Length; i++)
+        for (int i = 0; i < Pools.Length; i++)
         {
-            if(tag == pools[i].tag)
+            if(tag == Pools[i].tag)
             {
-                obj = Instantiate(pools[i].prefab);
+                obj = Instantiate(Pools[i].prefab);
                 obj.transform.SetParent(pooledObjects.transform);
-                poolDictionary[tag].Add(obj);
+                PoolDictionary[tag].Add(obj);
                 return obj;
             }
         }
         return null;
     }
 
-    public void returnToThePool(Transform t)
+    public void ReturnToThePool(Transform t)
     {
         t.SetParent(pooledObjects.transform, false);
         t.gameObject.SetActive(false);
