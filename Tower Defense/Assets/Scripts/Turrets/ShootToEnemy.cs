@@ -22,6 +22,7 @@ public class ShootToEnemy : MonoBehaviour
     {
         this.attackRate = attackRate;
     }
+
     public void ShootEnemy(Transform enemy, float damage, TurretBehaviour turret)
     {
         if(timer >= attackRate)

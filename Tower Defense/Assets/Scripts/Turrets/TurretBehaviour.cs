@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretBehaviour : MonoBehaviour, IPooledObject
+public class TurretBehaviour : MonoBehaviour, IPooledObject, IEnemyDamage
 {
     [SerializeField] TurretInfo turretInfo;
     [SerializeField] EnemyDetection enemyDetection;
@@ -52,5 +52,10 @@ public class TurretBehaviour : MonoBehaviour, IPooledObject
         turretStats = new TurretStats(turretInfo);
         enemyDetection.SetRange(turretStats.AttackRange);
         shootToEnemy.SetAttackRate(turretStats.AttackRate);
+    }
+
+    public void OnEnemyHit(float damage)
+    {
+
     }
 }
