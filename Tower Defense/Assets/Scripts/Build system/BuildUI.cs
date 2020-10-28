@@ -22,7 +22,7 @@ public class BuildUI : MonoBehaviour
             buildingName = MasterInfo.GetBuildingsSet()[i];
             objectUI.Find("Name").GetComponent<Text>().text = buildingName;
             objectUI.GetComponent<Button>().onClick.AddListener(() => Master.GetComponent<BuildObject>().StartBuilding(buildingName));
-            objectUI.SetParent(BuildingsListUI);
+            objectUI.SetParent(BuildingsListUI, false);
         }
     }
 }
