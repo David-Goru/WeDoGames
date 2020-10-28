@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,7 +18,7 @@ public class State
 
 	public STATE Name;
 	protected EVENT stage;
-	protected GameObject npc;
+	protected Base_AI npc;
 	protected Animator anim;
 	protected Transform target;
 	protected State nextState;
@@ -26,7 +27,7 @@ public class State
 	private float visDist = 10.0f; //Distance of vision
 	private float attackDist = 7.0f; //Distance from the target to start attacking
 
-	public State(GameObject _npc, Animator _anim, Transform _target, NavMeshAgent _agent)
+	public State(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent)
 	{
 		npc = _npc;
 		anim = _anim;
@@ -50,64 +51,16 @@ public class State
 		}
 		return this;
 	}
-}
 
-public class Move : State
-{
-	public Move(GameObject _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
-	{
-		Name = STATE.MOVE;
-	}
-
-	public override void Enter()
-	{
-		//anim.SetTrigger("moving");
-		base.Enter();
-	}
-
-	public override void Update()
-	{
-		//base.Update();
-		//if (Turret starts attacking me)
-		//{
-		//	stage = EVENT.EXIT;
-		//	change nextState to ATTACK
-		//}
-		agent.SetDestination(target.position);
-	}
-
-	public override void Exit()
-	{
-		//anim.ResetTrigger("moving");
-		base.Exit();
+	public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamage enemyDamage)
+    {
+		Debug.Log("HAS SIDO GOLPEADO");
+        if (!turretTransform.gameObject.activeSelf)
+        {
+			nextState = new Move(npc, anim, npc.Goal, agent);
+		}
+        else
+			nextState = new Move(npc, anim, turretTransform, agent);
+		stage = EVENT.EXIT;
 	}
 }
-
-public class Attack : State
-{
-
-	public Attack(GameObject _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
-	{
-		Name = STATE.ATTACK;
-		//Modify agent properties like speed, etc.
-	}
-
-	public override void Enter()
-	{
-		//anim.SetTrigger("attacking");
-		base.Enter();
-	}
-
-	public override void Update()
-	{
-		//base.Update();
-		//Start damaging the turret. If turret is destroyed --> change state to move
-	}
-
-	public override void Exit()
-	{
-		//anim.ResetTrigger("attacking");
-		base.Exit();
-	}
-}
-
