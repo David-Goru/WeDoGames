@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MasterInfo", menuName = "ScriptableObjects/MasterInfo", order = 0)]
 public class MasterInfo : ScriptableObject
 {
-    [SerializeField] string[] buildingsSet;
+    [SerializeField] TurretInfo[] buildingsSet;
 
-    public string[] GetBuildingsSet() { return buildingsSet; }
+    public TurretInfo[] GetBuildingsSet() { return buildingsSet; }
 }

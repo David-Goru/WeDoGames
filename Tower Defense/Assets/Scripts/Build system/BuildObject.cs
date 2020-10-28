@@ -14,7 +14,7 @@ public class BuildObject : MonoBehaviour
     Renderer ground;
 
     // Object info
-    string buildingName;
+    BuildingInfo buildingInfo;
     GameObject objectBuilding;
     GameObject objectBlueprint;
     Vector3 lastPos;
@@ -57,9 +57,12 @@ public class BuildObject : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) placeObject();
     }
 
-    public void StartBuilding(string buildingName)
+    public void StartBuilding(BuildingInfo buildingInfo)
     {
-        this.buildingName = buildingName;
+        ground.material.SetTexture("_MainTex", BuildingGrid);
+        ground.material.SetTextureScale("_MainTex", new Vector2(GridSize, GridSize));
+
+        this.buildingInfo = buildingInfo;
         this.enabled = true;
     }
 
@@ -78,7 +81,7 @@ public class BuildObject : MonoBehaviour
             // If object blueprint is not already on the map, build it
             if (objectBlueprint == null)
             {
-                objectBlueprint = objectPooler.SpawnObject(buildingName, pos, Quaternion.Euler(0, 0, 0));
+                objectBlueprint = objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, pos, Quaternion.Euler(0, 0, 0));
                 lastPos = pos;
                 objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
                 objectBlueprint.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");

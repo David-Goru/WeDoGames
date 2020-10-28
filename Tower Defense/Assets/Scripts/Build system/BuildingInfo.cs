@@ -7,9 +7,9 @@ public class BuildingInfo : ScriptableObject
 {
     [SerializeField] protected float hp;
     [SerializeField] protected float price;
-    [SerializeField] protected Pool turretPool;
+    [SerializeField] protected Pool buildingPool;
 
     public float GetHp() { return hp; }
     public float GetPrice() { return price; }
-    public Pool GetTurretPool() { return turretPool; }
+    public Pool GetBuildingPool() { return buildingPool; }
 }
