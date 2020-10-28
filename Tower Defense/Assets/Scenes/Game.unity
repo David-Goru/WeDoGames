@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fc372851ae642aae14b4741438d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSize: 7
-  VertexSize: 1.5
+  GridSize: 20
+  VertexSize: 0.5
   BuildingGrid: {fileID: 2800000, guid: f7b82bac1d296f144924f1ab22bae71e, type: 3}
 --- !u!4 &537000328
 Transform:
@@ -566,7 +566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ca8a824159cc245ade524e94c4a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Balance: {fileID: 828579587}
+  BalanceText: {fileID: 828579587}
+  MasterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
 --- !u!1 &628307037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,5 +1729,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 35, y: 20, z: 35}
+  m_Size: {x: 20, y: 20, z: 35}
   m_Center: {x: 0, y: 10, z: 0}

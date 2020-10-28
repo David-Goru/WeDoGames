@@ -6,20 +6,31 @@ using UnityEngine.UI;
 public class MasterHandler : MonoBehaviour
 {
     [Header("UI elements")]    
-    public Text Balance;
+    public Text BalanceText;
+    public static Text Balance;
 
-    int balance;
+    [Header("Other")]
+    public MasterInfo MasterInfo;
+    public static MasterInfo Info;
 
-    public int GetBalance() { return balance; }
+    void Start()
+    {
+        Balance = BalanceText;
+        Info = MasterInfo;
 
-    public bool UpdateBalance(int amount)
+        Balance.text = string.Format("{0} coins", Info.Balance);
+    }
+
+    public static float GetBalance() { return Info.Balance; }
+
+    public static bool UpdateBalance(float amount)
     {
         // If reducing balance, check if balance > amount to take
-        if (amount < 0 && balance < Mathf.Abs(amount)) return false;
+        if (amount < 0 && Info.Balance < Mathf.Abs(amount)) return false;
 
-        balance += amount;
-        Balance.text = string.Format("{0} coins", balance);
-        
+        Info.Balance += amount;
+        Balance.text = string.Format("{0} coins", Info.Balance);
+
         return true;
     }
 }

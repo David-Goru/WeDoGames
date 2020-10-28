@@ -59,6 +59,8 @@ public class BuildObject : MonoBehaviour
 
     public void StartBuilding(BuildingInfo buildingInfo)
     {
+        if (!MasterHandler.UpdateBalance(-buildingInfo.GetPrice())) return;
+
         ground.material.SetTexture("_MainTex", BuildingGrid);
         ground.material.SetTextureScale("_MainTex", new Vector2(GridSize, GridSize));
 
@@ -99,7 +101,7 @@ public class BuildObject : MonoBehaviour
     void checkPosition(Vector3 pos, Vector3 vPos)
     {
         // Check if there are objects on the vertex position
-        if (Physics.CheckSphere(vPos, 0.05f, 1 << LayerMask.NameToLayer("Object")))
+        if (Physics.CheckSphere(vPos, 0.3f, 1 << LayerMask.NameToLayer("Object")))
         {
             lastPos = pos;
             objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
