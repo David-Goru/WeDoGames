@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MasterInfo
   m_EditorClassIdentifier: 
   buildingsSet:
-  - Turret
+  - {fileID: 11400000, guid: 6af25ab008bb8fa468a57c36361c5625, type: 2}
