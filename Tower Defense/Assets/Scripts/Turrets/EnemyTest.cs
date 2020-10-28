@@ -6,6 +6,6 @@ public class EnemyTest : MonoBehaviour, ITurretDamage
 {
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamage enemyDamage)
     {
-        enemyDamage.OnEnemyHit(20f);
+
     }
 }

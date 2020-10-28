@@ -28,7 +28,7 @@ public class ShootToEnemy : MonoBehaviour
         if(timer >= attackRate)
         {
             obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
-            obj.GetComponent<BasicProjectile>().SetInfo(enemy, damage, turret);
+            obj.GetComponent<Projectile>().SetInfo(enemy, damage, turret);
             ResetTimer();
         }
         else
