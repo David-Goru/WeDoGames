@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232628d55de1e0f4fa2a347b161bbdf0, type: 3}
   m_Name: MasterInfo
   m_EditorClassIdentifier: 
+  balance: 744
   buildingsSet:
   - {fileID: 11400000, guid: 6af25ab008bb8fa468a57c36361c5625, type: 2}
