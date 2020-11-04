@@ -55,12 +55,14 @@ public class State
 	public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamage enemyDamage)
     {
 		Debug.Log("HAS SIDO GOLPEADO");
-        if (!turretTransform.gameObject.activeSelf)
+        if (!turretTransform.gameObject.activeSelf) //The turret that shot you is already dead
         {
 			nextState = new Move(npc, anim, npc.Goal, agent);
 		}
-        else
+        else //The turret that shot you is alive
+        {
 			nextState = new Move(npc, anim, turretTransform, agent);
+		}
 		stage = EVENT.EXIT;
 	}
 }
