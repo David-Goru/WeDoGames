@@ -302,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575232569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3353889, y: 0.8855505, z: 2.78}
+  m_LocalPosition: {x: -0.3353889, y: 0.5, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -662,6 +662,12 @@ PrefabInstance:
       propertyPath: turretInfo
       value: 
       objectReference: {fileID: 11400000, guid: 6af25ab008bb8fa468a57c36361c5625,
+        type: 2}
+    - target: {fileID: 4426624021231766399, guid: f38ff60c72725c2459f193e94bd962ba,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f38ff60c72725c2459f193e94bd962ba, type: 3}

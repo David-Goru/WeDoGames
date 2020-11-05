@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 122f092d1e3608649903e2b43f902c53, type: 3}
-  m_Name: BasicTurret
+  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
+  m_Name: HeavyProjectile
   m_EditorClassIdentifier: 
-  hp: 100
-  price: 14
-  buildingPool: {fileID: 11400000, guid: bb6d39890c030204e837b0bf7f02da20, type: 2}
-  attackRate: 1
-  attackDamage: 1
-  attackRange: 10
+  prefab: {fileID: 4614138186093825144, guid: 9fafed5873b662648a4e8de953df5136, type: 3}
+  size: 50
+  tag: HeavyProjectile
