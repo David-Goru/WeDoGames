@@ -6,12 +6,25 @@ using UnityEngine.AI;
 public class Base_AI : MonoBehaviour, ITurretDamage
 {
 
+    [SerializeField] private float health;
+    [SerializeField] private float damage;
+    public float getDamage()
+    {
+        return damage;
+    }
+    [SerializeField] private float attackSpeed;
+    public float getAttackSpeed()
+    {
+        return attackSpeed;
+    }
+
     private NavMeshAgent agent;
     private Animator anim;
     private State currentState;
 
     public Transform Goal;
     public Transform currentTurret;
+    public IEnemyDamage currentTurretDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +45,23 @@ public class Base_AI : MonoBehaviour, ITurretDamage
         }
     }
 
+    private void checkDeath()
+    {
+        if(health <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamage enemyDamage)
     {
-        if(currentTurret == null)
+        health -= damage;
+        currentTurretDamage = enemyDamage;
+        if (currentTurret == null)
         {
             currentTurret = turretTransform;
             currentState.OnTurretHit(turretTransform, damage, enemyDamage);
         }
+        checkDeath();
     }
 }

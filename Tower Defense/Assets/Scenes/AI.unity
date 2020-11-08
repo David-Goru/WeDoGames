@@ -410,7 +410,7 @@ PrefabInstance:
     - target: {fileID: 203977237394951713, guid: f38ff60c72725c2459f193e94bd962ba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.86
+      value: -4.35
       objectReference: {fileID: 0}
     - target: {fileID: 203977237394951713, guid: f38ff60c72725c2459f193e94bd962ba,
         type: 3}
@@ -420,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 203977237394951713, guid: f38ff60c72725c2459f193e94bd962ba,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.33
+      value: 2.43
       objectReference: {fileID: 0}
     - target: {fileID: 203977237394951713, guid: f38ff60c72725c2459f193e94bd962ba,
         type: 3}
@@ -479,7 +479,7 @@ PrefabInstance:
     - target: {fileID: 203977237394951713, guid: f38ff60c72725c2459f193e94bd962ba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.89
+      value: -3.66
       objectReference: {fileID: 0}
     - target: {fileID: 203977237394951713, guid: f38ff60c72725c2459f193e94bd962ba,
         type: 3}
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 1580818726}
   - component: {fileID: 1580818725}
   - component: {fileID: 1580818724}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ojo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 1707498604}
   - component: {fileID: 1707498603}
   - component: {fileID: 1707498602}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ojo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,6 +851,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  damage: 2
+  attackSpeed: 1.5
   Goal: {fileID: 1081530255}
   currentTurret: {fileID: 0}
 --- !u!195 &1803109628

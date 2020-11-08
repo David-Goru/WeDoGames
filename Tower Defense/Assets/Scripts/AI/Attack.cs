@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 
 
 public class Attack : State
 {
+	private float attackTimer;
+	private Quaternion npcRotation;
+	private float rotationSpeed = 200f;
+
 	public Attack(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
 	{
 		Name = STATE.ATTACK;
@@ -16,13 +21,27 @@ public class Attack : State
 	{
 		//anim.SetTrigger("attacking");
 		base.Enter();
-		npc.transform.LookAt(target);
+		npcRotation = Quaternion.LookRotation(new Vector3(target.position.x, npc.transform.position.y, target.position.z) - npc.transform.position);
+		//npc.transform.LookAt(target);
+		attackTarget();
 	}
 
 	public override void Update()
 	{
 		//base.Update();
 		//Start damaging the turret. If turret is destroyed --> change state to move
+
+		attackTimer += Time.deltaTime;
+		if(attackTimer >= npc.getAttackSpeed()) //Attack depednding on npc attack speed
+        {
+			resetTimer();
+			attackTarget();
+        }
+
+		if(npc.transform.rotation != npcRotation) //Rotate towards turret if you aren't already
+        {
+			npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, npcRotation, rotationSpeed * Time.deltaTime);
+		}
 
 		Debug.Log("Golpeando");
 		if (!target.gameObject.activeSelf)
@@ -44,5 +63,16 @@ public class Attack : State
 	{
 		//anim.ResetTrigger("attacking");
 		base.Exit();
+		attackTimer = 0f;
 	}
+
+	private void resetTimer()
+    {
+		attackTimer = 0f;
+    }
+
+	private void attackTarget()
+    {
+		npc.currentTurretDamage.OnEnemyHit(npc.getDamage());
+    }
 }
