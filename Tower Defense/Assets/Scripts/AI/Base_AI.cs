@@ -11,6 +11,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage
     private State currentState;
 
     public Transform Goal;
+    public Transform currentTurret;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +25,19 @@ public class Base_AI : MonoBehaviour, ITurretDamage
     void Update()
     {
         currentState = currentState.Process();
+
+        if (currentTurret != null && !currentTurret.gameObject.activeSelf)
+        {
+            currentTurret = null;
+        }
     }
 
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamage enemyDamage)
     {
-        currentState.OnTurretHit(turretTransform, damage, enemyDamage);
+        if(currentTurret == null)
+        {
+            currentTurret = turretTransform;
+            currentState.OnTurretHit(turretTransform, damage, enemyDamage);
+        }
     }
 }

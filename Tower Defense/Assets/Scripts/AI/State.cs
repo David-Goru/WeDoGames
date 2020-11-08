@@ -57,11 +57,11 @@ public class State
 		Debug.Log("HAS SIDO GOLPEADO");
         if (!turretTransform.gameObject.activeSelf) //The turret that shot you is already dead
         {
-			nextState = new Move(npc, anim, npc.Goal, agent);
+			nextState = new Move(npc, anim, npc.Goal, agent); //Aim for the nexus
 		}
         else //The turret that shot you is alive
         {
-			nextState = new Move(npc, anim, turretTransform, agent);
+			nextState = new Move(npc, anim, turretTransform, agent); //Aim for the turret
 		}
 		stage = EVENT.EXIT;
 	}
