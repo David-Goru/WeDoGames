@@ -8,14 +8,20 @@ public class Base_AI : MonoBehaviour, ITurretDamage
 
     [SerializeField] private float health;
     [SerializeField] private float damage;
-    public float getDamage()
+    public float Damage
     {
-        return damage;
+        get
+        {
+            return damage;
+        }
     }
     [SerializeField] private float attackSpeed;
-    public float getAttackSpeed()
+    public float AttackSpeed
     {
-        return attackSpeed;
+        get
+        {
+            return attackSpeed;
+        }
     }
 
     private NavMeshAgent agent;

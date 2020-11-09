@@ -32,7 +32,7 @@ public class Attack : State
 		//Start damaging the turret. If turret is destroyed --> change state to move
 
 		attackTimer += Time.deltaTime;
-		if(attackTimer >= npc.getAttackSpeed()) //Attack depednding on npc attack speed
+		if(attackTimer >= npc.AttackSpeed) //Attack depednding on npc attack speed
         {
 			resetTimer();
 			attackTarget();
@@ -43,7 +43,6 @@ public class Attack : State
 			npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, npcRotation, rotationSpeed * Time.deltaTime);
 		}
 
-		Debug.Log("Golpeando");
 		if (!target.gameObject.activeSelf)
 		{
 			Debug.Log("El enemigo ha sido destruido");
@@ -73,6 +72,7 @@ public class Attack : State
 
 	private void attackTarget()
     {
-		npc.currentTurretDamage.OnEnemyHit(npc.getDamage());
+		Debug.Log("GOLPE");
+		npc.currentTurretDamage.OnEnemyHit(npc.Damage);
     }
 }
