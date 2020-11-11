@@ -281,11 +281,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canon turret (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7881309898815319701, guid: f58bb226fa509614ca6d05e3bec399b2,
-        type: 3}
-      propertyPath: m_TagString
-      value: Turret
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58bb226fa509614ca6d05e3bec399b2, type: 3}
 --- !u!1 &575232569
