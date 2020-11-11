@@ -45,7 +45,7 @@ public class Move : State
 
 		if (npc.IsTargetTrigger)
         {
-			//agent.velocity = new Vector3(0, 0, 0);
+			agent.velocity = new Vector3(0, 0, 0);
 			agent.isStopped = true;
 			npc.IsTargetTrigger = false;
 			nextState = new Attack(npc, anim, target, agent);

@@ -24,9 +24,6 @@ public class State
 	protected State nextState;
 	protected NavMeshAgent agent;
 
-	private float visDist = 10.0f; //Distance of vision
-	private float attackDist = 7.0f; //Distance from the target to start attacking
-
 	public State(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent)
 	{
 		npc = _npc;
