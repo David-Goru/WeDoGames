@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class Base_AI : MonoBehaviour, ITurretDamage
 {
 
-    [SerializeField] private float health;
-    [SerializeField] private float damage;
+    [SerializeField] private float health = 0f;
+    [SerializeField] private float damage = 0f;
     public float Damage
     {
         get
@@ -15,7 +15,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage
             return damage;
         }
     }
-    [SerializeField] private float attackSpeed;
+    [SerializeField] private float attackSpeed = 0f;
     public float AttackSpeed
     {
         get
@@ -31,6 +31,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage
     public Transform Goal;
     public Transform currentTurret;
     public IEnemyDamage currentTurretDamage;
+    public bool IsTargetTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -69,5 +70,22 @@ public class Base_AI : MonoBehaviour, ITurretDamage
             currentState.OnTurretHit(turretTransform, damage, enemyDamage);
         }
         checkDeath();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Nexus"))
+        {
+            Debug.Log("NEXUS TRIGGER");
+            IsTargetTrigger = true;
+        }
+        else if (other.CompareTag("Turret"))
+        {
+            Debug.Log("TURRET TRIGGER");
+            if(currentTurret != null)
+            {
+                IsTargetTrigger = true;
+            }
+        }
     }
 }
