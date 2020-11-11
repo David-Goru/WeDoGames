@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232628d55de1e0f4fa2a347b161bbdf0, type: 3}
-  m_Name: MasterInfo
+  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
+  m_Name: Basic Turret Blueprint
   m_EditorClassIdentifier: 
-  balance: 26
-  buildingsSet:
-  - {fileID: 11400000, guid: 6af25ab008bb8fa468a57c36361c5625, type: 2}
+  prefab: {fileID: 7929621584254921936, guid: 3a03b05b52191fb4f8b2b292721708c3, type: 3}
+  size: 1
+  tag: Turret blueprint

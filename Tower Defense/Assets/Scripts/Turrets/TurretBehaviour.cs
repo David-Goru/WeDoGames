@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TurretBehaviour : MonoBehaviour, IPooledObject, IEnemyDamage
 {
-    [SerializeField] TurretInfo turretInfo;
-    [SerializeField] EnemyDetection enemyDetection;
-    [SerializeField] RotationToEnemy rotationToEnemy;
-    [SerializeField] ShootToEnemy shootToEnemy;
+    [SerializeField] TurretInfo turretInfo = null;
+    [SerializeField] EnemyDetection enemyDetection = null;
+    [SerializeField] RotationToEnemy rotationToEnemy = null;
+    [SerializeField] ShootToEnemy shootToEnemy = null;
     TurretStats turretStats;
 
     Transform currentEnemy;

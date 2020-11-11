@@ -15,7 +15,6 @@ public class BuildObject : MonoBehaviour
 
     // Object info
     BuildingInfo buildingInfo;
-    GameObject objectBuilding;
     GameObject objectBlueprint;
     Vector3 lastPos;
     bool buildable;
@@ -59,8 +58,10 @@ public class BuildObject : MonoBehaviour
 
     public void StartBuilding(BuildingInfo buildingInfo)
     {
+        // Check if the player can affor the building
         if (!MasterHandler.UpdateBalance(-buildingInfo.GetPrice())) return;
 
+        // Set ground to building mode
         ground.material.SetTexture("_MainTex", BuildingGrid);
         ground.material.SetTextureScale("_MainTex", new Vector2(GridSize, GridSize));
 
@@ -83,10 +84,9 @@ public class BuildObject : MonoBehaviour
             // If object blueprint is not already on the map, build it
             if (objectBlueprint == null)
             {
-                objectBlueprint = objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, pos, Quaternion.Euler(0, 0, 0));
+                objectBlueprint = objectPooler.SpawnObject(buildingInfo.GetBuildingBlueprintPool().tag, pos, Quaternion.Euler(0, 0, 0));
                 lastPos = pos;
                 objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
-                objectBlueprint.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
                 checkPosition(pos, vPos);
             }
             else if (lastPos != pos && lastPos != vPos) checkPosition(pos, vPos);
@@ -129,13 +129,12 @@ public class BuildObject : MonoBehaviour
         // If object blueprint is not on the map or it can't be built, do nothing
         if (objectBlueprint == null || buildable == false) return;
 
-        objectBlueprint.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+        // Activate turret
+        objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
+
+        // Get rid of blueprint
         objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
-
-
-        // Activate turret (should call an external function)
-        objectBlueprint.GetComponent<BoxCollider>().enabled = true;
-
+        objectPooler.ReturnToThePool(objectBlueprint.transform);
         objectBlueprint = null;
 
         StopBuilding();
@@ -143,10 +142,17 @@ public class BuildObject : MonoBehaviour
 
     public void StopBuilding()
     {
-        objectBuilding = null;
-        if (objectBlueprint != null) Destroy(objectBlueprint);
+        // Get rid of blueprint
+        if (objectBlueprint != null)
+        {
+            objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+            objectPooler.ReturnToThePool(objectBlueprint.transform);
+        }
+
+        // Reset ground texture
         ground.material.SetTexture("_MainTex", groundSprite);
         ground.material.SetTextureScale("_MainTex", new Vector2(1, 1));
+
         this.enabled = false;
     }
 }

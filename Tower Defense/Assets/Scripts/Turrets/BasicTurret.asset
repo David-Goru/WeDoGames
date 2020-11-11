@@ -15,6 +15,8 @@ MonoBehaviour:
   hp: 100
   price: 14
   buildingPool: {fileID: 11400000, guid: bb6d39890c030204e837b0bf7f02da20, type: 2}
+  buildingBlueprintPool: {fileID: 11400000, guid: 69fa069c880212243a57c0bae90626f5,
+    type: 2}
   attackRate: 1
   attackDamage: 1
   attackRange: 10
