@@ -15,7 +15,6 @@ public class BuildObject : MonoBehaviour
 
     // Object info
     BuildingInfo buildingInfo;
-    GameObject objectBuilding;
     GameObject objectBlueprint;
     Vector3 lastPos;
     bool buildable;
@@ -59,8 +58,10 @@ public class BuildObject : MonoBehaviour
 
     public void StartBuilding(BuildingInfo buildingInfo)
     {
+        // Check if the player can affor the building
         if (!MasterHandler.UpdateBalance(-buildingInfo.GetPrice())) return;
 
+        // Set ground to building mode
         ground.material.SetTexture("_MainTex", BuildingGrid);
         ground.material.SetTextureScale("_MainTex", new Vector2(GridSize, GridSize));
 
@@ -143,10 +144,13 @@ public class BuildObject : MonoBehaviour
 
     public void StopBuilding()
     {
-        objectBuilding = null;
+        // Get rid of blueprint
         if (objectBlueprint != null) Destroy(objectBlueprint);
+
+        // Reset ground texture
         ground.material.SetTexture("_MainTex", groundSprite);
         ground.material.SetTextureScale("_MainTex", new Vector2(1, 1));
+
         this.enabled = false;
     }
 }

@@ -28,6 +28,7 @@ public class MasterHandler : MonoBehaviour
         // If reducing balance, check if balance > amount to take
         if (amount < 0 && Info.Balance < Mathf.Abs(amount)) return false;
 
+        // Update balance and UI text
         Info.Balance += amount;
         Balance.text = string.Format("{0} coins", Info.Balance);
 
