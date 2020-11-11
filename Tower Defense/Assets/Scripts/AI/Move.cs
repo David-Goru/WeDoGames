@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,7 @@ public class Move : State
 		//	change nextState to ATTACK
 		//}
 
+		/*
 		if (!agent.pathPending) //Make sure we've reached the destination
 		{
 			if (agent.remainingDistance <= agent.stoppingDistance)
@@ -37,6 +39,17 @@ public class Move : State
 					stage = EVENT.EXIT;
 				}
 			}
+		}
+		*/
+		
+
+		if (npc.IsTargetTrigger)
+        {
+			//agent.velocity = new Vector3(0, 0, 0);
+			agent.isStopped = true;
+			npc.IsTargetTrigger = false;
+			nextState = new Attack(npc, anim, target, agent);
+			stage = EVENT.EXIT;
 		}
 	}
 
