@@ -15,6 +15,8 @@ public class HeavyProjectile : Projectile
     float angle;
     float time;
 
+    Quaternion lookAtTargetJustRotatingY;
+
     public override void SetInfo(Transform target, float damage, TurretBehaviour turret)
     {
         base.SetInfo(target, damage, turret);
@@ -59,29 +61,43 @@ public class HeavyProjectile : Projectile
 
         //Orientate projectile to target
         transform.LookAt(target);
-        transform.localRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        lookAtTargetJustRotatingY = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        transform.localRotation = lookAtTargetJustRotatingY;
     }
 
     protected override void updateProjectile()
     {
         time += Time.deltaTime;
 
-        calculateHorizontalPosition();
-        calculateVerticalPosition();
+        transform.localRotation = lookAtTargetJustRotatingY;
+        float newZ = calculateHorizontalPosition();
+        float newY = calculateVerticalPosition();
+        calculateOrientation(newZ, newY);
+        lastZ = newZ;
+        lastY = newY;
     }
 
-    void calculateHorizontalPosition()
+    float calculateHorizontalPosition()
     {
-        float z = vz * time;
-        transform.Translate(Vector3.forward * (z - lastZ), Space.Self);
-        lastZ = z;
+        float newZ = vz * time;
+        transform.Translate(Vector3.forward * (newZ - lastZ), Space.Self);
+        
+        return newZ;
     }
 
-    void calculateVerticalPosition()
+    float calculateVerticalPosition()
     {
-        float y = y0 + (vy * time) - (g / 2) * (time * time);
-        transform.Translate(Vector3.up * (y - lastY), Space.World);
-        lastY = y;
+        float newY = y0 + (vy * time) - (g / 2) * (time * time);
+        transform.Translate(Vector3.up * (newY - lastY), Space.World);
+        
+        return newY;
+    }
+
+    void calculateOrientation(float newZ, float newY)
+    {
+        Vector3 direction = new Vector3(0, newY, newZ) - new Vector3(0, lastY, lastZ);
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.localRotation = Quaternion.Euler(lookRotation.eulerAngles.x, lookAtTargetJustRotatingY.eulerAngles.y, lookRotation.eulerAngles.z);
     }
 
     protected override void OnTriggerEnter(Collider other)
