@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ShootToEnemy : MonoBehaviour
 {
-    [SerializeField] Pool projectile;
-    [SerializeField] Transform spawnPosition;
+    [SerializeField] Pool projectile = null;
+    [SerializeField] Transform spawnPosition = null;
     ObjectPooler objectPooler;
     GameObject obj;
 
