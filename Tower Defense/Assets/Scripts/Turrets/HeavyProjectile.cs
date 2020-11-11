@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class HeavyProjectile : Projectile
 {
+    [SerializeField] float radiusOfImpact = 2;
+    Collider[] collidersCache = new Collider[64];
+    LayerMask enemyLayer;
+
     Vector3 lastEnemyPosition;
     const float g = 9.8f;
 
@@ -16,6 +20,11 @@ public class HeavyProjectile : Projectile
     float time;
 
     Quaternion lookAtTargetJustRotatingY;
+
+    void Awake()
+    {
+        enemyLayer = LayerMask.GetMask("Enemy");
+    }
 
     public override void SetInfo(Transform target, float damage, TurretBehaviour turret)
     {
@@ -102,6 +111,20 @@ public class HeavyProjectile : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
+        if(!other.CompareTag("Turret") && !other.CompareTag("Nexus"))
+        {
+            int nEnemies = Physics.OverlapSphereNonAlloc(transform.position, radiusOfImpact, collidersCache, enemyLayer);
+            for (int i = 0; i < nEnemies; i++)
+            {
+                collidersCache[i].GetComponent<ITurretDamage>().OnTurretHit(turret.transform, damage, turret);
+            }
+            disable();
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radiusOfImpact);
     }
 }
