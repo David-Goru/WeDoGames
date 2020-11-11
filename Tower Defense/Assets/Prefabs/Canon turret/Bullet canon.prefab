@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2531676937771045123}
   - component: {fileID: 1480990862315576998}
   - component: {fileID: 3704630837379836524}
+  - component: {fileID: 409819066599532557}
   m_Layer: 0
   m_Name: Bullet canon
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2912002044830419897}
-  m_LocalRotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: -3.7493994e-33}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.00000028088027}
   m_LocalPosition: {x: 0.2834673, y: 4.0847, z: 0}
-  m_LocalScale: {x: 0.28563264, y: 0.28563264, z: 0.28563264}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: 0}
 --- !u!33 &1480990862315576998
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &409819066599532557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912002044830419897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fe1c1efcd67ef40a5003fd247c7989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1

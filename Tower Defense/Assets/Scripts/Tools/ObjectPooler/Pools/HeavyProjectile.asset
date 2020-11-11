@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: HeavyProjectile
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4614138186093825144, guid: 9fafed5873b662648a4e8de953df5136, type: 3}
+  prefab: {fileID: 2912002044830419897, guid: d98be0e7bbc118e41b57d41d5bd36512, type: 3}
   size: 50
   tag: HeavyProjectile
