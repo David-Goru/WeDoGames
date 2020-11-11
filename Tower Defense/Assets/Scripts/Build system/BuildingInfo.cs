@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Building", menuName = "ScriptableObjects/BuildingInfo", order = 0)]
 public class BuildingInfo : ScriptableObject
 {
-    [SerializeField] protected float hp;
-    [SerializeField] protected float price;
-    [SerializeField] protected Pool buildingPool;
+    [SerializeField] protected float hp = 0f;
+    [SerializeField] protected float price = 0f;
+    [SerializeField] protected Pool buildingPool = null;
 
     public float GetHp() { return hp; }
     public float GetPrice() { return price; }

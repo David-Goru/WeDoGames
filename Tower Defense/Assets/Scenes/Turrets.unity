@@ -224,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 7362216833381332015, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.19
+      value: 0.486
       objectReference: {fileID: 0}
     - target: {fileID: 7362216833381332015, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
@@ -234,7 +234,7 @@ PrefabInstance:
     - target: {fileID: 7362216833381332015, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.060667
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 7362216833381332015, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
@@ -280,6 +280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canon turret (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881309898815319701, guid: f58bb226fa509614ca6d05e3bec399b2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58bb226fa509614ca6d05e3bec399b2, type: 3}
@@ -844,6 +849,7 @@ GameObject:
   - component: {fileID: 1994877450}
   - component: {fileID: 1994877449}
   - component: {fileID: 1994877448}
+  - component: {fileID: 1994877447}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -851,6 +857,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1994877447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994877446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025bdfd3ef320434eab1c73dac3a6e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1994877448
 BoxCollider:
   m_ObjectHideFlags: 0

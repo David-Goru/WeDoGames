@@ -6,9 +6,9 @@ using UnityEngine;
 public class TurretInfo : BuildingInfo
 {
 
-    [SerializeField] float attackRate;
-    [SerializeField] float attackDamage;
-    [SerializeField] float attackRange;
+    [SerializeField] float attackRate = 0;
+    [SerializeField] float attackDamage = 0;
+    [SerializeField] float attackRange = 0;
 
     public float GetAttackRate() { return attackRate; }
     public float GetAttackDamage() { return attackDamage; }

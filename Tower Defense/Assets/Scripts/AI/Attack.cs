@@ -73,6 +73,13 @@ public class Attack : State
 	private void attackTarget()
     {
 		Debug.Log("GOLPE");
-		npc.currentTurretDamage.OnEnemyHit(npc.Damage);
+        if (target.gameObject.CompareTag("Turret"))
+        {
+			npc.currentTurretDamage.OnEnemyHit(npc.Damage);
+		}
+		else if (target.gameObject.CompareTag("Nexus"))
+        {
+			Debug.Log("Golpeando nexo");
+        }
     }
 }

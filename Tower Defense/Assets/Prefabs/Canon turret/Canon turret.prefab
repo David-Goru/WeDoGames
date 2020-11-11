@@ -197,9 +197,10 @@ GameObject:
   - component: {fileID: 913032691}
   - component: {fileID: 913032692}
   - component: {fileID: 913032693}
+  - component: {fileID: 5868520753918093762}
   m_Layer: 0
   m_Name: Canon turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,6 +283,19 @@ MonoBehaviour:
   enemyDetection: {fileID: 913032691}
   rotationToEnemy: {fileID: 1959613357}
   shootToEnemy: {fileID: 913032692}
+--- !u!65 &5868520753918093762
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881309898815319701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.97, y: 3.43, z: 3.23}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &9039591883026513845
 GameObject:
   m_ObjectHideFlags: 0
