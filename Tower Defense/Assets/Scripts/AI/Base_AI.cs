@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
 {
 
-    [SerializeField] private float health = 0f;
+    [SerializeField] private float myHealth = 0f;
     [SerializeField] private float damage = 0f;
     public float Damage
     {
@@ -24,6 +24,7 @@ public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
         }
     }
 
+    private float health;
     private NavMeshAgent agent;
     private Animator anim;
     private State currentState;
@@ -35,19 +36,12 @@ public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
 
     public void OnObjectSpawn()
     {
+        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
+        health = myHealth;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal, agent);
     }
-
-    /*
-    private void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
-        currentState = new Move(this, anim, Goal, agent);
-    }
-    */
 
     // Update is called once per frame
     void Update()

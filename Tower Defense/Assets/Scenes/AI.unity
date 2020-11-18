@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  myHealth: 50
   damage: 2
   attackSpeed: 1.5
   Goal: {fileID: 1081530255}
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  myHealth: 50
   damage: 2
   attackSpeed: 1.5
   Goal: {fileID: 1081530255}
@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  myHealth: 50
   damage: 2
   attackSpeed: 1.5
   Goal: {fileID: 1081530255}
@@ -1952,7 +1952,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Goal
       value: 
-      objectReference: {fileID: 1081530255}
+      objectReference: {fileID: 0}
     - target: {fileID: 5642796861608991603, guid: cbca96b71106ea644a8348e8a5a99690,
         type: 3}
       propertyPath: m_Name
