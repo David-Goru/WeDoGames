@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class WavesHandler : MonoBehaviour
 {
-    public const int ENEMIES_PER_WAVE_MULTIPLIER = 4;
+    public const int ENEMIES_PER_WAVE_MULTIPLIER = 1;
 
+    public MasterInfo MasterInfo;
     public Transform Spawners;
     public Text WaveTimerText;
     Vector3[] spawnerPositions;
@@ -15,6 +16,7 @@ public class WavesHandler : MonoBehaviour
     [SerializeField] float nextWaveTimer = 0;
 
     float timer = 0f;
+    ObjectPooler objectPooler;
 
     void Start()
     {
@@ -26,6 +28,9 @@ public class WavesHandler : MonoBehaviour
             spawnerPositions[i] = t.position;
             i++;
         }
+
+        // Get object pooler
+        objectPooler = ObjectPooler.GetInstance();
     }
 
     void Update()
@@ -55,8 +60,7 @@ public class WavesHandler : MonoBehaviour
     {
         for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
         {
-            // TEST
-            Debug.Log("Enemy spawned at " + spawnerPositions[Random.Range(0, spawnerPositions.Length)]);            
+            objectPooler.SpawnObject(MasterInfo.GetEnemiesSet()[0].tag, spawnerPositions[Random.Range(0, spawnerPositions.Length)], Quaternion.Euler(0, 0, 0));
         }
     }
 }

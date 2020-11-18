@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7c3c793a81fca4caa4dbf969d6347a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
+  projectile: {fileID: 11400000, guid: 6d829e7ac9e793946bf8e0838c5f4014, type: 2}
   spawnPosition: {fileID: 1051831665}
 --- !u!114 &913032693
 MonoBehaviour:
