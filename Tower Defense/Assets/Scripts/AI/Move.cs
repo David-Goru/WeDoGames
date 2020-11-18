@@ -16,6 +16,7 @@ public class Move : State
 	{
 		//anim.SetTrigger("moving");
 		base.Enter();
+		agent.isStopped = false;
 		agent.SetDestination(target.position);
 	}
 
