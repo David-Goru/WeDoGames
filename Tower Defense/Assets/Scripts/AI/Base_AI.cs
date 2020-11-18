@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Base_AI : MonoBehaviour, ITurretDamage
+public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
 {
 
     [SerializeField] private float health = 0f;
@@ -33,13 +33,21 @@ public class Base_AI : MonoBehaviour, ITurretDamage
     public IEnemyDamage currentTurretDamage;
     public bool IsTargetTrigger;
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnObjectSpawn()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal, agent);
     }
+
+    /*
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        currentState = new Move(this, anim, Goal, agent);
+    }
+    */
 
     // Update is called once per frame
     void Update()
@@ -56,7 +64,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage
     {
         if(health <= 0)
         {
-            this.gameObject.SetActive(false);
+            ObjectPooler.GetInstance().ReturnToThePool(this.transform);
         }
     }
 
