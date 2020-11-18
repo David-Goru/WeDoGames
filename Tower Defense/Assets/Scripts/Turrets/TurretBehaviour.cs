@@ -56,6 +56,15 @@ public class TurretBehaviour : MonoBehaviour, IPooledObject, IEnemyDamage
 
     public void OnEnemyHit(float damage)
     {
+        turretStats.currentHp -= damage;
+        if(turretStats.currentHp <= 0)
+        {
+            Disable();
+        }
+    }
 
+    void Disable()
+    {
+        ObjectPooler.GetInstance().ReturnToThePool(transform);
     }
 }
