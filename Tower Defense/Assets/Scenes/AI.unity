@@ -829,5 +829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nexus
       objectReference: {fileID: 0}
+    - target: {fileID: 8077661060846164495, guid: ece3df4c47e62524b9d7ab171602c1a0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ece3df4c47e62524b9d7ab171602c1a0, type: 3}

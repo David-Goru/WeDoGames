@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7520288567723181696}
   - component: {fileID: 1767799414527702686}
   - component: {fileID: 1664003723}
+  - component: {fileID: 8077661060846164495}
   m_Layer: 10
   m_Name: Nexus
   m_TagString: Nexus
@@ -131,6 +132,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &8077661060846164495
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227687442756157652}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.75, y: 3.075, z: 6.825}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 3, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5897075913497764371
 GameObject:
   m_ObjectHideFlags: 0
