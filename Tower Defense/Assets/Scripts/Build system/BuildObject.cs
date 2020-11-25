@@ -59,7 +59,7 @@ public class BuildObject : MonoBehaviour
     public void StartBuilding(BuildingInfo buildingInfo)
     {
         // Check if the player can affor the building
-        if (!MasterHandler.UpdateBalance(-buildingInfo.GetPrice())) return;
+        if (!MasterHandler.CheckIfCanAffor(-buildingInfo.GetPrice())) return;
 
         // Set ground to building mode
         ground.material.SetTexture("_MainTex", BuildingGrid);
@@ -126,6 +126,13 @@ public class BuildObject : MonoBehaviour
 
     void placeObject()
     {
+        // Pay for the building
+        if(!MasterHandler.UpdateBalance(-buildingInfo.GetPrice()))
+        {
+            // The player can't afford it, so don't do anything
+            return;
+        }
+
         // If object blueprint is not on the map or it can't be built, do nothing
         if (objectBlueprint == null || buildable == false) return;
 
