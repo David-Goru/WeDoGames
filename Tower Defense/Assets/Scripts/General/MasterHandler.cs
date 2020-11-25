@@ -20,7 +20,6 @@ public class MasterHandler : MonoBehaviour
     public static MasterInfo Info;
 
     // Store nexus info
-    Nexus nexus;
     public static Nexus Nexus;
 
     /// <summary>
@@ -29,7 +28,7 @@ public class MasterHandler : MonoBehaviour
     void Start()
     {
         // Find nexus
-        nexus = GameObject.FindGameObjectWithTag("Nexus").GetComponent<Nexus>();
+        Nexus = GameObject.FindGameObjectWithTag("Nexus").GetComponent<Nexus>();
 
         // If not testing without UI
         if (!TestWithoutUI)
