@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotationToEnemy : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed = 100f;
+    [SerializeField] float rotationSpeed = 300f;
 
     /// <summary>
     /// Rotate the turret towards the enemy
@@ -12,14 +12,14 @@ public class RotationToEnemy : MonoBehaviour
     /// <param name="enemy"> the transform of the enemy</param>
     public void RotateToEnemy(Transform enemy)
     {
-        float xRot = transform.rotation.eulerAngles.x; 
-        float zRot = transform.rotation.eulerAngles.z;
+        //Create a variable with the same enemy position but putting the same y than the turret so it only rotates on the y-axis.
         Vector3 enemyPosition = new Vector3(enemy.position.x, transform.position.y, enemy.position.z);
+
+        //Create a Quaternion with the final rotation of the turret looking at the enemy
         Quaternion lookRotation = Quaternion.LookRotation(enemyPosition - transform.position);
-        //this.transform.LookAt(enemy);
-        Quaternion rotateTowards = Quaternion.RotateTowards(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
-        transform.rotation = rotateTowards;
-        //transform.rotation = Quaternion.FromToRotation(transform.rotation.eulerAngles, new Vector3(xRot, rotateTowards.eulerAngles.y, zRot));
-        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 50f);
+
+        //Interpolate the rotation of the turret towards the final rotation looking at the enemy
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+
     }
 }
