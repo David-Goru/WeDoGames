@@ -86,7 +86,7 @@ public class BuildObject : MonoBehaviour
             {
                 objectBlueprint = objectPooler.SpawnObject(buildingInfo.GetBuildingBlueprintPool().tag, pos, Quaternion.Euler(0, 0, 0));
                 lastPos = pos;
-                objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                 checkPosition(pos, vPos);
             }
             else if (lastPos != pos && lastPos != vPos) checkPosition(pos, vPos);
@@ -104,13 +104,13 @@ public class BuildObject : MonoBehaviour
         if (Physics.CheckSphere(vPos, 0.3f, 1 << LayerMask.NameToLayer("Object")))
         {
             lastPos = pos;
-            objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+            objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             buildable = false;
         }
         else
         {
             lastPos = vPos;
-            objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+            objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.green);
             buildable = true;
         }
         objectBlueprint.transform.position = lastPos;
@@ -140,7 +140,7 @@ public class BuildObject : MonoBehaviour
         objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
 
         // Get rid of blueprint
-        objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+        objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.black);
         objectPooler.ReturnToThePool(objectBlueprint.transform);
         objectBlueprint = null;
 
@@ -152,7 +152,7 @@ public class BuildObject : MonoBehaviour
         // Get rid of blueprint
         if (objectBlueprint != null)
         {
-            objectBlueprint.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+            objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.black);
             objectPooler.ReturnToThePool(objectBlueprint.transform);
         }
 

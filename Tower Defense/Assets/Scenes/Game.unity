@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ca8a824159cc245ade524e94c4a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TestWithoutUI: 0
   BalanceText: {fileID: 828579587}
   MasterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
 --- !u!114 &537000330
@@ -617,6 +618,7 @@ MonoBehaviour:
   WaveTimerText: {fileID: 2102561728}
   currentWave: 0
   nextWaveTimer: 20
+  planningTime: 15
 --- !u!1 &550400580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,6 +1813,11 @@ PrefabInstance:
     - target: {fileID: 7520288567723181696, guid: ece3df4c47e62524b9d7ab171602c1a0,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077661060846164495, guid: ece3df4c47e62524b9d7ab171602c1a0,
+        type: 3}
+      propertyPath: m_Carve
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8219072994342461790, guid: ece3df4c47e62524b9d7ab171602c1a0,

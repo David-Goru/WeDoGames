@@ -14,10 +14,15 @@ public class WavesHandler : MonoBehaviour
 
     [SerializeField] int currentWave = 0;
     [SerializeField] float nextWaveTimer = 0;
+    [SerializeField] float planningTime = 0;
 
     float timer = 0f;
+    bool onPlanningPhase = true;
     ObjectPooler objectPooler;
 
+    /// <summary>
+    /// Initialize waves info
+    /// </summary>
     void Start()
     {
         // Initialize spawn positions
@@ -33,29 +38,56 @@ public class WavesHandler : MonoBehaviour
         objectPooler = ObjectPooler.GetInstance();
     }
 
+    /// <summary>
+    /// Update the waves
+    /// </summary>
     void Update()
     {
         updateWaveState();
     }
 
+    /// <summary>
+    /// Update state of the wave, depending on whether it is on planning phase or on enemies attacking phase
+    /// </summary>
     void updateWaveState()
     {
-        if (timer < nextWaveTimer)
+        if (onPlanningPhase)
         {
-            // Update UI text and timer
-            WaveTimerText.text = string.Format("Next wave: {0:0} seconds", nextWaveTimer - timer);
-            timer += Time.deltaTime;
+            if (timer < planningTime)
+            {
+                // Update UI text and timer
+                WaveTimerText.text = string.Format("Next wave: {0:0} seconds", planningTime - timer);
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                // Create new wave
+                currentWave++;
+                timer = 0;
+                onPlanningPhase = false;
+                spawnEnemies();
+            }
         }
         else
         {
-            // Create new wave
-            currentWave++;
-            timer = 0;
-            spawnEnemies();
+            if (timer < nextWaveTimer)
+            {
+                // Update UI text and timer
+                WaveTimerText.text = string.Format("End of wave: {0:0} seconds", nextWaveTimer - timer);
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                // Set planning time
+                timer = 0;
+                onPlanningPhase = true;
+            }
         }
     }
 
-    // Spawn enemies at a random spawner
+    /// <summary>
+    /// Spawn enemies at random positions (from the spawnerPositions list)
+    /// </summary>
     void spawnEnemies()
     {
         for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
