@@ -89,12 +89,12 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     {
         if (other.CompareTag("Nexus"))
         {
-            Debug.Log("NEXUS TRIGGER");
+            //Debug.Log("NEXUS TRIGGER");
             IsTargetTrigger = true;
         }
         else if (other.CompareTag("Turret"))
         {
-            Debug.Log("TURRET TRIGGER");
+            //Debug.Log("TURRET TRIGGER");
             if(currentTurret != null)
             {
                 IsTargetTrigger = true;

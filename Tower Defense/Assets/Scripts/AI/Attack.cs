@@ -10,7 +10,6 @@ public class Attack : State
 	float attackTimer;
 	Quaternion npcRotation;
 	float rotationSpeed = 200f;
-	Nexus nexus = MasterHandler.Info.GetNexus();
 
 	public Attack(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
 	{
@@ -79,7 +78,7 @@ public class Attack : State
 		}
 		else if (target.gameObject.CompareTag("Nexus"))
         {
-			nexus.GetHit(npc.Damage);
+			MasterHandler.Nexus.GetHit(npc.Damage);
         }
     }
 }
