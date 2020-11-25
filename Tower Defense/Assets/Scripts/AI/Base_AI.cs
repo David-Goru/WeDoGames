@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
+public class Base_AI : MonoBehaviour, ITurretDamage
 {
 
-    [SerializeField] private float myHealth = 0f;
-    [SerializeField] private float damage = 0f;
+    [SerializeField] float myHealth = 0f;
+    [SerializeField] float damage = 0f;
     public float Damage
     {
         get
@@ -15,7 +15,7 @@ public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
             return damage;
         }
     }
-    [SerializeField] private float attackSpeed = 0f;
+    [SerializeField] float attackSpeed = 0f;
     public float AttackSpeed
     {
         get
@@ -24,17 +24,28 @@ public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
         }
     }
 
-    private float health;
-    private NavMeshAgent agent;
-    private Animator anim;
-    private State currentState;
+    float health;
+    NavMeshAgent agent;
+    Animator anim;
+    State currentState;
 
     public Transform Goal;
     public Transform currentTurret;
     public IEnemyDamage currentTurretDamage;
     public bool IsTargetTrigger;
 
+    /*
     public void OnObjectSpawn()
+    {
+        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
+        health = myHealth;
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        currentState = new Move(this, anim, Goal, agent);
+    }
+    */
+
+    void Start()
     {
         Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = myHealth;
@@ -54,7 +65,7 @@ public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
         }
     }
 
-    private void checkDeath()
+    void checkDeath()
     {
         if(health <= 0)
         {
@@ -74,7 +85,7 @@ public class Base_AI : MonoBehaviour, IPooledObject, ITurretDamage
         checkDeath();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Nexus"))
         {

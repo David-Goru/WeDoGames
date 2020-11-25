@@ -22,13 +22,6 @@ public class Move : State
 
 	public override void Update()
 	{
-		//base.Update();
-		//if (Turret starts attacking me)
-		//{
-		//	stage = EVENT.EXIT;
-		//	change nextState to ATTACK
-		//}
-
 		/*
 		if (!agent.pathPending) //Make sure we've reached the destination
 		{

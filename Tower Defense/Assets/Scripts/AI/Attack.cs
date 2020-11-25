@@ -7,9 +7,10 @@ using UnityEngine.AI;
 
 public class Attack : State
 {
-	private float attackTimer;
-	private Quaternion npcRotation;
-	private float rotationSpeed = 200f;
+	float attackTimer;
+	Quaternion npcRotation;
+	float rotationSpeed = 200f;
+	Nexus nexus;
 
 	public Attack(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
 	{
@@ -21,6 +22,9 @@ public class Attack : State
 	{
 		//anim.SetTrigger("attacking");
 		base.Enter();
+
+		if (target == npc.Goal) nexus = target.GetComponent<Nexus>();
+
 		npcRotation = Quaternion.LookRotation(new Vector3(target.position.x, npc.transform.position.y, target.position.z) - npc.transform.position);
 		//npc.transform.LookAt(target);
 		attackTarget();
@@ -45,7 +49,7 @@ public class Attack : State
 
 		if (!target.gameObject.activeSelf)
 		{
-			Debug.Log("El enemigo ha sido destruido");
+			//Debug.Log("El enemigo ha sido destruido");
             if (npc.Goal.gameObject.activeSelf)
             {
 				nextState = new Move(npc, anim, npc.Goal, agent);
@@ -65,21 +69,21 @@ public class Attack : State
 		attackTimer = 0f;
 	}
 
-	private void resetTimer()
+	void resetTimer()
     {
 		attackTimer = 0f;
     }
 
-	private void attackTarget()
+	void attackTarget()
     {
-		Debug.Log("GOLPE");
+		//Debug.Log("GOLPE");
         if (target.gameObject.CompareTag("Turret"))
         {
 			npc.currentTurretDamage.OnEnemyHit(npc.Damage);
 		}
 		else if (target.gameObject.CompareTag("Nexus"))
         {
-			Debug.Log("Golpeando nexo");
+			nexus.GetHit(npc.Damage);
         }
     }
 }
