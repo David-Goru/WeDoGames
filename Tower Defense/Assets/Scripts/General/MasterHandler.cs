@@ -8,6 +8,9 @@ using UnityEngine.UI;
 /// </summary>
 public class MasterHandler : MonoBehaviour
 {
+    [Header("Tools")]
+    public bool TestWithoutUI; // So we don't need anything UI related
+
     [Header("UI elements")]    
     public Text BalanceText;
     public static Text Balance;
@@ -16,16 +19,28 @@ public class MasterHandler : MonoBehaviour
     public MasterInfo MasterInfo;
     public static MasterInfo Info;
 
+    // Store nexus info
+    Nexus nexus;
+    public static Nexus Nexus;
+
     /// <summary>
     /// Initiliazes the MasterHandler
     /// </summary>
     void Start()
     {
-        Balance = BalanceText;
-        Info = MasterInfo;
+        // Find nexus
+        nexus = GameObject.FindGameObjectWithTag("Nexus").GetComponent<Nexus>();
 
-        // Set the balance UI text
-        Balance.text = string.Format("{0} coins", Info.Balance);
+        // If not testing without UI
+        if (!TestWithoutUI)
+        {
+            // Get balance text and master info
+            Balance = BalanceText;
+            Info = MasterInfo;
+
+            // Set the balance UI text
+            Balance.text = string.Format("{0} coins", Info.Balance);
+        }
     }
 
     /// <summary>
@@ -51,9 +66,13 @@ public class MasterHandler : MonoBehaviour
         // If reducing balance, check if balance > amount to take
         if (amount < 0 && Info.Balance < Mathf.Abs(amount)) return false;
 
-        // Update balance and UI text
-        Info.Balance += amount;
-        Balance.text = string.Format("{0} coins", Info.Balance);
+        // If not testing without UI (Balance will be null if TestingWithoutUI is enabled)
+        if (Balance != null)
+        {
+            // Update balance and UI text
+            Info.Balance += amount;
+            Balance.text = string.Format("{0} coins", Info.Balance);
+        }
 
         return true;
     }
