@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6af25ab008bb8fa468a57c36361c5625, type: 2}
   enemiesSet:
   - {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
+  nexus: {fileID: 1767799414527702686, guid: ece3df4c47e62524b9d7ab171602c1a0, type: 3}

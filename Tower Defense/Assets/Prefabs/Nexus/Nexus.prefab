@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2846516910035049070}
   - component: {fileID: 2308769295374392554}
   - component: {fileID: 7520288567723181696}
+  - component: {fileID: 1767799414527702686}
   m_Layer: 10
   m_Name: Nexus
   m_TagString: Nexus
@@ -100,6 +101,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9, y: 7, z: 13}
   m_Center: {x: 0, y: 3.5, z: 0}
+--- !u!114 &1767799414527702686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227687442756157652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73d2713f8be0514d809d440f6d15e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &5897075913497764371
 GameObject:
   m_ObjectHideFlags: 0

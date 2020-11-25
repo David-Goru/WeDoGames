@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Base_AI : MonoBehaviour, ITurretDamage
+public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 {
 
     [SerializeField] float myHealth = 0f;
@@ -34,16 +34,16 @@ public class Base_AI : MonoBehaviour, ITurretDamage
     public IEnemyDamage currentTurretDamage;
     public bool IsTargetTrigger;
 
-    /*
     public void OnObjectSpawn()
     {
+        /*
         Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = myHealth;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal, agent);
+        */
     }
-    */
 
     void Start()
     {

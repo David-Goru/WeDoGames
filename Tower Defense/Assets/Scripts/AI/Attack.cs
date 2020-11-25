@@ -10,7 +10,7 @@ public class Attack : State
 	float attackTimer;
 	Quaternion npcRotation;
 	float rotationSpeed = 200f;
-	Nexus nexus;
+	Nexus nexus = MasterHandler.Info.GetNexus();
 
 	public Attack(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
 	{
@@ -23,7 +23,7 @@ public class Attack : State
 		//anim.SetTrigger("attacking");
 		base.Enter();
 
-		if (target == npc.Goal) nexus = target.GetComponent<Nexus>();
+		//if (target == npc.Goal) nexus = target.GetComponent<Nexus>();
 
 		npcRotation = Quaternion.LookRotation(new Vector3(target.position.x, npc.transform.position.y, target.position.z) - npc.transform.position);
 		//npc.transform.LookAt(target);
@@ -55,10 +55,6 @@ public class Attack : State
 				nextState = new Move(npc, anim, npc.Goal, agent);
 				stage = EVENT.EXIT;
 			}
-            else
-            {
-				Debug.Log("NEXO DESTRUIDO");
-            }
 		}
 	}
 
