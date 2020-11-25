@@ -122,7 +122,7 @@ public class HeavyProjectile : Projectile
         }
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radiusOfImpact);

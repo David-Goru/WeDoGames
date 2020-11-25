@@ -26,17 +26,26 @@ public class TurretBehaviour : MonoBehaviour, IPooledObject, IEnemyDamage
         shoot();
     }
 
+    /// <summary>
+    /// Call EnemyDetection function to handle the current target of the turret
+    /// </summary>
     void updateTarget()
     {
         currentEnemy = enemyDetection.UpdateTarget();
     }
 
+    /// <summary>
+    /// Call RotationToEnemy function to handle the rotation of the turret
+    /// </summary>
     void updateRotation()
     {
         if (currentEnemy != null)
             rotationToEnemy.RotateToEnemy(currentEnemy);
     }
 
+    /// <summary>
+    /// Call ShootEnemy function to handle the shots of the turret
+    /// </summary>
     void shoot()
     {
         if (currentEnemy != null)
@@ -47,6 +56,9 @@ public class TurretBehaviour : MonoBehaviour, IPooledObject, IEnemyDamage
         }
     }
 
+    /// <summary>
+    /// Called when turret spawns. It resets its values.
+    /// </summary>
     public void OnObjectSpawn()
     {
         turretStats = new TurretStats(turretInfo);
