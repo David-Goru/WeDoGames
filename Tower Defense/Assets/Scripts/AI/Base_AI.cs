@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 {
-
     [SerializeField] float myHealth = 0f;
     [SerializeField] float damage = 0f;
     public float Damage
@@ -36,22 +35,12 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 
     public void OnObjectSpawn()
     {
-        /*
         Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = myHealth;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal, agent);
-        */
-    }
-
-    void Start()
-    {
-        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
-        health = myHealth;
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
-        currentState = new Move(this, anim, Goal, agent);
+        currentTurret = null;
     }
 
     // Update is called once per frame
@@ -87,7 +76,9 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Nexus"))
+        if (currentTurret == other.transform || currentTurret == null && other.transform == Goal) IsTargetTrigger = true;
+
+        /*if (other.CompareTag("Nexus"))
         {
             //Debug.Log("NEXUS TRIGGER");
             IsTargetTrigger = true;
@@ -99,6 +90,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
             {
                 IsTargetTrigger = true;
             }
-        }
+        }*/
     }
 }
