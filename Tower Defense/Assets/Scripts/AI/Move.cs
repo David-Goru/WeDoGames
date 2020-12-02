@@ -22,8 +22,16 @@ public class Move : State
 
 	public override void Update()
 	{
+		if (npc.IsTargetTrigger)
+        {
+			agent.velocity = new Vector3(0, 0, 0);
+			agent.isStopped = true;
+			npc.IsTargetTrigger = false;
+			nextState = new Attack(npc, anim, target, agent);
+			stage = EVENT.EXIT;
+		}
 		/*
-		if (!agent.pathPending) //Make sure we've reached the destination
+		else if (!agent.pathPending) //Make sure we've reached the destination
 		{
 			if (agent.remainingDistance <= agent.stoppingDistance)
 			{
@@ -35,16 +43,6 @@ public class Move : State
 			}
 		}
 		*/
-		
-
-		if (npc.IsTargetTrigger)
-        {
-			agent.velocity = new Vector3(0, 0, 0);
-			agent.isStopped = true;
-			npc.IsTargetTrigger = false;
-			nextState = new Attack(npc, anim, target, agent);
-			stage = EVENT.EXIT;
-		}
 	}
 
 	public override void Exit()

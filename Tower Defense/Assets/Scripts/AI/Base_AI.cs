@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 {
@@ -35,6 +36,17 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 
     public void OnObjectSpawn()
     {
+        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
+        health = myHealth;
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        currentState = new Move(this, anim, Goal, agent);
+        currentTurret = null;
+    }
+
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Game") return;
         Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = myHealth;
         agent = GetComponent<NavMeshAgent>();
