@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WavesHandler : MonoBehaviour
 {
-    public const int ENEMIES_PER_WAVE_MULTIPLIER = 1;
+    public const int ENEMIES_PER_WAVE_MULTIPLIER = 100;
 
     public MasterInfo MasterInfo;
     public Transform Spawners;
