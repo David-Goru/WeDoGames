@@ -5,6 +5,9 @@ We Do games!!!
 - [ ] MVP (start, end, 15-minute gameplay)
 
 # Tower Defense
-[Guides](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Guides.md)
-[Enemies](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Enemies.md)
-[Towers](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Towers.md)
+3D rogue-lite tower defense.
+
+[Guides](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Guides.md) | 
+[Enemies](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Enemies.md) | 
+[Towers](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Towers.md) | 
+[Upgrades](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Upgrades.md)
