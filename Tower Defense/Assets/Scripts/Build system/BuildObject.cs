@@ -59,7 +59,7 @@ public class BuildObject : MonoBehaviour
     public void StartBuilding(BuildingInfo buildingInfo)
     {
         // Check if the player can affor the building
-        if (!MasterHandler.CheckIfCanAffor(-buildingInfo.GetPrice())) return;
+        if (!MasterHandler.CheckIfCanAfford(buildingInfo.GetPrice())) return;
 
         // Set ground to building mode
         ground.material.SetTexture("_MainTex", BuildingGrid);

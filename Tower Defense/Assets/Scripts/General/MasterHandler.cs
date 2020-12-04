@@ -39,6 +39,12 @@ public class MasterHandler : MonoBehaviour
 
             // Set the balance UI text
             Balance.text = string.Format("{0} coins", Info.Balance);
+
+            // Initialize lists
+            foreach (UIList list in GetComponents(typeof(UIList)))
+            {
+                list.Initialize(MasterInfo, transform);
+            }
         }
     }
 
@@ -53,7 +59,7 @@ public class MasterHandler : MonoBehaviour
     /// </summary>
     /// <param name="amount">Amount of money to check</param>
     /// <returns>Returns true if the player can afford it, false otherwise</returns>
-    public static bool CheckIfCanAffor(float amount) { return Info.Balance >= amount; }
+    public static bool CheckIfCanAfford(float amount) { return Info.Balance >= Mathf.Abs(amount); }
 
     /// <summary>
     /// Update the player balance with the amount given
@@ -63,7 +69,7 @@ public class MasterHandler : MonoBehaviour
     public static bool UpdateBalance(float amount)
     {
         // If reducing balance, check if balance > amount to take
-        if (amount < 0 && Info.Balance < Mathf.Abs(amount)) return false;
+        if (amount < 0 && !CheckIfCanAfford(amount)) return false;
 
         // If not testing without UI (Balance will be null if TestingWithoutUI is enabled)
         if (Balance != null)

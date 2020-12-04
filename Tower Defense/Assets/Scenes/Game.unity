@@ -261,11 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9591af771d7880341b94d9d8488f4867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ListUIObject: {fileID: 0}
   ObjectUIPrefab: {fileID: 4893363018178617659, guid: 2c96b9a8e1871a2428e5a649e83c5c35,
     type: 3}
-  BuildingsListUI: {fileID: 1392178141}
-  MasterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
-  Master: {fileID: 537000326}
 --- !u!114 &191619299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +612,7 @@ GameObject:
   - component: {fileID: 537000327}
   - component: {fileID: 537000329}
   - component: {fileID: 537000330}
+  - component: {fileID: 537000331}
   m_Layer: 0
   m_Name: Master
   m_TagString: Untagged
@@ -683,6 +682,21 @@ MonoBehaviour:
   currentWave: 0
   nextWaveTimer: 20
   planningTime: 15
+--- !u!114 &537000331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537000326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9591af771d7880341b94d9d8488f4867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListUIObject: {fileID: 1392178141}
+  ObjectUIPrefab: {fileID: 4893363018178617659, guid: 2c96b9a8e1871a2428e5a649e83c5c35,
+    type: 3}
 --- !u!1 &656153023
 GameObject:
   m_ObjectHideFlags: 0
