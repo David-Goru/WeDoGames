@@ -8,11 +8,11 @@ public class Projectile : MonoBehaviour, IPooledObject
 
     protected float damage;
     protected Transform target;
-    protected TurretBehaviour turret;
+    protected Turret turret;
 
     protected ITurretDamage turretDamageable;
 
-    public virtual void SetInfo(Transform target, float damage, TurretBehaviour turret)
+    public virtual void SetInfo(Transform target, float damage, Turret turret)
     {
         this.target = target;
         this.damage = damage;
@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour, IPooledObject
         turretDamageable = enemy.GetComponent<ITurretDamage>();
         if (turretDamageable != null)
         {
-            turretDamageable.OnTurretHit(turret.transform, damage, turret);
+            turretDamageable.OnTurretHit(turret.transform, damage, (IEnemyDamage)turret);
         }
     }
 

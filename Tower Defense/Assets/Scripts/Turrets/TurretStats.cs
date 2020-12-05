@@ -1,16 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TurretStats
+/// <summary>
+/// This class stores all the stats of the turret
+/// </summary>
+public class TurretStats : MonoBehaviour
 {
-    float maxHp;
-    public float AttackRate;
-    public float AttackDamage;
-    public float AttackRange;
-    public float currentHp;
+    [SerializeField] TurretInfo turretInfo = null;
 
-    public TurretStats(TurretInfo turretInfo)
+    [HideInInspector] float maxHp;
+    [HideInInspector] public float AttackRate;
+    [HideInInspector] public float AttackDamage;
+    [HideInInspector] public float AttackRange;
+    [HideInInspector] public float currentHp;
+
+    private void Start()
+    {
+        InitializeStats();
+    }
+
+    public void InitializeStats()
     {
         maxHp = turretInfo.GetHp();
         AttackRate = turretInfo.GetAttackRate();
@@ -18,4 +26,5 @@ public class TurretStats
         AttackRange = turretInfo.GetAttackRange();
         currentHp = maxHp;
     }
+
 }

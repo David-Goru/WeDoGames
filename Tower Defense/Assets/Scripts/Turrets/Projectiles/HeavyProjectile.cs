@@ -26,7 +26,7 @@ public class HeavyProjectile : Projectile
         enemyLayer = LayerMask.GetMask("Enemy");
     }
 
-    public override void SetInfo(Transform target, float damage, TurretBehaviour turret)
+    public override void SetInfo(Transform target, float damage, Turret turret)
     {
         base.SetInfo(target, damage, turret);
         lastEnemyPosition = target.position;
@@ -116,7 +116,7 @@ public class HeavyProjectile : Projectile
             int nEnemies = Physics.OverlapSphereNonAlloc(transform.position, radiusOfImpact, collidersCache, enemyLayer);
             for (int i = 0; i < nEnemies; i++)
             {
-                collidersCache[i].GetComponent<ITurretDamage>().OnTurretHit(turret.transform, damage, turret);
+                collidersCache[i].GetComponent<ITurretDamage>().OnTurretHit(turret.transform, damage, null);
             }
             disable();
         }

@@ -1,31 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class EnemyDetection : MonoBehaviour
+/// <summary>
+/// This class detects the first enemy on enter the range. When enemy dies, take the closest one and mantains it until he dies.
+/// </summary>
+public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTargetsOnRange
 {
     const float TIME_OFFSET_FOR_CHECKING_RANGE = 0.2f;
 
-    Collider[] collidersCache = new Collider[32];
+    Collider[] collidersCache = new Collider[64];
     LayerMask collisionMask;
 
-    Transform currentEnemy;
+    Transform[] currentEnemies = new Transform[1];
     Collider enemyCollider;
     
     bool isTargetingEnemy;
 
     float timer = 0;
-    float range;
+
+    TurretStats turretStats;
+
+    public Transform[] CurrentTargets { get { return currentEnemies; } private set { } }
 
     private void Start()
     {
         collisionMask = LayerMask.GetMask("Enemy");
     }
 
-    public void SetRange(float range)
+    public void InitializeBehaviour()
     {
-        this.range = range;
+        turretStats = transform.root.GetComponentInChildren<TurretStats>();
     }
 
-    public Transform UpdateTarget()
+    public void UpdateBehaviour()
+    {
+        UpdateTarget();
+    }
+
+    void UpdateTarget()
     {
         if (!isTargetingEnemy)
             detectEnemiesOnRangeAndSelectTheNearest();
@@ -33,10 +45,9 @@ public class EnemyDetection : MonoBehaviour
         {
             checkIfEnemyIsStillTargetableAndInRange();
             if (isTargetingEnemy)
-                Debug.DrawLine(transform.position, currentEnemy.transform.position, Color.green);
+                Debug.DrawLine(transform.position, currentEnemies[0].transform.position, Color.green);
 
         }
-        return currentEnemy;
     }
 
     void detectEnemiesOnRangeAndSelectTheNearest()
@@ -51,7 +62,7 @@ public class EnemyDetection : MonoBehaviour
     
     int detectEnemies()
     {
-        return Physics.OverlapSphereNonAlloc(this.transform.position, range, collidersCache, collisionMask);
+        return Physics.OverlapSphereNonAlloc(this.transform.position, turretStats.AttackRange, collidersCache, collisionMask);
     }
 
     void selectTheNearestEnemy(int enemiesOnRange)
@@ -63,7 +74,7 @@ public class EnemyDetection : MonoBehaviour
             if (newDistanceToTurret < minDistanceToTurret)
             {
                 minDistanceToTurret = newDistanceToTurret;
-                currentEnemy = collidersCache[i].transform;
+                currentEnemies[0] = collidersCache[i].transform;
                 enemyCollider = collidersCache[i];
             }
         }
@@ -94,7 +105,7 @@ public class EnemyDetection : MonoBehaviour
 
     bool checkIfEnemyIsStillTargetable()
     {
-        if (currentEnemy == null || !currentEnemy.gameObject.activeSelf)
+        if (currentEnemies[0] == null || !currentEnemies[0].gameObject.activeSelf)
             return false;
         return true;
     }
@@ -114,12 +125,13 @@ public class EnemyDetection : MonoBehaviour
     void deleteCurrentEnemy()
     {
         isTargetingEnemy = false;
-        currentEnemy = null;
+        currentEnemies[0] = null;
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, range);
+        Gizmos.DrawWireSphere(this.transform.position, turretStats.AttackRange);
     }
+
 }
