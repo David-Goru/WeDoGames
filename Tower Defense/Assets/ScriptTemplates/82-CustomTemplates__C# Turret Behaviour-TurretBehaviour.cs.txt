@@ -1,0 +1,18 @@
+using UnityEngine;
+
+/// <summary>
+/// This is a class
+/// </summary>
+public class #SCRIPTNAME# : MonoBehaviour, ITurretBehaviour
+{
+
+    public void InitializeBehaviour()
+    {
+        #NOTRIM#
+    }
+
+    public void UpdateBehaviour()
+    {
+        #NOTRIM#
+    }
+}
