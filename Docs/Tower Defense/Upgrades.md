@@ -26,4 +26,4 @@ Unlocked when finishing a run at least after the 3rd wave. Only 1 per run.
 
 # The Upgrade
 Unlocked after the 6th wave. Only  1 per run.
-> It does... Awesome thing >:D
+> It does... Awesome things >:D
