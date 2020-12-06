@@ -49,7 +49,7 @@ public class State
 		return this;
 	}
 
-	public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamage enemyDamage)
+	public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
 		Debug.Log("HAS SIDO GOLPEADO");
         if (!turretTransform.gameObject.activeSelf) //The turret that shot you is already dead

@@ -10,11 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5275737887537206364}
   - component: {fileID: 520202089597382337}
+  - component: {fileID: 736552606831341857}
   - component: {fileID: 5673856947705442405}
   - component: {fileID: 5673856947705442410}
   - component: {fileID: 5673856947705442411}
   - component: {fileID: 1091775196417244223}
   - component: {fileID: 8322199028225733476}
+  - component: {fileID: 2751981188002294345}
   - component: {fileID: 3270720806996733004}
   - component: {fileID: 253969749947511020}
   m_Layer: 10
@@ -52,11 +54,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c4b1380a9bdd548acac4fcb902445d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretInfo: {fileID: 0}
+  turretInfo: {fileID: 11400000, guid: 6af25ab008bb8fa468a57c36361c5625, type: 2}
   AttackRate: 0
   AttackDamage: 0
   AttackRange: 0
   currentHp: 0
+--- !u!114 &736552606831341857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790984498408443622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b5a938f84c9a94f9bc5741036f8dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5673856947705442405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +133,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42262a5ea8dfe994aafa9d535089f428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2751981188002294345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790984498408443622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95423ec0ac064dc4a885d3ba8cf27a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 300
+  objectToRotate: {fileID: 5673856947355111135}
 --- !u!65 &3270720806996733004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -236,7 +264,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5673856947355111135}
-  - component: {fileID: 5673856947355111132}
   m_Layer: 0
   m_Name: RotationAxis
   m_TagString: Untagged
@@ -259,19 +286,6 @@ Transform:
   m_Father: {fileID: 5275737887537206364}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5673856947355111132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5673856947355111134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95423ec0ac064dc4a885d3ba8cf27a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 300
 --- !u!1 &5673856948056275772
 GameObject:
   m_ObjectHideFlags: 0

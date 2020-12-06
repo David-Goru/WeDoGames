@@ -12,12 +12,35 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
     float timer = 0;
 
     TurretStats turretStats;
-    ICurrentTargetsOnRange enemyDetection;
-    public ICurrentTargetsOnRange EnemyDetection { set { enemyDetection = value; } get { return enemyDetection; } }
+    IEnemyDamageHandler enemyDamageHandler;
+    ICurrentTargetsOnRange targetDetection;
 
-    public void ShootEnemy(Transform enemy, float damage, Turret turret)
+    public ICurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
+
+    public void InitializeBehaviour()
     {
-        if(enemyDetection.CurrentTargets[0] == null)
+        GetDependencies();
+    }
+
+    void GetDependencies()
+    {
+        objectPooler = ObjectPooler.GetInstance();
+        turretStats = transform.GetComponent<TurretStats>();
+        targetDetection = transform.GetComponent<ICurrentTargetsOnRange>();
+        enemyDamageHandler = transform.GetComponent<IEnemyDamageHandler>();
+    }
+
+    public void UpdateBehaviour()
+    {
+        foreach (Transform target in targetDetection.CurrentTargets)
+        {
+            ShootEnemy(target);
+        }
+    }
+
+    public void ShootEnemy(Transform enemy)
+    {
+        if(targetDetection.CurrentTargets[0] == null)
         {
             ResetTimer();
             return;
@@ -25,7 +48,7 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
         if(timer >= turretStats.AttackRate)
         {
             obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
-            obj.GetComponent<Projectile>().SetInfo(enemy, damage, turret);
+            obj.GetComponent<Projectile>().SetInfo(enemy, transform, turretStats.AttackDamage, enemyDamageHandler);
             ResetTimer();
         }
         else
@@ -39,15 +62,4 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
         timer = 0;
     }
 
-    public void InitializeBehaviour()
-    {
-        objectPooler = ObjectPooler.GetInstance();
-        turretStats = transform.root.GetComponentInChildren<TurretStats>();
-        enemyDetection = transform.root.GetComponentInChildren<ICurrentTargetsOnRange>();
-    }
-
-    public void UpdateBehaviour()
-    {
-        ShootEnemy(enemyDetection.CurrentTargets[0], turretStats.AttackDamage, null);
-    }
 }

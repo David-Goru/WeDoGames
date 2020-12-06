@@ -7,7 +7,7 @@ using UnityEngine;
 /// This class is responsible of handling all the behaviours of the turret
 /// </summary>
 
-[RequireComponent(typeof(TurretStats))]
+[RequireComponent(typeof(TurretStats), typeof(EnemyDamageHandler))]
 public class Turret : MonoBehaviour, IPooledObject
 {
     [SerializeField] List<ITurretBehaviour> behaviours = new List<ITurretBehaviour>();
@@ -15,7 +15,7 @@ public class Turret : MonoBehaviour, IPooledObject
 
     private void Awake()
     {
-        behaviours = GetComponentsInChildren<ITurretBehaviour>().ToList();
+        behaviours = GetComponents<ITurretBehaviour>().ToList();
         turretStats = GetComponent<TurretStats>();
     }
 

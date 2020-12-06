@@ -31,7 +31,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 
     public Transform Goal;
     public Transform currentTurret;
-    public IEnemyDamage currentTurretDamage;
+    public IEnemyDamageHandler currentTurretDamage;
     public bool IsTargetTrigger;
 
     public void OnObjectSpawn()
@@ -74,7 +74,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
         }
     }
 
-    public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamage enemyDamage)
+    public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
         health -= damage;
         currentTurretDamage = enemyDamage;

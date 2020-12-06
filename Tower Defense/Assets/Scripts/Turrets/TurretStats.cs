@@ -7,11 +7,11 @@ public class TurretStats : MonoBehaviour
 {
     [SerializeField] TurretInfo turretInfo = null;
 
-    [HideInInspector] float maxHp;
-    [HideInInspector] public float AttackRate;
-    [HideInInspector] public float AttackDamage;
-    [HideInInspector] public float AttackRange;
-    [HideInInspector] public float currentHp;
+    float maxHp;
+    public float AttackRate;
+    public float AttackDamage;
+    public float AttackRange;
+    public float currentHp;
 
     private void Start()
     {

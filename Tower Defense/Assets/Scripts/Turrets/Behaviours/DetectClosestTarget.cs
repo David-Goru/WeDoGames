@@ -29,7 +29,7 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 
     public void InitializeBehaviour()
     {
-        turretStats = transform.root.GetComponentInChildren<TurretStats>();
+        turretStats = transform.GetComponent<TurretStats>();
     }
 
     public void UpdateBehaviour()
