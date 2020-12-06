@@ -8,11 +8,9 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 {
     const float TIME_OFFSET_FOR_CHECKING_RANGE = 0.2f;
 
-    Collider[] collidersCache = new Collider[64];
-    LayerMask collisionMask;
+    ITargetsDetector targetsDetector;
 
-    Transform[] currentEnemies = new Transform[1];
-    Collider enemyCollider;
+    List<Transform> currentTargets = new List<Transform>();
     
     bool isTargetingEnemy;
 
@@ -20,16 +18,15 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 
     TurretStats turretStats;
 
-    public Transform[] CurrentTargets { get { return currentEnemies; } private set { } }
+    public List<Transform> CurrentTargets { get { return currentTargets; } private set { } }
 
-    private void Start()
-    {
-        collisionMask = LayerMask.GetMask("Enemy");
-    }
 
     public void InitializeBehaviour()
     {
-        turretStats = transform.GetComponent<TurretStats>();
+        turretStats = GetComponent<TurretStats>();
+        targetsDetector = GetComponent<ITargetsDetector>();
+        targetsDetector.TargetLayer = LayerMask.GetMask("Enemy");
+        
     }
 
     public void UpdateBehaviour()
@@ -39,43 +36,48 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 
     void UpdateTarget()
     {
+        targetsDetector.Range = turretStats.AttackRange;
         if (!isTargetingEnemy)
             detectEnemiesOnRangeAndSelectTheNearest();
         else
         {
             checkIfEnemyIsStillTargetableAndInRange();
             if (isTargetingEnemy)
-                Debug.DrawLine(transform.position, currentEnemies[0].transform.position, Color.green);
+                Debug.DrawLine(transform.position, currentTargets[0].transform.position, Color.green);
 
         }
     }
 
     void detectEnemiesOnRangeAndSelectTheNearest()
     {
-        int enemiesOnRange = detectEnemies();
-        if (enemiesOnRange > 0)
+        List<Transform> targetsOnRange = detectTargets();
+        if (targetsOnRange.Count > 0)
         {
             isTargetingEnemy = true;
-            selectTheNearestEnemy(enemiesOnRange);
+            selectTheNearestEnemy(targetsOnRange);
         }
     }
     
-    int detectEnemies()
+    List<Transform> detectTargets()
     {
-        return Physics.OverlapSphereNonAlloc(this.transform.position, turretStats.AttackRange, collidersCache, collisionMask);
+        //return Physics.OverlapSphereNonAlloc(this.transform.position, turretStats.AttackRange, collidersCache, collisionMask);
+        return targetsDetector.GetTargets();
     }
 
-    void selectTheNearestEnemy(int enemiesOnRange)
+    void selectTheNearestEnemy(List<Transform> targetsOnRange)
     {
         float minDistanceToTurret = Mathf.Infinity;
-        for (int i = 0; i < enemiesOnRange; i++)
+        int listCount = targetsOnRange.Count;
+        for (int i = 0; i < listCount; i++)
         {
-            float newDistanceToTurret = Vector3.Distance(transform.position, collidersCache[i].transform.position);
+            float newDistanceToTurret = Vector3.Distance(transform.position, targetsOnRange[i].transform.position);
             if (newDistanceToTurret < minDistanceToTurret)
             {
                 minDistanceToTurret = newDistanceToTurret;
-                currentEnemies[0] = collidersCache[i].transform;
-                enemyCollider = collidersCache[i];
+                if (currentTargets.Count > 0)
+                    currentTargets[0] = targetsOnRange[i];
+                else
+                    currentTargets.Add(targetsOnRange[i]);
             }
         }
     }
@@ -105,18 +107,18 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 
     bool checkIfEnemyIsStillTargetable()
     {
-        if (currentEnemies[0] == null || !currentEnemies[0].gameObject.activeSelf)
+        if (currentTargets[0] == null || !currentTargets[0].gameObject.activeSelf)
             return false;
         return true;
     }
 
     bool checkIfEnemyIsStillInRange()
     {
-        int enemiesOnRange = detectEnemies();
+        List<Transform> targets = detectTargets();
 
-        for (int i = 0; i < enemiesOnRange; i++)
+        for (int i = 0; i < targets.Count; i++)
         {
-            if (collidersCache[i] == enemyCollider)
+            if (targets[i] == currentTargets[0])
                 return true;
         }
         return false;
@@ -125,7 +127,7 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
     void deleteCurrentEnemy()
     {
         isTargetingEnemy = false;
-        currentEnemies[0] = null;
+        currentTargets.Clear();
     }
 
     void OnDrawGizmos()

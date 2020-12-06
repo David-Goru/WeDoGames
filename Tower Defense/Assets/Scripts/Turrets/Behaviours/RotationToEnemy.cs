@@ -31,7 +31,7 @@ public class RotationToEnemy : MonoBehaviour, ITurretBehaviour
             Debug.LogError("You don't have an enemy detector on " + transform.gameObject.name);
             return;
         }
-        if (enemyDetection.CurrentTargets[0] == null) return;
+        if (enemyDetection.CurrentTargets.Count == 0 || enemyDetection.CurrentTargets[0] == null) return;
 
         //Create a variable with the same enemy position but putting the same y than the turret so it only rotates on the y-axis.
         Vector3 enemyPosition = new Vector3(enemyDetection.CurrentTargets[0].position.x, objectToRotate.position.y, enemyDetection.CurrentTargets[0].position.z);

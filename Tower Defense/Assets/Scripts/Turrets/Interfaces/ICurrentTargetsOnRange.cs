@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public interface ICurrentTargetsOnRange
 {
-    Transform[] CurrentTargets { get; }
+    List<Transform> CurrentTargets { get; }
 }
 

@@ -40,7 +40,7 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
 
     public void ShootEnemy(Transform enemy)
     {
-        if(targetDetection.CurrentTargets[0] == null)
+        if(enemy == null)
         {
             ResetTimer();
             return;
