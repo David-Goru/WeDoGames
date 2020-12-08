@@ -14,7 +14,7 @@ public class Move : State
 
 	public override void Enter()
 	{
-		//anim.SetTrigger("moving");
+		anim.SetTrigger("moving");
 		base.Enter();
 		agent.isStopped = false;
 		agent.SetDestination(target.position);
@@ -47,7 +47,7 @@ public class Move : State
 
 	public override void Exit()
 	{
-		//anim.ResetTrigger("moving");
+		anim.ResetTrigger("moving");
 		base.Exit();
 	}
 }

@@ -18,7 +18,7 @@ public class Attack : State
 
 	public override void Enter()
 	{
-		//anim.SetTrigger("attacking");
+		anim.SetTrigger("attacking");
 		base.Enter();
 
 		//if (target == npc.Goal) nexus = target.GetComponent<Nexus>();
@@ -58,7 +58,7 @@ public class Attack : State
 
 	public override void Exit()
 	{
-		//anim.ResetTrigger("attacking");
+		anim.ResetTrigger("attacking");
 		base.Exit();
 		attackTimer = 0f;
 	}
