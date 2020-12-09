@@ -32,6 +32,7 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
 
     public void UpdateBehaviour()
     {
+        if (ReferenceEquals(targetDetection, null)) return;
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ShootEnemy(target);

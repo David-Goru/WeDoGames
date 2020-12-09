@@ -26,7 +26,7 @@ public class RotationToEnemy : MonoBehaviour, ITurretBehaviour
     /// <param name="enemy"> the transform of the enemy</param>
     public void RotateToEnemy()
     {
-        if(enemyDetection == null)
+        if(ReferenceEquals(enemyDetection, null))
         {
             Debug.LogError("You don't have an enemy detector on " + transform.gameObject.name);
             return;

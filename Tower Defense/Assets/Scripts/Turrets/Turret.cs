@@ -10,7 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(TurretStats), typeof(EnemyDamageHandler))]
 public class Turret : MonoBehaviour, IPooledObject
 {
-    [SerializeField] List<ITurretBehaviour> behaviours = new List<ITurretBehaviour>();
+    List<ITurretBehaviour> behaviours = new List<ITurretBehaviour>();
     TurretStats turretStats = null;
 
     private void Awake()

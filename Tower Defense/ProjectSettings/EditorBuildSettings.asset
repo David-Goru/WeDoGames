@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Turrets.unity
     guid: 264a2198d3cdf2040ae6dce883a79773
+  - enabled: 0
+    path: Assets/Scenes/Game.unity
+    guid: 240a3b4b15e2e2a48bb8fa6242e7e257
+  - enabled: 0
+    path: Assets/Scenes/Art tests.unity
+    guid: 4f98a0f126ec24e4894b19303de3f0cb
   m_configObjects: {}

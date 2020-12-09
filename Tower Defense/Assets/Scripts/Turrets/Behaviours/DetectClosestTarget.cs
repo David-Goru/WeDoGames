@@ -23,10 +23,14 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 
     public void InitializeBehaviour()
     {
+        GetDependencies();
+    }
+
+    private void GetDependencies()
+    {
         turretStats = GetComponent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
         targetsDetector.TargetLayer = LayerMask.GetMask("Enemy");
-        
     }
 
     public void UpdateBehaviour()
@@ -60,7 +64,6 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
     
     List<Transform> detectTargets()
     {
-        //return Physics.OverlapSphereNonAlloc(this.transform.position, turretStats.AttackRange, collidersCache, collisionMask);
         return targetsDetector.GetTargets();
     }
 
