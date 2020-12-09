@@ -22,14 +22,14 @@ public class State
 	protected Animator anim;
 	protected Transform target;
 	protected State nextState;
-	protected NavMeshAgent agent;
+	//protected NavMeshAgent agent;
 
-	public State(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent)
+	public State(Base_AI _npc, Animator _anim, Transform _target)
 	{
 		npc = _npc;
 		anim = _anim;
 		target = _target;
-		agent = _agent;
+		//agent = _agent;
 		stage = EVENT.ENTER;
 	}
 
@@ -54,11 +54,11 @@ public class State
 		Debug.Log("HAS SIDO GOLPEADO");
         if (!turretTransform.gameObject.activeSelf) //The turret that shot you is already dead
         {
-			nextState = new Move(npc, anim, npc.Goal, agent); //Aim for the nexus
+			nextState = new Move(npc, anim, npc.Goal); //Aim for the nexus
 		}
         else //The turret that shot you is alive
         {
-			nextState = new Move(npc, anim, turretTransform, agent); //Aim for the turret
+			nextState = new Move(npc, anim, turretTransform); //Aim for the turret
 		}
 		stage = EVENT.EXIT;
 	}

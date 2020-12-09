@@ -10,7 +10,7 @@ public class Attack : State
 	Quaternion npcRotation;
 	float rotationSpeed = 200f;
 
-	public Attack(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
+	public Attack(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.ATTACK;
 		//Modify agent properties like speed, etc.
@@ -50,7 +50,7 @@ public class Attack : State
 			//Debug.Log("El enemigo ha sido destruido");
             if (npc.Goal.gameObject.activeSelf)
             {
-				nextState = new Move(npc, anim, npc.Goal, agent);
+				nextState = new Move(npc, anim, npc.Goal);
 				stage = EVENT.EXIT;
 			}
 		}

@@ -25,7 +25,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     }
 
     float health;
-    NavMeshAgent agent;
+    //NavMeshAgent agent;
     Animator anim;
     State currentState;
 
@@ -34,13 +34,22 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     public IEnemyDamageHandler currentTurretDamage;
     public bool IsTargetTrigger;
 
+    //A*
+
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float rotationSpeed = 5f;
+    private Vector3[] path;
+    private int targetIndex;
+
+    private Vector3 currentWaypoint;
+
     public void OnObjectSpawn()
     {
         Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = myHealth;
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        currentState = new Move(this, anim, Goal, agent);
+        currentState = new Move(this, anim, Goal);
         currentTurret = null;
     }
 
@@ -49,9 +58,9 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
         if (SceneManager.GetActiveScene().name == "Game") return;
         Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = myHealth;
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        currentState = new Move(this, anim, Goal, agent);
+        currentState = new Move(this, anim, Goal);
         currentTurret = null;
     }
 
@@ -89,19 +98,62 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     void OnTriggerEnter(Collider other)
     {
         if (currentTurret == other.transform || currentTurret == null && other.transform == Goal) IsTargetTrigger = true;
+    }
 
-        /*if (other.CompareTag("Nexus"))
+    public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
+    {
+        if (pathSuccessful)
         {
-            //Debug.Log("NEXUS TRIGGER");
-            IsTargetTrigger = true;
-        }
-        else if (other.CompareTag("Turret"))
-        {
-            //Debug.Log("TURRET TRIGGER");
-            if(currentTurret != null)
+            path = newPath;
+            targetIndex = 0;
+            if (path.Length > 0)
             {
-                IsTargetTrigger = true;
+                StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
+                StartCoroutine("FollowPath");
+
             }
-        }*/
+        }
+    }
+
+    IEnumerator FollowPath()
+    {
+        currentWaypoint = path[0];
+        while (true)
+        {
+            if (transform.position == currentWaypoint)
+            {
+                targetIndex++;
+                if (targetIndex >= path.Length) //Path finished
+                {
+                    yield break;
+                }
+                currentWaypoint = path[targetIndex];
+            }
+            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(currentWaypoint - transform.position), rotationSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    //For visual hint
+    public void OnDrawGizmos()
+    {
+        if (path != null)
+        {
+            for (int i = targetIndex; i < path.Length; i++)
+            {
+                Gizmos.color = Color.white;
+                Gizmos.DrawCube(path[i], Vector3.one / 3);
+
+                if (i == targetIndex)
+                {
+                    Gizmos.DrawLine(transform.position, path[i]);
+                }
+                else
+                {
+                    Gizmos.DrawLine(path[i - 1], path[i]);
+                }
+            }
+        }
     }
 }

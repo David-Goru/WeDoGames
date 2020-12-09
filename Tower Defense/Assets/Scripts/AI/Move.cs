@@ -7,27 +7,30 @@ using UnityEngine.AI;
 public class Move : State
 {
 
-	public Move(Base_AI _npc, Animator _anim, Transform _target, NavMeshAgent _agent) : base(_npc, _anim, _target, _agent)
+	public Move(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.MOVE;
 	}
 
 	public override void Enter()
 	{
+		Debug.Log("EMPIEZA A ANDAR");
 		anim.SetTrigger("moving");
 		base.Enter();
-		agent.isStopped = false;
-		agent.SetDestination(target.position);
+		//agent.isStopped = false;
+		//agent.SetDestination(target.position);
+
+		PathRequestManager.RequestPath(npc.transform.position, target.position, npc.OnPathFound);
 	}
 
 	public override void Update()
 	{
 		if (npc.IsTargetTrigger)
         {
-			agent.velocity = new Vector3(0, 0, 0);
-			agent.isStopped = true;
+			//agent.velocity = new Vector3(0, 0, 0);
+			//agent.isStopped = true;
 			npc.IsTargetTrigger = false;
-			nextState = new Attack(npc, anim, target, agent);
+			nextState = new Attack(npc, anim, target);
 			stage = EVENT.EXIT;
 		}
 		/*
