@@ -6,7 +6,7 @@ public class Grid : MonoBehaviour
 {
     public bool displayGridGizmos; //Testing
 
-    public Transform player; //Testing
+    //public Transform player; //Testing
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
