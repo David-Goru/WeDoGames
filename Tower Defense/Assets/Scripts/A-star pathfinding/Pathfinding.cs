@@ -51,7 +51,7 @@ public class Pathfinding : MonoBehaviour
         startNode = grid.NodeFromWorldPos(startPos);
         targetNode = grid.NodeFromWorldPos(targetPos);
 
-        if(startNode.walkable && targetNode.walkable) //For optimization
+        if(startNode.walkable) //For optimization
         {
             openSet = new Heap<Node>(grid.MaxSize);
             closedSet = new HashSet<Node>();
@@ -62,7 +62,7 @@ public class Pathfinding : MonoBehaviour
                 currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
 
-                if (currentNode == targetNode) //Path has been found
+                if (GetDistanceInNodes(currentNode, targetNode) < 4f) //Path has been found
                 {
                     sw.Stop();
                     //print("Path found in " + sw.ElapsedMilliseconds + " ms");
@@ -95,7 +95,7 @@ public class Pathfinding : MonoBehaviour
         yield return null;
         if (pathSuccess)
         {
-            waypoints = RetracePath(startNode, targetNode);
+            waypoints = RetracePath(startNode, currentNode);
         }
         requestManager.FinishedProcessingPath(waypoints, pathSuccess);
     }
@@ -146,6 +146,20 @@ public class Pathfinding : MonoBehaviour
             return 14 * distanceY + 10 * (distanceX - distanceY);
         }
         return 14 * distanceX + 10 * (distanceY - distanceX);
+    }
+
+    private int GetDistanceInNodes(Node nodeA, Node nodeB)
+    {
+        distanceX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+        distanceY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+
+        //If x > y --> y + (x-y)
+        //If y > x --> x + (y-x)
+        if (distanceX > distanceY)
+        {
+            return distanceY + (distanceX - distanceY);
+        }
+        return distanceX + (distanceY - distanceX);
     }
 
 }

@@ -32,7 +32,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     public Transform Goal;
     public Transform currentTurret;
     public IEnemyDamageHandler currentTurretDamage;
-    public bool IsTargetTrigger;
+    //public bool IsTargetTrigger;
 
     //A*
 
@@ -40,6 +40,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     [SerializeField] private float rotationSpeed = 5f;
     private Vector3[] path;
     private int targetIndex;
+    public bool pathReached;
 
     private Vector3 currentWaypoint;
 
@@ -95,10 +96,12 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
         checkDeath();
     }
 
+    /*
     void OnTriggerEnter(Collider other)
     {
         if (currentTurret == other.transform || currentTurret == null && other.transform == Goal) IsTargetTrigger = true;
     }
+    */
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
     {
@@ -125,6 +128,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
                 targetIndex++;
                 if (targetIndex >= path.Length) //Path finished
                 {
+                    pathReached = true;
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
