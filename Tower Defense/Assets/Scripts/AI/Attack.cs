@@ -10,7 +10,7 @@ public class Attack : State
 	Quaternion npcRotation;
 	float rotationSpeed = 200f;
 
-	public Attack(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
+	public Attack(Base_AI _npc, Animator _anim, BuildingRange _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.ATTACK;
 		//Modify agent properties like speed, etc.
@@ -23,7 +23,7 @@ public class Attack : State
 
 		//if (target == npc.Goal) nexus = target.GetComponent<Nexus>();
 
-		npcRotation = Quaternion.LookRotation(new Vector3(target.position.x, npc.transform.position.y, target.position.z) - npc.transform.position);
+		npcRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x, npc.transform.position.y, target.transform.position.z) - npc.transform.position);
 		//npc.transform.LookAt(target);
 		attackTarget();
 	}

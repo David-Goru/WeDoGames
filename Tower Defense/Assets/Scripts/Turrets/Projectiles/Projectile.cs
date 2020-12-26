@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour, IPooledObject
         turretDamageable = enemy.GetComponent<ITurretDamage>();
         if (turretDamageable != null)
         {
-            turretDamageable.OnTurretHit(turret, damage, enemyDamageHandler);
+            turretDamageable.OnTurretHit(turret.GetComponent<BuildingRange>(), damage, enemyDamageHandler);
         }
     }
 

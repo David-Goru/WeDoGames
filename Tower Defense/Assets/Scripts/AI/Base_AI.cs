@@ -29,7 +29,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     Animator anim;
     State currentState;
 
-    public Transform Goal;
+    public BuildingRange Goal;
     public Transform currentTurret;
     public IEnemyDamageHandler currentTurretDamage;
     //public bool IsTargetTrigger;
@@ -46,7 +46,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 
     public void OnObjectSpawn()
     {
-        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
+        Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
         health = myHealth;
         //agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -57,7 +57,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "Game") return;
-        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
+        Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
         health = myHealth;
         //agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -84,13 +84,13 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
         }
     }
 
-    public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
+    public void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
         health -= damage;
         currentTurretDamage = enemyDamage;
         if (currentTurret == null)
         {
-            currentTurret = turretTransform;
+            currentTurret = turretTransform.transform;
             currentState.OnTurretHit(turretTransform, damage, enemyDamage);
         }
         checkDeath();
@@ -107,13 +107,16 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     {
         if (pathSuccessful)
         {
+            StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
             path = newPath;
             targetIndex = 0;
             if (path.Length > 0)
             {
-                StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
                 StartCoroutine("FollowPath");
-
+            }
+            else
+            {
+                pathReached = true;
             }
         }
     }

@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Move : State
 {
 
-	public Move(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
+	public Move(Base_AI _npc, Animator _anim, BuildingRange _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.MOVE;
 	}
@@ -20,7 +20,7 @@ public class Move : State
 		//agent.isStopped = false;
 		//agent.SetDestination(target.position);
 
-		PathRequestManager.RequestPath(npc.transform.position, target.position, npc.OnPathFound);
+		PathRequestManager.RequestPath(npc.transform.position, target, npc.OnPathFound);
 	}
 
 	public override void Update()

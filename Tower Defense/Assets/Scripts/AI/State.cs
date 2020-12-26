@@ -20,11 +20,11 @@ public class State
 	protected EVENT stage;
 	protected Base_AI npc;
 	protected Animator anim;
-	protected Transform target;
+	protected BuildingRange target;
 	protected State nextState;
 	//protected NavMeshAgent agent;
 
-	public State(Base_AI _npc, Animator _anim, Transform _target)
+	public State(Base_AI _npc, Animator _anim, BuildingRange _target)
 	{
 		npc = _npc;
 		anim = _anim;
@@ -49,7 +49,7 @@ public class State
 		return this;
 	}
 
-	public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
+	public void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
 		Debug.Log("HAS SIDO GOLPEADO");
         if (!turretTransform.gameObject.activeSelf) //The turret that shot you is already dead

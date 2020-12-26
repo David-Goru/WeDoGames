@@ -116,7 +116,7 @@ public class HeavyProjectile : Projectile
             int nEnemies = Physics.OverlapSphereNonAlloc(transform.position, radiusOfImpact, collidersCache, enemyLayer);
             for (int i = 0; i < nEnemies; i++)
             {
-                collidersCache[i].GetComponent<ITurretDamage>().OnTurretHit(turret.transform, damage, enemyDamageHandler);
+                collidersCache[i].GetComponent<ITurretDamage>().OnTurretHit(turret.transform.GetComponent<BuildingRange>(), damage, enemyDamageHandler);
             }
             disable();
         }

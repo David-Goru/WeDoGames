@@ -136,7 +136,7 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, turretStats.AttackRange);
+        //Gizmos.DrawWireSphere(this.transform.position, turretStats.AttackRange);
     }
 
 }

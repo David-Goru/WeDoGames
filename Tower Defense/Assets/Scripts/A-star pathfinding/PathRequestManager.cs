@@ -19,7 +19,7 @@ public class PathRequestManager : MonoBehaviour
         pathfinding = GetComponent<Pathfinding>();
     }
 
-    public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback)
+    public static void RequestPath(Vector3 pathStart, BuildingRange pathEnd, Action<Vector3[], bool> callback)
     {
         PathRequest newRequest = new PathRequest(pathStart, pathEnd, callback);
         instance.pathRequestQueue.Enqueue(newRequest);
@@ -46,10 +46,10 @@ public class PathRequestManager : MonoBehaviour
     struct PathRequest
     {
         public Vector3 pathStart;
-        public Vector3 pathEnd;
+        public BuildingRange pathEnd;
         public Action<Vector3[], bool> callback;
 
-        public PathRequest(Vector3 _start, Vector3 _end, Action<Vector3[], bool> _callback)
+        public PathRequest(Vector3 _start, BuildingRange _end, Action<Vector3[], bool> _callback)
         {
             pathStart = _start;
             pathEnd = _end;

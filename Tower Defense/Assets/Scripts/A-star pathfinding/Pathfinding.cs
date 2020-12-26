@@ -35,12 +35,12 @@ public class Pathfinding : MonoBehaviour
         requestManager = GetComponent<PathRequestManager>();
     }
 
-    public void StartFindPath(Vector3 startPos, Vector3 targetPos)
+    public void StartFindPath(Vector3 startPos, BuildingRange targetPos)
     {
         StartCoroutine(FindPath(startPos, targetPos));
     }
 
-    private IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
+    private IEnumerator FindPath(Vector3 startPos, BuildingRange targetPos)
     {
         sw = new Stopwatch();
         sw.Start();
@@ -49,7 +49,7 @@ public class Pathfinding : MonoBehaviour
         pathSuccess = false;
 
         startNode = grid.NodeFromWorldPos(startPos);
-        targetNode = grid.NodeFromWorldPos(targetPos);
+        targetNode = grid.NodeFromWorldPos(targetPos.transform.position);
 
         if(startNode.walkable) //For optimization
         {
@@ -62,7 +62,7 @@ public class Pathfinding : MonoBehaviour
                 currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
 
-                if (GetDistanceInNodes(currentNode, targetNode) < 4f) //Path has been found
+                if (GetDistanceInNodes(currentNode, targetNode) < targetPos.Range) //Path has been found
                 {
                     sw.Stop();
                     //print("Path found in " + sw.ElapsedMilliseconds + " ms");

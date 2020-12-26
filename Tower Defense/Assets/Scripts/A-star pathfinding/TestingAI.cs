@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestingAI : MonoBehaviour
 {
 
-    public Transform target;
+    public BuildingRange target;
 
     [SerializeField] private float speed = 5f;
     private Vector3[] path;
@@ -15,7 +15,7 @@ public class TestingAI : MonoBehaviour
 
     private void Start()
     {
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        PathRequestManager.RequestPath(transform.position, target, OnPathFound);
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
