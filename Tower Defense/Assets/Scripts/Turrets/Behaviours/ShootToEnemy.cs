@@ -14,6 +14,7 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
     ICurrentTargetsOnRange targetDetection;
+    BuildingRange turretBuildingRange;
 
     public ICurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
 
@@ -25,9 +26,10 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
     void GetDependencies()
     {
         objectPooler = ObjectPooler.GetInstance();
-        turretStats = transform.GetComponent<TurretStats>();
-        targetDetection = transform.GetComponent<ICurrentTargetsOnRange>();
-        enemyDamageHandler = transform.GetComponent<IEnemyDamageHandler>();
+        turretStats = GetComponent<TurretStats>();
+        targetDetection = GetComponent<ICurrentTargetsOnRange>();
+        enemyDamageHandler = GetComponent<IEnemyDamageHandler>();
+        turretBuildingRange = GetComponent<BuildingRange>();
     }
 
     public void UpdateBehaviour()
@@ -49,7 +51,7 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
         if(timer >= turretStats.AttackRate)
         {
             obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
-            obj.GetComponent<Projectile>().SetInfo(enemy, transform, turretStats.AttackDamage, enemyDamageHandler);
+            obj.GetComponent<Projectile>().SetInfo(enemy, turretBuildingRange, turretStats.AttackDamage, enemyDamageHandler);
             ResetTimer();
         }
         else
