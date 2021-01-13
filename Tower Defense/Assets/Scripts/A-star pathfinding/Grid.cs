@@ -93,6 +93,16 @@ public class Grid : MonoBehaviour
         return grid[x, y];
     }
 
+    public void SetWalkableNodes(bool boolean, Vector3 nodePos, int nodeRange)
+    {
+        Collider[] nodesToChange = Physics.OverlapSphere(nodePos, nodeRange);
+        foreach (Collider col in nodesToChange)
+        {
+            Node nodeToChange = col.GetComponent<Node>();
+            if (nodeToChange != null) nodeToChange.walkable = boolean;
+        }
+    }
+
     //This is only a visual hint
     private void OnDrawGizmos()
     {
