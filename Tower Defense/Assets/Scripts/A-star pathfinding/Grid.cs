@@ -98,7 +98,8 @@ public class Grid : MonoBehaviour
         Collider[] nodesToChange = Physics.OverlapSphere(nodePos, nodeRange);
         foreach (Collider col in nodesToChange)
         {
-            col.GetComponent<Node>().walkable = boolean;
+            Node nodeToChange = col.GetComponent<Node>();
+            if (nodeToChange != null) nodeToChange.walkable = boolean;
         }
     }
 
