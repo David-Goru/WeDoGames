@@ -34,10 +34,17 @@ public class TurretInfoEditor : Editor
         }
         statChoices = new List<string>(temp);
         statsIndices = new List<int>();
-        foreach (var stat in turretInfo.Stats)
+        foreach (var stat in turretInfo.Stats.ToArray())
         {
-            statChoices.Remove(stat.StatName);
-            statsIndices.Add(temp.FindIndex(x => x == stat.StatName));
+            if(temp.Exists(x => x == stat.StatName))
+            {
+                statChoices.Remove(stat.StatName);
+                statsIndices.Add(temp.FindIndex(x => x == stat.StatName));
+            }
+            else
+            {
+                turretInfo.Stats.Remove(stat);
+            }
         }
     }
 
@@ -58,8 +65,8 @@ public class TurretInfoEditor : Editor
             GUILayout.BeginHorizontal();
             string oldStat = turretInfo.Stats[i].StatName;
             statChoices.Add(oldStat);
-            statsIndices[i] = EditorGUILayout.Popup(statsIndices[i], statChoices.ToArray(), GUILayout.Width(150), GUILayout.Height(30));
-            turretInfo.Stats[i].StatName = temp[statsIndices[i]];
+            statsIndices[i] = EditorGUILayout.Popup(statChoices.IndexOf(turretInfo.Stats[i].StatName), statChoices.ToArray(), GUILayout.Width(150), GUILayout.Height(30));
+            turretInfo.Stats[i].StatName = statChoices[statsIndices[i]];
             if(oldStat != turretInfo.Stats[i].StatName)
             {
                 statChoices.Remove(turretInfo.Stats[i].StatName);
@@ -87,6 +94,7 @@ public class TurretInfoEditor : Editor
         turretInfo.Stats.Add(new Stat(statChoices[0], 0));
         statChoices.RemoveAt(0);
         statsIndices.Add(0);
+
     }
     public void RemoveStat(int i)
     {
