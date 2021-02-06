@@ -23,7 +23,8 @@ public class TurretInfoEditor : Editor
     TurretInfo turretInfo;
     List<int> statsIndices;
     List<string> statChoices;
-    List<string> temp = new List<string>() { "hola buenas tardes", "adios, que tenga un buen dia"};
+    List<string> temp = new List<string>() { "Sergio", "Cristian", "Arturo", "David"};
+    List<string> statValues;
 
     public void OnEnable()
     {
@@ -32,14 +33,17 @@ public class TurretInfoEditor : Editor
         {
             turretInfo.Stats = new List<Stat>();
         }
+
         statChoices = new List<string>(temp);
         statsIndices = new List<int>();
+        statValues = new List<string>();
         foreach (var stat in turretInfo.Stats.ToArray())
         {
-            if(temp.Exists(x => x == stat.StatName))
+            if (temp.Exists(x => x == stat.StatName))
             {
                 statChoices.Remove(stat.StatName);
                 statsIndices.Add(temp.FindIndex(x => x == stat.StatName));
+                statValues.Add(stat.StatValue.ToString());
             }
             else
             {
@@ -48,40 +52,41 @@ public class TurretInfoEditor : Editor
         }
     }
 
+    public void OnDisable()
+    {
+        SaveStats();
+    }
+
     public override void OnInspectorGUI()
     {
         // Draw the default inspector
         DrawDefaultInspector();
-        if(GUILayout.Button("Add stat"))
-        {
-            AddStat();
-        }
+
+        if(GUILayout.Button("Add stat")) AddStat();
         
         for (int i = 0; i < turretInfo.Stats.Count; i++)
         {
-            if (statsIndices[i] == -1)
-                statsIndices[i] = 0;
+            if (statsIndices[i] == -1) statsIndices[i] = 0;
+
             EditorGUILayout.Space();
             GUILayout.BeginHorizontal();
+
             string oldStat = turretInfo.Stats[i].StatName;
             statChoices.Add(oldStat);
             statsIndices[i] = EditorGUILayout.Popup(statChoices.IndexOf(turretInfo.Stats[i].StatName), statChoices.ToArray(), GUILayout.Width(150), GUILayout.Height(30));
             turretInfo.Stats[i].StatName = statChoices[statsIndices[i]];
-            if(oldStat != turretInfo.Stats[i].StatName)
-            {
-                statChoices.Remove(turretInfo.Stats[i].StatName);
-            }
-            else
-            {
-                statChoices.Remove(oldStat);
-            }
-            turretInfo.Stats[i].StatValue = float.Parse(GUILayout.TextField(turretInfo.Stats[i].StatValue.ToString(), GUILayout.Width(100), GUILayout.Height(20)));
-            if (GUILayout.Button("x", GUILayout.Width(20), GUILayout.Height(20)))
-            {
-                RemoveStat(i);
-            }
+
+            if (oldStat != turretInfo.Stats[i].StatName) statChoices.Remove(turretInfo.Stats[i].StatName);
+            else statChoices.Remove(oldStat);
+
+            statValues[i] = GUILayout.TextField(statValues[i], GUILayout.Width(100), GUILayout.Height(20));            
+
+            if (GUILayout.Button("x", GUILayout.Width(20), GUILayout.Height(20))) RemoveStat(i);
             GUILayout.EndHorizontal();
         }
+
+        if (GUILayout.Button("Save stats")) SaveStats();
+
         // Save the changes back to the object
         EditorUtility.SetDirty(target);
         //serializedObject.ApplyModifiedProperties();
@@ -89,17 +94,28 @@ public class TurretInfoEditor : Editor
 
     public void AddStat()
     {
-        if (statChoices.Count == 0)
-            return;
+        if (statChoices.Count == 0) return;
+
         turretInfo.Stats.Add(new Stat(statChoices[0], 0));
         statChoices.RemoveAt(0);
         statsIndices.Add(0);
-
+        statValues.Add("");
     }
+
     public void RemoveStat(int i)
     {
         statChoices.Add(turretInfo.Stats[i].StatName);
         turretInfo.Stats.RemoveAt(i);
         statsIndices.RemoveAt(i);
+        statValues.RemoveAt(i);
+    }
+
+    public void SaveStats()
+    {
+        for (int i = 0; i < statValues.Count; i++)
+        {
+            if (!float.TryParse(statValues[i], out turretInfo.Stats[i].StatValue)) turretInfo.Stats[i].StatValue = 0;
+            statValues[i] = turretInfo.Stats[i].StatValue.ToString();
+        }
     }
 }
