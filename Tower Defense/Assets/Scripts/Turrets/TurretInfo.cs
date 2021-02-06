@@ -6,7 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Turret", menuName = "ScriptableObjects/TurretInfo", order = 0)]
 public class TurretInfo : BuildingInfo
 {
-    [HideInInspector] public List<Stat> Stats;
     [SerializeField] float attackRate = 0;
     [SerializeField] float attackDamage = 0;
     [SerializeField] float attackRange = 0;

@@ -42,7 +42,7 @@ public class BuildingsUI : UIList
     void addBuildingToUI(Transform masterObject, BuildingInfo buildingInfo)
     {
         objectUI = Instantiate<GameObject>(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}\n({1:0} coins)", buildingInfo.GetBuildingPool().tag, buildingInfo.GetPrice());
+        //objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}\n({1:0} coins)", buildingInfo.GetBuildingPool().tag, buildingInfo.GetPrice());
         objectUI.GetComponent<Button>().onClick.AddListener(() => masterObject.GetComponent<BuildObject>().StartBuilding(buildingInfo));
         objectUI.SetParent(ListUIObject, false);
     }

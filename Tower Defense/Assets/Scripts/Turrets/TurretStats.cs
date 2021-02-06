@@ -20,7 +20,7 @@ public class TurretStats : MonoBehaviour
 
     public void InitializeStats()
     {
-        maxHp = turretInfo.GetHp();
+        //maxHp = turretInfo.GetHp();
         AttackRate = turretInfo.GetAttackRate();
         AttackDamage = turretInfo.GetAttackDamage();
         AttackRange = turretInfo.GetAttackRange();

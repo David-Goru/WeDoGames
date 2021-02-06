@@ -16,9 +16,4 @@ public class Stat
         StatName = statName;
         StatValue = statValue;
     }
-
-    /*void ChangeStatValue(float change)
-    {
-        stat += change;
-    }*/
 }
