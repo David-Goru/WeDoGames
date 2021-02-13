@@ -23,6 +23,14 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
             return attackSpeed;
         }
     }
+    [SerializeField] float range = 0f;
+    public float Range
+    {
+        get
+        {
+            return range;
+        }
+    }
 
     float health;
     //NavMeshAgent agent;

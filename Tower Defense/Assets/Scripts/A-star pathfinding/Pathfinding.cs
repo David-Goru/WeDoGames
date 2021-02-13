@@ -35,12 +35,12 @@ public class Pathfinding : MonoBehaviour
         requestManager = GetComponent<PathRequestManager>();
     }
 
-    public void StartFindPath(Vector3 startPos, BuildingRange targetPos)
+    public void StartFindPath(Vector3 startPos, BuildingRange targetPos, float range)
     {
-        StartCoroutine(FindPath(startPos, targetPos));
+        StartCoroutine(FindPath(startPos, targetPos, range));
     }
 
-    private IEnumerator FindPath(Vector3 startPos, BuildingRange targetPos)
+    private IEnumerator FindPath(Vector3 startPos, BuildingRange targetPos, float range)
     {
         sw = new Stopwatch();
         sw.Start();
@@ -62,7 +62,7 @@ public class Pathfinding : MonoBehaviour
                 currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
 
-                if (GetDistanceInNodes(currentNode, targetNode) < targetPos.Range) //Path has been found
+                if (GetDistanceInNodes(currentNode, targetNode) < targetPos.Range + range) //Path has been found
                 {
                     sw.Stop();
                     //print("Path found in " + sw.ElapsedMilliseconds + " ms");

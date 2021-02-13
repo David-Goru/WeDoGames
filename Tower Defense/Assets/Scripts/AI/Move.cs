@@ -20,7 +20,7 @@ public class Move : State
 		//agent.isStopped = false;
 		//agent.SetDestination(target.position);
 
-		PathRequestManager.RequestPath(npc.transform.position, target, npc.OnPathFound);
+		PathRequestManager.RequestPath(npc.transform.position, target, npc.Range, npc.OnPathFound);
 	}
 
 	public override void Update()
