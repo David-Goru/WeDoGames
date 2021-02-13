@@ -20,7 +20,7 @@ public class DetectTargetsOnRange : MonoBehaviour, ICurrentTargetsOnRange
 
     List<Transform> getTargets()
     {
-        targetsDetector.Range = turretStats.AttackRange;
+        targetsDetector.Range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         return targetsDetector.GetTargets();
     }
 

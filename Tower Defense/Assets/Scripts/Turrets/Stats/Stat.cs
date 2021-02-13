@@ -8,14 +8,18 @@ using UnityEngine;
 public enum StatType { PRICE, MAXHEALTH, DAMAGE, ATTACKRANGE, ATTACKRATE};
 
 [System.Serializable]
-public class Stat
+public struct Stat
 {
-    public StatType Type;
-    public float Value;
+    [SerializeField] StatType type;
+    [SerializeField] float value;
+
+    public float Value { get => value; }
+
+    public StatType Type { get => type; }
 
     public Stat(StatType statType, float statValue)
     {
-        Type = statType;
-        Value = statValue;
+        type = statType;
+        value = statValue;
     }
 }

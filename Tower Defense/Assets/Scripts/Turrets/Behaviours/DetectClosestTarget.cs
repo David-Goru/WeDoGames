@@ -40,7 +40,7 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 
     void UpdateTarget()
     {
-        targetsDetector.Range = turretStats.AttackRange;
+        targetsDetector.Range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         if (!isTargetingEnemy)
             detectEnemiesOnRangeAndSelectTheNearest();
         else

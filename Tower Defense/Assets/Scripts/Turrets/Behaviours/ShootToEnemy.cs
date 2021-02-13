@@ -49,10 +49,10 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
             resetTimer();
             return;
         }
-        if(timer >= turretStats.AttackRate)
+        if(timer >= turretStats.GetStatValue(StatType.ATTACKRATE))
         {
             obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
-            obj.GetComponent<Projectile>().SetInfo(enemy, turretBuildingRange, turretStats.AttackDamage, enemyDamageHandler);
+            obj.GetComponent<Projectile>().SetInfo(enemy, turretBuildingRange, turretStats.GetStatValue(StatType.DAMAGE), enemyDamageHandler);
             resetTimer();
         }
         else

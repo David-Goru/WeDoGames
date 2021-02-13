@@ -13,7 +13,7 @@ public class BuildingInfo : ScriptableObject
     public Pool GetBuildingPool() { return buildingPool; }
     public Pool GetBuildingBlueprintPool() { return buildingBlueprintPool; }
     public float GetStat(StatType type) {
-       Stat stat = Stats.Find(x => x.Type == type);
-       return stat.Value;
+        Stat stat = Stats.Find(x => x.Type == type);
+        return stat.Value;
     }
 }

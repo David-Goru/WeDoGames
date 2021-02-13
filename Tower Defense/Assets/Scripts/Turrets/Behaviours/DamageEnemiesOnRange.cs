@@ -21,10 +21,10 @@ public class DamageEnemiesOnRange : MonoBehaviour, ITurretBehaviour
 
     public void UpdateBehaviour()
     {
-        if(timer >= turretStats.AttackRate)
+        if(timer >= turretStats.GetStatValue(StatType.ATTACKRATE))
         {
             if (ReferenceEquals(targetDetection, null)) return;
-            float damage = turretStats.AttackDamage;
+            float damage = turretStats.GetStatValue(StatType.DAMAGE);
             particles.Play();
             foreach (Transform target in targetDetection.CurrentTargets)
             {

@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
-  m_Name: Building
+  m_Name: Area Turret
   m_EditorClassIdentifier: 
   Stats:
-  - Type: 0
-    Value: 0
-  - Type: 1
-    Value: 0
-  - Type: 2
-    Value: 0
-  buildingPool: {fileID: 0}
-  buildingBlueprintPool: {fileID: 0}
+  - type: 0
+    value: 100
+  - type: 1
+    value: 100
+  - type: 2
+    value: 3
+  - type: 3
+    value: 1
+  - type: 4
+    value: 1
+  buildingPool: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
+  buildingBlueprintPool: {fileID: 11400000, guid: e2bc268c5f8cd2d429159f8eb5f7c71b,
+    type: 2}

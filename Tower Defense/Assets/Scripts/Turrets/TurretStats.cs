@@ -1,16 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// This class stores all the stats of the turret
 /// </summary>
 public class TurretStats : MonoBehaviour
 {
-    [SerializeField] TurretInfo turretInfo = null;
+    [SerializeField] BuildingInfo buildingInfo = null;
+    Dictionary<StatType, float> TypeValueDictionary = new Dictionary<StatType, float>();
 
-    float maxHp;
-    public float AttackRate;
-    public float AttackDamage;
-    public float AttackRange;
     public float currentHp;
 
     private void Start()
@@ -20,11 +18,16 @@ public class TurretStats : MonoBehaviour
 
     public void InitializeStats()
     {
-        //maxHp = turretInfo.GetHp();
-        AttackRate = turretInfo.GetAttackRate();
-        AttackDamage = turretInfo.GetAttackDamage();
-        AttackRange = turretInfo.GetAttackRange();
-        currentHp = maxHp;
+        foreach (Stat stat in buildingInfo.Stats)
+        {
+            TypeValueDictionary[stat.Type] = stat.Value;
+        }
+        currentHp = TypeValueDictionary[StatType.MAXHEALTH];
+    }
+
+    public float GetStatValue(StatType type)
+    {
+        return TypeValueDictionary[type];
     }
 
 }

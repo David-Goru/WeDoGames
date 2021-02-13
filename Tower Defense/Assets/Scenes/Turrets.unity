@@ -521,6 +521,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 520202089597382337, guid: f58bb226fa509614ca6d05e3bec399b2,
+        type: 3}
+      propertyPath: buildingInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 6213785f44ddffe48a1acff44eb63d7d,
+        type: 2}
     - target: {fileID: 4790984498408443622, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_Name
@@ -783,6 +789,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AreaTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 3592683484637030907, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: buildingInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c8c2fbb589ebaf43996a003cea11802,
+        type: 2}
     - target: {fileID: 4056200479147932723, guid: c0e7d64528b75554c8ad4a8d8fa13433,
         type: 3}
       propertyPath: m_LocalPosition.x
