@@ -5,15 +5,17 @@ using UnityEngine;
 /// This is a class
 /// </summary>
 
+public enum StatType { PRICE, MAXHEALTH, DAMAGE, ATTACKRANGE, ATTACKRATE};
+
 [System.Serializable]
 public class Stat
 {
-    [HideInInspector] public string StatName;
-    [SerializeField] public float StatValue;
+    public StatType Type;
+    public float Value;
 
-    public Stat(string statName, float statValue)
+    public Stat(StatType statType, float statValue)
     {
-        StatName = statName;
-        StatValue = statValue;
+        Type = statType;
+        Value = statValue;
     }
 }
