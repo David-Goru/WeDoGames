@@ -30,4 +30,9 @@ public class TurretStats : MonoBehaviour
         return TypeValueDictionary[type];
     }
 
+    public void IncrementValue(StatType type, float increment)
+    {
+        TypeValueDictionary[type] += increment;
+    }
+
 }
