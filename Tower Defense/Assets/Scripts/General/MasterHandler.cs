@@ -8,42 +8,35 @@ using UnityEngine.UI;
 /// </summary>
 public class MasterHandler : MonoBehaviour
 {
-    [Header("Tools")]
-    public bool TestWithoutUI; // So we don't need anything UI related
+    [Header("Tools"), Tooltip("So we don't need anything UI related")]
+    [SerializeField] bool testWithoutUI = false;
 
-    [Header("UI elements")]    
-    public Text BalanceText;
-    public static Text Balance;
+    [Header("UI elements")]
+    [SerializeField] Text balanceText = null;
 
-    [Header("Other")]
-    public MasterInfo MasterInfo;
-    public static MasterInfo Info;
+    [Header("References")]
+    [SerializeField] MasterInfo masterInfo = null;
 
-    // Store nexus info
-    public static Nexus Nexus;
+    // Store Master instance
+    public static MasterHandler Instance;
 
     /// <summary>
     /// Initiliazes the MasterHandler
     /// </summary>
-    void Start()
+    void Awake()
     {
-        // Find nexus
-        Nexus = GameObject.FindGameObjectWithTag("Nexus").GetComponent<Nexus>();
+        if (Instance == null) Instance = this;
 
         // If not testing without UI
-        if (!TestWithoutUI)
+        if (!testWithoutUI)
         {
-            // Get balance text and master info
-            Balance = BalanceText;
-            Info = MasterInfo;
-
             // Set the balance UI text
-            Balance.text = string.Format("{0} coins", Info.Balance);
+            balanceText.text = string.Format("{0} coins", masterInfo.Balance);
 
             // Initialize lists
             foreach (UIList list in GetComponents(typeof(UIList)))
             {
-                list.Initialize(MasterInfo, transform);
+                list.Initialize(masterInfo, transform);
             }
         }
     }
@@ -52,31 +45,31 @@ public class MasterHandler : MonoBehaviour
     /// Gets the current money of the player
     /// </summary>
     /// <returns>Returns the balance</returns>
-    public static float GetBalance() { return Info.Balance; }
+    public float GetBalance() { return masterInfo.Balance; }
 
     /// <summary>
     /// Checks if the player has enough money
     /// </summary>
     /// <param name="amount">Amount of money to check</param>
     /// <returns>Returns true if the player can afford it, false otherwise</returns>
-    public static bool CheckIfCanAfford(float amount) { return Info.Balance >= Mathf.Abs(amount); }
+    public bool CheckIfCanAfford(float amount) { return masterInfo.Balance >= Mathf.Abs(amount); }
 
     /// <summary>
     /// Update the player balance with the amount given
     /// </summary>
     /// <param name="amount">Amount to add (or substract if passed as -X)</param>
     /// <returns>Returns false if the player doesn't have enough money</returns>
-    public static bool UpdateBalance(float amount)
+    public bool UpdateBalance(float amount)
     {
         // If reducing balance, check if balance > amount to take
         if (amount < 0 && !CheckIfCanAfford(amount)) return false;
 
         // If not testing without UI (Balance will be null if TestingWithoutUI is enabled)
-        if (Balance != null)
+        if (balanceText != null)
         {
             // Update balance and UI text
-            Info.Balance += amount;
-            Balance.text = string.Format("{0} coins", Info.Balance);
+            masterInfo.Balance += amount;
+            balanceText.text = string.Format("{0} coins", masterInfo.Balance);
         }
 
         return true;

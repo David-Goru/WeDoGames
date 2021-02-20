@@ -5,6 +5,14 @@ using UnityEngine;
 public class Nexus : MonoBehaviour
 {
     [SerializeField] float health;
+
+    public static Nexus Instance;
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
     public float Health
     {
         get

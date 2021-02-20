@@ -77,7 +77,7 @@ public class Attack : State
 		}
 		else if (target.gameObject.CompareTag("Nexus"))
         {
-			MasterHandler.Nexus.GetHit(npc.Damage);
+			Nexus.Instance.GetHit(npc.Damage);
         }
     }
 }

@@ -41,8 +41,8 @@ public class BuildingsUI : UIList
     /// <param name="buildingInfo">Information about the building that will be displayed on the button</param>
     void addBuildingToUI(Transform masterObject, BuildingInfo buildingInfo)
     {
-        objectUI = Instantiate<GameObject>(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        //objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}\n({1:0} coins)", buildingInfo.GetBuildingPool().tag, buildingInfo.GetPrice());
+        objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
+        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}\n({1:0} coins)", buildingInfo.GetBuildingPool().tag, buildingInfo.GetStat(StatType.PRICE));
         objectUI.GetComponent<Button>().onClick.AddListener(() => masterObject.GetComponent<BuildObject>().StartBuilding(buildingInfo));
         objectUI.SetParent(ListUIObject, false);
     }

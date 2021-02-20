@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class BuildObject : MonoBehaviour
 {
-    [Header("Grid info")]
-    public int GridSize;
-    public float VertexSize;
+    [Header("Modifiable values"), Tooltip("Avoid pair values")]
+    [SerializeField] int gridSize = 0;
 
-    [Header("Other")]
-    public Texture BuildingGrid;
-    Texture groundSprite;
-    Renderer ground;
+    [Header("References")]
+    [SerializeField] Texture buildingGrid = null;
+    [SerializeField] Grid grid = null;
 
-    // Object info
-    BuildingInfo buildingInfo;
-    GameObject objectBlueprint;
-    Vector3 lastPos;
-    bool buildable;
-
-    ObjectPooler objectPooler;
+    [Header("Debug")]
+    [SerializeField] float vertexSize = 0.0f;
+    [SerializeField] Texture groundSprite = null;
+    [SerializeField] Renderer ground = null;
+    [SerializeField] BuildingInfo buildingInfo = null;
+    [SerializeField] GameObject objectBlueprint = null;
+    [SerializeField] Material blueprintMaterial = null;
+    [SerializeField] Vector3 lastPos;
+    [SerializeField] bool buildable = false;
+    [SerializeField] ObjectPooler objectPooler;
 
     void Start()
     {
-        if (BuildingGrid == null)
+        // Building grid
+        if (buildingGrid == null)
         {
             Debug.Log("Building grid not set");
             this.enabled = false;
             return;
         }
 
+        // Ground
         ground = GameObject.Find("Ground").GetComponent<Renderer>();
         if (ground == null)
         {
@@ -39,8 +42,9 @@ public class BuildObject : MonoBehaviour
         }
         groundSprite = ground.material.mainTexture;
 
+        // Others
+        vertexSize = 1.0f / gridSize * 10.0f;
         objectPooler = ObjectPooler.GetInstance();
-
         this.enabled = false;
     }
 
@@ -59,11 +63,11 @@ public class BuildObject : MonoBehaviour
     public void StartBuilding(BuildingInfo buildingInfo)
     {
         // Check if the player can affor the building
-        //if (!MasterHandler.CheckIfCanAfford(buildingInfo.GetStat())) return;
+        if (!MasterHandler.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
 
         // Set ground to building mode
-        ground.material.SetTexture("_MainTex", BuildingGrid);
-        ground.material.SetTextureScale("_MainTex", new Vector2(GridSize, GridSize));
+        ground.material.SetTexture("_MainTex", buildingGrid);
+        ground.material.SetTextureScale("_MainTex", new Vector2(gridSize, gridSize));
 
         this.buildingInfo = buildingInfo;
         this.enabled = true;
@@ -79,22 +83,23 @@ public class BuildObject : MonoBehaviour
         {
             // Pos = mouse position (at Y = 0), vPos = vertex position (on the grid)
             Vector3 pos = new Vector3(hit.point.x, 0, hit.point.z);
-            Vector3 vPos = new Vector3(Mathf.Round(hit.point.x / VertexSize) * VertexSize, 0, Mathf.Round(hit.point.z / VertexSize) * VertexSize);
+            Vector3 vPos = new Vector3(Mathf.Round(hit.point.x / vertexSize) * vertexSize, 0, Mathf.Round(hit.point.z / vertexSize) * vertexSize);
 
             // If object blueprint is not already on the map, build it
             if (objectBlueprint == null)
             {
                 objectBlueprint = objectPooler.SpawnObject(buildingInfo.GetBuildingBlueprintPool().tag, pos, Quaternion.Euler(0, 0, 0));
                 lastPos = pos;
-                objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+                blueprintMaterial = objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material;
+                blueprintMaterial.SetColor("_Color", Color.red);
                 checkPosition(pos, vPos);
             }
             else if (lastPos != pos && lastPos != vPos) checkPosition(pos, vPos);
         }
-        else if (objectBlueprint)
+        else if (objectBlueprint) // Mouse out of the map, delete object blueprint
         {
             objectPooler.ReturnToThePool(objectBlueprint.transform);
-            objectBlueprint = null; // Mouse out of the map, delete object blueprint
+            objectBlueprint = null;
         }
     }
 
@@ -104,13 +109,13 @@ public class BuildObject : MonoBehaviour
         if (Physics.CheckSphere(vPos, 0.3f, 1 << LayerMask.NameToLayer("Object")))
         {
             lastPos = pos;
-            objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            blueprintMaterial.SetColor("_Color", Color.red);
             buildable = false;
         }
         else
         {
             lastPos = vPos;
-            objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+            blueprintMaterial.SetColor("_Color", Color.green);
             buildable = true;
         }
         objectBlueprint.transform.position = lastPos;
@@ -127,22 +132,24 @@ public class BuildObject : MonoBehaviour
     void placeObject()
     {
         // Pay for the building
-        /*if(!MasterHandler.UpdateBalance(-buildingInfo.GetPrice()))
+        if(!MasterHandler.Instance.UpdateBalance(-buildingInfo.GetStat(StatType.PRICE)))
         {
             // The player can't afford it, so don't do anything
             return;
-        }*/
+        }
 
         // If object blueprint is not on the map or it can't be built, do nothing
         if (objectBlueprint == null || buildable == false) return;
 
         // Activate turret
+        grid.SetWalkableNodes(false, objectBlueprint.transform.position, objectBlueprint.GetComponent<BuildingRange>().Range);
         objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
 
         // Get rid of blueprint
-        objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.black);
+        blueprintMaterial.SetColor("_Color", Color.black);
         objectPooler.ReturnToThePool(objectBlueprint.transform);
         objectBlueprint = null;
+        blueprintMaterial = null;
 
         StopBuilding();
     }
@@ -152,8 +159,10 @@ public class BuildObject : MonoBehaviour
         // Get rid of blueprint
         if (objectBlueprint != null)
         {
-            objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material.SetColor("_Color", Color.black);
+            blueprintMaterial.SetColor("_Color", Color.black);
             objectPooler.ReturnToThePool(objectBlueprint.transform);
+            objectBlueprint = null;
+            blueprintMaterial = null;
         }
 
         // Reset ground texture
