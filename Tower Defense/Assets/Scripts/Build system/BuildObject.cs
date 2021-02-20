@@ -142,8 +142,9 @@ public class BuildObject : MonoBehaviour
         if (objectBlueprint == null || buildable == false) return;
 
         // Activate turret
-        grid.SetWalkableNodes(false, objectBlueprint.transform.position, objectBlueprint.GetComponent<BuildingRange>().Range);
-        objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
+        GameObject turretPlaced = objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
+        grid.SetWalkableNodes(false, objectBlueprint.transform.position, turretPlaced.GetComponent<BuildingRange>().Range);
+        
 
         // Get rid of blueprint
         blueprintMaterial.SetColor("_Color", Color.black);
