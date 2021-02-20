@@ -528,7 +528,7 @@ PrefabInstance:
     - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
         type: 3}
       propertyPath: nodeRadius
-      value: 0.45454544
+      value: 0.22727272
       objectReference: {fileID: 0}
     - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
         type: 3}
@@ -539,6 +539,16 @@ PrefabInstance:
         type: 3}
       propertyPath: gridWorldSize.y
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+        type: 3}
+      propertyPath: buildObject
+      value: 
+      objectReference: {fileID: 537000327}
+    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+        type: 3}
+      propertyPath: divisionsPerVertex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8685395212756769859, guid: 5986212d112ae8e43a08b1b059df94c8,
         type: 3}

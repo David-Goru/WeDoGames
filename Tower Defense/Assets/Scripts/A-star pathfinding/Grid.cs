@@ -6,10 +6,16 @@ public class Grid : MonoBehaviour
 {
     public bool displayGridGizmos; //Testing
 
+    [Range(2, 4)]
+    [SerializeField] private int divisionsPerVertex = 1;
+
     //public Transform player; //Testing
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
+
+    [Header("References")]
+    [SerializeField] private BuildObject buildObject;
 
     private Node[,] grid;
     private float nodeDiameter;
@@ -27,6 +33,11 @@ public class Grid : MonoBehaviour
 
     private void Awake()
     {
+        if(buildObject.VertexSize == 0)
+        {
+            buildObject.SetVertexSize();
+        }
+        nodeRadius = buildObject.VertexSize / Mathf.Pow(2, divisionsPerVertex);
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
@@ -44,9 +55,11 @@ public class Grid : MonoBehaviour
     private void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
-        worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
+        worldBottomLeft = transform.position 
+            - Vector3.right * Mathf.Floor(gridWorldSize.x / nodeDiameter) * nodeDiameter / 2 
+            - Vector3.forward * Mathf.Floor(gridWorldSize.y / nodeDiameter) * nodeDiameter / 2;
 
-        for(int x = 0; x < gridSizeX; x++)
+        for (int x = 0; x < gridSizeX; x++)
         {
             for(int y = 0; y < gridSizeY; y++)
             {
@@ -95,12 +108,26 @@ public class Grid : MonoBehaviour
 
     public void SetWalkableNodes(bool isWalkable, Vector3 nodePos, float nodeRange)
     {
-        Collider[] nodesToChange = Physics.OverlapSphere(nodePos, nodeRange);
-        foreach (Collider col in nodesToChange)
+        Node[] firstNodes = GetFirstNodesOnSpawn(nodePos);
+        print(nodePos);
+
+        foreach(Node node in firstNodes)
         {
-            Node nodeToChange = col.GetComponent<Node>();
-            if (nodeToChange != null) nodeToChange.walkable = isWalkable;
+            node.walkable = isWalkable;
         }
+    }
+
+    
+    private Node[] GetFirstNodesOnSpawn(Vector3 nodePos)
+    {
+        Node[] nodeArray = new Node[4];
+
+        nodeArray[0] = NodeFromWorldPos(nodePos + Vector3.right * nodeRadius + Vector3.forward * nodeRadius);
+        nodeArray[1] = NodeFromWorldPos(nodePos + Vector3.left * nodeRadius + Vector3.forward * nodeRadius);
+        nodeArray[2] = NodeFromWorldPos(nodePos + Vector3.right * nodeRadius + Vector3.back * nodeRadius);
+        nodeArray[3] = NodeFromWorldPos(nodePos + Vector3.left * nodeRadius + Vector3.back * nodeRadius);
+
+        return nodeArray;
     }
 
     //This is only a visual hint

@@ -22,7 +22,9 @@ public class BuildObject : MonoBehaviour
     [SerializeField] bool buildable = false;
     [SerializeField] ObjectPooler objectPooler;
 
-    void Start()
+    public float VertexSize { get => vertexSize; }
+
+    void Awake()
     {
         // Building grid
         if (buildingGrid == null)
@@ -43,7 +45,7 @@ public class BuildObject : MonoBehaviour
         groundSprite = ground.material.mainTexture;
 
         // Others
-        vertexSize = 1.0f / gridSize * 10.0f;
+        SetVertexSize();
         objectPooler = ObjectPooler.GetInstance();
         this.enabled = false;
     }
@@ -171,5 +173,10 @@ public class BuildObject : MonoBehaviour
         ground.material.SetTextureScale("_MainTex", new Vector2(1, 1));
 
         this.enabled = false;
+    }
+
+    public void SetVertexSize()
+    {
+        vertexSize = 1.0f / gridSize * 10.0f;
     }
 }
