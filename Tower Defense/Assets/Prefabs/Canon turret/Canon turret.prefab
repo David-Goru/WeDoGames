@@ -55,10 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c4b1380a9bdd548acac4fcb902445d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretInfo: {fileID: 11400000, guid: 6af25ab008bb8fa468a57c36361c5625, type: 2}
-  AttackRate: 0
-  AttackDamage: 0
-  AttackRange: 0
+  buildingInfo: {fileID: 11400000, guid: 6213785f44ddffe48a1acff44eb63d7d, type: 2}
   currentHp: 0
 --- !u!114 &736552606831341857
 MonoBehaviour:
