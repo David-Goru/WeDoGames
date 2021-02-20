@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: b6fe787ea73cca149bf9d665f286efbb, type: 2}
+--- !u!114 &102513636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 279629169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224e0f63a8d78c0418a8b1cb1cff0bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &175632684
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: 11
   buildingGrid: {fileID: 2800000, guid: f7b82bac1d296f144924f1ab22bae71e, type: 3}
-  grid: {fileID: 0}
+  grid: {fileID: 102513636}
   vertexSize: 0
   groundSprite: {fileID: 0}
   ground: {fileID: 0}
