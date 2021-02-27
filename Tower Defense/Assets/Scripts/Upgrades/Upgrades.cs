@@ -8,15 +8,14 @@ public class Upgrades : MonoBehaviour
 {
     [SerializeField] List<Upgrade> currentUpgrades;
 
-    public static Upgrades Instance;
-
     void Start()
     {
-        Instance = this;
+        currentUpgrades = new List<Upgrade>();
     }
 
     public void AddUpgrade(Upgrade upgrade)
     {
+        // Close UI?
         currentUpgrades.Add(upgrade);
     }
 }

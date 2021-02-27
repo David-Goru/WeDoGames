@@ -8,7 +8,6 @@ using UnityEngine.UI;
 /// </summary>
 public class BuildingsUI : UIList
 {
-    // We don't like garbage
     Transform objectUI;
    
     /// <summary>
@@ -28,9 +27,9 @@ public class BuildingsUI : UIList
     /// <param name="masterObject">Transform that handles BuildObject</param>
     void loadBuildings(MasterInfo masterInfo, Transform masterObject)
     {
-        for (int i = 0; i < masterInfo.GetBuildingsSet().Length; i++)
+        foreach (BuildingInfo buildingInfo in masterInfo.GetBuildingsSet())
         {
-            addBuildingToUI(masterObject, masterInfo.GetBuildingsSet()[i]);
+            addBuildingToUI(masterObject, buildingInfo);
         }
     }
 
