@@ -39,8 +39,8 @@ public class Grid : MonoBehaviour
         }
         nodeRadius = buildObject.VertexSize / Mathf.Pow(2, divisionsPerVertex);
         nodeDiameter = nodeRadius * 2;
-        gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
-        gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
+        gridSizeX = Mathf.FloorToInt(gridWorldSize.x / nodeDiameter);
+        gridSizeY = Mathf.FloorToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
     }
 
@@ -109,7 +109,6 @@ public class Grid : MonoBehaviour
     public void SetWalkableNodes(bool isWalkable, Vector3 nodePos, float nodeRange)
     {
         Node[] firstNodes = GetFirstNodesOnSpawn(nodePos);
-        print(nodePos);
 
         foreach(Node node in firstNodes)
         {
