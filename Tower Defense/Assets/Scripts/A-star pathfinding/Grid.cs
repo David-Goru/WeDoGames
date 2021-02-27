@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Grid : MonoBehaviour
 {
@@ -109,11 +110,15 @@ public class Grid : MonoBehaviour
     public void SetWalkableNodes(bool isWalkable, Vector3 nodePos, float nodeRange)
     {
         Node[] firstNodes = GetFirstNodesOnSpawn(nodePos);
+        List<Node> nodeList = new List<Node>();
 
         foreach(Node node in firstNodes)
         {
+            nodeList.Add(node);
             node.walkable = isWalkable;
         }
+
+        runBFS(nodeList, nodeRange, isWalkable);
     }
 
     
@@ -127,6 +132,31 @@ public class Grid : MonoBehaviour
         nodeArray[3] = NodeFromWorldPos(nodePos + Vector3.left * nodeRadius + Vector3.back * nodeRadius);
 
         return nodeArray;
+    }
+
+    private void runBFS(List<Node> nodeList, float range, bool isWalkable)
+    {
+        List<Node> visitedNodes = nodeList;
+        List<Node> nodesToVisit = new List<Node>();
+
+        while (range > 0)
+        {
+            nodesToVisit = nodeList.ToList();
+            nodeList.Clear();
+            foreach(Node node in nodesToVisit)
+            {
+                foreach(Node neighbour in GetNeighbours(node))
+                {
+                    if (!visitedNodes.Contains(neighbour))
+                    {
+                        nodeList.Add(neighbour);
+                        visitedNodes.Add(neighbour);
+                        neighbour.walkable = isWalkable;
+                    }
+                }
+            }
+            range--;
+        }
     }
 
     //This is only a visual hint
