@@ -7,7 +7,6 @@ using UnityEngine;
 public class TurretStats : MonoBehaviour
 {
     [SerializeField] BuildingInfo buildingInfo = null;
-    Dictionary<StatType, float> TypeValueDictionary = new Dictionary<StatType, float>();
 
     public float currentHp;
 
@@ -18,21 +17,26 @@ public class TurretStats : MonoBehaviour
 
     public void InitializeStats()
     {
-        foreach (Stat stat in buildingInfo.Stats)
+        currentHp = buildingInfo.GetStat(StatType.MAXHEALTH);
+
+    }
+
+    public float SearchStatValue(StatType statType)
+    {
+        for (int i = 0; i < buildingInfo.currentStats.Count; i++)
         {
-            TypeValueDictionary[stat.Type] = stat.Value;
+            if (buildingInfo.currentStats[i].Type == statType)
+            {
+                return buildingInfo.currentStats[i].Value;
+            }
         }
-        currentHp = TypeValueDictionary[StatType.MAXHEALTH];
+        Debug.LogError("There is no " + statType + "on " + buildingInfo.name);
+        return 0f;
     }
 
     public float GetStatValue(StatType type)
     {
-        return TypeValueDictionary[type];
-    }
-
-    public void IncrementValue(StatType type, float increment)
-    {
-        TypeValueDictionary[type] += increment;
+        return buildingInfo.GetStat(type);
     }
 
 }

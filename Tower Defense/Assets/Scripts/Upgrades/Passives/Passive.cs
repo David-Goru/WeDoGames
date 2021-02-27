@@ -11,4 +11,5 @@ public class Passive : ScriptableObject, IPerk
     [SerializeField] Stat stat;
 
     public string Title { get => title; set => title = value; }
+    public Stat Stat { get => stat;}
 }
