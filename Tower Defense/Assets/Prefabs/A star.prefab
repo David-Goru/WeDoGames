@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8685395212756769857}
   - component: {fileID: 8685395212756769856}
   m_Layer: 0
-  m_Name: A_
+  m_Name: A star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayGridGizmos: 1
+  divisionsPerVertex: 4
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 1024
-  gridWorldSize: {x: 40, y: 40}
-  nodeRadius: 0.3
+  gridWorldSize: {x: 21, y: 21}
+  nodeRadius: 0.22727272
+  buildObject: {fileID: 0}
 --- !u!114 &8685395212756769857
 MonoBehaviour:
   m_ObjectHideFlags: 0

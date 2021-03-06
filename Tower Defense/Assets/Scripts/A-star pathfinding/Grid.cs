@@ -118,6 +118,8 @@ public class Grid : MonoBehaviour
             node.walkable = isWalkable;
         }
 
+        nodeRange--;
+
         runBFS(nodeList, nodeRange, isWalkable);
     }
 

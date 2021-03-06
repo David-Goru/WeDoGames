@@ -619,21 +619,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
         type: 3}
-      propertyPath: nodeRadius
-      value: 0.22727272
-      objectReference: {fileID: 0}
-    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
-        type: 3}
-      propertyPath: gridWorldSize.x
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
-        type: 3}
-      propertyPath: gridWorldSize.y
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
-        type: 3}
       propertyPath: buildObject
       value: 
       objectReference: {fileID: 537000327}
@@ -1509,7 +1494,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1628455790}
   m_HandleRect: {fileID: 1628455789}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
