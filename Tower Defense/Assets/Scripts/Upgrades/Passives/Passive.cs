@@ -5,7 +5,7 @@
 /// </summary>
 /// 
 [CreateAssetMenu(fileName = "Passive", menuName = "Upgrades/Passive", order = 0)]
-public class Passive : ScriptableObject, IPerk
+public class Passive : Perk
 {
     [SerializeField] string title = "";
     [SerializeField] Stat stat;

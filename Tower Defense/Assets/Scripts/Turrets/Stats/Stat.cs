@@ -13,7 +13,7 @@ public struct Stat
     [SerializeField] StatType type;
     [SerializeField] float value;
 
-    public float Value { get => value; }
+    public float Value { get => value; set => this.value = value; }
 
     public StatType Type { get => type; }
 
@@ -21,5 +21,10 @@ public struct Stat
     {
         type = statType;
         value = statValue;
+    }
+
+    public void SetValue(float value)
+    {
+        this.value = value;
     }
 }

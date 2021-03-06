@@ -9,5 +9,5 @@ public class Upgrade : ScriptableObject
 {
     public string Title;
     public string Description;
-    public List<IPerk> Perk;
+    public List<Perk> Perk;
 }

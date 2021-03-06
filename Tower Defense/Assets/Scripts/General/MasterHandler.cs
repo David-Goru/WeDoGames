@@ -20,6 +20,8 @@ public class MasterHandler : MonoBehaviour
     // Store Master instance
     public static MasterHandler Instance;
 
+    public MasterInfo MasterInfo { get => masterInfo; }
+
     /// <summary>
     /// Initiliazes the MasterHandler
     /// </summary>
@@ -31,12 +33,12 @@ public class MasterHandler : MonoBehaviour
         if (!testWithoutUI)
         {
             // Set the balance UI text
-            balanceText.text = string.Format("{0} coins", masterInfo.Balance);
+            balanceText.text = string.Format("{0} coins", MasterInfo.Balance);
 
             // Initialize lists
             foreach (UIList list in GetComponents(typeof(UIList)))
             {
-                list.Initialize(masterInfo, transform);
+                list.Initialize(MasterInfo, transform);
             }
         }
     }
@@ -45,14 +47,14 @@ public class MasterHandler : MonoBehaviour
     /// Gets the current money of the player
     /// </summary>
     /// <returns>Returns the balance</returns>
-    public float GetBalance() { return masterInfo.Balance; }
+    public float GetBalance() { return MasterInfo.Balance; }
 
     /// <summary>
     /// Checks if the player has enough money
     /// </summary>
     /// <param name="amount">Amount of money to check</param>
     /// <returns>Returns true if the player can afford it, false otherwise</returns>
-    public bool CheckIfCanAfford(float amount) { return masterInfo.Balance >= Mathf.Abs(amount); }
+    public bool CheckIfCanAfford(float amount) { return MasterInfo.Balance >= Mathf.Abs(amount); }
 
     /// <summary>
     /// Update the player balance with the amount given
@@ -68,8 +70,8 @@ public class MasterHandler : MonoBehaviour
         if (balanceText != null)
         {
             // Update balance and UI text
-            masterInfo.Balance += amount;
-            balanceText.text = string.Format("{0} coins", masterInfo.Balance);
+            MasterInfo.Balance += amount;
+            balanceText.text = string.Format("{0} coins", MasterInfo.Balance);
         }
 
         return true;
