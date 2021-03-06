@@ -6,7 +6,9 @@ using UnityEngine;
 public class BuildingInfo : ScriptableObject
 {
     [SerializeField] List<Stat> Stats;
-    [System.NonSerialized] public List<Stat> currentStats = new List<Stat>();
+
+    [Header("Debug")]
+    [SerializeField] public List<Stat> currentStats = new List<Stat>();
 
     [SerializeField] protected Pool buildingPool = null;
     [SerializeField] protected Pool buildingBlueprintPool = null;

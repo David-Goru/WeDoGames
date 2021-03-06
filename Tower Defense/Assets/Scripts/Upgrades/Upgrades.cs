@@ -15,7 +15,6 @@ public class Upgrades : MonoBehaviour
 
     public void AddUpgrade(Upgrade upgrade)
     {
-        // Close UI?
         BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetBuildingsSet();
         //currentUpgrades.Add(upgrade);
         foreach (BuildingInfo turret in turrets)

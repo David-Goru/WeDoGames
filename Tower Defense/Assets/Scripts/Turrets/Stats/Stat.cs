@@ -25,6 +25,7 @@ public struct Stat
 
     public void SetValue(float value)
     {
+        Debug.Log("SetValue");
         this.value = value;
     }
 }
