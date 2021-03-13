@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using UnityEngine;
-using UnityEngine.AI;
 
+// <summary>
+// FSM state Move. It will request paths to the pathfinding system.
+// </summary>
 public class Move : State
 {
 

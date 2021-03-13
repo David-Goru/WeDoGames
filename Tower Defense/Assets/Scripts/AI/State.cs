@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.AI;
 
+// <summary>
+// Finite State Machine for AI enemies. Also detects turrets hitting the enemies.
+// </summary>
 public class State
 {
 	public enum STATE
@@ -22,14 +23,12 @@ public class State
 	protected Animator anim;
 	protected BuildingRange target;
 	protected State nextState;
-	//protected NavMeshAgent agent;
 
 	public State(Base_AI _npc, Animator _anim, BuildingRange _target)
 	{
 		npc = _npc;
 		anim = _anim;
 		target = _target;
-		//agent = _agent;
 		stage = EVENT.ENTER;
 	}
 
@@ -51,7 +50,6 @@ public class State
 
 	public void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
-		Debug.Log("HAS SIDO GOLPEADO");
         if (!turretTransform.gameObject.activeSelf) //The turret that shot you is already dead
         {
 			nextState = new Move(npc, anim, npc.Goal); //Aim for the nexus

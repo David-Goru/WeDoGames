@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+// <summary>
+// Grid class for the pathfinding system. Stores the nodes for A* to work.
+// </summary>
 public class Grid : MonoBehaviour
 {
     public bool displayGridGizmos; //Testing

@@ -4,6 +4,9 @@ using System.Diagnostics;
 using System;
 using UnityEngine;
 
+// <summary>
+// A* algorithm (modified)
+// </summary>
 public class Pathfinding : MonoBehaviour
 {
 

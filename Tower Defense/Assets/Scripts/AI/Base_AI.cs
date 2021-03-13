@@ -1,51 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+
+// <summary>
+// Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
+// </summary>
 
 public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
 {
     [SerializeField] float myHealth = 0f;
     [SerializeField] float damage = 0f;
-    public float Damage
-    {
-        get
-        {
-            return damage;
-        }
-    }
-    [SerializeField] float attackSpeed = 0f;
-    public float AttackSpeed
-    {
-        get
-        {
-            return attackSpeed;
-        }
-    }
-    [SerializeField] float range = 0f;
-    public float Range
-    {
-        get
-        {
-            return range;
-        }
-    }
+    public float Damage { get => damage; }
 
-    float health;
-    //NavMeshAgent agent;
-    Animator anim;
-    State currentState;
+    [SerializeField] float attackSpeed = 0f;
+    public float AttackSpeed { get => attackSpeed; }
+
+    [SerializeField] float range = 0f;
+    public float Range { get => range; }
+
+    private float health;
+    private Animator anim;
+    private State currentState;
 
     public BuildingRange Goal;
     public Transform currentTurret;
     public IEnemyDamageHandler currentTurretDamage;
-    //public bool IsTargetTrigger;
 
     //A*
 
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float rotationSpeed = 5f;
     private Vector3[] path;
     private int targetIndex;
     public bool pathReached;
@@ -56,7 +41,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     {
         Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
         health = myHealth;
-        //agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal);
         currentTurret = null;
@@ -67,7 +51,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
         if (SceneManager.GetActiveScene().name == "Game") return;
         Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
         health = myHealth;
-        //agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal);
         currentTurret = null;
@@ -103,13 +86,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
         }
         checkDeath();
     }
-
-    /*
-    void OnTriggerEnter(Collider other)
-    {
-        if (currentTurret == other.transform || currentTurret == null && other.transform == Goal) IsTargetTrigger = true;
-    }
-    */
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
     {

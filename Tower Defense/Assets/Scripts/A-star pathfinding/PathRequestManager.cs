@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+// <summary>
+// Request class for pathfinding. Used by AI enemies.
+// </summary>
 public class PathRequestManager : MonoBehaviour
 {
     private Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// <summary>
+// Node class for Grid matrix. Stores everything a node needs.
+// </summary>
 public class Node : IHeapItem<Node>
 {
 

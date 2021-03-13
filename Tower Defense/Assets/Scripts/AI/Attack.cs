@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
+// <summary>
+// FSM state Attack. In this state the AI will go to the target position and attack it.
+// </summary>
 public class Attack : State
 {
 	float attackTimer;
