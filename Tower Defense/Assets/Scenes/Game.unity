@@ -827,6 +827,7 @@ MonoBehaviour:
   testWithoutUI: 0
   balanceText: {fileID: 828579587}
   masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
+  grid: {fileID: 102513636}
 --- !u!114 &537000330
 MonoBehaviour:
   m_ObjectHideFlags: 0

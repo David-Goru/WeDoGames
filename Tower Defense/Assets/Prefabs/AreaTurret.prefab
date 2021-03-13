@@ -4833,6 +4833,7 @@ GameObject:
   - component: {fileID: 3429297385192777247}
   - component: {fileID: 2370471975771929575}
   - component: {fileID: 493897341895991151}
+  - component: {fileID: -2442897902305760362}
   m_Layer: 0
   m_Name: AreaTurret
   m_TagString: Untagged
@@ -5028,3 +5029,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
+--- !u!114 &-2442897902305760362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500511773740536961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b178387ce5712b04b9c0071037c570b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2751981188002294345}
   - component: {fileID: 3270720806996733004}
   - component: {fileID: 1248103357}
+  - component: {fileID: 5828969931514516302}
   m_Layer: 10
   m_Name: Canon turret
   m_TagString: Turret
@@ -184,6 +185,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
+--- !u!114 &5828969931514516302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790984498408443622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b178387ce5712b04b9c0071037c570b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4986036026712965587
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class MasterHandler : MonoBehaviour
 
     [Header("References")]
     [SerializeField] MasterInfo masterInfo = null;
+    public Grid grid;
 
     // Store Master instance
     public static MasterHandler Instance;
