@@ -15353,6 +15353,36 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 305767550, guid: d37ad1315954a1447a2eedcdcd1a36bb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d37ad1315954a1447a2eedcdcd1a36bb, type: 3}
+--- !u!1 &1581375741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8685395212756769863, guid: 5986212d112ae8e43a08b1b059df94c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8685395213537826356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1581375742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581375741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c1fc372851ae642aae14b4741438d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 11
+  buildingGrid: {fileID: 0}
+  grid: {fileID: 0}
+  vertexSize: 0
+  groundSprite: {fileID: 0}
+  ground: {fileID: 0}
+  buildingInfo: {fileID: 0}
+  objectBlueprint: {fileID: 0}
+  blueprintMaterial: {fileID: 0}
+  lastPos: {x: 0, y: 0, z: 0}
+  buildable: 0
+  objectPooler: {fileID: 0}
 --- !u!4 &1583878083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5061587665866194680, guid: d37ad1315954a1447a2eedcdcd1a36bb,
@@ -17899,9 +17929,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ca8a824159cc245ade524e94c4a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testWithoutUI: 0
+  testWithoutUI: 1
   balanceText: {fileID: 0}
   masterInfo: {fileID: 0}
+  grid: {fileID: 0}
 --- !u!1001 &1885996519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21267,6 +21298,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+        type: 3}
+      propertyPath: buildObject
+      value: 
+      objectReference: {fileID: 1581375742}
     - target: {fileID: 8685395212756769859, guid: 5986212d112ae8e43a08b1b059df94c8,
         type: 3}
       propertyPath: m_LocalPosition.x
