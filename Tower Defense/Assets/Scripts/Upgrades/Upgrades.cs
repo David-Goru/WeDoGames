@@ -6,23 +6,19 @@ using System.Collections.Generic;
 /// </summary>
 public class Upgrades : MonoBehaviour
 {
-    //[SerializeField] List<Upgrade> currentUpgrades;
-
-    void Start()
-    {
-        //currentUpgrades = new List<Upgrade>();
-    }
+    [SerializeField] BuildingsUI buildingsUI = null;
 
     public void AddUpgrade(Upgrade upgrade)
     {
         BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetBuildingsSet();
-        //currentUpgrades.Add(upgrade);
         foreach (BuildingInfo turret in turrets)
         {
             foreach (Passive perk in upgrade.Perk)
             {
                 turret.IncrementStat(perk.Stat.Type, perk.Stat.Value);
             }
+
+            buildingsUI.UpdateBuildingInfo(turret);
         }
     }
 }

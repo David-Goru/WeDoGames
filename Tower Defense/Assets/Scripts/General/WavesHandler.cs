@@ -7,6 +7,8 @@ public class WavesHandler : MonoBehaviour
 {
     public const int ENEMIES_PER_WAVE_MULTIPLIER = 100;
 
+    [SerializeField] UpgradesUI upgradesUI;
+
     public MasterInfo MasterInfo;
     public Transform Spawners;
     public Text WaveTimerText;
@@ -81,6 +83,7 @@ public class WavesHandler : MonoBehaviour
                 // Set planning time
                 timer = 0;
                 onPlanningPhase = true;
+                upgradesUI.EnableRandomUpgrades(2);
             }
         }
     }
