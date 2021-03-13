@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
-  m_Name: AreaMelee Turret
+  m_Name: Area Melee Turret
   m_EditorClassIdentifier: 
   Stats:
   - type: 0
@@ -21,6 +21,17 @@ MonoBehaviour:
     value: 1
   - type: 3
     value: 3
+  - type: 4
+    value: 1
+  currentStats:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 100
+  - type: 2
+    value: 1
+  - type: 3
+    value: 3.5
   - type: 4
     value: 1
   buildingPool: {fileID: 11400000, guid: bb6d39890c030204e837b0bf7f02da20, type: 2}

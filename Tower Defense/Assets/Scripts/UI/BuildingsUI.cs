@@ -50,7 +50,7 @@ public class BuildingsUI : UIList
     {
         Transform objectUI;
         objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        objectUI.name = buildingInfo.GetBuildingPool().tag;
+        objectUI.name = buildingInfo.name;
         setBuildingInfo(buildingInfo, objectUI);
         objectUI.GetComponent<Button>().onClick.AddListener(() => masterObject.GetComponent<BuildObject>().StartBuilding(buildingInfo));
         objectUI.SetParent(ListUIObject, false);
@@ -63,6 +63,6 @@ public class BuildingsUI : UIList
     /// <param name="objectUI">Transform of the building UI</param>
     void setBuildingInfo(BuildingInfo buildingInfo, Transform objectUI)
     {
-        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}\n({1:0} coins)", buildingInfo.GetBuildingPool().tag, buildingInfo.GetStat(StatType.PRICE));
+        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}\n({1:0} coins)", buildingInfo.name, buildingInfo.GetStat(StatType.PRICE));
     }
 }

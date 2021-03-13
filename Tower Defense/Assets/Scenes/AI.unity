@@ -15371,7 +15371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fc372851ae642aae14b4741438d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 11
+  gridSize: 5
   buildingGrid: {fileID: 0}
   grid: {fileID: 0}
   vertexSize: 0
@@ -21303,6 +21303,26 @@ PrefabInstance:
       propertyPath: buildObject
       value: 
       objectReference: {fileID: 1581375742}
+    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+        type: 3}
+      propertyPath: gridWorldSize.x
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+        type: 3}
+      propertyPath: gridWorldSize.y
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+        type: 3}
+      propertyPath: displayGridGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685395212756769858, guid: 5986212d112ae8e43a08b1b059df94c8,
+        type: 3}
+      propertyPath: divisionsPerVertex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8685395212756769859, guid: 5986212d112ae8e43a08b1b059df94c8,
         type: 3}
       propertyPath: m_LocalPosition.x

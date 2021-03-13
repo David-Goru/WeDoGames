@@ -16,6 +16,8 @@ public class MasterHandler : MonoBehaviour
 
     [Header("References")]
     [SerializeField] MasterInfo masterInfo = null;
+    [SerializeField] UpgradesUI upgradesUI;
+
     public Grid grid;
 
     // Store Master instance
@@ -41,6 +43,8 @@ public class MasterHandler : MonoBehaviour
             {
                 list.Initialize(MasterInfo, transform);
             }
+
+            upgradesUI.EnableRandomUpgrades(2);
         }
     }
 

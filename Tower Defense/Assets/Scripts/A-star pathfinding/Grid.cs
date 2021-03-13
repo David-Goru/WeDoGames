@@ -106,7 +106,6 @@ public class Grid : MonoBehaviour
 
         int x = Mathf.FloorToInt(Mathf.Min(gridSizeX * percentX, gridSizeX - 1));
         int y = Mathf.FloorToInt(Mathf.Min(gridSizeY * percentY, gridSizeY - 1));
-
         return grid[x, y];
     }
 

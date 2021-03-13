@@ -12,12 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33be216fddf68cd4688fb0caed5dbc01, type: 3}
   m_Name: Price Down
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  Description: Te sube la vida
-  points: 0
-=======
-  Description: Te baja el precio
+  Description: Te Baja el precio
   points: 1
->>>>>>> Stashed changes
   Perk:
   - {fileID: 11400000, guid: 18cd6459c82fc4647a1ec7b6fbc1296c, type: 2}

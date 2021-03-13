@@ -27,7 +27,7 @@ public class UpgradesUI : UIList
     {
         foreach (Upgrade upgrade in masterInfo.UpgradesSet)
         {
-            addUpgradeToUI( upgrade);
+            addUpgradeToUI(upgrade);
         }
     }
 
@@ -39,9 +39,11 @@ public class UpgradesUI : UIList
     void addUpgradeToUI(Upgrade upgrade)
     {
         Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
+        objectUI.name = upgrade.name;
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
         objectUI.GetComponent<Button>().onClick.AddListener(() => addUpgradeAction(upgrade));
         objectUI.SetParent(ListUIObject, false);
+        objectUI.gameObject.SetActive(false);
     }
 
     void addUpgradeAction(Upgrade upgrade)

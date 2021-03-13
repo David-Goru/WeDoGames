@@ -827,6 +827,7 @@ MonoBehaviour:
   testWithoutUI: 0
   balanceText: {fileID: 828579587}
   masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
+  upgradesUI: {fileID: 537000332}
   grid: {fileID: 102513636}
 --- !u!114 &537000330
 MonoBehaviour:
@@ -840,13 +841,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca5fc5f2b82a642a34a24997f2525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradesUI: {fileID: 0}
+  upgradesUI: {fileID: 537000332}
   MasterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
   Spawners: {fileID: 1032362607}
   WaveTimerText: {fileID: 2102561728}
   currentWave: 0
-  nextWaveTimer: 20
-  planningTime: 15
+  nextWaveTimer: 5
+  planningTime: 2
 --- !u!114 &537000331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,7 +2010,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1460912401}
   m_HandleRect: {fileID: 1460912400}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2487,7 +2488,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1213274697}
   m_HandleRect: {fileID: 1213274696}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
