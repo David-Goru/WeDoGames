@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33be216fddf68cd4688fb0caed5dbc01, type: 3}
-  m_Name: DMG Up
+  m_Script: {fileID: 11500000, guid: e7318dc4174fca24e82a93f462266790, type: 3}
+  m_Name: More AR
   m_EditorClassIdentifier: 
-  Description: "Te sube el da\xF1o co\xF1o"
-  points: 1
-  Perk:
-  - {fileID: 11400000, guid: 26d5456cd4484f642ab7ee578cc23536, type: 2}
+  stat:
+    type: 4
+    value: -0.2

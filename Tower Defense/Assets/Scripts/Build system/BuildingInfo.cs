@@ -34,7 +34,8 @@ public class BuildingInfo : ScriptableObject
         {
             if(currentStats[i].Type == type)
             {
-                currentStats[i].SetValue(increment + currentStats[i].Value);
+                if(currentStats[i].Value + increment > Stats[i].Value * 0.1f)
+                    currentStats[i] = new Stat(type, currentStats[i].Value + increment);
             }
         }
     }

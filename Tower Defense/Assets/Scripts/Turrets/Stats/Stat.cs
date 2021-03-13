@@ -22,10 +22,4 @@ public struct Stat
         type = statType;
         value = statValue;
     }
-
-    public void SetValue(float value)
-    {
-        Debug.Log("SetValue");
-        this.value = value;
-    }
 }

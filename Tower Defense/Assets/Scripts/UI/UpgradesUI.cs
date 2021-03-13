@@ -37,7 +37,7 @@ public class UpgradesUI : UIList
     void addUpgradeToUI(Transform masterObject, Upgrade upgrade)
     {
         Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.Title);
+        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
         objectUI.GetComponent<Button>().onClick.AddListener(() => masterObject.GetComponent<Upgrades>().AddUpgrade(upgrade));
         objectUI.SetParent(ListUIObject, false);
     }
