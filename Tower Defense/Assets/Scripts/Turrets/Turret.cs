@@ -24,7 +24,6 @@ public class Turret : MonoBehaviour, IPooledObject
         InilitalizeBehaviours();
     }
 
-
     void Update()
     {
         foreach (var behaviour in behaviours)

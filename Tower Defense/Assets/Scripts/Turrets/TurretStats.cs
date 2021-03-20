@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// This class stores all the stats of the turret
 /// </summary>
-public class TurretStats : MonoBehaviour
+public class TurretStats : MonoBehaviour, IHealable
 {
     [SerializeField] BuildingInfo buildingInfo = null;
 
@@ -39,4 +39,8 @@ public class TurretStats : MonoBehaviour
         return buildingInfo.GetStat(type);
     }
 
+    public void Heal(float healValue)
+    {
+        currentHp = Mathf.Clamp(currentHp + healValue, 0, buildingInfo.GetStat(StatType.MAXHEALTH));
+    }
 }

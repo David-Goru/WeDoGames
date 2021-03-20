@@ -133,7 +133,7 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
         currentTargets.Clear();
     }
 
-    [SerializeField] float range;
+    [SerializeField] float range = 2f;
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

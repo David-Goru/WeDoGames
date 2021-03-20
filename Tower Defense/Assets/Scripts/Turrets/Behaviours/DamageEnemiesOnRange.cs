@@ -9,7 +9,7 @@ public class DamageEnemiesOnRange : MonoBehaviour, ITurretBehaviour
     BuildingRange turretBuildingRange;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
-    [SerializeField] ParticleSystem particles;
+    [SerializeField] ParticleSystem particles = null;
 
     float timer = 0f;
 

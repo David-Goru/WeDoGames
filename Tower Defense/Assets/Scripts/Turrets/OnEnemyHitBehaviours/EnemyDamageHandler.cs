@@ -8,6 +8,11 @@ using UnityEngine;
 public class EnemyDamageHandler : MonoBehaviour, IEnemyDamageHandler
 {
     List<IEnemyDamage> enemyDamagesBehaviours;
+    
+    private void Awake()
+    {
+        enemyDamagesBehaviours = transform.GetComponents<IEnemyDamage>().ToList();
+    }
 
     public void OnEnemyHit(float damage)
     {
@@ -24,10 +29,5 @@ public class EnemyDamageHandler : MonoBehaviour, IEnemyDamageHandler
     public void RemoveEnemyDamageBehaviour(IEnemyDamage enemyDamageBehaviour)
     {
         enemyDamagesBehaviours.Remove(enemyDamageBehaviour);
-    }
-
-    private void Awake()
-    {
-        enemyDamagesBehaviours = transform.GetComponents<IEnemyDamage>().ToList();
     }
 }

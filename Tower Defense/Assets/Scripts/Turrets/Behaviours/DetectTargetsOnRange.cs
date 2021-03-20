@@ -24,7 +24,7 @@ public class DetectTargetsOnRange : MonoBehaviour, ICurrentTargetsOnRange
         return targetsDetector.GetTargets();
     }
 
-    [SerializeField] float debugRange;
+    [SerializeField] float debugRange = 2f;
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

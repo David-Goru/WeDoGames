@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Building", menuName = "ScriptableObjects/BuildingInfo", order = 0)]
 public class BuildingInfo : ScriptableObject
 {
-    [SerializeField] List<Stat> Stats;
+    [SerializeField] List<Stat> Stats = null;
 
     [Header("Debug")]
     [SerializeField] public List<Stat> currentStats = new List<Stat>();
