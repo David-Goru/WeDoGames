@@ -23,18 +23,13 @@ public class Attack : State
 		anim.SetTrigger("attacking");
 		base.Enter();
 
-		//if (target == npc.Goal) nexus = target.GetComponent<Nexus>();
-
 		npcRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x, npc.transform.position.y, target.transform.position.z) - npc.transform.position);
-		//npc.transform.LookAt(target);
+
 		attackTarget();
 	}
 
 	public override void Update()
 	{
-		//base.Update();
-		//Start damaging the turret. If turret is destroyed --> change state to move
-
 		attackTimer += Time.deltaTime;
 		if(attackTimer >= npc.AttackSpeed) //Attack depednding on npc attack speed
         {
@@ -49,7 +44,6 @@ public class Attack : State
 
 		if (!target.gameObject.activeSelf)
 		{
-			//Debug.Log("El enemigo ha sido destruido");
             if (npc.Goal.gameObject.activeSelf)
             {
 				nextState = new Move(npc, anim, npc.Goal);
@@ -72,7 +66,6 @@ public class Attack : State
 
 	void attackTarget()
     {
-		//Debug.Log("GOLPE");
         if (target.gameObject.CompareTag("Turret"))
         {
 			npc.currentTurretDamage.OnEnemyHit(npc.Damage);

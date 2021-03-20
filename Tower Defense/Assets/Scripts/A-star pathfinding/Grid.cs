@@ -13,7 +13,6 @@ public class Grid : MonoBehaviour
     [Range(2, 4)]
     [SerializeField] private int divisionsPerVertex = 1;
 
-    //public Transform player; //Testing
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
