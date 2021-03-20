@@ -7,18 +7,27 @@ using System.Collections.Generic;
 public class Upgrades : MonoBehaviour
 {
     [SerializeField] BuildingsUI buildingsUI = null;
+    [SerializeField] ActivesUI activesUI = null;
 
     public void AddUpgrade(Upgrade upgrade)
     {
-        BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetBuildingsSet();
-        foreach (BuildingInfo turret in turrets)
+        if (upgrade is Passive)
         {
-            foreach (Passive perk in upgrade.Perk)
+            Passive passive = (Passive)upgrade;
+            BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetBuildingsSet();
+            foreach (BuildingInfo turret in turrets)
             {
-                turret.IncrementStat(perk.Stat.Type, perk.Stat.Value);
-            }
+                foreach (Stat stat in passive.Stats)
+                {
+                    turret.IncrementStat(stat.Type, stat.Value);
+                }
 
-            buildingsUI.UpdateBuildingInfo(turret);
+                buildingsUI.UpdateBuildingInfo(turret);
+            }
+        }
+        else if (upgrade is Active)
+        {
+            activesUI.EnableActive(upgrade);
         }
     }
 }

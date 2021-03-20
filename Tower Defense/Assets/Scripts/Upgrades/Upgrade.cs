@@ -7,7 +7,6 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Upgrade", menuName = "ScriptableObjects/Upgrade", order = 1)]
 public class Upgrade : ScriptableObject
 {
-    public string Description;
-    public int points;
-    public List<Perk> Perk;
+    [SerializeField] string description;
+    [SerializeField] int points;
 }

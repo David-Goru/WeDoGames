@@ -68,6 +68,7 @@ public class WavesHandler : MonoBehaviour
                 timer = 0;
                 onPlanningPhase = false;
                 spawnEnemies();
+                upgradesUI.CloseUpgrades();
             }
         }
         else

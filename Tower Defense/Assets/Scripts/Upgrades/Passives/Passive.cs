@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// This is a class
 /// </summary>
-/// 
 [CreateAssetMenu(fileName = "Passive", menuName = "Upgrades/Passive", order = 0)]
-public class Passive : Perk
+public class Passive : Upgrade
 {
-    [SerializeField] Stat stat;
+    [SerializeField] List<Stat> stats;
 
-    public Stat Stat { get => stat;}
+    public List<Stat> Stats { get => stats; }
 }
