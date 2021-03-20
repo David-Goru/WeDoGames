@@ -68,7 +68,6 @@ public class Pathfinding : MonoBehaviour
                 if (GetDistanceInNodes(currentNode, targetNode) < targetPos.Range + range) //Path has been found
                 {
                     sw.Stop();
-                    //print("Path found in " + sw.ElapsedMilliseconds + " ms");
                     pathSuccess = true;
                     break;
                 }
