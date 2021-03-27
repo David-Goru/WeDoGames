@@ -94,7 +94,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
             StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
             path = newPath;
             targetIndex = 0;
-            if (path.Length > 0)
+            if (path.Length > 0 && this.gameObject.activeSelf)
             {
                 StartCoroutine("FollowPath");
             }
@@ -124,6 +124,11 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(currentWaypoint - transform.position), rotationSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine("FollowPath");
     }
 
     //For visual hint
