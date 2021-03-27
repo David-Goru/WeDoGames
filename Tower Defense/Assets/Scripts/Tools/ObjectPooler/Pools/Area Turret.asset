@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: AreaTurret
+  m_Name: Area Turret
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3500511773740536961, guid: c0e7d64528b75554c8ad4a8d8fa13433, type: 3}
+  prefab: {fileID: 4790984498408443622, guid: f58bb226fa509614ca6d05e3bec399b2, type: 3}
   size: 20
-  tag: AreaTurret
+  tag: Area Turret

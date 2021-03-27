@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: Basic Turret Blueprint
+  m_Name: Area Melee Turret Blueprint
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4224321588919385869, guid: 610850b7a9c2c6d42b34ae1ee8bc4dca, type: 3}
+  prefab: {fileID: 670727000040579085, guid: c0e7d64528b75554c8ad4a8d8fa13433, type: 3}
   size: 1
-  tag: Basic Turret Blueprint
+  tag: Area Melee Turret Blueprint

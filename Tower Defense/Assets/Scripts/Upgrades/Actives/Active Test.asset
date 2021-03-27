@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Something something
   points: 4
+  activeAction: {fileID: 11400000, guid: 8e028a7a4cc7a8746904959b2752e9f5, type: 2}
