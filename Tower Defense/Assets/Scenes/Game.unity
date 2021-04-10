@@ -1047,6 +1047,7 @@ GameObject:
   - component: {fileID: 537000332}
   - component: {fileID: 537000334}
   - component: {fileID: 537000333}
+  - component: {fileID: 537000335}
   m_Layer: 0
   m_Name: Master
   m_TagString: Untagged
@@ -1108,6 +1109,7 @@ MonoBehaviour:
   balanceText: {fileID: 828579587}
   masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
   upgradesUI: {fileID: 537000332}
+  ActiveMode: {fileID: 537000335}
   grid: {fileID: 102513636}
 --- !u!114 &537000330
 MonoBehaviour:
@@ -1189,6 +1191,18 @@ MonoBehaviour:
   ListUIObject: {fileID: 218823820}
   ObjectUIPrefab: {fileID: 3475225525718764195, guid: 07fba5473160a4b4aa7da7735da206dc,
     type: 3}
+--- !u!114 &537000335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537000326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be18e7802f1efd143a1da371ccb0b54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &601999783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,7 +2404,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348883347}
   m_HandleRect: {fileID: 1348883346}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3626,7 +3640,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1213274697}
   m_HandleRect: {fileID: 1213274696}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3825,7 +3839,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1428982874}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.966
+  m_Size: 0.9659999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

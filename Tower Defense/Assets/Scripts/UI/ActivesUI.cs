@@ -38,7 +38,7 @@ public class ActivesUI : UIList
         objectUI.name = upgrade.name;
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
         //Hay que cambiar la linea de abajo, ahora tiene que llamar a ActiveMode y pasarle la activa.
-        //objectUI.GetComponent<Button>().onClick.AddListener(() => ((Active)upgrade).ActiveAction.UseActive());
+        objectUI.GetComponent<Button>().onClick.AddListener(() => MasterHandler.Instance.ActiveMode.SetActive(((Active)upgrade).ActiveAction));
         objectUI.SetParent(ListUIObject, false);
         objectUI.gameObject.SetActive(false);
 

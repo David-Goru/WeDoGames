@@ -25,7 +25,7 @@ public class ActiveMode : MonoBehaviour
         this.activeAction = activeAction;
     }
 
-    public void doActive()
+    void doActive()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
