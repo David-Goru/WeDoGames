@@ -802,7 +802,7 @@ MonoBehaviour:
   myHealth: 25
   damage: 4
   attackSpeed: 2
-  range: 6
+  range: 10
   Goal: {fileID: 0}
   currentTurret: {fileID: 0}
   speed: 5
