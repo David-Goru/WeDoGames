@@ -1,7 +1,8 @@
 We Do games!!!
 
 # Roadmap
-- [ ] Finish sprint 2 (8 Jan, 2021)
+- [x] Finish sprint 2 (10 Apr, 2021)
+- [ ] Finish sprint 3 (24 Apr, 2021)
 - [ ] MVP (2 May, 2021)
 
 # Tower Defense
