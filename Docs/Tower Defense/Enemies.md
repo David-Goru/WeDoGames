@@ -10,7 +10,7 @@ Common enemies can have different clothes color:
 * Enemy 1: "Name"
 > Melee guy
 * Enemy 2: "Name"
-> Long-distance guy
+> Medium-distance guy
 * Enemy 3: "Name"
 >
 * Final boss: "Name"

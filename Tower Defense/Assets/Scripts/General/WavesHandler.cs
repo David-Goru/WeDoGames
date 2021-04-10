@@ -96,7 +96,8 @@ public class WavesHandler : MonoBehaviour
     {
         for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
         {
-            objectPooler.SpawnObject(MasterInfo.GetEnemiesSet()[0].tag, spawnerPositions[Random.Range(0, spawnerPositions.Length)], Quaternion.Euler(0, 0, 0));
+            Vector3 randomPos = spawnerPositions[Random.Range(0, spawnerPositions.Length)] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
+            objectPooler.SpawnObject(MasterInfo.GetEnemiesSet()[0].tag, randomPos, Quaternion.Euler(0, 0, 0));
         }
     }
 }

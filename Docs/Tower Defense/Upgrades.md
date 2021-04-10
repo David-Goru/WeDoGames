@@ -3,19 +3,19 @@ The upgrade points can be obtained during a wave, accomplishing different object
 
 # Actives
 Up to 5 slots. Activated by clicking at the upgrade from the actives bar. Unlimited.
-* ?
-* ?
-* ?
-* ?
-* ?
+* Heal turrets in area.
+* Damage enemies in area.
+* Stun enemies in area.
+* Fear enemies in area.
+* Slow enemies in area.
 
 # Passives
 Unlimited.
-* ?
-* ?
-* ?
-* ?
-* ?
+* Range Up.
+* Attack Range.
+* Damage Up.
+* Health Up.
+* Price Down.
 
 # Special upgrades
 Unlocked when finishing a run at least after the 3rd wave. Only 1 per run.
