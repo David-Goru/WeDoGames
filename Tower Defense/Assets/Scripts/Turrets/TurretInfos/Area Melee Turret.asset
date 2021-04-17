@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
   m_Name: Area Melee Turret
   m_EditorClassIdentifier: 
+  description: Area Melee description
   Stats:
   - type: 0
     value: 100

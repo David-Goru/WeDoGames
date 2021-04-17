@@ -97,7 +97,14 @@ public class WavesHandler : MonoBehaviour
         for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
         {
             Vector3 randomPos = spawnerPositions[Random.Range(0, spawnerPositions.Length)] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
-            objectPooler.SpawnObject(MasterInfo.GetEnemiesSet()[0].tag, randomPos, Quaternion.Euler(0, 0, 0));
+            objectPooler.SpawnObject(getRandomEnemy(), randomPos, Quaternion.Euler(0, 0, 0));
         }
+    }
+
+    string getRandomEnemy()
+    {
+        int maxEnemyId = currentWave > MasterInfo.GetEnemiesSet().Length ? MasterInfo.GetEnemiesSet().Length : currentWave;
+        int enemyId = Random.Range(0, maxEnemyId);
+        return MasterInfo.GetEnemiesSet()[enemyId].tag;
     }
 }

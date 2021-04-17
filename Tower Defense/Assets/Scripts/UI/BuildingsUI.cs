@@ -53,6 +53,7 @@ public class BuildingsUI : UIList
         objectUI.name = buildingInfo.name;
         setBuildingInfo(buildingInfo, objectUI);
         objectUI.GetComponent<Button>().onClick.AddListener(() => masterObject.GetComponent<BuildObject>().StartBuilding(buildingInfo));
+        objectUI.GetComponent<HoverUIElement>().HoverText = buildingInfo.Description;
         objectUI.SetParent(ListUIObject, false);
     }
 

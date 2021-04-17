@@ -10,6 +10,7 @@ public class BuildObject : MonoBehaviour
     [Header("References")]
     [SerializeField] Texture buildingGrid = null;
     [SerializeField] Grid grid = null;
+    [SerializeField] GameObject stopBuildingButton = null;
 
     [Header("Debug")]
     [SerializeField] float vertexSize = 0.0f;
@@ -30,7 +31,15 @@ public class BuildObject : MonoBehaviour
         if (buildingGrid == null)
         {
             Debug.Log("Building grid not set");
-            this.enabled = false;
+            enabled = false;
+            return;
+        }
+
+        // Stop building button
+        if (stopBuildingButton == null)
+        {
+            Debug.Log("Stop building button not set");
+            enabled = false;
             return;
         }
 
@@ -39,7 +48,7 @@ public class BuildObject : MonoBehaviour
         if (ground == null)
         {
             Debug.Log("Ground not found");
-            this.enabled = false;
+            enabled = false;
             return;
         }
         groundSprite = ground.material.mainTexture;
@@ -47,11 +56,22 @@ public class BuildObject : MonoBehaviour
         // Others
         SetVertexSize();
         objectPooler = ObjectPooler.GetInstance();
-        this.enabled = false;
+        enabled = false;
     }
 
     void Update()
     {
+        // If mouse over UI, stop building
+        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            if (objectBlueprint)
+            {
+                objectPooler.ReturnToThePool(objectBlueprint.transform);
+                objectBlueprint = null;
+            }
+            return;
+        }
+
         // Check position
         updatePosition();
 
@@ -64,6 +84,8 @@ public class BuildObject : MonoBehaviour
 
     public void StartBuilding(BuildingInfo buildingInfo)
     {
+        stopBuildingButton.SetActive(true);
+
         // Check if the player can affor the building
         if (!MasterHandler.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
 
@@ -72,7 +94,7 @@ public class BuildObject : MonoBehaviour
         ground.material.SetTextureScale("_MainTex", new Vector2(gridSize, gridSize));
 
         this.buildingInfo = buildingInfo;
-        this.enabled = true;
+        enabled = true;
     }
 
     void updatePosition()
@@ -159,6 +181,8 @@ public class BuildObject : MonoBehaviour
 
     public void StopBuilding()
     {
+        stopBuildingButton.SetActive(false);
+
         // Get rid of blueprint
         if (objectBlueprint != null)
         {
@@ -172,7 +196,7 @@ public class BuildObject : MonoBehaviour
         ground.material.SetTexture("_MainTex", groundSprite);
         ground.material.SetTextureScale("_MainTex", new Vector2(1, 1));
 
-        this.enabled = false;
+        enabled = false;
     }
 
     public void SetVertexSize()

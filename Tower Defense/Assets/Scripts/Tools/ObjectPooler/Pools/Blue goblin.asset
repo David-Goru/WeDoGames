@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33be216fddf68cd4688fb0caed5dbc01, type: 3}
-  m_Name: AR Up
+  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
+  m_Name: Blue goblin
   m_EditorClassIdentifier: 
-  Description: Te sube el attack rate
-  points: 1
-  Perk:
-  - {fileID: 11400000, guid: 41a2bf500f3945b46b84db445a79ae89, type: 2}
+  prefab: {fileID: 1896375348572613703, guid: a446e2b9d22731b428894d3d657da422, type: 3}
+  size: 100
+  tag: Blue Goblin

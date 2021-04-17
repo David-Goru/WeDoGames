@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Building", menuName = "ScriptableObjects/BuildingInfo", order = 0)]
 public class BuildingInfo : ScriptableObject
 {
+    [SerializeField] string description = "";
     [SerializeField] List<Stat> Stats = null;
 
     [Header("Debug")]
@@ -13,6 +14,7 @@ public class BuildingInfo : ScriptableObject
     [SerializeField] protected Pool buildingPool = null;
     [SerializeField] protected Pool buildingBlueprintPool = null;
 
+    public string Description { get => description; }
     public Pool GetBuildingPool() { return buildingPool; }
     public Pool GetBuildingBlueprintPool() { return buildingBlueprintPool; }
 

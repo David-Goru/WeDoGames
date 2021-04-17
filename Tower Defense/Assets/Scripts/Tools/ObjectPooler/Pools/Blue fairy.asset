@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: EnemyPool
+  m_Name: Blue fairy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5581525122067702850, guid: d37ad1315954a1447a2eedcdcd1a36bb, type: 3}
+  prefab: {fileID: 6042708892462036981, guid: a561ee9a294389b4e931cc16e4714aff, type: 3}
   size: 100
-  tag: EnemyPool
+  tag: Blue fairy

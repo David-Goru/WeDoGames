@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232628d55de1e0f4fa2a347b161bbdf0, type: 3}
   m_Name: MasterInfo
   m_EditorClassIdentifier: 
-  balance: 15038
+  balance: 5488
   buildingsSet:
   - {fileID: 11400000, guid: 6213785f44ddffe48a1acff44eb63d7d, type: 2}
   - {fileID: 11400000, guid: 8c8c2fbb589ebaf43996a003cea11802, type: 2}
   - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
   upgradesSet:
-  - {fileID: 11400000, guid: 03c3ec7cef7b8af4698511ed31622888, type: 2}
-  - {fileID: 11400000, guid: b3299f1d30fdc814d967abbe0636f441, type: 2}
-  - {fileID: 11400000, guid: c3dce713b858cd54cbe37c260fd94957, type: 2}
-  - {fileID: 11400000, guid: d0c8cf5b9c719434abb66a990877d3c5, type: 2}
-  - {fileID: 11400000, guid: 1651a4857a4b94a43a74f69e26ea244d, type: 2}
+  - {fileID: 11400000, guid: 18cd6459c82fc4647a1ec7b6fbc1296c, type: 2}
+  - {fileID: 11400000, guid: 41a2bf500f3945b46b84db445a79ae89, type: 2}
+  - {fileID: 11400000, guid: 26d5456cd4484f642ab7ee578cc23536, type: 2}
+  - {fileID: 11400000, guid: 648f0a46f92df0840a3f5fbb9bbfb596, type: 2}
+  - {fileID: 11400000, guid: ee393f542c5a060419ad4d62abdb20a1, type: 2}
   - {fileID: 11400000, guid: b3d2acb8ddbfc804f95a3e25c613ce7b, type: 2}
   enemiesSet:
   - {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
+  - {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}
+  - {fileID: 11400000, guid: fe81f61df2e34b0498987e01c8b03516, type: 2}
+  - {fileID: 11400000, guid: d5abd168ac6553e44b5333a18e0034d7, type: 2}
+  - {fileID: 11400000, guid: c0234dbddfa978748ac7d06d3360073c, type: 2}
+  - {fileID: 11400000, guid: 9195ec200e632344bac23106d783e89f, type: 2}

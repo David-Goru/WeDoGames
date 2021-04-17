@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33be216fddf68cd4688fb0caed5dbc01, type: 3}
-  m_Name: DMG Up
+  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
+  m_Name: Green goblin
   m_EditorClassIdentifier: 
-  Description: "Te sube el da\xF1o co\xF1o"
-  points: 1
-  Perk:
-  - {fileID: 11400000, guid: 26d5456cd4484f642ab7ee578cc23536, type: 2}
+  prefab: {fileID: 5581525122067702850, guid: d37ad1315954a1447a2eedcdcd1a36bb, type: 3}
+  size: 100
+  tag: Green Goblin

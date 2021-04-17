@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33be216fddf68cd4688fb0caed5dbc01, type: 3}
-  m_Name: Price Down
+  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
+  m_Name: Green fairy
   m_EditorClassIdentifier: 
-  Description: Te Baja el precio
-  points: 1
-  Perk:
-  - {fileID: 11400000, guid: 18cd6459c82fc4647a1ec7b6fbc1296c, type: 2}
+  prefab: {fileID: 6267868965878264546, guid: be4e0b841f0667243a4d8dad2e0242b4, type: 3}
+  size: 100
+  tag: Green fairy

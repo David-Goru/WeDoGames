@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7318dc4174fca24e82a93f462266790, type: 3}
   m_Name: More damage
   m_EditorClassIdentifier: 
-  title: More damage
-  stat:
-    type: 2
-    value: 10
+  description: 
+  points: 0
+  stats:
+  - type: 2
+    value: 1
