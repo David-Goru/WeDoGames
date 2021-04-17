@@ -23,8 +23,8 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     private Animator anim;
     private State currentState;
 
-    public BuildingRange Goal;
-    public Transform currentTurret;
+    [HideInInspector] public BuildingRange Goal;
+    [HideInInspector] public Transform currentTurret;
     public IEnemyDamageHandler currentTurretDamage;
 
     //A*
@@ -33,7 +33,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     [SerializeField] float rotationSpeed = 5f;
     private Vector3[] path;
     private int targetIndex;
-    public bool pathReached;
+    [HideInInspector] public bool pathReached;
 
     private Vector3 currentWaypoint;
 
@@ -121,7 +121,8 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
                 currentWaypoint = path[targetIndex];
             }
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(currentWaypoint - transform.position), rotationSpeed * Time.deltaTime);
+            if(currentWaypoint != transform.position)
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(currentWaypoint - transform.position), rotationSpeed * Time.deltaTime);
             yield return null;
         }
     }
