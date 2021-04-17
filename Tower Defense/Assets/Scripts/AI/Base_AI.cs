@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 // Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
 // </summary>
 
-public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
+public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable
 {
     [SerializeField] float myHealth = 0f;
     [SerializeField] float damage = 0f;
@@ -36,6 +36,9 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
     [HideInInspector] public bool pathReached;
 
     private Vector3 currentWaypoint;
+
+    [HideInInspector] public float stunDuration;
+    [HideInInspector] public bool isStunned;
 
     public void OnObjectSpawn()
     {
@@ -152,5 +155,13 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject
                 }
             }
         }
+    }
+
+    public void Stun(float secondsStunned)
+    {
+        stunDuration = secondsStunned;
+        isStunned = true;
+
+        currentState = new Stun(this, anim, Goal);
     }
 }
