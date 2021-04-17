@@ -43,6 +43,7 @@ public class UpgradesUI : UIList
         objectUI.name = upgrade.name;
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
         objectUI.GetComponent<Button>().onClick.AddListener(() => addUpgradeAction(upgrade));
+        objectUI.GetComponent<HoverUIElement>().HoverText = upgrade.Description;
         objectUI.SetParent(ListUIObject, false);
         objectUI.gameObject.SetActive(false);
     }
