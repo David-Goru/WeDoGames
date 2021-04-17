@@ -9,4 +9,6 @@ public class Upgrade : ScriptableObject
 {
     [SerializeField] string description;
     [SerializeField] int points;
+
+    public string Description { get => description; }
 }
