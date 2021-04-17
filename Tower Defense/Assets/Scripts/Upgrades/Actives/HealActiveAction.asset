@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: HealActiveAction
   m_EditorClassIdentifier: 
   UIElement: {fileID: 0}
+  activeCooldown: 5
   healingValue: 20

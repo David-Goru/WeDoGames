@@ -1195,6 +1195,7 @@ GameObject:
   - component: {fileID: 537000334}
   - component: {fileID: 537000333}
   - component: {fileID: 537000335}
+  - component: {fileID: 537000336}
   m_Layer: 0
   m_Name: Master
   m_TagString: Untagged
@@ -1349,6 +1350,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be18e7802f1efd143a1da371ccb0b54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activesCooldownController: {fileID: 537000336}
+--- !u!114 &537000336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537000326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa9fe3a12b59ad449fc7eac1ebed429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &546847550
@@ -2708,7 +2722,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348883347}
   m_HandleRect: {fileID: 1348883346}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4175,7 +4189,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1213274697}
   m_HandleRect: {fileID: 1213274696}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4452,7 +4466,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1428982874}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.966
+  m_Size: 0.9659999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

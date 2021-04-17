@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ActiveMode : MonoBehaviour
 {
     bool isActive;
     ActiveAction activeAction;
     LayerMask groundMask;
+    [SerializeField] ActivesCooldownController activesCooldownController = null;
 
     private void Start()
     {
@@ -21,8 +23,12 @@ public class ActiveMode : MonoBehaviour
 
     public void SetActive(ActiveAction activeAction)
     {
-        isActive = true;
-        this.activeAction = activeAction;
+        if (!activesCooldownController.CheckIfIsInCooldown(activeAction))
+        {
+            activesCooldownController.StartCooldown(activeAction);
+            isActive = true;
+            this.activeAction = activeAction;
+        }
     }
 
     void doActive()

@@ -6,6 +6,11 @@
 [CreateAssetMenu(fileName = "Active action", menuName = "Upgrades/ActiveAction", order = 0)]
 public class ActiveAction : ScriptableObject
 {
-    public virtual void UseActive(Vector3 hitPos) { }
     [HideInInspector] public Transform UIElement;
+    public float activeCooldown = 30f;
+
+    public virtual void UseActive(Vector3 hitPos) 
+    {
+        
+    }
 }
