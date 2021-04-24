@@ -50,11 +50,11 @@ public class State
 
 	public void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
-        if (!turretTransform.gameObject.activeSelf && !npc.isStunned) //The turret that shot you is already dead and you're not stunned
+        if (!turretTransform.gameObject.activeSelf && !npc.isStunned && !npc.isFeared) //The turret that shot you is already dead and you're not stunned AND you're not feared
         {
 			nextState = new Move(npc, anim, npc.Goal); //Aim for the nexus
 		}
-        else if(!npc.isStunned) //The turret that shot you is alive and you're not stunned
+        else if(!npc.isStunned && !npc.isFeared) //The turret that shot you is alive and you're not stunned AND you're not feared
         {
 			nextState = new Move(npc, anim, turretTransform); //Aim for the turret
 		}

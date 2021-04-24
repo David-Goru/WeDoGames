@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 // Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
 // </summary>
 
-public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, ISlowable
+public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable
 {
     [SerializeField] float myHealth = 0f;
     [SerializeField] float damage = 0f;
@@ -39,6 +39,9 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     [HideInInspector] public float stunDuration;
     [HideInInspector] public bool isStunned;
+
+    [HideInInspector] public float fearDuration;
+    [HideInInspector] public bool isFeared;
 
     public void OnObjectSpawn()
     {
@@ -97,7 +100,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
             StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
             path = newPath;
             targetIndex = 0;
-            if (path.Length > 0 && this.gameObject.activeSelf && !isStunned) //If the AI is stunned, we will say that it reached the end of the path
+            if (path.Length > 0 && this.gameObject.activeSelf && !isStunned && !isFeared) //If the AI is stunned or feared, we will say that it reached the end of the path (it will forget it's target)
             {
                 StartCoroutine("FollowPath");
             }
@@ -133,6 +136,12 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     private void OnDisable()
     {
         StopCoroutine("FollowPath");
+    }
+
+    public void Flee()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, -transform.forward * 5f, speed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-transform.forward), rotationSpeed * Time.deltaTime);
     }
 
     //For visual hint
@@ -184,5 +193,15 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
         rotationSpeed *= 2f;
 
         anim.SetFloat("animSpeed", 1f);
+    }
+
+    public void Fear(float fearSeconds)
+    {
+        StartCoroutine(slowEnemy(fearSeconds)); //Fear also slows enemies
+
+        fearDuration = fearSeconds;
+        isFeared = true;
+
+        currentState = new Fear(this, anim, Goal);
     }
 }
