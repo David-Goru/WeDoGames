@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 191619300}
   - component: {fileID: 191619299}
   - component: {fileID: 191619298}
+  - component: {fileID: 191619303}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -438,6 +439,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &191619303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191619297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0367ccd412fc341a0765f6fdff750b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 1806990454}
+  currentEntity: {fileID: 0}
 --- !u!1 &218823819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1392,7 @@ GameObject:
   - component: {fileID: 546847553}
   - component: {fileID: 546847552}
   m_Layer: 5
-  m_Name: Life
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2722,7 +2737,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348883347}
   m_HandleRect: {fileID: 1348883346}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4189,7 +4204,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1213274697}
   m_HandleRect: {fileID: 1213274696}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4244,7 +4259,7 @@ GameObject:
   - component: {fileID: 1604398517}
   - component: {fileID: 1604398516}
   m_Layer: 5
-  m_Name: Name
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4466,7 +4481,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1428982874}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9659999
+  m_Size: 0.966
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
