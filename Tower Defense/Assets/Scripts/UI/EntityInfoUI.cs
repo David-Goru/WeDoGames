@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EntityInfoUI : MonoBehaviour
 {
     [Header("Attributes")]
-    [SerializeField] GameObject ui;
+    [SerializeField] GameObject ui = null;
 
     [Header("Debug")]
     [SerializeField] Entity currentEntity;

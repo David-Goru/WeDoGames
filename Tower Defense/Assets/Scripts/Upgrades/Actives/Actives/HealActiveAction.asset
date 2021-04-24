@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1e1e32891844442b8b33ab2bd0c4c4, type: 3}
   m_Name: HealActiveAction
   m_EditorClassIdentifier: 
-  UIElement: {fileID: 0}
+  cooldownUI: {fileID: 0}
   activeCooldown: 5
+  activeRange: 3
+  activeAreaColor: {r: 0, g: 1, b: 0.09638786, a: 0.59607846}
   healingValue: 20

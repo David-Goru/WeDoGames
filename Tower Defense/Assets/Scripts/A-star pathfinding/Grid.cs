@@ -18,7 +18,7 @@ public class Grid : MonoBehaviour
     public float nodeRadius;
 
     [Header("References")]
-    [SerializeField] private BuildObject buildObject;
+    [SerializeField] private BuildObject buildObject = null;
 
     private Node[,] grid;
     private float nodeDiameter;

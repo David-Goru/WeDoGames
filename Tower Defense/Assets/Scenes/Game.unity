@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44597363, g: 0.49572337, b: 0.5744296, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2a71edc2d98007f4f86f751895f6301b,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -451,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0367ccd412fc341a0765f6fdff750b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 1806990454}
+  ui: {fileID: 0}
   currentEntity: {fileID: 0}
 --- !u!1 &218823819
 GameObject:
@@ -1355,6 +1356,8 @@ MonoBehaviour:
   ListUIObject: {fileID: 218823820}
   ObjectUIPrefab: {fileID: 3475225525718764195, guid: 07fba5473160a4b4aa7da7735da206dc,
     type: 3}
+  UIActivePrefab: {fileID: 3475225525718764195, guid: 5265c545433abf64c95e9bab57611289,
+    type: 3}
 --- !u!114 &537000335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,6 +1371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activesCooldownController: {fileID: 537000336}
+  activeAreaPrefab: {fileID: 5700410670610817887, guid: 80b344b6cb9bcbe499aa01f4f12bee8f,
+    type: 3}
 --- !u!114 &537000336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,7 +1636,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.7882353, g: 0.83137256, b: 0.57254905, a: 1}
-  m_Intensity: 0.65
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1981,7 +1986,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.83137256, g: 0.57254905, b: 0.65882355, a: 1}
-  m_Intensity: 0.65
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2737,7 +2742,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348883347}
   m_HandleRect: {fileID: 1348883346}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4204,7 +4209,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1213274697}
   m_HandleRect: {fileID: 1213274696}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4481,7 +4486,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1428982874}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.966
+  m_Size: 0.9659999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
