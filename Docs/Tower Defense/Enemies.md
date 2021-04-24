@@ -7,9 +7,9 @@ Common enemies can have different clothes color:
 * Red: hard
 
 # Enemies
-* Enemy 1: "Name"
+* Enemy 1: "Goblin"
 > Melee guy
-* Enemy 2: "Name"
+* Enemy 2: "Fairy"
 > Medium-distance guy
 * Enemy 3: "Name"
 >
