@@ -9,7 +9,7 @@ public class State
 {
 	public enum STATE
 	{
-		MOVE, ATTACK, STUN, SLOW, FEAR
+		MOVE, ATTACK, STUN, FEAR
 	};
 
 	public enum EVENT

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 // Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
 // </summary>
 
-public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable
+public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, ISlowable
 {
     [SerializeField] float myHealth = 0f;
     [SerializeField] float damage = 0f;
@@ -39,6 +39,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable
 
     [HideInInspector] public float stunDuration;
     [HideInInspector] public bool isStunned;
+    [HideInInspector] public float slowDuration;
 
     public void OnObjectSpawn()
     {
@@ -97,7 +98,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable
             StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
             path = newPath;
             targetIndex = 0;
-            if (path.Length > 0 && this.gameObject.activeSelf)
+            if (path.Length > 0 && this.gameObject.activeSelf && !isStunned) //If the AI is stunned, we will say that it reached the end of the path
             {
                 StartCoroutine("FollowPath");
             }
@@ -163,5 +164,26 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable
         isStunned = true;
 
         currentState = new Stun(this, anim, Goal);
+    }
+
+    public void Slow(float secondsSlowed)
+    {
+        StartCoroutine(slowEnemy(secondsSlowed));
+    }
+
+    private IEnumerator slowEnemy(float secondsSlowed)
+    {
+        //Maybe we should also pass the slow values
+        speed /= 2f;
+        rotationSpeed /= 2f;
+
+        anim.SetFloat("animSpeed", 0.5f);
+
+        yield return new WaitForSeconds(secondsSlowed);
+
+        speed *= 2f;
+        rotationSpeed *= 2f;
+
+        anim.SetFloat("animSpeed", 1f);
     }
 }
