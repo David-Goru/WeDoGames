@@ -39,7 +39,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     [HideInInspector] public float stunDuration;
     [HideInInspector] public bool isStunned;
-    [HideInInspector] public float slowDuration;
 
     public void OnObjectSpawn()
     {
