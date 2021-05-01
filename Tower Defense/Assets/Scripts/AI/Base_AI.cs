@@ -78,8 +78,11 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     {
         if(health <= 0)
         {
-            ObjectPooler.GetInstance().ReturnToThePool(this.transform);
-            WavesHandler.EnemyKilled();
+            if (gameObject.activeSelf)
+            {
+                ObjectPooler.GetInstance().ReturnToThePool(this.transform);
+                WavesHandler.EnemyKilled();
+            }
         }
     }
 

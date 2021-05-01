@@ -32,11 +32,8 @@ public class Fear : State
 		{
 			Debug.Log("Fear finished");
 			nextState = new Move(npc, anim, target);
+			npc.isFeared = false;
 			stage = EVENT.EXIT;
-		}
-		else
-		{
-			Debug.Log("Time remaining running away: " + fearDuration);
 		}
 	}
 
@@ -44,7 +41,6 @@ public class Fear : State
 	{
 		anim.ResetTrigger("moving");
 		anim.SetFloat("animSpeed", 1f);
-		npc.isFeared = false;
 		base.Exit();
 	}
 }
