@@ -7,7 +7,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Passive", menuName = "Upgrades/Passive", order = 0)]
 public class Passive : Upgrade
 {
-    [SerializeField] List<Stat> stats;
+    [SerializeField] List<Stat> stats = null;
 
     public List<Stat> Stats { get => stats; }
 }

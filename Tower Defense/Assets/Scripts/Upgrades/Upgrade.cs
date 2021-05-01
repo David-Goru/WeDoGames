@@ -7,8 +7,8 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Upgrade", menuName = "ScriptableObjects/Upgrade", order = 1)]
 public class Upgrade : ScriptableObject
 {
-    [SerializeField] string description;
-    [SerializeField] int points;
+    [SerializeField] string description = "Upgrade description";
+    [SerializeField] int points = 0;
 
     public string Description { get => description; }
 }

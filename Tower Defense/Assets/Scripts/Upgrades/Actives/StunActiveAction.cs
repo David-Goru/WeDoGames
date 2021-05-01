@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "HealActiveAction", menuName = "Upgrades/HealActiveActions/HealActiveAction", order = 0)]
-public class HealActiveAction : ActiveAction
+[CreateAssetMenu(fileName = "StunActiveAction", menuName = "Upgrades/StunActiveActions/StunActiveAction", order = 0)]
+public class StunActiveAction : ActiveAction
 {
     Collider[] colsCache = new Collider[32];
     LayerMask objectLayer;
@@ -14,8 +14,6 @@ public class HealActiveAction : ActiveAction
 
     public override void UseActive(Vector3 position)
     {
-        if (objectLayer == 0)
-            objectLayer = LayerMask.GetMask("Object");
         int nTurrets = Physics.OverlapSphereNonAlloc(position, activeRange, colsCache, objectLayer);
         for (int i = 0; i < nTurrets; i++)
         {

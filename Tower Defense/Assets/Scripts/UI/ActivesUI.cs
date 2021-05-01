@@ -6,6 +6,7 @@ using UnityEngine.UI;
 /// </summary>
 public class ActivesUI : UIList
 {
+    [SerializeField] GameObject UIActivePrefab = null;
     /// <summary>
     /// Initializes the UI list
     /// </summary>
@@ -34,16 +35,15 @@ public class ActivesUI : UIList
     /// <param name="upgrade">Information about the active that will be displayed on the button</param>
     void addActiveToUI(Upgrade upgrade)
     {
-        Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
+        Transform objectUI = Instantiate(UIActivePrefab, ListUIObject.position, ListUIObject.rotation).transform;
         objectUI.name = upgrade.name;
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
-        //Hay que cambiar la linea de abajo, ahora tiene que llamar a ActiveMode y pasarle la activa.
         objectUI.GetComponent<Button>().onClick.AddListener(() => MasterHandler.Instance.ActiveMode.SetActive(((Active)upgrade).ActiveAction));
         objectUI.GetComponent<HoverUIElement>().HoverText = upgrade.Description;
         objectUI.SetParent(ListUIObject, false);
         objectUI.gameObject.SetActive(false);
 
-        ((Active)upgrade).ActiveAction.UIElement = objectUI;
+        ((Active)upgrade).ActiveAction.cooldownUI = objectUI.GetComponent<CooldownUI>();
     }
 
     public void EnableActive(Upgrade upgrade)
