@@ -175,7 +175,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
         StopCoroutine("FollowPath");
 
-        //currentState = new Stun(this, anim, Goal);
+        currentState = new Stun(this, anim, Goal);
     }
 
     public void Slow(float secondsSlowed)
@@ -210,7 +210,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
         StopCoroutine("FollowPath");
 
-        //currentState = new Fear(this, anim, Goal);
+        currentState = new Fear(this, anim, Goal);
     }
 
     private IEnumerator fearEnemy(float secondsFear)
