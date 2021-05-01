@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Stores information of the game loop
@@ -8,14 +6,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MasterInfo", menuName = "ScriptableObjects/MasterInfo", order = 0)]
 public class MasterInfo : ScriptableObject
 {
-    [SerializeField] float balance = 0;
+    [SerializeField] float initialBalance = 0.0f;
+    [SerializeField] int initialPoints = 0;
     [SerializeField] BuildingInfo[] buildingsSet = null;
     [SerializeField] Upgrade[] upgradesSet = null;
     [SerializeField] Pool[] enemiesSet = null;
 
-    public float Balance { get => balance; set => balance = value; }
+    float currentBalance = 0.0f;
+    int currentPoints = 0;
+
+    public float Balance { get => currentBalance; set => currentBalance = value; }
+    public int Points { get => currentPoints; set => currentPoints = value; }
     public Upgrade[] UpgradesSet { get => upgradesSet; }
 
     public BuildingInfo[] GetBuildingsSet() { return buildingsSet; }
     public Pool[] GetEnemiesSet() { return enemiesSet; }
+
+    void resetBalance() { currentBalance = initialBalance; }
+    void resetPoints() { currentPoints = initialPoints; }
+
+    public void InitializeVariables()
+    {
+        resetBalance();
+        resetPoints();
+    }
 }

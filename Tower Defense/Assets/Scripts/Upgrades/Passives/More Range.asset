@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: More Range
   m_EditorClassIdentifier: 
   description: Attack range is increased by 1
-  points: 0
+  points: 1
   stats:
   - type: 3
     value: 1

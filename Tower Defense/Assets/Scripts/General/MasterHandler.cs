@@ -13,6 +13,7 @@ public class MasterHandler : MonoBehaviour
 
     [Header("UI elements")]
     [SerializeField] Text balanceText = null;
+    [SerializeField] Text pointsText = null;
 
     [Header("References")]
     [SerializeField] MasterInfo masterInfo = null;
@@ -33,11 +34,14 @@ public class MasterHandler : MonoBehaviour
     {
         if (Instance == null) Instance = this;
 
+        MasterInfo.InitializeVariables();
+
         // If not testing without UI
         if (!testWithoutUI)
         {
-            // Set the balance UI text
+            // Set UI texts
             balanceText.text = string.Format("{0} coins", MasterInfo.Balance);
+            pointsText.text = string.Format("{0} coins", MasterInfo.Points);
 
             // Initialize lists
             foreach (UIList list in GetComponents(typeof(UIList)))
@@ -78,6 +82,19 @@ public class MasterHandler : MonoBehaviour
             // Update balance and UI text
             MasterInfo.Balance += amount;
             balanceText.text = string.Format("{0} coins", MasterInfo.Balance);
+        }
+
+        return true;
+    }
+
+    public bool UpdatePoints(int amount)
+    {
+        if (amount < 0 && MasterInfo.Points < Mathf.Abs(amount)) return false;
+
+        if (pointsText != null)
+        {
+            MasterInfo.Points += amount;
+            pointsText.text = string.Format("{0} coins", MasterInfo.Points);
         }
 
         return true;

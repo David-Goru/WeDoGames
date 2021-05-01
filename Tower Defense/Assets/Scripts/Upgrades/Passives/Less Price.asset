@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Less Price
   m_EditorClassIdentifier: 
   description: Price is reduced by 10
-  points: 0
+  points: 1
   stats:
   - type: 0
     value: -10

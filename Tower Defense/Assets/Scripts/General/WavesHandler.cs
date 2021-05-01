@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class WavesHandler : MonoBehaviour
 {
-    public const int ENEMIES_PER_WAVE_MULTIPLIER = 10;
+    public static int EnemiesSpawned = 0;
+
+    public const int ENEMIES_PER_WAVE_MULTIPLIER = 4;
 
     [SerializeField] UpgradesUI upgradesUI = null;
 
@@ -15,7 +17,6 @@ public class WavesHandler : MonoBehaviour
     Vector3[] spawnerPositions;
 
     [SerializeField] int currentWave = 0;
-    [SerializeField] float nextWaveTimer = 0;
     [SerializeField] float planningTime = 0;
 
     float timer = 0f;
@@ -73,20 +74,21 @@ public class WavesHandler : MonoBehaviour
         }
         else
         {
-            if (timer < nextWaveTimer)
-            {
-                // Update UI text and timer
-                WaveTimerText.text = string.Format("End of wave: {0:0} seconds", nextWaveTimer - timer);
-                timer += Time.deltaTime;
-            }
+            if (EnemiesSpawned == 0) nextWave();
             else
             {
-                // Set planning time
-                timer = 0;
-                onPlanningPhase = true;
-                upgradesUI.EnableRandomUpgrades(2);
+                timer += Time.deltaTime;
+                if (timer < 60) WaveTimerText.text = string.Format("Wave objective: {0:0} seconds", 60 - timer);
+                else WaveTimerText.text = string.Format("Objective not achieved");
             }
         }
+    }
+
+    void nextWave()
+    {
+        timer = 0;
+        onPlanningPhase = true;
+        upgradesUI.EnableRandomUpgrades(2);
     }
 
     /// <summary>
@@ -106,5 +108,10 @@ public class WavesHandler : MonoBehaviour
         int maxEnemyId = currentWave > MasterInfo.GetEnemiesSet().Length ? MasterInfo.GetEnemiesSet().Length : currentWave;
         int enemyId = Random.Range(0, maxEnemyId);
         return MasterInfo.GetEnemiesSet()[enemyId].tag;
+    }
+
+    public static void EnemyKilled()
+    {
+        EnemiesSpawned--;
     }
 }
