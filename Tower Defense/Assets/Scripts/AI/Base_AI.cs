@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 // Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
 // </summary>
 
-public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable
+public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable
 {
     [SerializeField] float myHealth = 0f;
     [SerializeField] float damage = 0f;
@@ -203,5 +203,12 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
         isFeared = true;
 
         currentState = new Fear(this, anim, Goal);
+    }
+
+    public void GetDamage(float damage)
+    {
+        health -= damage;
+
+        checkDeath();
     }
 }
