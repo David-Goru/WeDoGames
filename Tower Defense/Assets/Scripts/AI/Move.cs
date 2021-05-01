@@ -29,6 +29,16 @@ public class Move : State
 			nextState = new Attack(npc, anim, target);
 			stage = EVENT.EXIT;
 		}
+		if (npc.isStunned)
+		{
+			nextState = new Stun(npc, anim, npc.Goal);
+			stage = EVENT.EXIT;
+		}
+		if (npc.isFeared)
+		{
+			nextState = new Fear(npc, anim, npc.Goal);
+			stage = EVENT.EXIT;
+		}
 	}
 
 	public override void Exit()

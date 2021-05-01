@@ -42,6 +42,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     [HideInInspector] public float fearDuration;
     [HideInInspector] public bool isFeared;
+    [HideInInspector] public Vector3 fleePos;
 
     public void OnObjectSpawn()
     {
@@ -140,8 +141,8 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     public void Flee()
     {
-        transform.position = Vector3.MoveTowards(transform.position, -transform.forward * 5f, speed * Time.deltaTime);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-transform.forward), rotationSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, fleePos, speed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(fleePos), rotationSpeed * Time.deltaTime);
     }
 
     //For visual hint
@@ -171,7 +172,9 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
         stunDuration = secondsStunned;
         isStunned = true;
 
-        currentState = new Stun(this, anim, Goal);
+        StopCoroutine("FollowPath");
+
+        //currentState = new Stun(this, anim, Goal);
     }
 
     public void Slow(float secondsSlowed)
@@ -197,12 +200,32 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     public void Fear(float fearSeconds)
     {
-        StartCoroutine(slowEnemy(fearSeconds)); //Fear also slows enemies
+        StartCoroutine(fearEnemy(fearSeconds)); //Fear also slows enemies
 
         fearDuration = fearSeconds;
         isFeared = true;
 
-        currentState = new Fear(this, anim, Goal);
+        fleePos = -transform.forward * 20f;
+
+        StopCoroutine("FollowPath");
+
+        //currentState = new Fear(this, anim, Goal);
+    }
+
+    private IEnumerator fearEnemy(float secondsFear)
+    {
+        //Maybe we should also pass the slow values
+        speed /= 2f;
+        rotationSpeed *= 2f;
+
+        anim.SetFloat("animSpeed", 0.5f);
+
+        yield return new WaitForSeconds(secondsFear);
+
+        speed *= 2f;
+        rotationSpeed /= 2f;
+
+        anim.SetFloat("animSpeed", 1f);
     }
 
     public void GetDamage(float damage)

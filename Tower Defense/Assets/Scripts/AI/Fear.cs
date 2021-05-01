@@ -17,6 +17,7 @@ public class Fear : State
 	public override void Enter()
 	{
 		anim.SetFloat("animSpeed", 2f);
+		anim.SetTrigger("moving");
 		base.Enter();
 
 		fearDuration = npc.fearDuration;
@@ -41,6 +42,7 @@ public class Fear : State
 
 	public override void Exit()
 	{
+		anim.ResetTrigger("moving");
 		anim.SetFloat("animSpeed", 1f);
 		npc.isFeared = false;
 		base.Exit();
