@@ -50,8 +50,11 @@ public class UpgradesUI : UIList
 
     void addUpgradeAction(Upgrade upgrade)
     {
-        upgrades.AddUpgrade(upgrade);
-        ListUIObject.Find(upgrade.name).gameObject.SetActive(false);
+        if (MasterHandler.Instance.UpdatePoints(-upgrade.Points))
+        {
+            upgrades.AddUpgrade(upgrade);
+            ListUIObject.Find(upgrade.name).gameObject.SetActive(false);
+        }
     }
 
     public void EnableRandomUpgrades(int amount)

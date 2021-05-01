@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: More damage
   m_EditorClassIdentifier: 
   description: Damage is increased by 1
-  points: 0
+  points: 1
   stats:
   - type: 2
     value: 1

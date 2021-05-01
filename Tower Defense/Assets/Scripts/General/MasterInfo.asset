@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232628d55de1e0f4fa2a347b161bbdf0, type: 3}
   m_Name: MasterInfo
   m_EditorClassIdentifier: 
-  balance: 2338
+  initialBalance: 500
+  initialPoints: 1
   buildingsSet:
   - {fileID: 11400000, guid: 6213785f44ddffe48a1acff44eb63d7d, type: 2}
   - {fileID: 11400000, guid: 8c8c2fbb589ebaf43996a003cea11802, type: 2}

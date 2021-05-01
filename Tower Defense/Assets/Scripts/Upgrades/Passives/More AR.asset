@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: More AR
   m_EditorClassIdentifier: 
   description: Attack rate is reduced by 0.1
-  points: 0
+  points: 1
   stats:
   - type: 4
     value: -0.1
