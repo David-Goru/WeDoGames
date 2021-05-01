@@ -94,7 +94,7 @@ public class MasterHandler : MonoBehaviour
         if (pointsText != null)
         {
             MasterInfo.Points += amount;
-            pointsText.text = string.Format("{0} coins", MasterInfo.Points);
+            pointsText.text = string.Format("{0} points", MasterInfo.Points);
         }
 
         return true;

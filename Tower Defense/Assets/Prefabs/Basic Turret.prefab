@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4224321588919385867}
   - component: {fileID: 4224321588919385868}
   - component: {fileID: -790737591968867985}
+  - component: {fileID: 6162162570867468129}
   m_Layer: 10
   m_Name: Basic Turret
   m_TagString: Turret
@@ -183,6 +184,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42262a5ea8dfe994aafa9d535089f428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6162162570867468129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224321588919385869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748efb8d39a4b094c835c8bbbaac0302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Basic Turret
+  currentHP: 0
+  maxHP: 0
 --- !u!1 &4224321589051985945
 GameObject:
   m_ObjectHideFlags: 0

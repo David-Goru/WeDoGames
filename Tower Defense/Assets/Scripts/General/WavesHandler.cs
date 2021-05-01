@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WavesHandler : MonoBehaviour
 {
-    public static int EnemiesSpawned = 0;
+    static int enemiesSpawned = 0;
 
     public const int ENEMIES_PER_WAVE_MULTIPLIER = 4;
 
@@ -74,7 +74,8 @@ public class WavesHandler : MonoBehaviour
         }
         else
         {
-            if (EnemiesSpawned == 0) nextWave();
+            print(enemiesSpawned);
+            if (enemiesSpawned == 0) nextWave();
             else
             {
                 timer += Time.deltaTime;
@@ -86,6 +87,7 @@ public class WavesHandler : MonoBehaviour
 
     void nextWave()
     {
+        if (timer <= 60) MasterHandler.Instance.UpdatePoints(1);
         timer = 0;
         onPlanningPhase = true;
         upgradesUI.EnableRandomUpgrades(2);
@@ -100,6 +102,7 @@ public class WavesHandler : MonoBehaviour
         {
             Vector3 randomPos = spawnerPositions[Random.Range(0, spawnerPositions.Length)] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
             objectPooler.SpawnObject(getRandomEnemy(), randomPos, Quaternion.Euler(0, 0, 0));
+            enemiesSpawned++;
         }
     }
 
@@ -112,6 +115,6 @@ public class WavesHandler : MonoBehaviour
 
     public static void EnemyKilled()
     {
-        EnemiesSpawned--;
+        enemiesSpawned--;
     }
 }

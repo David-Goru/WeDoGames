@@ -6,9 +6,9 @@
 public class Entity : MonoBehaviour
 {
     [Header("Debug")]
-    [SerializeField] private string title = "";
-    [SerializeField] private int currentHP = 0;
-    [SerializeField] private int maxHP = 0;
+    [SerializeField] protected string title = "";
+    [SerializeField] protected int currentHP = 0;
+    [SerializeField] protected int maxHP = 0;
 
     public string Title { get => title; }
     public int CurrentHP { get => currentHP; }

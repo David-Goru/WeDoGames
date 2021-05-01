@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "FearActiveAction", menuName = "Upgrades/FearActiveActions/FearActiveAction", order = 0)]
 public class FearActiveAction : ActiveAction
 {
-    Collider[] colsCache = new Collider[32];
+    Collider[] colsCache = new Collider[128];
     LayerMask enemyLayer;
     [SerializeField] float fearTime = 3.5f;
 

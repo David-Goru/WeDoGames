@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0367ccd412fc341a0765f6fdff750b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
+  ui: {fileID: 1806990454}
   currentEntity: {fileID: 0}
 --- !u!1 &218823819
 GameObject:
@@ -2742,7 +2742,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348883347}
   m_HandleRect: {fileID: 1348883346}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4210,7 +4210,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1213274697}
   m_HandleRect: {fileID: 1213274696}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4487,7 +4487,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1428982874}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.966
+  m_Size: 0.9659999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
