@@ -4,22 +4,24 @@
 public class StunActiveAction : ActiveAction
 {
     Collider[] colsCache = new Collider[32];
-    LayerMask objectLayer;
-    [SerializeField] float healingValue = 20f;
+    LayerMask enemyLayer;
+    [SerializeField] float stunTime = 3.5f;
 
     private void Awake()
     {
-        objectLayer = LayerMask.GetMask("Object");
+        enemyLayer = LayerMask.GetMask("Enemy");
     }
 
     public override void UseActive(Vector3 position)
     {
-        int nTurrets = Physics.OverlapSphereNonAlloc(position, activeRange, colsCache, objectLayer);
+        if (enemyLayer == 0)
+            enemyLayer = LayerMask.GetMask("Enemy");
+        int nTurrets = Physics.OverlapSphereNonAlloc(position, activeRange, colsCache, enemyLayer);
         for (int i = 0; i < nTurrets; i++)
         {
-            IHealable turret = colsCache[i].GetComponent<IHealable>();
-            if(turret != null)
-                turret.Heal(healingValue);
+            IStunnable enemy = colsCache[i].GetComponent<IStunnable>();
+            if (enemy != null)
+                enemy.Stun(stunTime);
         }
     }
 }

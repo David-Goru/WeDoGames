@@ -9,7 +9,6 @@ public class DamageActiveAction : ActiveAction
 
     private void Awake()
     {
-        Debug.Log("Hola");
         enemyLayer = LayerMask.GetMask("Enemy");
     }
 
@@ -21,10 +20,10 @@ public class DamageActiveAction : ActiveAction
         Debug.Log(nEnemies);
         for (int i = 0; i < nEnemies; i++)
         {
-            ITurretDamage enemy = colsCache[i].GetComponent<ITurretDamage>();
+            IDamageable enemy = colsCache[i].GetComponent<IDamageable>();
             Debug.Log(enemy);
-            //if(enemy != null)
-                //enemy.OnTurretHit()
+            if (enemy != null)
+                enemy.GetDamage(damageValue);
         }
     }
 }

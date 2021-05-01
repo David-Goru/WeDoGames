@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232628d55de1e0f4fa2a347b161bbdf0, type: 3}
   m_Name: MasterInfo
   m_EditorClassIdentifier: 
-  balance: 4888
+  balance: 2338
   buildingsSet:
   - {fileID: 11400000, guid: 6213785f44ddffe48a1acff44eb63d7d, type: 2}
   - {fileID: 11400000, guid: 8c8c2fbb589ebaf43996a003cea11802, type: 2}
@@ -25,6 +25,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee393f542c5a060419ad4d62abdb20a1, type: 2}
   - {fileID: 11400000, guid: b3d2acb8ddbfc804f95a3e25c613ce7b, type: 2}
   - {fileID: 11400000, guid: b01c88c7ffecc3443b9fe49a6a89bb00, type: 2}
+  - {fileID: 11400000, guid: fc41d48e7df49754daa4fbd77969a5be, type: 2}
+  - {fileID: 11400000, guid: a1aec64cc0916954b891edf1f49a16c1, type: 2}
+  - {fileID: 11400000, guid: 852883da626c9b946aff37843fa91df4, type: 2}
   enemiesSet:
   - {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
   - {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}

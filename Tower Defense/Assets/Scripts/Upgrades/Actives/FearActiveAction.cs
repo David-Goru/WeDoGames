@@ -4,22 +4,24 @@
 public class FearActiveAction : ActiveAction
 {
     Collider[] colsCache = new Collider[32];
-    LayerMask objectLayer;
-    [SerializeField] float healingValue = 20f;
+    LayerMask enemyLayer;
+    [SerializeField] float fearTime = 3.5f;
 
     private void Awake()
     {
-        objectLayer = LayerMask.GetMask("Object");
+        enemyLayer = LayerMask.GetMask("Enemy");
     }
 
     public override void UseActive(Vector3 position)
     {
-        int nTurrets = Physics.OverlapSphereNonAlloc(position, activeRange, colsCache, objectLayer);
+        if (enemyLayer == 0)
+            enemyLayer = LayerMask.GetMask("Enemy");
+        int nTurrets = Physics.OverlapSphereNonAlloc(position, activeRange, colsCache, enemyLayer);
         for (int i = 0; i < nTurrets; i++)
         {
-            IHealable turret = colsCache[i].GetComponent<IHealable>();
-            if(turret != null)
-                turret.Heal(healingValue);
+            IFearable enemy = colsCache[i].GetComponent<IFearable>();
+            if (enemy != null)
+                enemy.Fear(fearTime);
         }
     }
 }
