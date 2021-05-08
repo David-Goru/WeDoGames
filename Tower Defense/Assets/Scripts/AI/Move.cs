@@ -15,7 +15,6 @@ public class Move : State
 
 	public override void Enter()
 	{
-		Debug.Log(npc.isFeared);
 		npc.pathReached = false;
 		anim.SetTrigger("moving");
 		base.Enter();

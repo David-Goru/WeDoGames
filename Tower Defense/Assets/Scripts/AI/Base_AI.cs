@@ -34,11 +34,11 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     //A*
 
     private float speed;
-    [SerializeField] float initSpeed;
+    [SerializeField] float initSpeed = 5f;
     public float GetSpeed { get => initSpeed; }
 
     private float rotationSpeed;
-    [SerializeField] float initRotationSpeed;
+    [SerializeField] float initRotationSpeed = 300f;
     private Vector3[] path;
     private int targetIndex;
     [HideInInspector] public bool pathReached;
