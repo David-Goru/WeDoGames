@@ -9,7 +9,9 @@ using UnityEngine.SceneManagement;
 
 public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable
 {
-    [SerializeField] float myHealth = 0f;
+    [SerializeField] float maxHealth = 0f;
+    public float GetMaxHealth { get => maxHealth; }
+
     [SerializeField] float damage = 0f;
     public float Damage { get => damage; }
 
@@ -20,6 +22,8 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     public float Range { get => range; }
 
     private float health;
+    public float GetHealth { get => health; }
+
     private Animator anim;
     private State currentState;
 
@@ -31,6 +35,8 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     private float speed;
     [SerializeField] float initSpeed;
+    public float GetSpeed { get => initSpeed; }
+
     private float rotationSpeed;
     [SerializeField] float initRotationSpeed;
     private Vector3[] path;
@@ -49,7 +55,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     public void OnObjectSpawn()
     {
         Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
-        health = myHealth;
+        health = maxHealth;
         anim = GetComponent<Animator>();
         isFeared = false;
         isStunned = false;
@@ -63,7 +69,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     {
         if (SceneManager.GetActiveScene().name == "Game") return;
         Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
-        health = myHealth;
+        health = maxHealth;
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal);
         currentTurret = null;
