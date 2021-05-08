@@ -20,6 +20,7 @@ public class Fear : State
 		anim.SetTrigger("moving");
 		base.Enter();
 
+		npc.currentTurret = null;
 		fearDuration = npc.fearDuration;
 	}
 
@@ -30,9 +31,7 @@ public class Fear : State
 		fearDuration -= Time.deltaTime;
 		if (fearDuration <= 0)
 		{
-			Debug.Log("Fear finished");
 			nextState = new Move(npc, anim, target);
-			npc.isFeared = false;
 			stage = EVENT.EXIT;
 		}
 	}
@@ -41,6 +40,8 @@ public class Fear : State
 	{
 		anim.ResetTrigger("moving");
 		anim.SetFloat("animSpeed", 1f);
+		npc.isFeared = false;
+
 		base.Exit();
 	}
 }

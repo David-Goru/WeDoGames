@@ -19,6 +19,7 @@ public class Stun : State
 		anim.SetTrigger("stunned");
 		base.Enter();
 
+		npc.currentTurret = null;
 		stunDuration = npc.stunDuration;
 	}
 
@@ -27,13 +28,8 @@ public class Stun : State
 		stunDuration -= Time.deltaTime;
 		if(stunDuration <= 0)
         {
-			Debug.Log("Stun finished");
 			nextState = new Move(npc, anim, target);
 			stage = EVENT.EXIT;
-		}
-        else
-        {
-			Debug.Log("Time remaining stunned: " + stunDuration);
 		}
 	}
 

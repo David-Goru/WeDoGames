@@ -29,8 +29,10 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     //A*
 
-    [SerializeField] float speed = 5f;
-    [SerializeField] float rotationSpeed = 5f;
+    private float speed;
+    [SerializeField] float initSpeed;
+    private float rotationSpeed;
+    [SerializeField] float initRotationSpeed;
     private Vector3[] path;
     private int targetIndex;
     [HideInInspector] public bool pathReached;
@@ -49,6 +51,10 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
         Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
         health = myHealth;
         anim = GetComponent<Animator>();
+        isFeared = false;
+        isStunned = false;
+        speed = initSpeed;
+        rotationSpeed = initRotationSpeed;
         currentState = new Move(this, anim, Goal);
         currentTurret = null;
     }
