@@ -42,6 +42,7 @@ public class UpgradesUI : UIList
         Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
         objectUI.name = upgrade.name;
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
+        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} {1}", upgrade.Points, upgrade.Points > 1 ? "points" : "point");
         objectUI.GetComponent<Button>().onClick.AddListener(() => addUpgradeAction(upgrade));
         objectUI.GetComponent<HoverUIElement>().HoverText = upgrade.Description;
         objectUI.SetParent(ListUIObject, false);
