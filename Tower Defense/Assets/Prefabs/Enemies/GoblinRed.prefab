@@ -605,6 +605,7 @@ GameObject:
   - component: {fileID: 7404853860904881820}
   - component: {fileID: 7404853860904881761}
   - component: {fileID: 5425877895842909429}
+  - component: {fileID: -2854450566440393291}
   m_Layer: 8
   m_Name: GoblinRed
   m_TagString: Untagged
@@ -714,6 +715,22 @@ MonoBehaviour:
   title: Goblin red
   currentHP: 0
   maxHP: 0
+--- !u!54 &-2854450566440393291
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3149947827766971998}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &3357105565266209940
 GameObject:
   m_ObjectHideFlags: 0

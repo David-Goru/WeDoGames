@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 7775431178511135980}
   - component: {fileID: 1900057767126648843}
   - component: {fileID: -8805184677491476875}
+  - component: {fileID: 2464929354866407429}
   m_Layer: 8
   m_Name: FairyRed
   m_TagString: Untagged
@@ -556,6 +557,22 @@ MonoBehaviour:
   title: Fairy red
   currentHP: 0
   maxHP: 0
+--- !u!54 &2464929354866407429
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848337117372082534}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &5364249068668262958
 GameObject:
   m_ObjectHideFlags: 0

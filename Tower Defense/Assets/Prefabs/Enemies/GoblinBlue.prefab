@@ -513,6 +513,7 @@ GameObject:
   - component: {fileID: 6279364591902289029}
   - component: {fileID: 6279364591902289016}
   - component: {fileID: -1320937627150720623}
+  - component: {fileID: -6000447463792680075}
   m_Layer: 8
   m_Name: GoblinBlue
   m_TagString: Untagged
@@ -622,6 +623,22 @@ MonoBehaviour:
   title: Goblin blue
   currentHP: 0
   maxHP: 0
+--- !u!54 &-6000447463792680075
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896375348572613703}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &2256107011263270148
 GameObject:
   m_ObjectHideFlags: 0

@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 8895491238051048063}
   - component: {fileID: 777608895094363800}
   - component: {fileID: -3510468929371124722}
+  - component: {fileID: -668282713493309610}
   m_Layer: 8
   m_Name: FairyBlue
   m_TagString: Untagged
@@ -855,6 +856,22 @@ MonoBehaviour:
   title: Fairy blue
   currentHP: 0
   maxHP: 0
+--- !u!54 &-668282713493309610
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042708892462036981}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &6549754792161821885
 GameObject:
   m_ObjectHideFlags: 0
