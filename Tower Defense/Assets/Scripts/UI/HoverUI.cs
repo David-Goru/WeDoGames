@@ -42,7 +42,7 @@ public class HoverUI : MonoBehaviour
 
     public void UpdatePosition()
     {
-        hoverRect.transform.position = Input.mousePosition + new Vector3(100, 0, 0);
+        hoverRect.transform.position = Input.mousePosition + new Vector3(125, 0, 0);
     }
 
     public void Hide()
