@@ -6,7 +6,7 @@ Completing 1 objective rewards 1 upgrade point.
 
 # Objectives
 * Finish before second 60
-* ?
+* Nexus is full HP
 * ?
 
 # Waves
