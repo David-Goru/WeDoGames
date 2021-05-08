@@ -64,6 +64,7 @@ public class BuildingsUI : UIList
     /// <param name="objectUI">Transform of the building UI</param>
     void setBuildingInfo(BuildingInfo buildingInfo, Transform objectUI)
     {
-        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}\n({1:0} coins)", buildingInfo.name, buildingInfo.GetStat(StatType.PRICE));
+        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", buildingInfo.name);
+        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} coins", buildingInfo.GetStat(StatType.PRICE));
     }
 }
