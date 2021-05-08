@@ -155,15 +155,15 @@ public class BuildObject : MonoBehaviour
 
     void placeObject()
     {
+        // If object blueprint is not on the map or it can't be built, do nothing
+        if (objectBlueprint == null || buildable == false) return;
+
         // Pay for the building
-        if(!MasterHandler.Instance.UpdateBalance(-buildingInfo.GetStat(StatType.PRICE)))
+        if (!MasterHandler.Instance.UpdateBalance(-buildingInfo.GetStat(StatType.PRICE)))
         {
             // The player can't afford it, so don't do anything
             return;
         }
-
-        // If object blueprint is not on the map or it can't be built, do nothing
-        if (objectBlueprint == null || buildable == false) return;
 
         // Activate turret
         GameObject turretPlaced = objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
