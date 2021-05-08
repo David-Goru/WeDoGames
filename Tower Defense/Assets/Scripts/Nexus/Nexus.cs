@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Nexus : MonoBehaviour
 {
-    [SerializeField] float health;
+    [SerializeField] float maxHealth;
+    float health;
+
+    public float Health { get => health;}
+    public float MaxHealth { get => maxHealth;}
 
     public static Nexus Instance;
 
@@ -13,12 +17,9 @@ public class Nexus : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
-    public float Health
+    private void Start()
     {
-        get
-        {
-            return health;
-        }
+        health = maxHealth;
     }
 
     public bool IsNexusAlive()
