@@ -52,7 +52,7 @@ public class ActiveMode : MonoBehaviour
     void setActiveArea()
     {
         activeArea.SetActive(true);
-        activeArea.transform.localScale = activeAction.activeRange * Vector3.one;
+        activeArea.transform.localScale = activeAction.activeRange * 2 * Vector3.one;
         activeArea.GetComponent<MeshRenderer>().material.SetColor("_Color", activeAction.activeAreaColor);
     }
 

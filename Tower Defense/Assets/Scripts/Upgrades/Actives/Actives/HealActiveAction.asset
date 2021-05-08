@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownUI: {fileID: 0}
   activeCooldown: 5
-  activeRange: 3
+  activeRange: 1.5
   activeAreaColor: {r: 0, g: 1, b: 0.09638786, a: 0.59607846}
   healingValue: 20

@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da379d7e3c4994f458fed84dba259dca, type: 3}
   m_Name: TestActiveAction
   m_EditorClassIdentifier: 
-  UIElement: {fileID: 0}
+  cooldownUI: {fileID: 0}
+  activeCooldown: 30
+  activeRange: 1.5
+  activeAreaColor: {r: 0, g: 0, b: 0, a: 0}
