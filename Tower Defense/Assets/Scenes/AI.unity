@@ -2976,17 +2976,17 @@ RectTransform:
   m_GameObject: {fileID: 291977485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 625915150}
   - {fileID: 864201470}
   m_Father: {fileID: 1133771608}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265.61, y: -154.6}
-  m_SizeDelta: {x: 268.9023, y: 29.398659}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 269, y: 31}
+  m_SizeDelta: {x: 268.90234, y: 29.398651}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291977487
 MonoBehaviour:
@@ -5754,16 +5754,16 @@ RectTransform:
   m_GameObject: {fileID: 518358219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 1012821625}
   - {fileID: 1041258885}
   m_Father: {fileID: 1133771608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265.6, y: -78.915}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 269, y: 183}
   m_SizeDelta: {x: 268.8828, y: 121.970795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518358221
@@ -10496,7 +10496,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1701833861}
   m_HandleRect: {fileID: 1701833860}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11351,7 +11351,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -16215,6 +16215,7 @@ MonoBehaviour:
   gridSize: 5
   buildingGrid: {fileID: 0}
   grid: {fileID: 0}
+  stopBuildingButton: {fileID: 0}
   vertexSize: 0
   groundSprite: {fileID: 0}
   ground: {fileID: 0}
@@ -18882,6 +18883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testWithoutUI: 1
   balanceText: {fileID: 0}
+  pointsText: {fileID: 0}
   masterInfo: {fileID: 0}
   upgradesUI: {fileID: 0}
   ActiveMode: {fileID: 0}
