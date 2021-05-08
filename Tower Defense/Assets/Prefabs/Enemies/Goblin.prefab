@@ -1539,6 +1539,8 @@ GameObject:
   - component: {fileID: 305767551}
   - component: {fileID: 305767552}
   - component: {fileID: 305767549}
+  - component: {fileID: -1716461988983350314}
+  - component: {fileID: -4520268044985304635}
   m_Layer: 8
   m_Name: Goblin
   m_TagString: Untagged
@@ -1619,7 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myHealth: 50
+  maxHealth: 50
   damage: 2
   attackSpeed: 1.5
   range: 0.5
@@ -1633,6 +1635,37 @@ MonoBehaviour:
   fearDuration: 0
   isFeared: 0
   fleePos: {x: 0, y: 0, z: 0}
+--- !u!114 &-1716461988983350314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581525122067702850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e99878d73b00e243a23d1439e39f44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Goblin
+  currentHP: 0
+  maxHP: 0
+--- !u!54 &-4520268044985304635
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581525122067702850}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &5640795207850941779
 GameObject:
   m_ObjectHideFlags: 0

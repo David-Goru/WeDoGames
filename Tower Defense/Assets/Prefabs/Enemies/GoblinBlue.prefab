@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 6279364591902289018}
   - component: {fileID: 6279364591902289029}
   - component: {fileID: 6279364591902289016}
+  - component: {fileID: -1320937627150720623}
   m_Layer: 8
   m_Name: GoblinBlue
   m_TagString: Untagged
@@ -592,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myHealth: 75
+  maxHealth: 75
   damage: 3
   attackSpeed: 1.75
   range: 0.5
@@ -606,6 +607,21 @@ MonoBehaviour:
   fearDuration: 0
   isFeared: 0
   fleePos: {x: 0, y: 0, z: 0}
+--- !u!114 &-1320937627150720623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896375348572613703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e99878d73b00e243a23d1439e39f44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Goblin blue
+  currentHP: 0
+  maxHP: 0
 --- !u!1 &2256107011263270148
 GameObject:
   m_ObjectHideFlags: 0
