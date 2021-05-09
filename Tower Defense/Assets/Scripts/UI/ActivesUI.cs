@@ -7,20 +7,11 @@ using UnityEngine.UI;
 public class ActivesUI : UIList
 {
     [SerializeField] GameObject UIActivePrefab = null;
-    /// <summary>
-    /// Initializes the UI list
-    /// </summary>
-    /// <param name="masterInfo">Stores the upgrades list</param>
-    /// <param name="masterObject">Transform that handles the upgrades system</param>
     public override void Initialize(MasterInfo masterInfo, Transform masterObject)
     {
         loadUpgrades(masterInfo);
     }
 
-    /// <summary>
-    /// Loads all actives from the upgrades set (from MasterInfo)
-    /// </summary>
-    /// <param name="masterInfo">Stores the upgrades list</param>
     void loadUpgrades(MasterInfo masterInfo)
     {
         foreach (Upgrade upgrade in masterInfo.UpgradesSet)
@@ -29,10 +20,6 @@ public class ActivesUI : UIList
         }
     }
 
-    /// <summary>
-    /// Creates a button that calls "activeAction", sets the name of the active and adds it to the UI
-    /// </summary>
-    /// <param name="upgrade">Information about the active that will be displayed on the button</param>
     void addActiveToUI(Upgrade upgrade)
     {
         Transform objectUI = Instantiate(UIActivePrefab, ListUIObject.position, ListUIObject.rotation).transform;

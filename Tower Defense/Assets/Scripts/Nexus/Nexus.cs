@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Nexus : MonoBehaviour
 {
-    [SerializeField] float maxHealth;
+    [SerializeField] float maxHealth = 0.0f;
     float health;
 
     public float Health { get => health;}
     public float MaxHealth { get => maxHealth;}
+    public bool IsFullHealth { get => health == maxHealth; }
 
     public static Nexus Instance;
 

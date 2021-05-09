@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour
     public string Title { get => title; }
     public int CurrentHP { get => currentHP; }
     public int MaxHP { get => maxHP; }
+    public bool IsDead { get => currentHP <= 0; }
 
     public virtual string GetExtraInfo() { return ""; }
 

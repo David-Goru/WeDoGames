@@ -17,11 +17,9 @@ public class DamageActiveAction : ActiveAction
         if(enemyLayer == 0)
             enemyLayer = LayerMask.GetMask("Enemy");
         int nEnemies = Physics.OverlapSphereNonAlloc(position, activeRange, colsCache, enemyLayer);
-        Debug.Log(nEnemies);
         for (int i = 0; i < nEnemies; i++)
         {
             IDamageable enemy = colsCache[i].GetComponent<IDamageable>();
-            Debug.Log(enemy);
             if (enemy != null)
                 enemy.GetDamage(damageValue);
         }

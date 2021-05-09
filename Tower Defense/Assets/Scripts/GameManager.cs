@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] List<Message> messageList = new List<Message>();
 
-    // Update is called once per frame
     void Update()
     {
         if(chatBox.text != "")

@@ -19,7 +19,7 @@ public class EntityInfoUI : MonoBehaviour
         Instance = this;
         enabled = false;
 
-        if (ui == null) Debug.Log("EntityInfoUI doesn't have an UI defined.");
+        if (ui == null) Debug.Log("EntityInfoUI doesn't have a UI defined.");
     }
 
     void Update()
@@ -32,6 +32,7 @@ public class EntityInfoUI : MonoBehaviour
                 RaycastHit hit;
                 if (!Physics.Raycast(ray, out hit) || hit.transform != currentEntity.transform) disableUI();
             }
+            else if (currentEntity.IsDead) disableUI();
             else updateUI();
         }
     }

@@ -80,9 +80,9 @@ public class BuildObject : MonoBehaviour
 
     public void StartBuilding(BuildingInfo buildingInfo)
     {
-        stopBuildingButton.SetActive(true);
-
         if (!MasterHandler.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
+
+        stopBuildingButton.SetActive(true);
 
         ground.material.SetTexture("_MainTex", buildingGrid);
         ground.material.SetTextureScale("_MainTex", new Vector2(gridSize, gridSize));

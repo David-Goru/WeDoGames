@@ -41,7 +41,7 @@ public class MasterHandler : MonoBehaviour
         {
             // Set UI texts
             balanceText.text = string.Format("{0} coins", MasterInfo.Balance);
-            pointsText.text = string.Format("{0} coins", MasterInfo.Points);
+            pointsText.text = string.Format("{0} points", MasterInfo.Points);
 
             // Initialize lists
             foreach (UIList list in GetComponents(typeof(UIList)))
@@ -91,11 +91,8 @@ public class MasterHandler : MonoBehaviour
     {
         if (amount < 0 && MasterInfo.Points < Mathf.Abs(amount)) return false;
 
-        if (pointsText != null)
-        {
-            MasterInfo.Points += amount;
-            pointsText.text = string.Format("{0} points", MasterInfo.Points);
-        }
+        MasterInfo.Points += amount;
+        if (pointsText != null) pointsText.text = string.Format("{0} points", MasterInfo.Points);
 
         return true;
     }

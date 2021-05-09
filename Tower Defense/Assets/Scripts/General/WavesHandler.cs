@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the waves, enemies spawned on every wave and points earned.
+/// </summary>
 public class WavesHandler : MonoBehaviour
 {
     static int enemiesSpawned = 0;
@@ -23,12 +24,8 @@ public class WavesHandler : MonoBehaviour
     bool onPlanningPhase = true;
     ObjectPooler objectPooler;
 
-    /// <summary>
-    /// Initialize waves info
-    /// </summary>
     void Start()
     {
-        // Initialize spawn positions
         spawnerPositions = new Vector3[Spawners.childCount];
         int i = 0;
         foreach (Transform t in Spawners)
@@ -37,34 +34,25 @@ public class WavesHandler : MonoBehaviour
             i++;
         }
 
-        // Get object pooler
         objectPooler = ObjectPooler.GetInstance();
     }
 
-    /// <summary>
-    /// Update the waves
-    /// </summary>
     void Update()
     {
         updateWaveState();
     }
 
-    /// <summary>
-    /// Update state of the wave, depending on whether it is on planning phase or on enemies attacking phase
-    /// </summary>
     void updateWaveState()
     {
         if (onPlanningPhase)
         {
             if (timer < planningTime)
             {
-                // Update UI text and timer
                 WaveTimerText.text = string.Format("Next wave: {0:0} seconds", planningTime - timer);
                 timer += Time.deltaTime;
             }
             else
             {
-                // Create new wave
                 currentWave++;
                 timer = 0;
                 onPlanningPhase = false;
@@ -74,7 +62,6 @@ public class WavesHandler : MonoBehaviour
         }
         else
         {
-            print(enemiesSpawned);
             if (enemiesSpawned == 0) nextWave();
             else
             {
@@ -87,15 +74,14 @@ public class WavesHandler : MonoBehaviour
 
     void nextWave()
     {
-        if (timer <= 60) MasterHandler.Instance.UpdatePoints(1);
+        MasterHandler.Instance.UpdatePoints(1); // Wave won
+        if (timer <= 60) MasterHandler.Instance.UpdatePoints(1); // Objective 1 completed
+        if (Nexus.Instance.IsFullHealth) MasterHandler.Instance.UpdatePoints(1); // Objective 2 completed
         timer = 0;
         onPlanningPhase = true;
         upgradesUI.EnableRandomUpgrades(2);
     }
 
-    /// <summary>
-    /// Spawn enemies at random positions (from the spawnerPositions list)
-    /// </summary>
     void spawnEnemies()
     {
         for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
