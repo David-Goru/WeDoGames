@@ -8,7 +8,7 @@ public class WavesHandler : MonoBehaviour
 {
     static int enemiesSpawned = 0;
 
-    public const int ENEMIES_PER_WAVE_MULTIPLIER = 4;
+    public const int ENEMIES_PER_WAVE_MULTIPLIER = 40;
 
     [SerializeField] UpgradesUI upgradesUI = null;
 

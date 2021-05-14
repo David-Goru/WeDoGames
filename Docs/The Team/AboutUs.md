@@ -7,7 +7,7 @@ We are game developers. Which means that we... Do... Games :D
 > AI programmer
 * **David Gómez**
 > UI and building system programmer
-
-# Other folks that helped the development
 * **Cristian Cantos**
-> Artist. Nexus, enemy 1 and 2, heavy turret.
+> Artist
+* **Jorge Lorenzo**
+> Designer
