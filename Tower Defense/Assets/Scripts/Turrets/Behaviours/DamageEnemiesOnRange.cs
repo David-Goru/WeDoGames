@@ -6,7 +6,6 @@
 public class DamageEnemiesOnRange : MonoBehaviour, ITurretBehaviour
 {
     ICurrentTargetsOnRange targetDetection;
-    BuildingRange turretBuildingRange;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
     [SerializeField] ParticleSystem particles = null;
@@ -31,7 +30,7 @@ public class DamageEnemiesOnRange : MonoBehaviour, ITurretBehaviour
                 ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
                 if (turretDamageable != null)
                 {
-                    turretDamageable.OnTurretHit(turretBuildingRange, damage, enemyDamageHandler);
+                    turretDamageable.OnTurretHit(transform, damage, enemyDamageHandler);
                 }
             }
             timer = 0f;
@@ -45,7 +44,6 @@ public class DamageEnemiesOnRange : MonoBehaviour, ITurretBehaviour
     void GetDependencies()
     {
         targetDetection = GetComponent<ICurrentTargetsOnRange>();
-        turretBuildingRange = GetComponent<BuildingRange>();
         turretStats = GetComponent<TurretStats>();
         enemyDamageHandler = GetComponent<IEnemyDamageHandler>();
     }
