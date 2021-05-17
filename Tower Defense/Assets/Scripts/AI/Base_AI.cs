@@ -27,7 +27,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     private Animator anim;
     private State currentState;
 
-    [HideInInspector] public BuildingRange Goal;
+    [HideInInspector] public Transform Goal;
     [HideInInspector] public Transform currentTurret;
     public IEnemyDamageHandler currentTurretDamage;
 
@@ -54,7 +54,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     public void OnObjectSpawn()
     {
-        Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
+        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = maxHealth;
         anim = GetComponent<Animator>();
         isFeared = false;
@@ -68,7 +68,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "Game") return;
-        Goal = GameObject.FindGameObjectWithTag("Nexus").GetComponent<BuildingRange>();
+        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
         health = maxHealth;
         anim = GetComponent<Animator>();
         currentState = new Move(this, anim, Goal);
@@ -98,13 +98,17 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
         }
     }
 
-    public void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage)
+    public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
         health -= damage;
         currentTurretDamage = enemyDamage;
         if (currentTurret == null)
         {
             currentTurret = turretTransform.transform;
+            currentState.OnTurretHit(turretTransform, damage, enemyDamage);
+        }
+        else if (currentState.Target == Goal)
+        {
             currentState.OnTurretHit(turretTransform, damage, enemyDamage);
         }
         checkDeath();

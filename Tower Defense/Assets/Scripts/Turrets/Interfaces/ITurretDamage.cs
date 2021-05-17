@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ITurretDamage
 {
-    void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage);
+    void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage);
 }

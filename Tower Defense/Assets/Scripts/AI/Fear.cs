@@ -9,7 +9,7 @@ public class Fear : State
 {
 	float fearDuration;
 
-	public Fear(Base_AI _npc, Animator _anim, BuildingRange _target) : base(_npc, _anim, _target)
+	public Fear(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.FEAR;
 	}
@@ -31,7 +31,7 @@ public class Fear : State
 		fearDuration -= Time.deltaTime;
 		if (fearDuration <= 0)
 		{
-			nextState = new Move(npc, anim, target);
+			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
 	}

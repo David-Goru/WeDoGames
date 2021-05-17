@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTest : MonoBehaviour, ITurretDamage
 {
-    public void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage)
+    public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
         print("Ma dao");
     }

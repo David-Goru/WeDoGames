@@ -12,7 +12,7 @@ public class Attack : State
 	Quaternion npcRotation;
 	float rotationSpeed = 200f;
 
-	public Attack(Base_AI _npc, Animator _anim, BuildingRange _target) : base(_npc, _anim, _target)
+	public Attack(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.ATTACK;
 		//Modify agent properties like speed, etc.
@@ -23,7 +23,7 @@ public class Attack : State
 		anim.SetTrigger("attacking");
 		base.Enter();
 
-		npcRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x, npc.transform.position.y, target.transform.position.z) - npc.transform.position);
+		npcRotation = Quaternion.LookRotation(new Vector3(Target.position.x, npc.transform.position.y, Target.position.z) - npc.transform.position);
 
 		attackTarget();
 	}
@@ -54,7 +54,7 @@ public class Attack : State
 			stage = EVENT.EXIT;
 		}
 
-		if (!target.gameObject.activeSelf)
+		if (!Target.gameObject.activeSelf)
 		{
             if (npc.Goal.gameObject.activeSelf)
             {
@@ -78,11 +78,11 @@ public class Attack : State
 
 	void attackTarget()
     {
-        if (target.gameObject.CompareTag("Turret"))
+        if (Target.gameObject.CompareTag("Turret"))
         {
 			npc.currentTurretDamage.OnEnemyHit(npc.Damage);
 		}
-		else if (target.gameObject.CompareTag("Nexus"))
+		else if (Target.gameObject.CompareTag("Nexus"))
         {
 			Nexus.Instance.GetHit(npc.Damage);
         }

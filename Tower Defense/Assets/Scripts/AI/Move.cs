@@ -8,7 +8,7 @@ using UnityEngine;
 public class Move : State
 {
 
-	public Move(Base_AI _npc, Animator _anim, BuildingRange _target) : base(_npc, _anim, _target)
+	public Move(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.MOVE;
 	}
@@ -19,24 +19,14 @@ public class Move : State
 		anim.SetTrigger("moving");
 		base.Enter();
 
-		PathRequestManager.RequestPath(npc.transform.position, target, npc.Range, npc.OnPathFound);
+		PathRequestManager.RequestPath(npc.transform.position, Target, npc.Range, npc.OnPathFound);
 	}
 
 	public override void Update()
 	{
-		if (npc.pathReached)
+		if (npc.pathReached && !npc.isStunned && !npc.isFeared)
         {
-			nextState = new Attack(npc, anim, target);
-			stage = EVENT.EXIT;
-		}
-		if (npc.isStunned)
-		{
-			nextState = new Stun(npc, anim, npc.Goal);
-			stage = EVENT.EXIT;
-		}
-		if (npc.isFeared)
-		{
-			nextState = new Fear(npc, anim, npc.Goal);
+			nextState = new Attack(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
 	}

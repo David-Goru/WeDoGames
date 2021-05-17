@@ -9,7 +9,7 @@ public class Stun : State
 {
 	float stunDuration;
 
-	public Stun(Base_AI _npc, Animator _anim, BuildingRange _target) : base(_npc, _anim, _target)
+	public Stun(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		Name = STATE.STUN;
 	}
@@ -28,7 +28,7 @@ public class Stun : State
 		stunDuration -= Time.deltaTime;
 		if(stunDuration <= 0)
         {
-			nextState = new Move(npc, anim, target);
+			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
 	}

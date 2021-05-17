@@ -17,18 +17,18 @@ public class State
 		ENTER, UPDATE, EXIT
 	};
 
+	public Transform Target;
 	public STATE Name;
 	protected EVENT stage;
 	protected Base_AI npc;
 	protected Animator anim;
-	protected BuildingRange target;
-	protected State nextState;
+    protected State nextState;
 
-	public State(Base_AI _npc, Animator _anim, BuildingRange _target)
+    public State(Base_AI _npc, Animator _anim, Transform _target)
 	{
 		npc = _npc;
 		anim = _anim;
-		target = _target;
+		Target = _target;
 		stage = EVENT.ENTER;
 	}
 
@@ -48,9 +48,9 @@ public class State
 		return this;
 	}
 
-	public void OnTurretHit(BuildingRange turretTransform, float damage, IEnemyDamageHandler enemyDamage)
-    {
-        if (!turretTransform.gameObject.activeSelf && !npc.isStunned && !npc.isFeared) //The turret that shot you is already dead and you're not stunned AND you're not feared
+	public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
+	{
+		if (!turretTransform.gameObject.activeSelf && !npc.isStunned && !npc.isFeared) //The turret that shot you is already dead and you're not stunned AND you're not feared
         {
 			nextState = new Move(npc, anim, npc.Goal); //Aim for the nexus
 			stage = EVENT.EXIT;
