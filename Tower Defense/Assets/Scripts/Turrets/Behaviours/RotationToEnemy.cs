@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotationToEnemy : MonoBehaviour, ITurretBehaviour
+public class RotationToEnemy : EffectComponent
 {
     [SerializeField] float rotationSpeed = 300f;
     [SerializeField] Transform objectToRotate = null;
     public Transform ObjectToRotate { get { return objectToRotate; } set { objectToRotate = value; } }
     ICurrentTargetsOnRange enemyDetection;
 
-
-    public void InitializeBehaviour()
+    public override void InitializeComponent()
     {
         enemyDetection = transform.GetComponent<ICurrentTargetsOnRange>();
     }
 
-    public void UpdateBehaviour()
+    public override void UpdateComponent()
     {
         RotateToEnemy();
     }
@@ -43,5 +42,6 @@ public class RotationToEnemy : MonoBehaviour, ITurretBehaviour
         objectToRotate.rotation = Quaternion.RotateTowards(objectToRotate.rotation, lookRotation, rotationSpeed * Time.deltaTime);
 
     }
+
 
 }

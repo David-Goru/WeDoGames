@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
+public class ShootToEnemy : EffectComponent
 {
     [SerializeField] Pool projectile = null;
     [SerializeField] Transform spawnPosition = null;
@@ -14,14 +14,23 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
     ICurrentTargetsOnRange targetDetection;
-    BuildingRange turretBuildingRange;
 
     public ICurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
 
-    public void InitializeBehaviour()
+
+    public override void InitializeComponent()
     {
         GetDependencies();
         timer = 0f;
+    }
+
+    public override void UpdateComponent()
+    {
+        if (ReferenceEquals(targetDetection, null)) return;
+        foreach (Transform target in targetDetection.CurrentTargets)
+        {
+            ShootEnemy(target);
+        }
     }
 
     void GetDependencies()
@@ -30,16 +39,6 @@ public class ShootToEnemy : MonoBehaviour, ITurretBehaviour
         turretStats = GetComponent<TurretStats>();
         targetDetection = GetComponent<ICurrentTargetsOnRange>();
         enemyDamageHandler = GetComponent<IEnemyDamageHandler>();
-        turretBuildingRange = GetComponent<BuildingRange>();
-    }
-
-    public void UpdateBehaviour()
-    {
-        if (ReferenceEquals(targetDetection, null)) return;
-        foreach (Transform target in targetDetection.CurrentTargets)
-        {
-            ShootEnemy(target);
-        }
     }
 
     public void ShootEnemy(Transform enemy)

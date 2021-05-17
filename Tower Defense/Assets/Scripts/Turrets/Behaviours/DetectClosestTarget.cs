@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// This class detects the first enemy on enter the range. When enemy dies, take the closest one and mantains it until he dies.
 /// </summary>
-public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTargetsOnRange
+public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
 {
     const float TIME_OFFSET_FOR_CHECKING_RANGE = 0.2f;
 
@@ -20,10 +20,14 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
 
     public List<Transform> CurrentTargets { get { return currentTargets; } private set { } }
 
-
-    public void InitializeBehaviour()
+    public override void InitializeComponent()
     {
         GetDependencies();
+    }
+
+    public override void UpdateComponent()
+    {
+        UpdateTarget();
     }
 
     private void GetDependencies()
@@ -31,11 +35,6 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
         turretStats = GetComponent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
         targetsDetector.TargetLayer = LayerMask.GetMask("Enemy");
-    }
-
-    public void UpdateBehaviour()
-    {
-        UpdateTarget();
     }
 
     void UpdateTarget()
@@ -133,11 +132,11 @@ public class DetectClosestTarget : MonoBehaviour, ITurretBehaviour, ICurrentTarg
         currentTargets.Clear();
     }
 
-    [SerializeField] float range = 2f;
+    [SerializeField] float debugRange = 2f;
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, range);
+        Gizmos.DrawWireSphere(this.transform.position, debugRange);
     }
 
 }
