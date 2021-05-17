@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
 
     public int maxMessages = 25;
 
-    public GameObject chatPanel, textObject, chatLog;
+    public GameObject chatPanel, textObject;
     public InputField chatBox;
+
+    public GameObject ChatLogView, ChatLogInput;
 
     public Color playerMessage, info, errorColor;
 
@@ -31,10 +33,16 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && chatBox.text == "")
         {
-            if (chatLog.activeSelf == false)
-                chatLog.SetActive(true);
+            if (ChatLogView.activeSelf == false)
+            {
+                ChatLogInput.SetActive(true);
+                ChatLogView.SetActive(true);
+            }
             else
-                chatLog.SetActive(false);
+            {
+                ChatLogInput.SetActive(false);
+                ChatLogView.SetActive(false);
+            }
         }
 
         if(chatBox.text != "")

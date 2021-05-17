@@ -49,6 +49,10 @@ MonoBehaviour:
   textObject: {fileID: 2406679494333590781, guid: 147a184de30a8024bb6d9f28bba05a05,
     type: 3}
   chatBox: {fileID: 0}
+  ChatLogView: {fileID: 0}
+  ChatLogInput: {fileID: 0}
   playerMessage: {r: 1, g: 1, b: 1, a: 1}
-  info: {r: 0, g: 0.6383686, b: 1, a: 1}
+  info: {r: 0.0126776695, g: 1, b: 0, a: 1}
+  errorColor: {r: 1, g: 0, b: 0, a: 1}
   messageList: []
+  Commands: []
