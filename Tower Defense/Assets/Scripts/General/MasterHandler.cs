@@ -36,6 +36,8 @@ public class MasterHandler : MonoBehaviour
 
         MasterInfo.InitializeVariables();
 
+        if (GameManager.Instance != null) GameManager.Instance.AddCommand("addMoney", addMoney);
+
         // If not testing without UI
         if (!testWithoutUI)
         {
@@ -51,6 +53,19 @@ public class MasterHandler : MonoBehaviour
 
             upgradesUI.EnableRandomUpgrades(2);
         }
+    }
+
+    private void addMoney(string[] parameters)
+    {
+        if(parameters.Length == 0)
+        {
+            return;
+        }
+
+        int money = 0;
+        int.TryParse(parameters[0], out money);
+
+        UpdateBalance(money);
     }
 
     /// <summary>

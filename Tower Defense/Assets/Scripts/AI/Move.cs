@@ -19,7 +19,9 @@ public class Move : State
 		anim.SetTrigger("moving");
 		base.Enter();
 
-		PathRequestManager.RequestPath(npc.transform.position, Target, npc.Range, npc.OnPathFound);
+		float buildingRange = Target.GetComponent<BuildingRange>() != null ? Target.GetComponent<BuildingRange>().Range : 0;
+		PathData newTarget = new PathData(Target.transform.position, buildingRange);
+		PathRequestManager.RequestPath(npc.transform.position, newTarget, npc.Range, npc.OnPathFound);
 	}
 
 	public override void Update()
