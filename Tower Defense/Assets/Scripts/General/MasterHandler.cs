@@ -36,7 +36,7 @@ public class MasterHandler : MonoBehaviour
 
         MasterInfo.InitializeVariables();
 
-        GameManager.Instance.AddCommand("addMoney", addMoney);
+        if (GameManager.Instance != null) GameManager.Instance.AddCommand("addMoney", addMoney);
 
         // If not testing without UI
         if (!testWithoutUI)

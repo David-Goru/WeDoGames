@@ -18,6 +18,7 @@ public class State
 	};
 
 	public Transform Target;
+	public PathData FearPosition;
 	public STATE Name;
 	protected EVENT stage;
 	protected Base_AI npc;
@@ -57,6 +58,7 @@ public class State
 		}
         else if(!npc.isStunned && !npc.isFeared) //The turret that shot you is alive and you're not stunned AND you're not feared
         {
+			npc.currentTurret = turretTransform.transform;
 			nextState = new Move(npc, anim, turretTransform); //Aim for the turret
 			stage = EVENT.EXIT;
 		}

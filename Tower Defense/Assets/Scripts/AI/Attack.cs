@@ -42,18 +42,6 @@ public class Attack : State
 			npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, npcRotation, rotationSpeed * Time.deltaTime);
 		}
 
-        if (npc.isStunned)
-        {
-			nextState = new Stun(npc, anim, npc.Goal);
-			stage = EVENT.EXIT;
-        }
-		
-		if (npc.isFeared)
-		{
-			nextState = new Fear(npc, anim, npc.Goal);
-			stage = EVENT.EXIT;
-		}
-
 		if (!Target.gameObject.activeSelf)
 		{
             if (npc.Goal.gameObject.activeSelf)

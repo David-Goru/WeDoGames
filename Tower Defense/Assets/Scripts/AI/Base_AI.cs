@@ -50,7 +50,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     [HideInInspector] public float fearDuration;
     [HideInInspector] public bool isFeared;
-    [HideInInspector] public Vector3 fleePos;
 
     public void OnObjectSpawn()
     {
@@ -102,12 +101,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     {
         health -= damage;
         currentTurretDamage = enemyDamage;
-        if (currentTurret == null)
-        {
-            currentTurret = turretTransform.transform;
-            currentState.OnTurretHit(turretTransform, damage, enemyDamage);
-        }
-        else if (currentState.Target == Goal)
+        if (currentTurret == null || currentState.Target == Goal)
         {
             currentState.OnTurretHit(turretTransform, damage, enemyDamage);
         }
@@ -121,7 +115,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
             StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
             path = newPath;
             targetIndex = 0;
-            if (path.Length > 0 && this.gameObject.activeSelf && !isStunned && !isFeared) //If the AI is stunned or feared, we will say that it reached the end of the path (it will forget it's target)
+            if (path.Length > 0 && this.gameObject.activeSelf) //If the AI is stunned or feared, we will say that it reached the end of the path (it will forget it's target)
             {
                 StartCoroutine("FollowPath");
             }
@@ -157,12 +151,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     private void OnDisable()
     {
         StopCoroutine("FollowPath");
-    }
-
-    public void Flee()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, fleePos, speed * Time.deltaTime);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(fleePos), rotationSpeed * Time.deltaTime);
     }
 
     //For visual hint
@@ -224,8 +212,6 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
         fearDuration = fearSeconds;
         isFeared = true;
-
-        fleePos = -transform.forward * 20f;
 
         StopCoroutine("FollowPath");
 

@@ -16,22 +16,23 @@ public class Fear : State
 
 	public override void Enter()
 	{
+		npc.pathReached = false;
 		anim.SetFloat("animSpeed", 2f);
 		anim.SetTrigger("moving");
 		base.Enter();
 
+		FearPosition = new PathData(-npc.transform.forward * 10.0f, 0);
 		npc.currentTurret = null;
 		fearDuration = npc.fearDuration;
+		PathRequestManager.RequestPath(npc.transform.position, FearPosition, npc.Range, npc.OnPathFound);
 	}
 
 	public override void Update()
 	{
-		npc.Flee();
-
 		fearDuration -= Time.deltaTime;
 		if (fearDuration <= 0)
 		{
-			nextState = new Move(npc, anim, Target);
+			nextState = new Move(npc, anim, npc.Goal);
 			stage = EVENT.EXIT;
 		}
 	}
