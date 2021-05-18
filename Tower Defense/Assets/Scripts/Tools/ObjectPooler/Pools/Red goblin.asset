@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Red goblin
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3149947827766971998, guid: 4a0b089769329c54eb2f485d7e3048ac, type: 3}
+  prefab: {fileID: 5650282338201291647, guid: 1374d686d00cf7e46b309014c002c92f, type: 3}
   size: 100
   tag: Red Goblin

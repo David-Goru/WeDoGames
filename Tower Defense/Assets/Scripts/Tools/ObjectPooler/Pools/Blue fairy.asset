@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Blue fairy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6042708892462036981, guid: a561ee9a294389b4e931cc16e4714aff, type: 3}
+  prefab: {fileID: 3899326745429841747, guid: 040f3cbfea72b5c41ada49fe87883930, type: 3}
   size: 100
   tag: Blue fairy

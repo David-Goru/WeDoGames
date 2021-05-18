@@ -8,6 +8,8 @@ public class Entity : MonoBehaviour
     [Header("Debug")]
     [SerializeField] protected string title = "";
     [SerializeField] protected int currentHP = 0;
+
+    [Header("Attributes")]
     [SerializeField] protected int maxHP = 0;
 
     public string Title { get => title; }

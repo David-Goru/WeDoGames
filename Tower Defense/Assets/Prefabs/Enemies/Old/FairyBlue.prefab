@@ -745,7 +745,6 @@ GameObject:
   - component: {fileID: 1732128076250821252}
   - component: {fileID: 8895491238051048063}
   - component: {fileID: 777608895094363800}
-  - component: {fileID: -3510468929371124722}
   - component: {fileID: -668282713493309610}
   m_Layer: 8
   m_Name: FairyBlue
@@ -801,20 +800,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  title: 
+  currentHP: 0
+  maxHP: 0
   damage: 6
   attackSpeed: 2
   range: 10
-  Goal: {fileID: 0}
-  currentTurret: {fileID: 0}
   initSpeed: 5
   initRotationSpeed: 300
+  Goal: {fileID: 0}
+  currentTurret: {fileID: 0}
   pathReached: 0
   stunDuration: 0
   isStunned: 0
   fearDuration: 0
   isFeared: 0
-  fleePos: {x: 0, y: 0, z: 0}
 --- !u!65 &8895491238051048063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -841,21 +841,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 2, z: 0.25}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &-3510468929371124722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6042708892462036981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e99878d73b00e243a23d1439e39f44c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Fairy blue
-  currentHP: 0
-  maxHP: 0
 --- !u!54 &-668282713493309610
 Rigidbody:
   m_ObjectHideFlags: 0

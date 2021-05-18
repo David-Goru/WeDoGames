@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Green fairy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6267868965878264546, guid: be4e0b841f0667243a4d8dad2e0242b4, type: 3}
+  prefab: {fileID: 4042943404962123225, guid: 1382bc02aa5ca534b949a594ad2af419, type: 3}
   size: 100
   tag: Green fairy

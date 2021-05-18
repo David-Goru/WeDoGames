@@ -1,35 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Nexus : MonoBehaviour
+public class Nexus : Entity
 {
-    [SerializeField] float maxHealth = 0.0f;
-    float health;
+    const string textUI = "Evil beings try to get you out of the planet. But don't worry, your Nexus will keep' em entertained while you pium pium them.";
 
-    public float Health { get => health;}
-    public float MaxHealth { get => maxHealth;}
-    public bool IsFullHealth { get => health == maxHealth; }
+    public bool IsFullHealth { get => currentHP == maxHP; }
+    public bool IsAlive { get => currentHP > 0; }
 
     public static Nexus Instance;
+    public static Transform GetTransform { get => Instance.transform; }
 
     void Awake()
     {
         if (Instance == null) Instance = this;
     }
 
-    private void Start()
+    void Start()
     {
-        health = maxHealth;
+        currentHP = maxHP;
     }
 
-    public bool IsNexusAlive()
+    public override string GetExtraInfo()
     {
-        return health > 0;
+        return textUI;
     }
 
     public void GetHit(float damage)
     {
-        health -= damage;
+        currentHP -= Mathf.RoundToInt(damage);
     }
 }

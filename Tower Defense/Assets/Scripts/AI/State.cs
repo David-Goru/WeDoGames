@@ -51,6 +51,7 @@ public class State
 
 	public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
 	{
+		Debug.Log("Hey!");
 		if (!turretTransform.gameObject.activeSelf && !npc.isStunned && !npc.isFeared) //The turret that shot you is already dead and you're not stunned AND you're not feared
         {
 			nextState = new Move(npc, anim, npc.Goal); //Aim for the nexus

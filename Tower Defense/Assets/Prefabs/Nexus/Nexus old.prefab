@@ -78,9 +78,8 @@ GameObject:
   - component: {fileID: 1969390655}
   - component: {fileID: 1969390657}
   - component: {fileID: 1969390663}
-  - component: {fileID: 1473978627}
   m_Layer: 10
-  m_Name: Nexus
+  m_Name: Nexus old
   m_TagString: Nexus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73d2713f8be0514d809d440f6d15e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  title: 
+  currentHP: 0
+  maxHP: 0
 --- !u!65 &1969390654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -190,21 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
---- !u!114 &1473978627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3227687442756157652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9287fc30ed3cfcb45a0650a5649dd1f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Nexus
-  currentHP: 0
-  maxHP: 0
 --- !u!1 &3686211846305056846
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,26 +7,22 @@ using UnityEngine.SceneManagement;
 // Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
 // </summary>
 
-public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable
+public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable
 {
-    [SerializeField] float maxHealth = 0f;
-    public float GetMaxHealth { get => maxHealth; }
-
     [SerializeField] float damage = 0f;
-    public float Damage { get => damage; }
-
     [SerializeField] float attackSpeed = 0f;
-    public float AttackSpeed { get => attackSpeed; }
-
     [SerializeField] float range = 0f;
-    public float Range { get => range; }
+    [SerializeField] float defaultSpeed = 5f;
 
-    private float health;
-    public float GetHealth { get => health; }
+    [Header("Other stuff")]
+    [SerializeField] float initRotationSpeed = 300f;
 
-    private Animator anim;
-    private State currentState;
+    Animator anim;
+    State currentState;
 
+    public float Damage { get => damage; set => damage = value; }
+    public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
+    public float Range { get => range; set => range = value; }
     [HideInInspector] public Transform Goal;
     [HideInInspector] public Transform currentTurret;
     public IEnemyDamageHandler currentTurretDamage;
@@ -34,11 +30,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     //A*
 
     private float speed;
-    [SerializeField] float initSpeed = 5f;
-    public float GetSpeed { get => initSpeed; }
-
     private float rotationSpeed;
-    [SerializeField] float initRotationSpeed = 300f;
     private Vector3[] path;
     private int targetIndex;
     [HideInInspector] public bool pathReached;
@@ -47,18 +39,17 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     [HideInInspector] public float stunDuration;
     [HideInInspector] public bool isStunned;
-
     [HideInInspector] public float fearDuration;
     [HideInInspector] public bool isFeared;
 
     public void OnObjectSpawn()
     {
-        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
-        health = maxHealth;
-        anim = GetComponent<Animator>();
+        Goal = Nexus.GetTransform;
+        currentHP = maxHP;
+        anim = transform.Find("Model").GetComponent<Animator>();
         isFeared = false;
         isStunned = false;
-        speed = initSpeed;
+        speed = defaultSpeed;
         rotationSpeed = initRotationSpeed;
         currentState = new Move(this, anim, Goal);
         currentTurret = null;
@@ -67,14 +58,13 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "Game") return;
-        Goal = GameObject.FindGameObjectWithTag("Nexus").transform;
-        health = maxHealth;
-        anim = GetComponent<Animator>();
+        Goal = Nexus.GetTransform;
+        currentHP = maxHP;
+        anim = transform.Find("Model").GetComponent<Animator>();
         currentState = new Move(this, anim, Goal);
         currentTurret = null;
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentState = currentState.Process();
@@ -87,7 +77,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     void checkDeath()
     {
-        if(health <= 0)
+        if (currentHP <= 0)
         {
             if (gameObject.activeSelf)
             {
@@ -99,7 +89,7 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
-        health -= damage;
+        currentHP -= Mathf.RoundToInt(damage);
         currentTurretDamage = enemyDamage;
         if (currentTurret == null || currentState.Target == Goal)
         {
@@ -236,8 +226,19 @@ public class Base_AI : MonoBehaviour, ITurretDamage, IPooledObject, IStunnable, 
 
     public void GetDamage(float damage)
     {
-        health -= damage;
+        currentHP -= Mathf.RoundToInt(damage);
 
         checkDeath();
+    }
+
+    /* UI */
+    const string info = @"Attack Range: {0:0.##}
+Attack Rate: {1:0.##}
+Attack Damage: {2:0.##}
+Speed: {3:0.##}";
+
+    public override string GetExtraInfo()
+    {
+        return string.Format(info, range, attackSpeed, damage, speed);
     }
 }
