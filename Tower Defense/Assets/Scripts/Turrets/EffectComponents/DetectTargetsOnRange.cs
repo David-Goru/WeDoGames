@@ -4,18 +4,23 @@ using UnityEngine;
 /// <summary>
 /// This is a class
 /// </summary>
-public class DetectTargetsOnRange : MonoBehaviour, ICurrentTargetsOnRange
+public class DetectTargetsOnRange : EffectComponent, ICurrentTargetsOnRange
 {
     ITargetsDetector targetsDetector;
     TurretStats turretStats;
+    [SerializeField] LayerMask targetLayer = 0;
 
     public List<Transform> CurrentTargets { get { return getTargets(); } private set { } }
 
-    void Awake()
+    public override void InitializeComponent()
     {
-        turretStats = GetComponent<TurretStats>();
+        turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
-        targetsDetector.TargetLayer = LayerMask.GetMask("Enemy");
+        targetsDetector.TargetLayer = targetLayer;
+    }
+
+    public override void UpdateComponent()
+    {
     }
 
     List<Transform> getTargets()

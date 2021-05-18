@@ -7,26 +7,21 @@ using UnityEngine;
 /// </summary>
 public class EnemyDamageHandler : MonoBehaviour, IEnemyDamageHandler
 {
-    List<IEnemyDamage> enemyDamagesBehaviours;
+    [SerializeField] List<EnemyDamage> enemyDamagesBehaviours = null;
     
-    private void Awake()
-    {
-        enemyDamagesBehaviours = transform.GetComponents<IEnemyDamage>().ToList();
-    }
-
     public void OnEnemyHit(float damage)
     {
-        foreach (IEnemyDamage enemyDamageBehaviour in enemyDamagesBehaviours)
+        foreach (EnemyDamage enemyDamageBehaviour in enemyDamagesBehaviours)
         {
             enemyDamageBehaviour.OnEnemyHit(damage);
         }
     }
 
-    public void AddEnemyDamageBehaviour(IEnemyDamage enemyDamageBehaviour)
+    public void AddEnemyDamageBehaviour(EnemyDamage enemyDamageBehaviour)
     {
         enemyDamagesBehaviours.Add(enemyDamageBehaviour);
     }
-    public void RemoveEnemyDamageBehaviour(IEnemyDamage enemyDamageBehaviour)
+    public void RemoveEnemyDamageBehaviour(EnemyDamage enemyDamageBehaviour)
     {
         enemyDamagesBehaviours.Remove(enemyDamageBehaviour);
     }

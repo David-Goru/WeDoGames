@@ -36,9 +36,9 @@ public class ShootToEnemy : EffectComponent
     void GetDependencies()
     {
         objectPooler = ObjectPooler.GetInstance();
-        turretStats = GetComponent<TurretStats>();
+        turretStats = GetComponentInParent<TurretStats>();
         targetDetection = GetComponent<ICurrentTargetsOnRange>();
-        enemyDamageHandler = GetComponent<IEnemyDamageHandler>();
+        enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
     }
 
     public void ShootEnemy(Transform enemy)

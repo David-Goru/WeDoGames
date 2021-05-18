@@ -5,18 +5,17 @@ using UnityEngine;
 /// <summary>
 /// This class handles turret damage taken
 /// </summary>
-public class TurretDamageable : MonoBehaviour, IEnemyDamage
+public class TurretDamageable : EnemyDamage
 {
     TurretStats turretStats;
-    List<ITurretNoHealth> turretNoHealthBehaviours = new List<ITurretNoHealth>();
+    [SerializeField] List<TurretNoHealth> turretNoHealthBehaviours = null;
 
     private void Awake()
     {
-        turretStats = GetComponent<TurretStats>();
-        turretNoHealthBehaviours = GetComponents<ITurretNoHealth>().ToList();
+        turretStats = GetComponentInParent<TurretStats>();
     }
 
-    public void OnEnemyHit(float damage)
+    public override void OnEnemyHit(float damage)
     {
         turretStats.currentHp -= damage;
         if (turretStats.currentHp <= 0)
@@ -32,5 +31,4 @@ public class TurretDamageable : MonoBehaviour, IEnemyDamage
             }
         }
     }
-
 }

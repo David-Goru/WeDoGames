@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class SpecialEffect : MonoBehaviour, ITurretBehaviour
 {
-    [SerializeField] List<EffectComponent> components;
+    [SerializeField] List<EffectComponent> components = null;
     public void InitializeBehaviour()
     {
         foreach (EffectComponent component in components)

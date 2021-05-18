@@ -9,6 +9,7 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
     const float TIME_OFFSET_FOR_CHECKING_RANGE = 0.2f;
 
     ITargetsDetector targetsDetector;
+    [SerializeField] LayerMask targetLayer = 0;
 
     List<Transform> currentTargets = new List<Transform>();
     
@@ -32,9 +33,9 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
 
     private void GetDependencies()
     {
-        turretStats = GetComponent<TurretStats>();
+        turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
-        targetsDetector.TargetLayer = LayerMask.GetMask("Enemy");
+        targetsDetector.TargetLayer = targetLayer;
     }
 
     void UpdateTarget()

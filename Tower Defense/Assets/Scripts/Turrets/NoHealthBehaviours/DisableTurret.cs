@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// This is a class
 /// </summary>
-public class DisableTurret : MonoBehaviour, ITurretNoHealth
+public class DisableTurret : TurretNoHealth
 {
-    public void OnTurretNoHealth()
+    public override void OnTurretNoHealth()
     {
         Disable();
     }

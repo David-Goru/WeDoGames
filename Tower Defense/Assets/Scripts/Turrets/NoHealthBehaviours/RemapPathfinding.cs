@@ -3,16 +3,16 @@
 /// <summary>
 /// This is a class
 /// </summary>
-public class RemapPathfinding : MonoBehaviour, ITurretNoHealth
+public class RemapPathfinding : TurretNoHealth
 {
     BuildingRange buildingRange;
 
     private void Awake()
     {
-        buildingRange = GetComponent<BuildingRange>();
+        buildingRange = GetComponentInParent<BuildingRange>();
     }
 
-    public void OnTurretNoHealth()
+    public override void OnTurretNoHealth()
     {
         MasterHandler.Instance.grid.SetWalkableNodes(true, transform.position, buildingRange.Range);
     }
