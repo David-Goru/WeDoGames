@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,55 +13,58 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     [SerializeField] float attackSpeed = 0f;
     [SerializeField] float range = 0f;
     [SerializeField] float defaultSpeed = 5f;
-
-    [Header("Other stuff")]
     [SerializeField] float initRotationSpeed = 300f;
+
+    [Header("Debug")]
+    [SerializeField] Transform goal;
+    [SerializeField] Transform currentTurret;
+    [SerializeField] IEnemyDamageHandler currentTurretDamage;
 
     Animator anim;
     State currentState;
+    float speed;
+    float rotationSpeed;
+    Vector3[] path;
+    int targetIndex;
+    bool pathReached;
+    Vector3 currentWaypoint;
+    float stunDuration;
+    bool isStunned;
+    float fearDuration;
+    bool isFeared;
 
     public float Damage { get => damage; set => damage = value; }
     public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
     public float Range { get => range; set => range = value; }
-    [HideInInspector] public Transform Goal;
-    [HideInInspector] public Transform currentTurret;
-    public IEnemyDamageHandler currentTurretDamage;
-
-    //A*
-
-    private float speed;
-    private float rotationSpeed;
-    private Vector3[] path;
-    private int targetIndex;
-    [HideInInspector] public bool pathReached;
-
-    private Vector3 currentWaypoint;
-
-    [HideInInspector] public float stunDuration;
-    [HideInInspector] public bool isStunned;
-    [HideInInspector] public float fearDuration;
-    [HideInInspector] public bool isFeared;
+    public Transform Goal { get => goal; set => goal = value; }
+    public Transform CurrentTurret { get => currentTurret; set => currentTurret = value; }
+    public IEnemyDamageHandler CurrentTurretDamage { get => currentTurretDamage; set => currentTurretDamage = value; }
+    public bool PathReached { get => pathReached; set => pathReached = value; }
+    public float StunDuration { get => stunDuration; set => stunDuration = value; }
+    public bool IsStunned { get => isStunned; set => isStunned = value; }
+    public float FearDuration { get => fearDuration; set => fearDuration = value; }
+    public bool IsFeared { get => isFeared; set => isFeared = value; }
 
     public void OnObjectSpawn()
     {
-        Goal = Nexus.GetTransform;
+        goal = Nexus.GetTransform;
         currentHP = maxHP;
         anim = transform.Find("Model").GetComponent<Animator>();
         isFeared = false;
         isStunned = false;
         speed = defaultSpeed;
         rotationSpeed = initRotationSpeed;
-        currentState = new Move(this, anim, Goal);
+        currentState = new Move(this, anim, goal);
         currentTurret = null;
     }
 
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "Game") return;
-        Goal = Nexus.GetTransform;
+        goal = Nexus.GetTransform;
         currentHP = maxHP;
         anim = transform.Find("Model").GetComponent<Animator>();
-        currentState = new Move(this, anim, Goal);
+        currentState = new Move(this, anim, goal);
         currentTurret = null;
     }
 
@@ -76,27 +78,27 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         }
     }
 
-    void checkDeath()
+    bool checkDeath()
     {
-        if (currentHP <= 0)
+        if (currentHP <= 0 && gameObject.activeSelf)
         {
-            if (gameObject.activeSelf)
-            {
-                ObjectPooler.GetInstance().ReturnToThePool(this.transform);
-                WavesHandler.EnemyKilled();
-            }
+            ObjectPooler.GetInstance().ReturnToThePool(this.transform);
+            WavesHandler.EnemyKilled();
+            return true;
         }
+        return false;
     }
 
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
     {
         currentHP -= Mathf.RoundToInt(damage);
-        currentTurretDamage = enemyDamage;
-        if (currentTurret == null || currentState.Target == Goal)
+
+        if (checkDeath()) return;
+        if (currentTurret == null || currentState.Target == goal)
         {
-            currentState.OnTurretHit(turretTransform, damage, enemyDamage);
+            currentTurretDamage = enemyDamage;
+            currentState.OnTurretHit(turretTransform);
         }
-        checkDeath();
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -139,7 +141,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         }
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         StopCoroutine("FollowPath");
     }
@@ -173,7 +175,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
         StopCoroutine("FollowPath");
 
-        currentState = new Stun(this, anim, Goal);
+        currentState = new Stun(this, anim, goal);
     }
 
     public void Slow(float secondsSlowed)
@@ -181,7 +183,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         StartCoroutine(slowEnemy(secondsSlowed));
     }
 
-    private IEnumerator slowEnemy(float secondsSlowed)
+    IEnumerator slowEnemy(float secondsSlowed)
     {
         //Maybe we should also pass the slow values
         speed /= 2f;
@@ -206,10 +208,10 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
         StopCoroutine("FollowPath");
 
-        currentState = new Fear(this, anim, Goal);
+        currentState = new Fear(this, anim, goal);
     }
 
-    private IEnumerator fearEnemy(float secondsFear)
+    IEnumerator fearEnemy(float secondsFear)
     {
         //Maybe we should also pass the slow values
         speed /= 2f;

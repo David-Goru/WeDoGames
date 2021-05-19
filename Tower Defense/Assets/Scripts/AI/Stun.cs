@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // <summary>
 // FSM state Stun. Enemies on this state won't be able to move or attack
@@ -11,7 +9,7 @@ public class Stun : State
 
 	public Stun(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
-		Name = STATE.STUN;
+		name = STATE.STUN;
 	}
 
 	public override void Enter()
@@ -19,14 +17,14 @@ public class Stun : State
 		anim.SetTrigger("stunned");
 		base.Enter();
 
-		npc.currentTurret = null;
-		stunDuration = npc.stunDuration;
+		npc.CurrentTurret = null;
+		stunDuration = npc.StunDuration;
 	}
 
 	public override void Update()
 	{
 		stunDuration -= Time.deltaTime;
-		if(stunDuration <= 0)
+		if (stunDuration <= 0)
         {
 			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
@@ -36,7 +34,7 @@ public class Stun : State
 	public override void Exit()
 	{
 		anim.ResetTrigger("stunned");
-		npc.isStunned = false;
+		npc.IsStunned = false;
 		base.Exit();
 	}
 }
