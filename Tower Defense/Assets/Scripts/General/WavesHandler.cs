@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -14,6 +15,7 @@ public class WavesHandler : MonoBehaviour
 
     public MasterInfo MasterInfo;
     public Transform Spawners;
+    public Image[] Signals;
     public Text WaveTimerText;
     Vector3[] spawnerPositions;
 
@@ -84,12 +86,36 @@ public class WavesHandler : MonoBehaviour
 
     void spawnEnemies()
     {
+        int spawnerNum = getSpawnerNum();
         for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
         {
-            Vector3 randomPos = spawnerPositions[Random.Range(0, spawnerPositions.Length)] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
+            int randInd = Random.Range(0, spawnerNum);
+            Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
             objectPooler.SpawnObject(getRandomEnemy(), randomPos, Quaternion.Euler(0, 0, 0));
+            StartCoroutine(activateSignal(randInd));
             enemiesSpawned++;
         }
+    }
+
+    private int getSpawnerNum()
+    {
+        int spawnersNum = 3; //Round 1 - 4
+        if (currentWave >= 5 && currentWave <= 9) //Round 5 - 9
+            spawnersNum = 2;
+        else if (currentWave >= 10 && currentWave <= 14) //Round 10 - 14
+            spawnersNum = 3;
+        else if (currentWave >= 15) //Round 15++
+            spawnersNum = 4;
+        return spawnersNum;
+    }
+
+    private IEnumerator activateSignal(int index)
+    {
+        Signals[index].gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        Signals[index].gameObject.SetActive(false);
     }
 
     string getRandomEnemy()
