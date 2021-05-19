@@ -1,21 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // <summary>
 // FSM state Move. It will request paths to the pathfinding system.
 // </summary>
 public class Move : State
 {
-
 	public Move(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
-		Name = STATE.MOVE;
+		name = STATE.MOVE;
 	}
 
 	public override void Enter()
 	{
-		npc.pathReached = false;
+		npc.PathReached = false;
 		anim.SetTrigger("moving");
 		base.Enter();
 
@@ -25,7 +22,7 @@ public class Move : State
 
 	public override void Update()
 	{
-		if (npc.pathReached && !npc.isStunned && !npc.isFeared)
+		if (npc.PathReached && !npc.IsStunned && !npc.IsFeared)
         {
 			nextState = new Attack(npc, anim, Target);
 			stage = EVENT.EXIT;

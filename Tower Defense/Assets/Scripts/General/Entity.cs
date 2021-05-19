@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// This is a class
+/// Base entity class for everything that has HP and can be clickable. Displays title and HP on click to the UI.
 /// </summary>
 public class Entity : MonoBehaviour
 {
-    [Header("Debug")]
+    [Header("Attributes")]
     [SerializeField] protected string title = "";
     [SerializeField] protected int currentHP = 0;
-
-    [Header("Attributes")]
     [SerializeField] protected int maxHP = 0;
 
     public string Title { get => title; }

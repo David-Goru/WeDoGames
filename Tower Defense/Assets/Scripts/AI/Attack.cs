@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 // <summary>
 // FSM state Attack. In this state the AI will go to the target position and attack it.
@@ -14,7 +11,7 @@ public class Attack : State
 
 	public Attack(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
-		Name = STATE.ATTACK;
+		name = STATE.ATTACK;
 		//Modify agent properties like speed, etc.
 	}
 
@@ -31,24 +28,18 @@ public class Attack : State
 	public override void Update()
 	{
 		attackTimer += Time.deltaTime;
-		if(attackTimer >= npc.AttackSpeed) //Attack depednding on npc attack speed
+		if (attackTimer >= npc.AttackSpeed)
         {
 			resetTimer();
 			attackTarget();
         }
 
-		if(npc.transform.rotation != npcRotation) //Rotate towards turret if you aren't already
-        {
-			npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, npcRotation, rotationSpeed * Time.deltaTime);
-		}
+		if (npc.transform.rotation != npcRotation) npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, npcRotation, rotationSpeed * Time.deltaTime);
 
-		if (!Target.gameObject.activeSelf)
-		{
-            if (npc.Goal.gameObject.activeSelf)
-            {
-				nextState = new Move(npc, anim, npc.Goal);
-				stage = EVENT.EXIT;
-			}
+		if (!Target.gameObject.activeSelf && npc.Goal.gameObject.activeSelf)
+        {
+			nextState = new Move(npc, anim, npc.Goal);
+			stage = EVENT.EXIT;
 		}
 	}
 
@@ -66,13 +57,7 @@ public class Attack : State
 
 	void attackTarget()
     {
-        if (Target.gameObject.CompareTag("Turret"))
-        {
-			npc.currentTurretDamage.OnEnemyHit(npc.Damage);
-		}
-		else if (Target.gameObject.CompareTag("Nexus"))
-        {
-			Nexus.Instance.GetHit(npc.Damage);
-        }
+        if (Target.gameObject.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Damage);
+		else if (Target.gameObject.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Damage);
     }
 }
