@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 4531400291964336926}
   - component: {fileID: 7819004656885118558}
   - component: {fileID: 6245749125042888764}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: DamageHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 1405250687571781653}
   - component: {fileID: 1819583760506200628}
   - component: {fileID: 3763464198001955437}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -20,7 +20,7 @@ Attack Damage: {2:0.##}";
         maxHP = Mathf.RoundToInt(turretStats.SearchStatValue(StatType.MAXHEALTH));
         currentHP = Mathf.RoundToInt(turretStats.currentHp);
 
-        return string.Format(info, turretStats.SearchStatValue(StatType.ATTACKRANGE), turretStats.SearchStatValue(StatType.ATTACKRATE),
+        return string.Format(info, turretStats.SearchStatValue(StatType.ATTACKRANGE), turretStats.SearchStatValue(StatType.ATTACKSPEED),
             turretStats.SearchStatValue(StatType.DAMAGE));
     }
 }

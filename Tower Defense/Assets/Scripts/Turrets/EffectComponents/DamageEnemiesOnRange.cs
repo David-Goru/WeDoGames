@@ -20,7 +20,7 @@ public class DamageEnemiesOnRange : EffectComponent
 
     public override void UpdateComponent()
     {
-        if (timer >= turretStats.GetStatValue(StatType.ATTACKRATE))
+        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
         {
             doDamage();
         }

@@ -22,9 +22,13 @@ public class BasicProjectile : Projectile
     {
         if(other.transform == target) //If projectile collides with the enemy is chasing
         {
-            damageEnemy(other);
-            disable();
+            OnEnemyCollision(other);
         }
     }
 
+    protected override void OnEnemyCollision(Collider other)
+    {
+        damageEnemy(other);
+        disable();
+    }
 }

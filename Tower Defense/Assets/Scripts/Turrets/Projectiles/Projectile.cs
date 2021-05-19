@@ -6,17 +6,17 @@ public class Projectile : MonoBehaviour, IPooledObject
 {
     [SerializeField] protected float speed;
 
-    protected float damage;
+    protected TurretStats turretStats;
     protected Transform target;
     protected Transform turret;
     protected IEnemyDamageHandler enemyDamageHandler;
 
     protected ITurretDamage turretDamageable;
 
-    public virtual void SetInfo(Transform target, Transform turret, float damage, IEnemyDamageHandler enemyDamageHandler)
+    public virtual void SetInfo(Transform target, Transform turret, TurretStats turretStats, IEnemyDamageHandler enemyDamageHandler)
     {
         this.target = target;
-        this.damage = damage;
+        this.turretStats = turretStats;
         this.turret = turret;
         this.enemyDamageHandler = enemyDamageHandler;
     }
@@ -31,12 +31,17 @@ public class Projectile : MonoBehaviour, IPooledObject
 
     }
 
+    protected virtual void OnEnemyCollision(Collider other)
+    {
+
+    }
+
     protected void damageEnemy(Collider enemy)
     {
         turretDamageable = enemy.GetComponent<ITurretDamage>();
         if (turretDamageable != null)
         {
-            turretDamageable.OnTurretHit(turret, damage, enemyDamageHandler);
+            turretDamageable.OnTurretHit(turret, turretStats.SearchStatValue(StatType.DAMAGE), enemyDamageHandler);
         }
     }
 

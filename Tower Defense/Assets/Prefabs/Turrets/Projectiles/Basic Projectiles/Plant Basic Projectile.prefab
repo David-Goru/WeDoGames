@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &918915104724428587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2156842186841316058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5312f208bf4538042b98a2e8ea1d4c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+--- !u!1001 &2816648936642244202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2908432685070101089, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 96b49e7e1688cdf4cb1429f840d6e37e, type: 2}
+    - target: {fileID: 4249176769582216368, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_Name
+      value: Poison Basic Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723342794078544508, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5027632014555595559, guid: 2f60f99ff0741be45a2ddfb56e64c2a6, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 2f60f99ff0741be45a2ddfb56e64c2a6, type: 3}
+--- !u!1 &2156842186841316058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4249176769582216368, guid: 2f60f99ff0741be45a2ddfb56e64c2a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2816648936642244202}
+  m_PrefabAsset: {fileID: 0}

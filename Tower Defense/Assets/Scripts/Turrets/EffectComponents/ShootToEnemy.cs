@@ -48,10 +48,10 @@ public class ShootToEnemy : EffectComponent
             resetTimer();
             return;
         }
-        if(timer >= turretStats.GetStatValue(StatType.ATTACKRATE))
+        if(timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
         {
             obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
-            obj.GetComponent<Projectile>().SetInfo(enemy, transform.parent, turretStats.GetStatValue(StatType.DAMAGE), enemyDamageHandler);
+            obj.GetComponent<Projectile>().SetInfo(enemy, transform.parent, turretStats, enemyDamageHandler);
             resetTimer();
         }
         else

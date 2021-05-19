@@ -26,9 +26,9 @@ public class HeavyProjectile : Projectile
         enemyLayer = LayerMask.GetMask("Enemy");
     }
 
-    public override void SetInfo(Transform target, Transform turret,  float damage, IEnemyDamageHandler enemyDamageHandler)
+    public override void SetInfo(Transform target, Transform turret,  TurretStats turretStats, IEnemyDamageHandler enemyDamageHandler)
     {
-        base.SetInfo(target, turret, damage, enemyDamageHandler);
+        base.SetInfo(target, turret, turretStats, enemyDamageHandler);
         lastEnemyPosition = target.position;
         initializeParameters();
     }
@@ -114,6 +114,7 @@ public class HeavyProjectile : Projectile
         if(!other.CompareTag("Turret") && !other.CompareTag("Nexus"))
         {
             int nEnemies = Physics.OverlapSphereNonAlloc(transform.position, radiusOfImpact, collidersCache, enemyLayer);
+            float damage = turretStats.SearchStatValue(StatType.DAMAGE);
             for (int i = 0; i < nEnemies; i++)
             {
                 collidersCache[i].GetComponent<ITurretDamage>().OnTurretHit(turret, damage, enemyDamageHandler);

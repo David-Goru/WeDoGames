@@ -5,7 +5,7 @@ using UnityEngine;
 /// This is a class
 /// </summary>
 
-public enum StatType { PRICE, MAXHEALTH, DAMAGE, ATTACKRANGE, ATTACKRATE};
+public enum StatType { PRICE, MAXHEALTH, DAMAGE, ATTACKRANGE, ATTACKSPEED, SLOWREDUCTION, POISONDAMAGEPERSECOND };
 
 [System.Serializable]
 public struct Stat

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: BasicProjectile
+  m_Name: Plant Basic Turret
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4249176769582216368, guid: 2f60f99ff0741be45a2ddfb56e64c2a6, type: 3}
-  size: 50
-  tag: BasicProjectile
+  prefab: {fileID: 1269008495316496044, guid: 0bb69c52cb1ef874594ed26e66b3543e, type: 3}
+  size: 20
+  tag: Plant Basic Turret
