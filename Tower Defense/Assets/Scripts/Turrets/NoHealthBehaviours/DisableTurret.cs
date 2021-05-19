@@ -10,6 +10,6 @@ public class DisableTurret : TurretNoHealth
 
     void Disable()
     {
-        ObjectPooler.GetInstance().ReturnToThePool(transform);
+        ObjectPooler.GetInstance().ReturnToThePool(transform.parent);
     }
 }
