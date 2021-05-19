@@ -10,6 +10,7 @@ public class Node : IHeapItem<Node>
 
     public bool walkable; //Is the node is an obstacle?
     public Vector3 worldPos; //Position of the node
+    public Transform parentTransform;
 
     public Node parent; //The parent of this node
 
@@ -30,12 +31,13 @@ public class Node : IHeapItem<Node>
     public int gridX; //X position of the node in the grid matrix
     public int gridY; //Y position of the node in the grid matrix
 
-    public Node(bool _walkable, Vector3 _worldPos, int _gridX, int _gridY)
+    public Node(bool _walkable, Vector3 _worldPos, int _gridX, int _gridY, Transform _parentTransform)
     {
         walkable = _walkable;
         worldPos = _worldPos;
         gridX = _gridX;
         gridY = _gridY;
+        parentTransform = _parentTransform;
     }
 
     public int HeapIndex

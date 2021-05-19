@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 598189076902940236}
   - component: {fileID: 2546666841175952488}
   - component: {fileID: 5014951308943416032}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Nexus
   m_TagString: Nexus
   m_Icon: {fileID: 0}

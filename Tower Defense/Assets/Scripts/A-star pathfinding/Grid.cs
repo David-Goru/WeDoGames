@@ -27,6 +27,7 @@ public class Grid : MonoBehaviour
     private Vector3 worldBottomLeft;
     private Vector3 worldPos;
     private bool walkable;
+    private Transform parentTransform;
 
     //For helping me find the neighbours of a node
     private List<Node> neighbours;
@@ -64,11 +65,22 @@ public class Grid : MonoBehaviour
 
         for (int x = 0; x < gridSizeX; x++)
         {
-            for(int y = 0; y < gridSizeY; y++)
+            for (int y = 0; y < gridSizeY; y++)
             {
                 worldPos = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-                walkable = !(Physics.CheckSphere(worldPos, nodeRadius, unwalkableMask));
-                grid[x, y] = new Node(walkable, worldPos, x, y);
+
+                Collider[] colliders = Physics.OverlapSphere(worldPos, nodeRadius, unwalkableMask);
+                if (colliders.Length > 0)
+                {
+                    parentTransform = colliders[0].transform;
+                    walkable = false;
+                }
+                else
+                {
+                    parentTransform = null;
+                    walkable = true;
+                }
+                grid[x, y] = new Node(walkable, worldPos, x, y, parentTransform);
             }
         }
     }
@@ -77,16 +89,16 @@ public class Grid : MonoBehaviour
     {
         neighbours = new List<Node>();
 
-        for(int x = -1; x <= 1; x++)
+        for (int x = -1; x <= 1; x++)
         {
-            for(int y = -1; y <= 1; y++)
+            for (int y = -1; y <= 1; y++)
             {
                 if (x == 0 && y == 0) continue; //This is not a neighbour, it's the node we passed as an argument
 
                 checkX = node.gridX + x;
                 checkY = node.gridY + y;
 
-                if(checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY) //This is a neighbour of node
+                if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY) //This is a neighbour of node
                 {
                     neighbours.Add(grid[checkX, checkY]);
                 }
@@ -108,20 +120,23 @@ public class Grid : MonoBehaviour
         return grid[x, y];
     }
 
-    public void SetWalkableNodes(bool isWalkable, Vector3 nodePos, float nodeRange)
+    public void SetWalkableNodes(bool isWalkable, Vector3 nodePos, float nodeRange, Transform parentTransform)
     {
         Node[] firstNodes = GetFirstNodesOnSpawn(nodePos);
         List<Node> nodeList = new List<Node>();
 
-        foreach(Node node in firstNodes)
+        foreach (Node node in firstNodes)
         {
             nodeList.Add(node);
             node.walkable = isWalkable;
+
+            if (!node.walkable) node.parentTransform = parentTransform;
+            else node.parentTransform = null;
         }
 
         nodeRange--;
 
-        runBFS(nodeList, nodeRange, isWalkable);
+        runBFS(nodeList, nodeRange, isWalkable, parentTransform);
     }
 
     
@@ -137,10 +152,10 @@ public class Grid : MonoBehaviour
         return nodeArray;
     }
 
-    private void runBFS(List<Node> nodeList, float range, bool isWalkable)
+    private void runBFS(List<Node> nodeList, float range, bool isWalkable, Transform parentTransform)
     {
         List<Node> visitedNodes = nodeList;
-        List<Node> nodesToVisit = new List<Node>();
+        List<Node> nodesToVisit;
 
         while (range > 0)
         {
@@ -155,6 +170,9 @@ public class Grid : MonoBehaviour
                         nodeList.Add(neighbour);
                         visitedNodes.Add(neighbour);
                         neighbour.walkable = isWalkable;
+
+                        if (!neighbour.walkable) neighbour.parentTransform = parentTransform;
+                        else neighbour.parentTransform = null;
                     }
                 }
             }

@@ -9,7 +9,6 @@ using UnityEngine;
 // </summary>
 public class Pathfinding : MonoBehaviour
 {
-
     private List<Node> path;
     private Grid grid;
     private PathRequestManager requestManager;
@@ -65,7 +64,7 @@ public class Pathfinding : MonoBehaviour
                 currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
 
-                if (GetDistanceInNodes(currentNode, targetNode) < targetPos.buildingRange + range) //Path has been found
+                if (currentNode.parentTransform == targetPos.building)
                 {
                     sw.Stop();
                     pathSuccess = true;
@@ -74,7 +73,8 @@ public class Pathfinding : MonoBehaviour
 
                 foreach (Node neighbour in grid.GetNeighbours(currentNode))
                 {
-                    if (!neighbour.walkable || closedSet.Contains(neighbour)) continue; //if neighbour is not traversable or is in closedSet, skip to next neighbour
+                    if (closedSet.Contains(neighbour)) continue; //if neighbour is not traversable or is in closedSet, skip to next neighbour
+                    if (!neighbour.walkable && neighbour.parentTransform != targetPos.building) continue;
 
                     newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
 
@@ -92,24 +92,26 @@ public class Pathfinding : MonoBehaviour
                     }
                 }
             }
-        }
+        } // else return possible path?
         
         yield return null;
         if (pathSuccess)
         {
-            waypoints = RetracePath(startNode, currentNode);
+            waypoints = RetracePath(startNode, currentNode, Mathf.RoundToInt(range));
         }
         requestManager.FinishedProcessingPath(waypoints, pathSuccess);
     }
 
-    private Vector3[] RetracePath(Node startNode, Node endNode) //Retrace the given path
+    private Vector3[] RetracePath(Node startNode, Node endNode, int range) //Retrace the given path
     {
         path = new List<Node>();
         retraceCurrentNode = endNode;
 
+        int nodesIgnored = 0;
         while(retraceCurrentNode != startNode)
         {
-            path.Add(retraceCurrentNode);
+            if (nodesIgnored < range) nodesIgnored++;
+            else path.Add(retraceCurrentNode);
             retraceCurrentNode = retraceCurrentNode.parent;
         }
         Vector3[] waypoints = SimplifyPath(path);

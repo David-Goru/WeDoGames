@@ -149,7 +149,7 @@ public class BuildObject : MonoBehaviour
         if (!MasterHandler.Instance.UpdateBalance(-buildingInfo.GetStat(StatType.PRICE))) return;
 
         GameObject turretPlaced = objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
-        grid.SetWalkableNodes(false, objectBlueprint.transform.position, turretPlaced.GetComponent<BuildingRange>().Range);
+        grid.SetWalkableNodes(false, objectBlueprint.transform.position, turretPlaced.GetComponent<BuildingRange>().Range, turretPlaced.transform);
         
         blueprintMaterial.SetColor("_Color", Color.black);
         objectPooler.ReturnToThePool(objectBlueprint.transform);

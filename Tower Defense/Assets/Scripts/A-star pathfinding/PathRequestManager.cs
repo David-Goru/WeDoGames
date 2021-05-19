@@ -66,11 +66,11 @@ public class PathRequestManager : MonoBehaviour
 public struct PathData
 {
     public Vector3 targetPosition;
-    public float buildingRange;
+    public Transform building;
 
-    public PathData(Vector3 _targetPosition, float _buildingRange = 0)
+    public PathData(Vector3 _targetPosition, Transform _building = null)
     {
         targetPosition = _targetPosition;
-        buildingRange = _buildingRange;
+        building = _building;
     }
 }

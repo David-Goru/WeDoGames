@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 // Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
 // </summary>
 
+[SelectionBase]
 public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable
 {
     [SerializeField] float damage = 0f;

@@ -1663,7 +1663,7 @@ MonoBehaviour:
   Spawners: {fileID: 1032362607}
   WaveTimerText: {fileID: 2102561728}
   currentWave: 0
-  planningTime: 10
+  planningTime: 1
 --- !u!114 &537000331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5267,6 +5267,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 370420470}
     m_Modifications:
+    - target: {fileID: 2546666841175952488, guid: bdf677b35d409ad429dc96dbd8b42642,
+        type: 3}
+      propertyPath: range
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6359129234597582134, guid: bdf677b35d409ad429dc96dbd8b42642,
         type: 3}
       propertyPath: m_Name

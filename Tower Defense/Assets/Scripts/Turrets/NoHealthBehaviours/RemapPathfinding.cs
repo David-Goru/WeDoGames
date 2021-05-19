@@ -14,7 +14,7 @@ public class RemapPathfinding : TurretNoHealth
 
     public override void OnTurretNoHealth()
     {
-        MasterHandler.Instance.grid.SetWalkableNodes(true, transform.position, buildingRange.Range);
+        MasterHandler.Instance.grid.SetWalkableNodes(true, transform.position, buildingRange.Range, transform.parent);
     }
 
 }

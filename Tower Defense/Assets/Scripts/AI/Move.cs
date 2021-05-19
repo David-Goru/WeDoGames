@@ -19,8 +19,7 @@ public class Move : State
 		anim.SetTrigger("moving");
 		base.Enter();
 
-		float buildingRange = Target.GetComponent<BuildingRange>() != null ? Target.GetComponent<BuildingRange>().Range : 0;
-		PathData newTarget = new PathData(Target.transform.position, buildingRange);
+		PathData newTarget = new PathData(Target.position, Target);
 		PathRequestManager.RequestPath(npc.transform.position, newTarget, npc.Range, npc.OnPathFound);
 	}
 
