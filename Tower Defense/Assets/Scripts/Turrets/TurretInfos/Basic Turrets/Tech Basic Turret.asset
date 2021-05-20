@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
-  m_Name: Plant Basic Turret
+  m_Name: Tech Basic Turret
   m_EditorClassIdentifier: 
-  description: Plant Basic Turret description
+  description: Tech Basic Turret description
   Stats:
   - type: 0
     value: 100
@@ -24,8 +24,6 @@ MonoBehaviour:
     value: 3
   - type: 4
     value: 1
-  - type: 6
-    value: 2
   currentStats:
   - type: 0
     value: 100
