@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 2a71edc2d98007f4f86f751895f6301b,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1080,7 +1080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 373825697}
   m_Layer: 0
-  m_Name: Spawner 1
+  m_Name: SpawnerDerecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1912,7 +1912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707258132}
   m_Layer: 0
-  m_Name: Spawner 3
+  m_Name: SpawnerArriba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348883347}
   m_HandleRect: {fileID: 1348883346}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4913,8 +4913,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1428982875}
   m_HandleRect: {fileID: 1428982874}
   m_Direction: 0
-  m_Value: 0.00000089757907
-  m_Size: 0.96600014
+  m_Value: 0
+  m_Size: 0.966
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5363,7 +5363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1948297898}
   m_Layer: 0
-  m_Name: Spawner 2
+  m_Name: SpawnerIzquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5574,7 +5574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055671854}
   m_Layer: 0
-  m_Name: Spawner 0
+  m_Name: SpawnerAbajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5761,7 +5761,7 @@ GameObject:
   - component: {fileID: 5036265519733153121}
   - component: {fileID: 5036265519733153150}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ImageAbajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5828,8 +5828,8 @@ Transform:
   m_Children:
   - {fileID: 5036265519733153151}
   - {fileID: 5036265521420310886}
-  - {fileID: 5036265520778827634}
   - {fileID: 5036265520982063699}
+  - {fileID: 5036265520778827634}
   m_Father: {fileID: 191619302}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5861,7 +5861,7 @@ RectTransform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 5036265519749468066}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5880,7 +5880,7 @@ GameObject:
   - component: {fileID: 5036265520778827636}
   - component: {fileID: 5036265520778827637}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: ImageArriba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5935,7 +5935,7 @@ GameObject:
   - component: {fileID: 5036265520982063701}
   - component: {fileID: 5036265520982063698}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: ImageIzquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5982,7 +5982,7 @@ RectTransform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 5036265519749468066}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6028,7 +6028,7 @@ GameObject:
   - component: {fileID: 5036265521420310888}
   - component: {fileID: 5036265521420310889}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: ImageDerecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

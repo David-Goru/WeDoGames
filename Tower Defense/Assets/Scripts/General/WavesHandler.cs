@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class WavesHandler : MonoBehaviour
     public Image[] Signals;
     public Text WaveTimerText;
     Vector3[] spawnerPositions;
+    List<Image> signalsImages;
 
     [SerializeField] int currentWave = 0;
     [SerializeField] float planningTime = 0;
@@ -28,12 +30,25 @@ public class WavesHandler : MonoBehaviour
 
     void Start()
     {
-        spawnerPositions = new Vector3[Spawners.childCount];
+        int childsActive = 0;
+        for (int j = 0; j < Spawners.childCount; j++)
+        {
+            if (Spawners.GetChild(j).gameObject.activeSelf) childsActive++;
+        }
+
+        spawnerPositions = new Vector3[childsActive];
+        signalsImages = new List<Image>();
+
         int i = 0;
         foreach (Transform t in Spawners)
         {
-            spawnerPositions[i] = t.position;
-            i++;
+            if (t.gameObject.activeSelf)
+            {
+                addImageSpawner(t);
+
+                spawnerPositions[i] = t.position;
+                i++;
+            }
         }
 
         objectPooler = ObjectPooler.GetInstance();
@@ -99,23 +114,31 @@ public class WavesHandler : MonoBehaviour
 
     private int getSpawnerNum()
     {
-        int spawnersNum = 3; //Round 1 - 4
-        if (currentWave >= 5 && currentWave <= 9) //Round 5 - 9
+        int spawnersNum = 1; //Round 1 - 4
+        if (currentWave >= 5 && currentWave <= 9 && spawnerPositions.Length > 1 || (currentWave >= 5 && spawnerPositions.Length == 2)) //Round 5 - 9
             spawnersNum = 2;
-        else if (currentWave >= 10 && currentWave <= 14) //Round 10 - 14
+        else if (currentWave >= 10 && currentWave <= 14 && spawnerPositions.Length > 2 || (currentWave >= 10 && spawnerPositions.Length == 3)) //Round 10 - 14
             spawnersNum = 3;
-        else if (currentWave >= 15) //Round 15++
+        else if (currentWave >= 15 && spawnerPositions.Length > 3) //Round 15++
             spawnersNum = 4;
         return spawnersNum;
     }
 
+    private void addImageSpawner(Transform t)
+    {
+        if (t.gameObject.name == "SpawnerAbajo") signalsImages.Add(Signals[0]);
+        else if (t.gameObject.name == "SpawnerDerecha") signalsImages.Add(Signals[1]);
+        else if (t.gameObject.name == "SpawnerIzquierda") signalsImages.Add(Signals[2]);
+        else signalsImages.Add(Signals[3]);
+    }
+
     private IEnumerator activateSignal(int index)
     {
-        Signals[index].gameObject.SetActive(true);
+        signalsImages[index].gameObject.SetActive(true);
 
         yield return new WaitForSeconds(1f);
 
-        Signals[index].gameObject.SetActive(false);
+        signalsImages[index].gameObject.SetActive(false);
     }
 
     string getRandomEnemy()

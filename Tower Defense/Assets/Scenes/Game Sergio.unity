@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 2a71edc2d98007f4f86f751895f6301b,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -486,8 +486,8 @@ Transform:
   m_Children:
   - {fileID: 225888718}
   - {fileID: 1770442199}
-  - {fileID: 1339622339}
   - {fileID: 1139158754}
+  - {fileID: 1339622339}
   m_Father: {fileID: 191619302}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 225888720}
   - component: {fileID: 225888719}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ImageAbajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1068,7 +1068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 373825697}
   m_Layer: 0
-  m_Name: Spawner 1
+  m_Name: SpawnerDerecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1900,7 +1900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707258132}
   m_Layer: 0
-  m_Name: Spawner 3
+  m_Name: SpawnerArriba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2286,7 +2286,7 @@ GameObject:
   - component: {fileID: 1139158756}
   - component: {fileID: 1139158755}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: ImageIzquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2304,7 +2304,7 @@ RectTransform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 209705747}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3404,7 +3404,7 @@ GameObject:
   - component: {fileID: 1339622341}
   - component: {fileID: 1339622340}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: ImageArriba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3422,7 +3422,7 @@ RectTransform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 209705747}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4953,7 +4953,7 @@ GameObject:
   - component: {fileID: 1770442201}
   - component: {fileID: 1770442200}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: ImageDerecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5422,7 +5422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1948297898}
   m_Layer: 0
-  m_Name: Spawner 2
+  m_Name: SpawnerIzquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5633,7 +5633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055671854}
   m_Layer: 0
-  m_Name: Spawner 0
+  m_Name: SpawnerAbajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
