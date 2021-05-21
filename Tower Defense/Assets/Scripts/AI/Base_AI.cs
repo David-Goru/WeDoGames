@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 // </summary>
 
 [SelectionBase]
-public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable
+public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable
 {
     [SerializeField] float damage = 0f;
     [SerializeField] float attackSpeed = 0f;
@@ -82,6 +82,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         if (currentHP <= 0 && gameObject.activeSelf)
         {
+            StopAllCoroutines();
             ObjectPooler.GetInstance().ReturnToThePool(this.transform);
             WavesHandler.EnemyKilled();
             return true;
@@ -178,25 +179,64 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         currentState = new Stun(this, anim, goal);
     }
 
-    public void Slow(float secondsSlowed)
+    float baseSpeed = 0.0f;
+    float baseRotationSpeed = 0.0f;
+    Coroutine currentSlow = null;
+    public void Slow(float secondsSlowed, float slowReduction)
     {
-        StartCoroutine(slowEnemy(secondsSlowed));
+        if (!gameObject.activeSelf) return;
+
+        if (currentSlow != null)
+        {
+            StopCoroutine(currentSlow);
+            speed = baseSpeed;
+            rotationSpeed = baseRotationSpeed;
+        }
+        currentSlow = StartCoroutine(slowEnemy(secondsSlowed, slowReduction));
     }
 
-    IEnumerator slowEnemy(float secondsSlowed)
+    IEnumerator slowEnemy(float secondsSlowed, float slowReduction)
     {
-        //Maybe we should also pass the slow values
-        speed /= 2f;
-        rotationSpeed /= 2f;
+        baseSpeed = speed;
+        baseRotationSpeed = rotationSpeed;
 
-        anim.SetFloat("animSpeed", 0.5f);
+        speed -= speed * slowReduction;
+        rotationSpeed -= rotationSpeed * slowReduction;
+
+        anim.SetFloat("animSpeed", slowReduction);
 
         yield return new WaitForSeconds(secondsSlowed);
 
-        speed *= 2f;
-        rotationSpeed *= 2f;
+        speed = baseSpeed;
+        rotationSpeed = baseRotationSpeed;
 
-        anim.SetFloat("animSpeed", 1f);
+        anim.SetFloat("animSpeed", 1.0f);
+    }
+
+    Coroutine currentPoison = null;
+    public void Poison(float secondsPoisoned, float damagePerSecond)
+    {
+        if (!gameObject.activeSelf) return;
+
+        if (currentPoison != null) StopCoroutine(currentPoison);
+        currentPoison = StartCoroutine(poisonEnemy(secondsPoisoned, damagePerSecond));
+    }
+
+    IEnumerator poisonEnemy(float secondsPoisoned, float damagePerSecond)
+    {
+        // Enable visual effects?
+
+        int timer = 0;
+        while (timer < secondsPoisoned)
+        {
+            yield return new WaitForSeconds(1.0f);
+            GetDamage(damagePerSecond);
+            timer++;
+        }
+
+        // Disable visual effects?
+
+        currentPoison = null;
     }
 
     public void Fear(float fearSeconds)

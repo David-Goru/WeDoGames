@@ -16,8 +16,8 @@ MonoBehaviour:
   initialPoints: 1
   buildingsSet:
   - {fileID: 11400000, guid: 6213785f44ddffe48a1acff44eb63d7d, type: 2}
-  - {fileID: 11400000, guid: 8c8c2fbb589ebaf43996a003cea11802, type: 2}
-  - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
+  - {fileID: 11400000, guid: a2068d2dc6e1c2440af1009aebef74fb, type: 2}
+  - {fileID: 11400000, guid: 1ea48da23443c09448614fc46f0b2e3b, type: 2}
   upgradesSet:
   - {fileID: 11400000, guid: fc41d48e7df49754daa4fbd77969a5be, type: 2}
   - {fileID: 11400000, guid: a1aec64cc0916954b891edf1f49a16c1, type: 2}

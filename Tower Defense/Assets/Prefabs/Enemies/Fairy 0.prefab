@@ -72,13 +72,8 @@ MonoBehaviour:
   range: 10
   defaultSpeed: 5
   initRotationSpeed: 300
-  Goal: {fileID: 0}
+  goal: {fileID: 0}
   currentTurret: {fileID: 0}
-  pathReached: 0
-  stunDuration: 0
-  isStunned: 0
-  fearDuration: 0
-  isFeared: 0
 --- !u!136 &798228652551407103
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -87,7 +82,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4042943404962123225}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.15
   m_Height: 0.8

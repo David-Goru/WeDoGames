@@ -21,7 +21,7 @@ public class SlowActiveAction : ActiveAction
         {
             ISlowable enemy = colsCache[i].GetComponent<ISlowable>();
             if (enemy != null)
-                enemy.Slow(slowTime);
+                enemy.Slow(slowTime, 0.5f);
         }
     }
 }
