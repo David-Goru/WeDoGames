@@ -11,6 +11,7 @@ public class SlowDownProjectile : BasicProjectile
     void slowEnemy(Collider enemy)
     {
         float slowReduction = turretStats.SearchStatValue(StatType.SLOWREDUCTION);
-        //enemy.GetComponent<ISlowable>().Slow(slowReduction);
+        float slowDuration = turretStats.SearchStatValue(StatType.EFFECTDURATION);
+        enemy.GetComponent<ISlowable>().Slow(slowReduction, slowDuration);
     }
 }

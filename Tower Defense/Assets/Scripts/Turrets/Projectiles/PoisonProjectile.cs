@@ -11,6 +11,7 @@ public class PoisonProjectile : BasicProjectile
     void poisonEnemy(Collider enemy)
     {
         float poisonDamage = turretStats.SearchStatValue(StatType.POISONDAMAGEPERSECOND);
-        //enemy.GetComponent<IPoisonable>().Poison(poisonDamage);
+        float poisonDuration = turretStats.SearchStatValue(StatType.EFFECTDURATION);
+        enemy.GetComponent<IPoisonable>().Poison(poisonDamage, poisonDuration);
     }
 }

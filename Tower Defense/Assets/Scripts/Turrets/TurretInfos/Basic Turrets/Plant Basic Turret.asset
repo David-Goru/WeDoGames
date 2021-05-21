@@ -24,8 +24,10 @@ MonoBehaviour:
     value: 3
   - type: 4
     value: 1
-  - type: 6
+  - type: 7
     value: 2
+  - type: 5
+    value: 5
   currentStats:
   - type: 0
     value: 100
