@@ -84,8 +84,8 @@ public class BuildObject : MonoBehaviour
 
         stopBuildingButton.SetActive(true);
 
-        ground.material.SetTexture("_MainTex", buildingGrid);
-        ground.material.SetTextureScale("_MainTex", new Vector2(gridSize, gridSize));
+        ground.material.SetTexture("_BaseMap", buildingGrid);
+        ground.material.SetTextureScale("_BaseMap", new Vector2(gridSize, gridSize));
 
         this.buildingInfo = buildingInfo;
         enabled = true;
@@ -171,8 +171,8 @@ public class BuildObject : MonoBehaviour
             blueprintMaterial = null;
         }
 
-        ground.material.SetTexture("_MainTex", groundSprite);
-        ground.material.SetTextureScale("_MainTex", new Vector2(1, 1));
+        ground.material.SetTexture("_BaseMap", groundSprite);
+        ground.material.SetTextureScale("_BaseMap", new Vector2(1, 1));
 
         enabled = false;
     }
