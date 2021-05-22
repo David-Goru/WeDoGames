@@ -57,35 +57,18 @@ public class MasterHandler : MonoBehaviour
 
     private void addMoney(string[] parameters)
     {
-        if(parameters.Length == 0)
-        {
-            return;
-        }
+        if (parameters.Length == 0) return; 
 
-        int money = 0;
+        int money;
         int.TryParse(parameters[0], out money);
 
         UpdateBalance(money);
     }
 
-    /// <summary>
-    /// Gets the current money of the player
-    /// </summary>
-    /// <returns>Returns the balance</returns>
     public float GetBalance() { return MasterInfo.Balance; }
 
-    /// <summary>
-    /// Checks if the player has enough money
-    /// </summary>
-    /// <param name="amount">Amount of money to check</param>
-    /// <returns>Returns true if the player can afford it, false otherwise</returns>
     public bool CheckIfCanAfford(float amount) { return MasterInfo.Balance >= Mathf.Abs(amount); }
 
-    /// <summary>
-    /// Update the player balance with the amount given
-    /// </summary>
-    /// <param name="amount">Amount to add (or substract if passed as -X)</param>
-    /// <returns>Returns false if the player doesn't have enough money</returns>
     public bool UpdateBalance(float amount)
     {
         // If reducing balance, check if balance > amount to take

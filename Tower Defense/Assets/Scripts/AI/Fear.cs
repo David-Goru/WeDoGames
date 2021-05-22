@@ -15,7 +15,7 @@ public class Fear : State
 	public override void Enter()
 	{
 		npc.PathReached = false;
-		anim.SetFloat("animSpeed", 2f);
+		anim.SetFloat("animSpeed", 0.5f);
 		anim.SetTrigger("moving");
 		base.Enter();
 

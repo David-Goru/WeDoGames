@@ -86,7 +86,7 @@ public class Pathfinding : MonoBehaviour
                 currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
 
-                if (currentNode.parentTransform == targetPos.building)
+                if (currentNode == targetNode || targetPos.building != null && currentNode.parentTransform == targetPos.building)
                 {
                     sw.Stop();
                     pathSuccess = true;
