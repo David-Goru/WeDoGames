@@ -278,10 +278,23 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     const string info = @"Attack Range: {0:0.##}
 Attack Rate: {1:0.##}
 Attack Damage: {2:0.##}
-Speed: {3:0.##}";
+Speed: {3:0.##}
+{4}";
 
     public override string GetExtraInfo()
     {
-        return string.Format(info, range, attackSpeed, damage, speed);
+        string states = "";
+        if (currentSlow != null) states += "slowed, ";
+        if (currentPoison != null) states += "poisoned, ";
+        if (isFeared) states += "feared, ";
+        if (isStunned) states += "stunned, ";
+
+        if (states.Length > 2)
+        {
+            states = states.Remove(states.Length - 2);
+            states = char.ToUpper(states[0]) + states.Substring(1);
+        }
+
+        return string.Format(info, range, attackSpeed, damage, speed, states);
     }
 }
