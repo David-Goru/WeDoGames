@@ -24,12 +24,19 @@ public class WavesHandler : MonoBehaviour
     [SerializeField] int currentWave = 0;
     [SerializeField] float planningTime = 0;
 
+    [Header("Predetermined enemy waves")]
+    public List<EnemyList> enemyWaves;
+    private int waveIndex = 0;
+
     float timer = 0f;
     bool onPlanningPhase = true;
     ObjectPooler objectPooler;
+    bool predeterminedWaves;
 
     void Start()
     {
+        predeterminedWaves = enemyWaves.Count > 0;
+
         int childsActive = 0;
         for (int j = 0; j < Spawners.childCount; j++)
         {
@@ -102,13 +109,29 @@ public class WavesHandler : MonoBehaviour
     void spawnEnemies()
     {
         int spawnerNum = getSpawnerNum();
-        for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
+        if (!predeterminedWaves) //Random waves
         {
-            int randInd = Random.Range(0, spawnerNum);
-            Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
-            objectPooler.SpawnObject(getRandomEnemy(), randomPos, Quaternion.Euler(0, 0, 0));
-            StartCoroutine(activateSignal(randInd));
-            enemiesSpawned++;
+            for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
+            {
+                int randInd = Random.Range(0, spawnerNum);
+                Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
+                objectPooler.SpawnObject(getRandomEnemy(), randomPos, Quaternion.Euler(0, 0, 0));
+                StartCoroutine(activateSignal(randInd));
+                enemiesSpawned++;
+            }
+        }
+        else //Predetermined waves
+        {
+            for (int i = 0; i < enemyWaves[waveIndex].enemyWave.Count; i++)
+            {
+                int randInd = Random.Range(0, spawnerNum);
+                Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
+                objectPooler.SpawnObject(enemyWaves[waveIndex].enemyWave[i].tag, randomPos, Quaternion.Euler(0, 0, 0));
+                StartCoroutine(activateSignal(randInd));
+                enemiesSpawned++;
+            }
+
+            if(waveIndex < enemyWaves.Count - 1) waveIndex++;
         }
     }
 
@@ -151,5 +174,16 @@ public class WavesHandler : MonoBehaviour
     public static void EnemyKilled()
     {
         enemiesSpawned--;
+    }
+}
+
+[System.Serializable]
+public class EnemyList
+{
+    public List<Pool> enemyWave;
+
+    public EnemyList(List<Pool> _enemyWave)
+    {
+        enemyWave = _enemyWave;
     }
 }
