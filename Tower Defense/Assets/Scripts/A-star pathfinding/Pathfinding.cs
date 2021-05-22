@@ -53,7 +53,29 @@ public class Pathfinding : MonoBehaviour
         startNode = grid.NodeFromWorldPos(startPos);
         targetNode = grid.NodeFromWorldPos(targetPos.targetPosition);
 
-        if (startNode.walkable) //For optimization
+        if (!startNode.walkable)
+        {
+            int tries = 0; // This is a weird way to find a possible path when starting from a non walkable vertex, so if this loop goes longer than 100...
+            while (!startNode.walkable && tries < 100)
+            {
+                List<Node> neighbours = grid.GetNeighbours(startNode);
+                bool neighbourFound = false;
+                foreach (Node node in neighbours)
+                {
+                    if (node.walkable)
+                    {
+                        startNode = node;
+                        neighbourFound = true;
+                        break;
+                    }
+                }
+
+                if (!neighbourFound) startNode = neighbours[0];
+                tries++;
+            }
+        }
+
+        if (startNode.walkable)
         {
             openSet = new Heap<Node>(grid.MaxSize);
             closedSet = new HashSet<Node>();
@@ -92,7 +114,7 @@ public class Pathfinding : MonoBehaviour
                     }
                 }
             }
-        } // else return possible path?
+        }
         
         yield return null;
         if (pathSuccess)
