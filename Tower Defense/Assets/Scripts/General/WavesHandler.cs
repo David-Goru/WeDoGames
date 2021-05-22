@@ -124,11 +124,14 @@ public class WavesHandler : MonoBehaviour
         {
             for (int i = 0; i < enemyWaves[waveIndex].enemyWave.Count; i++)
             {
-                int randInd = Random.Range(0, spawnerNum);
-                Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
-                objectPooler.SpawnObject(enemyWaves[waveIndex].enemyWave[i].tag, randomPos, Quaternion.Euler(0, 0, 0));
-                StartCoroutine(activateSignal(randInd));
-                enemiesSpawned++;
+                for(int j = 0; j < enemyWaves[waveIndex].enemyWave[i].numberOfEnemies; j++)
+                {
+                    int randInd = Random.Range(0, spawnerNum);
+                    Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
+                    objectPooler.SpawnObject(enemyWaves[waveIndex].enemyWave[i].enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
+                    StartCoroutine(activateSignal(randInd));
+                    enemiesSpawned++;
+                }
             }
 
             if(waveIndex < enemyWaves.Count - 1) waveIndex++;
@@ -180,10 +183,23 @@ public class WavesHandler : MonoBehaviour
 [System.Serializable]
 public class EnemyList
 {
-    public List<Pool> enemyWave;
+    public List<EnemyPool> enemyWave;
 
-    public EnemyList(List<Pool> _enemyWave)
+    public EnemyList(List<EnemyPool> _enemyWave)
     {
         enemyWave = _enemyWave;
+    }
+}
+
+[System.Serializable]
+public class EnemyPool
+{
+    public Pool enemy;
+    public int numberOfEnemies;
+
+    public EnemyPool(Pool _enemy, int _numberOfEnemies)
+    {
+        enemy = _enemy;
+        numberOfEnemies = _numberOfEnemies;
     }
 }
