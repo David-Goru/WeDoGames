@@ -70,7 +70,7 @@ public class Pathfinding : MonoBehaviour
                     }
                 }
 
-                if (!neighbourFound) startNode = neighbours[0];
+                if (!neighbourFound) startNode = neighbours[neighbours.Count - 1];
                 tries++;
             }
         }
@@ -117,10 +117,7 @@ public class Pathfinding : MonoBehaviour
         }
         
         yield return null;
-        if (pathSuccess)
-        {
-            waypoints = RetracePath(startNode, currentNode, Mathf.RoundToInt(range));
-        }
+        waypoints = RetracePath(startNode, currentNode, Mathf.RoundToInt(range));
         requestManager.FinishedProcessingPath(waypoints, pathSuccess);
     }
 

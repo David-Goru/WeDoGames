@@ -22,9 +22,14 @@ public class Move : State
 
 	public override void Update()
 	{
-		if (npc.PathReached && !npc.IsStunned && !npc.IsFeared)
+		if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && npc.PathSuccessful)
         {
 			nextState = new Attack(npc, anim, Target);
+			stage = EVENT.EXIT;
+		}
+		else if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && npc.PathSuccessful)
+		{
+			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
 	}

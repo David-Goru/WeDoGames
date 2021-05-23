@@ -39,8 +39,10 @@ MonoBehaviour:
     value: 3
   - type: 4
     value: 1
-  - type: 5
+  - type: 6
     value: 0.5
+  - type: 5
+    value: 5
   buildingPool: {fileID: 11400000, guid: 4cd4e9ad41decf94e88ff449226e649f, type: 2}
   buildingBlueprintPool: {fileID: 11400000, guid: ea220346fab15bc45b1cc42944ab3092,
     type: 2}

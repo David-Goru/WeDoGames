@@ -27,6 +27,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     Vector3[] path;
     int targetIndex;
     bool pathReached;
+    bool pathSuccessful;
     Vector3 currentWaypoint;
     float stunDuration;
     bool isStunned;
@@ -40,6 +41,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public Transform CurrentTurret { get => currentTurret; set => currentTurret = value; }
     public IEnemyDamageHandler CurrentTurretDamage { get => currentTurretDamage; set => currentTurretDamage = value; }
     public bool PathReached { get => pathReached; set => pathReached = value; }
+    public bool PathSuccessful { get => pathSuccessful; set => pathSuccessful = value; }
     public float StunDuration { get => stunDuration; set => stunDuration = value; }
     public bool IsStunned { get => isStunned; set => isStunned = value; }
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
@@ -72,10 +74,12 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         currentState = currentState.Process();
 
-        if (currentTurret != null && !currentTurret.gameObject.activeSelf)
-        {
-            currentTurret = null;
-        }
+        if (currentTurret != null && !currentTurret.gameObject.activeSelf) currentTurret = null;
+    }
+
+    void OnDisable()
+    {
+        StopCoroutine("FollowPath");
     }
 
     bool checkDeath()
@@ -104,20 +108,13 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
     {
-        if (pathSuccessful)
-        {
-            StopCoroutine("FollowPath"); //This is for stopping the coroutine in case it's already running
-            path = newPath;
-            targetIndex = 0;
-            if (path.Length > 0 && this.gameObject.activeSelf) //If the AI is stunned or feared, we will say that it reached the end of the path (it will forget it's target)
-            {
-                StartCoroutine("FollowPath");
-            }
-            else
-            {
-                pathReached = true;
-            }
-        }
+        StopCoroutine("FollowPath");
+
+        this.pathSuccessful = pathSuccessful;
+        path = newPath;
+        targetIndex = 0;
+        if (path.Length > 0 && gameObject.activeSelf) StartCoroutine("FollowPath");
+        else pathReached = true;
     }
 
     IEnumerator FollowPath()
@@ -136,36 +133,8 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
                 currentWaypoint = path[targetIndex];
             }
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-            if(currentWaypoint != transform.position)
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(currentWaypoint - transform.position), rotationSpeed * Time.deltaTime);
+            if(currentWaypoint != transform.position) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(currentWaypoint - transform.position), rotationSpeed * Time.deltaTime);
             yield return null;
-        }
-    }
-
-    void OnDisable()
-    {
-        StopCoroutine("FollowPath");
-    }
-
-    //For visual hint
-    public void OnDrawGizmos()
-    {
-        if (path != null)
-        {
-            for (int i = targetIndex; i < path.Length; i++)
-            {
-                Gizmos.color = Color.white;
-                Gizmos.DrawCube(path[i], Vector3.one / 3);
-
-                if (i == targetIndex)
-                {
-                    Gizmos.DrawLine(transform.position, path[i]);
-                }
-                else
-                {
-                    Gizmos.DrawLine(path[i - 1], path[i]);
-                }
-            }
         }
     }
 
@@ -296,5 +265,21 @@ Speed: {3:0.##}
         }
 
         return string.Format(info, range, attackSpeed, damage, speed, states);
+    }
+
+    /* Editor */
+    public void OnDrawGizmos()
+    {
+        if (path != null)
+        {
+            for (int i = targetIndex; i < path.Length; i++)
+            {
+                Gizmos.color = Color.white;
+                Gizmos.DrawCube(path[i], Vector3.one / 3);
+
+                if (i == targetIndex) Gizmos.DrawLine(transform.position, path[i]);
+                else  Gizmos.DrawLine(path[i - 1], path[i]);
+            }
+        }
     }
 }
