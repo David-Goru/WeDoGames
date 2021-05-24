@@ -6,6 +6,8 @@ using UnityEngine;
 public class BuildingInfo : ScriptableObject
 {
     [SerializeField] string description = "";
+    [SerializeField] TurretElement turretElement = TurretElement.NONE;
+    [SerializeField] bool isBasic = false;
     [SerializeField] List<Stat> Stats = null;
 
     [Header("Debug")]
@@ -15,6 +17,9 @@ public class BuildingInfo : ScriptableObject
     [SerializeField] protected Pool buildingBlueprintPool = null;
 
     public string Description { get => description; }
+    public TurretElement TurretElement { get => turretElement; }
+    public bool IsBasic { get => isBasic; }
+
     public Pool GetBuildingPool() { return buildingPool; }
     public Pool GetBuildingBlueprintPool() { return buildingBlueprintPool; }
 

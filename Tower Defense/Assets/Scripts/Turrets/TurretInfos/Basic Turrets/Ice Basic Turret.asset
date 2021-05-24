@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Ice Basic Turret
   m_EditorClassIdentifier: 
   description: Ice Basic Turret description
+  turretElement: 2
+  isBasic: 0
   Stats:
   - type: 0
     value: 100

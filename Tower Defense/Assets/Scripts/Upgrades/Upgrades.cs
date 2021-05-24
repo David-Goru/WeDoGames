@@ -11,7 +11,11 @@ public class Upgrades : MonoBehaviour
 
     public void AddUpgrade(Upgrade upgrade)
     {
-        if (upgrade is Passive)
+        if (upgrade is Active)
+        {
+            activesUI.EnableActive(upgrade);
+        }
+        else if (upgrade is Passive)
         {
             Passive passive = (Passive)upgrade;
             BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetBuildingsSet();
@@ -25,9 +29,10 @@ public class Upgrades : MonoBehaviour
                 buildingsUI.UpdateBuildingInfo(turret);
             }
         }
-        else if (upgrade is Active)
+        else if (upgrade is TurretTransformation)
         {
-            activesUI.EnableActive(upgrade);
+            //Select the correct slot
+            //Enter all the turretUpgrades of that turret on the upgradesSet
         }
     }
 }

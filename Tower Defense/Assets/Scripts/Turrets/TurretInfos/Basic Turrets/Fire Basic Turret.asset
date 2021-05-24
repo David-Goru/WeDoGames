@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Fire Basic Turret
   m_EditorClassIdentifier: 
   description: Fire Basic Turret description
+  turretElement: 1
+  isBasic: 0
   Stats:
   - type: 0
     value: 100
