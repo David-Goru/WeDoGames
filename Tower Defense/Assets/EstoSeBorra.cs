@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EstoSeBorra : MonoBehaviour
 {
-    [SerializeField] Color groundColor;
-
     public GameObject ejercito;
 
     private GameObject[] goblins;
@@ -41,7 +39,6 @@ public class EstoSeBorra : MonoBehaviour
             }
             translate = true;
             RenderSettings.skybox = Skybox;
-            floor.GetComponentInChildren<MeshRenderer>().sharedMaterial.color = groundColor;
         }
 
         if (translate)
