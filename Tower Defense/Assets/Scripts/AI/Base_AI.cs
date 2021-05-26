@@ -19,6 +19,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     [SerializeField] Transform goal;
     [SerializeField] Transform currentTurret;
     [SerializeField] IEnemyDamageHandler currentTurretDamage;
+    [SerializeField] LayerMask objectsLayer;
 
     Animator anim;
     State currentState;
@@ -58,6 +59,8 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         rotationSpeed = initRotationSpeed;
         currentState = new Move(this, anim, goal);
         currentTurret = null;
+
+        EnemiesActive.Instance.enemiesList.Add(this);
     }
 
     void Start()
@@ -70,7 +73,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         currentTurret = null;
     }
 
-    void Update()
+    public void EnemyUpdate()
     {
         currentState = currentState.Process();
 
@@ -89,9 +92,49 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
             StopAllCoroutines();
             ObjectPooler.GetInstance().ReturnToThePool(this.transform);
             WavesHandler.EnemyKilled();
+            EnemiesActive.Instance.enemiesList.Remove(this);
+
             return true;
         }
         return false;
+    }
+
+    public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)
+    {
+        if (targetIndex < path.Length - 1)
+        {
+            Vector3 direction = path[targetIndex + 1] - path[targetIndex];
+            direction = direction.normalized;
+            print("checking...");
+
+            RaycastHit hit;
+            if (Physics.Raycast(path[targetIndex], direction, out hit, 10f, objectsLayer))
+            {
+                print("Raycast funciona");
+                if (!hit.collider.CompareTag("Nexus")) //Make sure it's not the nexus what I'm detecting
+                {
+                    print("Object detected! Recalculating...");
+                    recalculatePath();
+                }
+            }
+        }
+    }
+
+    private void recalculatePath() //Used by checkPath. Recalculates path.
+    {
+        PathData newTarget;
+
+        if (currentTurret != null)
+        {
+            newTarget = new PathData(currentTurret.position, currentTurret);
+        }
+        else
+        {
+            newTarget = new PathData(Goal.position, Goal);
+        }
+
+        PathRequestManager.RequestPath(transform.position, newTarget, Range, OnPathFound);
+        print("Path recalculated");
     }
 
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)

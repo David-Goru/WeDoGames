@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Building system. Enabled when selecting an object to build. Starts with the object's blueprint, that the player can move and rotate above the ground. 
@@ -156,7 +158,22 @@ public class BuildObject : MonoBehaviour
         objectBlueprint = null;
         blueprintMaterial = null;
 
+        StartCoroutine("delayCheckPath");
+
         StopBuilding();
+    }
+
+    private IEnumerator delayCheckPath()
+    {
+        yield return new WaitForFixedUpdate();
+
+        List<Base_AI> allEnemies = EnemiesActive.Instance.enemiesList;
+
+        foreach (Base_AI enemy in allEnemies)
+        {
+            enemy.checkPath();
+            print("Checking path");
+        }
     }
 
     public void StopBuilding()

@@ -74,6 +74,9 @@ MonoBehaviour:
   initRotationSpeed: 300
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
+  objectsLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!136 &7197626279890794676
 CapsuleCollider:
   m_ObjectHideFlags: 0
