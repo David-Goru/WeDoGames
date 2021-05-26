@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// Manages the list of upgrades on UI
@@ -11,8 +12,10 @@ public class UpgradesUI : UIList
 
     public override void Initialize(MasterInfo masterInfo, Transform masterObject)
     {
-        loadUpgrades(masterInfo);
+        upgrades.UpgradesUI = this;
         activesUI = masterObject.GetComponent<ActivesUI>().ListUIObject;
+
+        loadUpgrades(masterInfo);
     }
 
     void loadUpgrades(MasterInfo masterInfo)
@@ -33,6 +36,7 @@ public class UpgradesUI : UIList
         objectUI.GetComponent<HoverUIElement>().HoverText = upgrade.Description;
         objectUI.SetParent(ListUIObject, false);
         objectUI.gameObject.SetActive(false);
+        upgrade.ObjectUI = objectUI;
     }
 
     void addUpgradeAction(Upgrade upgrade)
@@ -40,27 +44,36 @@ public class UpgradesUI : UIList
         if (MasterHandler.Instance.UpdatePoints(-upgrade.Points))
         {
             upgrades.AddUpgrade(upgrade);
-            ListUIObject.Find(upgrade.name).gameObject.SetActive(false);
+            upgrade.ObjectUI.gameObject.SetActive(false);
         }
     }
 
-    public void EnableRandomUpgrades(int amount)
+    public void OpenUpgrades(int amount)
     {
-        ListUIObject.parent.parent.gameObject.SetActive(true);
-        int tries = 100;
-        while (amount > 0 && tries > 0)
+        Time.timeScale = 0;
+
+        List<Upgrade> upgradesAvailable = new List<Upgrade>();
+
+        /* Add upgrades (to upgradesAvailable) */
+
+        // Add general upgrades?
+        // Add tier 1 upgrades if there are still basic turrets
+        // Add tier 2 upgrades for tier 1 turrets (if no tier 0 turrets)
+        // Add tier 3 upgrades for tier 2 turrets (if no tier 1 turrets)
+        // Add actives if !activesUI.Find(upgrade.name) || !activesUI.Find(upgrade.name).gameObject.activeSelf
+
+        int amountOfUpgrades = amount > upgradesAvailable.Count ? upgradesAvailable.Count : amount;
+        while (amountOfUpgrades > 0)
         {
-            GameObject upgrade = ListUIObject.GetChild(Random.Range(0, ListUIObject.childCount)).gameObject;
-            if (!upgrade.activeSelf)
+            Upgrade upgrade = upgradesAvailable[Random.Range(0, upgradesAvailable.Count)];
+            if (!upgrade.ObjectUI.gameObject.activeSelf)
             {
-                if (!activesUI.Find(upgrade.name) || !activesUI.Find(upgrade.name).gameObject.activeSelf)
-                {
-                    amount--;
-                    upgrade.SetActive(true);
-                }
+                amountOfUpgrades--;
+                upgrade.ObjectUI.gameObject.SetActive(true);
             }
-            tries--;
         }
+
+        ListUIObject.parent.parent.gameObject.SetActive(true);
     }
 
     public void CloseUpgrades()
@@ -70,5 +83,6 @@ public class UpgradesUI : UIList
             child.gameObject.SetActive(false);
         }
         ListUIObject.parent.parent.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

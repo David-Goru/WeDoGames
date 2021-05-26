@@ -1402,7 +1402,7 @@ MonoBehaviour:
   testWithoutUI: 0
   balanceText: {fileID: 828579587}
   pointsText: {fileID: 1779763632}
-  masterInfo: {fileID: 11400000, guid: a574f78467103c84fa98f55d60903a5a, type: 2}
+  masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
   upgradesUI: {fileID: 537000332}
   ActiveMode: {fileID: 537000335}
   grid: {fileID: 102513636}
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   - {fileID: 5036265520778827637}
   WaveTimerText: {fileID: 2102561728}
   currentWave: 0
-  planningTime: 40
+  planningTime: 20
   enemyWaves:
   - enemyWave:
     - enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 537000326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9591af771d7880341b94d9d8488f4867, type: 3}
+  m_Script: {fileID: 11500000, guid: 67112642dcd912344a909f20aaa50610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ListUIObject: {fileID: 1392178141}
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938bafc3db98cce4a87fb4ae4cb3fb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingsUI: {fileID: 537000331}
+  turretsUI: {fileID: 0}
   activesUI: {fileID: 537000334}
 --- !u!114 &537000334
 MonoBehaviour:

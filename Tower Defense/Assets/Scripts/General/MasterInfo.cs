@@ -8,7 +8,8 @@ public class MasterInfo : ScriptableObject
 {
     [SerializeField] float initialBalance = 0.0f;
     [SerializeField] int initialPoints = 0;
-    [SerializeField] BuildingInfo[] buildingsSet = null;
+    [SerializeField] BuildingInfo[] turretsSet = null;
+    [SerializeField] BuildingInfo[] initialTurretsSet = null;
     [SerializeField] Upgrade[] upgradesSet = null;
     [SerializeField] Pool[] enemiesSet = null;
 
@@ -19,7 +20,8 @@ public class MasterInfo : ScriptableObject
     public int Points { get => currentPoints; set => currentPoints = value; }
     public Upgrade[] UpgradesSet { get => upgradesSet; }
 
-    public BuildingInfo[] GetBuildingsSet() { return buildingsSet; }
+    public BuildingInfo[] GetTurretsSet() { return turretsSet; }
+    public BuildingInfo[] GetInitialTurretsSet() { return initialTurretsSet; }
     public Pool[] GetEnemiesSet() { return enemiesSet; }
 
     void resetBalance() { currentBalance = initialBalance; }

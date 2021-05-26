@@ -6,8 +6,11 @@ using System.Collections.Generic;
 /// </summary>
 public class Upgrades : MonoBehaviour
 {
-    [SerializeField] BuildingsUI buildingsUI = null;
+    [SerializeField] TurretsUI turretsUI = null;
     [SerializeField] ActivesUI activesUI = null;
+    UpgradesUI upgradesUI;
+
+    public UpgradesUI UpgradesUI { get => upgradesUI; set => upgradesUI = value; }
 
     public void AddUpgrade(Upgrade upgrade)
     {
@@ -18,15 +21,15 @@ public class Upgrades : MonoBehaviour
         else if (upgrade is Passive)
         {
             Passive passive = (Passive)upgrade;
-            BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetBuildingsSet();
-            foreach (BuildingInfo turret in turrets)
+            BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetTurretsSet();
+            foreach (TurretInfo turret in turrets)
             {
                 foreach (Stat stat in passive.Stats)
                 {
                     turret.IncrementStat(stat.Type, stat.Value);
                 }
 
-                buildingsUI.UpdateBuildingInfo(turret);
+                turretsUI.UpdateTurretInfo(turret);
             }
         }
         else if (upgrade is TurretTransformation)
@@ -34,5 +37,7 @@ public class Upgrades : MonoBehaviour
             //Select the correct slot
             //Enter all the turretUpgrades of that turret on the upgradesSet
         }
+
+        upgradesUI.CloseUpgrades();
     }
 }

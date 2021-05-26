@@ -103,7 +103,7 @@ public class WavesHandler : MonoBehaviour
         if (Nexus.Instance.IsFullHealth) MasterHandler.Instance.UpdatePoints(1); // Objective 2 completed
         timer = 0;
         onPlanningPhase = true;
-        upgradesUI.EnableRandomUpgrades(2);
+        upgradesUI.OpenUpgrades(3);
     }
 
     void spawnEnemies()

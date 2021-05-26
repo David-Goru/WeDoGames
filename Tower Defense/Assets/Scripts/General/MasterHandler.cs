@@ -50,8 +50,6 @@ public class MasterHandler : MonoBehaviour
             {
                 list.Initialize(MasterInfo, transform);
             }
-
-            upgradesUI.EnableRandomUpgrades(2);
         }
     }
 
