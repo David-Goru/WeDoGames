@@ -98,9 +98,9 @@ public class WavesHandler : MonoBehaviour
 
     void nextWave()
     {
-        MasterHandler.Instance.UpdatePoints(1); // Wave won
-        if (timer <= 60) MasterHandler.Instance.UpdatePoints(1); // Objective 1 completed
-        if (Nexus.Instance.IsFullHealth) MasterHandler.Instance.UpdatePoints(1); // Objective 2 completed
+        MasterHandler.Instance.UpdateBalance(100); // Wave won
+        if (timer <= 60) MasterHandler.Instance.UpdateBalance(100); // Objective 1 completed
+        if (Nexus.Instance.IsFullHealth) MasterHandler.Instance.UpdateBalance(100); // Objective 2 completed
         timer = 0;
         onPlanningPhase = true;
         upgradesUI.OpenUpgrades(3);

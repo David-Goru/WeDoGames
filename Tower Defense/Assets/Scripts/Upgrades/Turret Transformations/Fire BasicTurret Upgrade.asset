@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Fire BasicTurret Upgrade
   m_EditorClassIdentifier: 
   description: Upgrade your turret into a fire one
-  points: 1
+  price: 100
   turret: {fileID: 11400000, guid: d6cddcffc661a5b47870311e0f940527, type: 2}
+  isBasic: 0
+  turretElement: 0

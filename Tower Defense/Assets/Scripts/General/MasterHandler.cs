@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -13,23 +11,17 @@ public class MasterHandler : MonoBehaviour
 
     [Header("UI elements")]
     [SerializeField] Text balanceText = null;
-    [SerializeField] Text pointsText = null;
 
     [Header("References")]
     [SerializeField] MasterInfo masterInfo = null;
     [SerializeField] UpgradesUI upgradesUI = null;
+
     public ActiveMode ActiveMode;
-
     public Grid grid;
-
-    // Store Master instance
-    public static MasterHandler Instance;
-
     public MasterInfo MasterInfo { get => masterInfo; }
 
-    /// <summary>
-    /// Initiliazes the MasterHandler
-    /// </summary>
+    public static MasterHandler Instance;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -38,14 +30,10 @@ public class MasterHandler : MonoBehaviour
 
         if (GameManager.Instance != null) GameManager.Instance.AddCommand("addMoney", addMoney);
 
-        // If not testing without UI
         if (!testWithoutUI)
         {
-            // Set UI texts
             balanceText.text = string.Format("{0} coins", MasterInfo.Balance);
-            pointsText.text = string.Format("{0} points", MasterInfo.Points);
 
-            // Initialize lists
             foreach (UIList list in GetComponents(typeof(UIList)))
             {
                 list.Initialize(MasterInfo, transform);
@@ -79,16 +67,6 @@ public class MasterHandler : MonoBehaviour
             MasterInfo.Balance += amount;
             balanceText.text = string.Format("{0} coins", MasterInfo.Balance);
         }
-
-        return true;
-    }
-
-    public bool UpdatePoints(int amount)
-    {
-        if (amount < 0 && MasterInfo.Points < Mathf.Abs(amount)) return false;
-
-        MasterInfo.Points += amount;
-        if (pointsText != null) pointsText.text = string.Format("{0} points", MasterInfo.Points);
 
         return true;
     }

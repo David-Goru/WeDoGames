@@ -31,7 +31,7 @@ public class UpgradesUI : UIList
         Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
         objectUI.name = upgrade.name;
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
-        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} {1}", upgrade.Points, upgrade.Points > 1 ? "points" : "point");
+        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} coins", upgrade.Price);
         objectUI.GetComponent<Button>().onClick.AddListener(() => addUpgradeAction(upgrade));
         objectUI.GetComponent<HoverUIElement>().HoverText = upgrade.Description;
         objectUI.SetParent(ListUIObject, false);
@@ -41,7 +41,7 @@ public class UpgradesUI : UIList
 
     void addUpgradeAction(Upgrade upgrade)
     {
-        if (MasterHandler.Instance.UpdatePoints(-upgrade.Points))
+        if (MasterHandler.Instance.UpdateBalance(-upgrade.Price))
         {
             upgrades.AddUpgrade(upgrade);
             upgrade.ObjectUI.gameObject.SetActive(false);
@@ -56,7 +56,7 @@ public class UpgradesUI : UIList
 
         /* Add upgrades (to upgradesAvailable) */
 
-        // Add general upgrades?
+        // Add nexus upgrades
         // Add tier 1 upgrades if there are still basic turrets
         // Add tier 2 upgrades for tier 1 turrets (if no tier 0 turrets)
         // Add tier 3 upgrades for tier 2 turrets (if no tier 1 turrets)
