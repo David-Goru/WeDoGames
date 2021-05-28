@@ -22,7 +22,7 @@ public class Upgrades : MonoBehaviour
         {
             Passive passive = (Passive)upgrade;
             BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetTurretsSet();
-            foreach (TurretInfo turret in turrets)
+            foreach (BuildingInfo turret in turrets)
             {
                 foreach (Stat stat in passive.Stats)
                 {

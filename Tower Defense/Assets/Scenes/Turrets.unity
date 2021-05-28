@@ -945,15 +945,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canon turret
       objectReference: {fileID: 0}
-    - target: {fileID: 4790984498408443622, guid: f58bb226fa509614ca6d05e3bec399b2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5275737887537206364, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.68
+      value: 8.39
       objectReference: {fileID: 0}
     - target: {fileID: 5275737887537206364, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
@@ -963,7 +958,7 @@ PrefabInstance:
     - target: {fileID: 5275737887537206364, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.87
+      value: -8.68
       objectReference: {fileID: 0}
     - target: {fileID: 5275737887537206364, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}

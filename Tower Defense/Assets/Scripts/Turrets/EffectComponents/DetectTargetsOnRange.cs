@@ -16,7 +16,6 @@ public class DetectTargetsOnRange : EffectComponent, ICurrentTargetsOnRange
     {
         turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
-        targetsDetector.TargetLayer = targetLayer;
     }
 
     public override void UpdateComponent()
@@ -25,8 +24,8 @@ public class DetectTargetsOnRange : EffectComponent, ICurrentTargetsOnRange
 
     List<Transform> getTargets()
     {
-        targetsDetector.Range = turretStats.GetStatValue(StatType.ATTACKRANGE);
-        return targetsDetector.GetTargets();
+        float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        return targetsDetector.GetTargets(range, targetLayer);
     }
 
     [SerializeField] float debugRange = 2f;

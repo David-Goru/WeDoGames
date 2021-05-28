@@ -3,8 +3,5 @@ using UnityEngine;
 
 public interface ITargetsDetector
 {
-	LayerMask TargetLayer { get; set; }
-	float Range { get; set; }
-
-	List<Transform> GetTargets();
+	List<Transform> GetTargets(float range, LayerMask targetsLayer);
 }

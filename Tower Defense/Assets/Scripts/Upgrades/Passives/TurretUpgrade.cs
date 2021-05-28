@@ -3,12 +3,12 @@
 [CreateAssetMenu(fileName = "TurretUpgrade", menuName = "Upgrades/TurretUpgrade", order = 0)]
 public class TurretUpgrade : Upgrade
 {
-    TurretInfo turretToUpgrade;
+    BuildingInfo turretToUpgrade;
     [SerializeField] Stat[] statIncrements = null;
 
     public Stat[] StatChanges { get => statIncrements; }
 
-    public void SetTurret(TurretInfo turretInfo)
+    public void SetTurret(BuildingInfo turretInfo)
     {
         turretToUpgrade = turretInfo;
     }

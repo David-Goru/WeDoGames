@@ -11,13 +11,13 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
     ITargetsDetector targetsDetector;
     [SerializeField] LayerMask targetLayer = 0;
 
-    List<Transform> currentTargets = new List<Transform>();
+    protected List<Transform> currentTargets = new List<Transform>();
     
-    bool isTargetingEnemy;
+    protected bool isTargetingEnemy;
 
     float timer = 0;
 
-    TurretStats turretStats;
+    protected TurretStats turretStats;
 
     public List<Transform> CurrentTargets { get { return currentTargets; } private set { } }
 
@@ -35,12 +35,10 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
     {
         turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
-        targetsDetector.TargetLayer = targetLayer;
     }
 
     void UpdateTarget()
     {
-        targetsDetector.Range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         if (!isTargetingEnemy)
             detectEnemiesOnRangeAndSelectTheNearest();
         else
@@ -54,7 +52,8 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
 
     void detectEnemiesOnRangeAndSelectTheNearest()
     {
-        List<Transform> targetsOnRange = detectTargets();
+        float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        List<Transform> targetsOnRange = detectTargets(range);
         if (targetsOnRange.Count > 0)
         {
             isTargetingEnemy = true;
@@ -62,12 +61,12 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
         }
     }
     
-    List<Transform> detectTargets()
+    protected List<Transform> detectTargets(float range)
     {
-        return targetsDetector.GetTargets();
+        return targetsDetector.GetTargets(range, targetLayer);
     }
 
-    void selectTheNearestEnemy(List<Transform> targetsOnRange)
+    protected virtual void selectTheNearestEnemy(List<Transform> targetsOnRange)
     {
         float minDistanceToTurret = Mathf.Infinity;
         int listCount = targetsOnRange.Count;
@@ -115,9 +114,10 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
         return true;
     }
 
-    bool checkIfEnemyIsStillInRange()
+    protected virtual bool checkIfEnemyIsStillInRange()
     {
-        List<Transform> targets = detectTargets();
+        float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        List<Transform> targets = detectTargets(range);
 
         for (int i = 0; i < targets.Count; i++)
         {
@@ -134,10 +134,9 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
     }
 
     [SerializeField] float debugRange = 2f;
-    void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, debugRange);
     }
-
 }
