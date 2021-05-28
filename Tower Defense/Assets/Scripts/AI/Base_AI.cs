@@ -281,6 +281,15 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         checkDeath();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Turret"))
+        {
+            currentTurret = other.transform;
+            currentState = new Attack(this, anim, currentTurret);
+        }
+    }
+
     /* UI */
     const string info = @"Attack Range: {0:0.##}
 Attack Rate: {1:0.##}
