@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// This is a class
@@ -7,8 +8,16 @@ using UnityEngine.UI;
 public class ActivesUI : UIList
 {
     [SerializeField] GameObject UIActivePrefab = null;
+
+    List<Active> activesAvailable = null;
+    List<Active> activesEnabled = null;
+
+    public List<Active> ActivesAvailable { get => activesAvailable; }
+
     public override void Initialize(MasterInfo masterInfo, Transform masterObject)
     {
+        activesAvailable = new List<Active>();
+        activesEnabled = new List<Active>();
         loadUpgrades(masterInfo);
     }
 
@@ -16,7 +25,11 @@ public class ActivesUI : UIList
     {
         foreach (Upgrade upgrade in masterInfo.UpgradesSet)
         {
-            if (upgrade is Active) addActiveToUI(upgrade);
+            if (upgrade is Active)
+            {
+                activesAvailable.Add((Active)upgrade);
+                addActiveToUI(upgrade);
+            }
         }
     }
 
@@ -35,6 +48,8 @@ public class ActivesUI : UIList
 
     public void EnableActive(Upgrade upgrade)
     {
+        activesAvailable.Remove((Active)upgrade);
+        activesEnabled.Add((Active)upgrade);
         ListUIObject.Find(upgrade.name).gameObject.SetActive(true);
     }
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Plant Basic Turret description
   turretElement: 3
+  turretTier: 1
   isBasic: 0
   Stats:
   - type: 0

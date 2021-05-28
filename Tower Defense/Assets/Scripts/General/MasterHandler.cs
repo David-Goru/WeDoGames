@@ -14,7 +14,6 @@ public class MasterHandler : MonoBehaviour
 
     [Header("References")]
     [SerializeField] MasterInfo masterInfo = null;
-    [SerializeField] UpgradesUI upgradesUI = null;
 
     public ActiveMode ActiveMode;
     public Grid grid;
