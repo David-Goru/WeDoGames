@@ -101,26 +101,22 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)
     {
-        if (targetIndex < path.Length - 1)
+        if (!pathReached)
         {
-            Vector3 direction = path[targetIndex + 1] - path[targetIndex];
-            direction = direction.normalized;
-            print("checking...");
-
+            Vector3 direction = path[targetIndex] - transform.position;
+            
             RaycastHit hit;
-            if (Physics.Raycast(path[targetIndex], direction, out hit, 10f, objectsLayer))
+            if (Physics.Raycast(transform.position, direction.normalized, out hit, direction.magnitude, objectsLayer))
             {
-                print("Raycast funciona");
                 if (!hit.collider.CompareTag("Nexus")) //Make sure it's not the nexus what I'm detecting
                 {
-                    print("Object detected! Recalculating...");
                     recalculatePath();
                 }
             }
         }
     }
 
-    private void recalculatePath() //Used by checkPath. Recalculates path.
+    private void recalculatePath() //Used by checkPath. Request another path for the enemy (calls pathfinding system).
     {
         PathData newTarget;
 
@@ -134,7 +130,6 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         }
 
         PathRequestManager.RequestPath(transform.position, newTarget, Range, OnPathFound);
-        print("Path recalculated");
     }
 
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)

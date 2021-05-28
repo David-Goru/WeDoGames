@@ -172,7 +172,6 @@ public class BuildObject : MonoBehaviour
         foreach (Base_AI enemy in allEnemies)
         {
             enemy.checkPath();
-            print("Checking path");
         }
     }
 

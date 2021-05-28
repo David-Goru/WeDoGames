@@ -1496,7 +1496,7 @@ MonoBehaviour:
   - {fileID: 5036265520778827637}
   WaveTimerText: {fileID: 2102561728}
   currentWave: 0
-  planningTime: 5
+  planningTime: 2
   enemyWaves:
   - enemyWave:
     - enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
