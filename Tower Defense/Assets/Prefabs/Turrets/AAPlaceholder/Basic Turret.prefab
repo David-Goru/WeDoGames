@@ -319,10 +319,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5955085885228722160}
-  - component: {fileID: 6456288637690598361}
+  - component: {fileID: 2540628374455579922}
   m_Layer: 2
-  m_Name: Collider
-  m_TagString: Untagged
+  m_Name: ColliderForEnemiesToDetectYou
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,8 +341,8 @@ Transform:
   m_Father: {fileID: 4224321588919385858}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6456288637690598361
-BoxCollider:
+--- !u!135 &2540628374455579922
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -352,8 +352,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1, z: 1.8}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7018400655125904939
 GameObject:
   m_ObjectHideFlags: 0

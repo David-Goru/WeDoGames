@@ -285,7 +285,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         if (other.CompareTag("Turret") && currentTurret == null)
         {
-            currentTurret = other.transform;
+            currentTurret = other.transform.parent;
             currentState = new Move(this, anim, currentTurret);
         }
     }

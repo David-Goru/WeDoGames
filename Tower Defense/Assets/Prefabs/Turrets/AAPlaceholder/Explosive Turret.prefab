@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c4b1380a9bdd548acac4fcb902445d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingInfo: {fileID: 11400000, guid: 8c8c2fbb589ebaf43996a003cea11802, type: 2}
+  buildingInfo: {fileID: 0}
   currentHp: 0
 --- !u!114 &670727000040579088
 MonoBehaviour:
@@ -5209,10 +5209,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7336503144686695192}
-  - component: {fileID: 3413283203452578132}
+  - component: {fileID: 4271767521034460277}
   m_Layer: 2
-  m_Name: Collider
-  m_TagString: Untagged
+  m_Name: ColliderForEnemiesToDetectYou
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5231,8 +5231,8 @@ Transform:
   m_Father: {fileID: 670727000040579102}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3413283203452578132
-BoxCollider:
+--- !u!135 &4271767521034460277
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5242,5 +5242,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1, z: 1.8}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
