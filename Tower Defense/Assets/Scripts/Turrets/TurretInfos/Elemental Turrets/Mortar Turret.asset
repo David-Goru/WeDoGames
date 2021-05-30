@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Mortar Turret description
   turretElement: 1
+  turretTier: 2
   isBasic: 0
   Stats:
   - type: 0
@@ -41,6 +42,6 @@ MonoBehaviour:
     value: 1
   - type: 8
     value: 1.5
-  buildingPool: {fileID: 11400000, guid: d6cddcffc661a5b47870311e0f940527, type: 2}
-  buildingBlueprintPool: {fileID: 11400000, guid: 6fc6b92fe5ae93044af2b5602ede351e,
+  buildingPool: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
+  buildingBlueprintPool: {fileID: 11400000, guid: e2bc268c5f8cd2d429159f8eb5f7c71b,
     type: 2}

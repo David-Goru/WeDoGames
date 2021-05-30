@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 670727000040579088}
   - component: {fileID: -3981665781731516681}
   m_Layer: 10
-  m_Name: AreaMeleeTurret
+  m_Name: Explosive Turret
   m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

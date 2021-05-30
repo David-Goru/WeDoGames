@@ -137,6 +137,8 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+        if (turretStats != null)
+            debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
         Gizmos.DrawWireSphere(this.transform.position, debugRange);
     }
 }

@@ -20,7 +20,15 @@ public class TurretsUI : UIList
     public void UpdateTurretInfo(BuildingInfo buildingInfo)
     {
         Transform objectUI = ListUIObject.Find(buildingInfo.name);
-        setTurretInfo(objectUI, buildingInfo);
+        if (objectUI != null) setTurretInfo(objectUI, buildingInfo);
+    }
+
+    public void UpdateTurretElement(TurretElement turretElement)
+    {
+        foreach (KeyValuePair<Transform, BuildingInfo> turretSlot in turretsSlots)
+        {
+            if (turretSlot.Value.TurretElement == turretElement) setTurretInfo(turretSlot.Key, turretSlot.Value);
+        }
     }
 
     public void AddTurretToSlot(BuildingInfo buildingInfo, int slot)
@@ -29,6 +37,84 @@ public class TurretsUI : UIList
 
         turretsSlots[slot] = new KeyValuePair<Transform, BuildingInfo>(turretsSlots[slot].Key, buildingInfo);
         setTurretInfo(turretsSlots[slot].Key, turretsSlots[slot].Value);
+    }
+
+    public bool ExistsTier(TurretTier turretTier)
+    {
+        foreach (KeyValuePair<Transform, BuildingInfo> turretSlot in turretsSlots)
+        {
+            if (turretSlot.Value.TurretTier == turretTier) return true;
+        }
+
+        return false;
+    }
+
+    public bool ExistsElement(TurretElement turretElement)
+    {
+        foreach (KeyValuePair<Transform, BuildingInfo> turretSlot in turretsSlots)
+        {
+            if (turretSlot.Value.TurretElement == turretElement) return true;
+        }
+
+        return false;
+    }
+
+    public bool ExistsTierAndElement(TurretTier turretTier, TurretElement turretElement)
+    {
+        foreach (KeyValuePair<Transform, BuildingInfo> turretSlot in turretsSlots)
+        {
+            if (turretSlot.Value.TurretTier == turretTier && turretSlot.Value.TurretElement == turretElement) return true;
+        }
+
+        return false;
+    }
+
+    public bool ExistsTurret(BuildingInfo turret)
+    {
+        foreach (KeyValuePair<Transform, BuildingInfo> turretSlot in turretsSlots)
+        {
+            if (turretSlot.Value == turret) return true;
+        }
+
+        return false;
+    }
+
+    public int GetSlot(TurretElement turretElement, TurretTier turretTier)
+    {
+        foreach (KeyValuePair<Transform, BuildingInfo> turretSlot in turretsSlots)
+        {
+            if (turretSlot.Value.TurretElement == turretElement && turretSlot.Value.TurretTier == turretTier) return turretsSlots.IndexOf(turretSlot);
+        }
+
+        return -1;
+    }
+
+    public void AddTurretUpgrade(TurretTransformation turretTransformation)
+    {
+        if (turretTransformation.TurretTier == TurretTier.SECOND)
+        {
+            for (int i = 0; i < turretsSlots.Count; i++)
+            {
+                if (turretsSlots[i].Value.TurretTier == TurretTier.FIRST)
+                {
+                    turretsSlots[i] = new KeyValuePair<Transform, BuildingInfo>(turretsSlots[i].Key, turretTransformation.TurretInfo);
+                    setTurretInfo(turretsSlots[i].Key, turretsSlots[i].Value);
+                    break;
+                }
+            }
+        }
+        else if (turretTransformation.TurretTier == TurretTier.THIRD)
+        {
+            for (int i = 0; i < turretsSlots.Count; i++)
+            {
+                if (turretsSlots[i].Value.TurretTier == TurretTier.SECOND && turretsSlots[i].Value.TurretElement == turretTransformation.TurretElement)
+                {
+                    turretsSlots[i] = new KeyValuePair<Transform, BuildingInfo>(turretsSlots[i].Key, turretTransformation.TurretInfo);
+                    setTurretInfo(turretsSlots[i].Key, turretsSlots[i].Value);
+                    break;
+                }
+            }
+        }
     }
 
     void loadInitialSlots(MasterInfo masterInfo)
@@ -41,8 +127,7 @@ public class TurretsUI : UIList
 
     Transform addTurretToUI(BuildingInfo buildingInfo)
     {
-        Transform objectUI;
-        objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
+        Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
         setTurretInfo(objectUI, buildingInfo);
         objectUI.SetParent(ListUIObject, false);
 

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MasterInfo
   m_EditorClassIdentifier: 
   initialBalance: 500
-  initialPoints: 1
   turretsSet:
   - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
   - {fileID: 11400000, guid: 16ef39b4fdaa5d9468b5e2fc66238df3, type: 2}
   - {fileID: 11400000, guid: 1ea48da23443c09448614fc46f0b2e3b, type: 2}
   - {fileID: 11400000, guid: a2068d2dc6e1c2440af1009aebef74fb, type: 2}
   - {fileID: 11400000, guid: f7272536fe36e154a8618ae190fd6f86, type: 2}
+  - {fileID: 11400000, guid: 29bbb812666d7e04f83605fd68e7fe00, type: 2}
   initialTurretsSet:
   - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
   - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
@@ -35,6 +35,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc41d48e7df49754daa4fbd77969a5be, type: 2}
   - {fileID: 11400000, guid: a1aec64cc0916954b891edf1f49a16c1, type: 2}
   - {fileID: 11400000, guid: 852883da626c9b946aff37843fa91df4, type: 2}
+  - {fileID: 11400000, guid: 50a0262737793c3488d3f68828e8410a, type: 2}
+  - {fileID: 11400000, guid: 8387759b9df05bf4f8c44dbb5ff0bdcf, type: 2}
+  - {fileID: 11400000, guid: 2213715776399e748ba5049515e6b67e, type: 2}
+  - {fileID: 11400000, guid: 29b7a8e9fdd3bce4abed73f12180dc50, type: 2}
+  - {fileID: 11400000, guid: 7c8b22b11a7cf3244a4b410da5b983f6, type: 2}
   enemiesSet:
   - {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
   - {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}

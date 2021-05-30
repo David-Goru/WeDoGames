@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: Heavy Turret
+  m_Name: Mortar Turret
   m_EditorClassIdentifier: 
   prefab: {fileID: 4790984498408443622, guid: f58bb226fa509614ca6d05e3bec399b2, type: 3}
   size: 20
-  tag: Heavy Turret
+  tag: Mortar Turret

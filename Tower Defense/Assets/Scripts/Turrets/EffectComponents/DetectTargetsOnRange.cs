@@ -32,6 +32,8 @@ public class DetectTargetsOnRange : EffectComponent, ICurrentTargetsOnRange
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
+        if (turretStats != null)
+            debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
         Gizmos.DrawWireSphere(this.transform.position, debugRange);
     }
 }

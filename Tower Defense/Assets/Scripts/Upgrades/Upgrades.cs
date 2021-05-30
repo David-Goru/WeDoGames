@@ -18,24 +18,38 @@ public class Upgrades : MonoBehaviour
         {
             activesUI.EnableActive(upgrade);
         }
-        else if (upgrade is Passive)
+        else if (upgrade is ElementalStatUpgrade)
         {
-            Passive passive = (Passive)upgrade;
+            ElementalStatUpgrade elementalStatUpgrade = (ElementalStatUpgrade)upgrade;
             BuildingInfo[] turrets = MasterHandler.Instance.MasterInfo.GetTurretsSet();
             foreach (BuildingInfo turret in turrets)
             {
-                foreach (Stat stat in passive.Stats)
+                if (turret.TurretElement == elementalStatUpgrade.Element)
                 {
-                    turret.IncrementStat(stat.Type, stat.Value);
+                    foreach (Stat stat in elementalStatUpgrade.Stats)
+                    {
+                        turret.IncrementStat(stat.Type, stat.Value);
+                    }
                 }
-
-                turretsUI.UpdateTurretInfo(turret);
             }
+
+            turretsUI.UpdateTurretElement(elementalStatUpgrade.Element);
         }
         else if (upgrade is TurretTransformation)
         {
-            //Select the correct slot
-            //Enter all the turretUpgrades of that turret on the upgradesSet
+            turretsUI.AddTurretUpgrade((TurretTransformation)upgrade);
+        }
+        else if (upgrade is TurretUpgrade)
+        {
+            TurretUpgrade turretUpgrade = (TurretUpgrade)upgrade;
+            turretUpgrade.CurrentUsages++;
+
+            foreach (Stat stat in turretUpgrade.StatChanges)
+            {
+                turretUpgrade.TurretToUpgrade.TurretInfo.IncrementStat(stat.Type, stat.Value);
+            }
+
+            turretsUI.UpdateTurretInfo(turretUpgrade.TurretToUpgrade.TurretInfo);
         }
 
         upgradesUI.CloseUpgrades();

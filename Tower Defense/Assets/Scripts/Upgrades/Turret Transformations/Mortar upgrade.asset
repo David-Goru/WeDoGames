@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
+  m_Name: Mortar upgrade
+  m_EditorClassIdentifier: 
+  description: Upgrade your turret into a mortar
+  price: 100
+  turret: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
+  turretTier: 2
+  turretElement: 1
+  turretInfo: {fileID: 11400000, guid: 29bbb812666d7e04f83605fd68e7fe00, type: 2}
+  parentTurretInfo: {fileID: 11400000, guid: 16ef39b4fdaa5d9468b5e2fc66238df3, type: 2}

@@ -39,6 +39,8 @@ public class DetectClosestTargetInDonut : DetectClosestTarget
     {
         base.OnDrawGizmos();
         Gizmos.color = Color.blue;
+        if (turretStats != null)
+            debugMinimumRange = turretStats.GetStatValue(StatType.MINIMUMRANGE);
         Gizmos.DrawWireSphere(this.transform.position, debugMinimumRange);
     }
 }

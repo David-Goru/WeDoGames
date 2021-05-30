@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: Heavy Turret Blueprint
+  m_Script: {fileID: 11500000, guid: 0c54909f13977b240bf2ad0303440d97, type: 3}
+  m_Name: Mortar Upgrade Test
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7929621584254921936, guid: 3a03b05b52191fb4f8b2b292721708c3, type: 3}
-  size: 1
-  tag: Heavy Turret Blueprint
+  description: Something cool
+  price: 10
+  turretToUpgrade: {fileID: 11400000, guid: 7c8b22b11a7cf3244a4b410da5b983f6, type: 2}
+  statChanges:
+  - type: 3
+    value: 1
+  usages: 2
