@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b768575fe96cc40a1335d3f3a4b2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetDetection: {fileID: 1819583760506200628}
   particles: {fileID: 3912864216212939897}
 --- !u!114 &1819583760506200628
 MonoBehaviour:

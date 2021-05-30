@@ -13,9 +13,9 @@ public class ShootToEnemy : EffectComponent
 
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
-    ICurrentTargetsOnRange targetDetection;
+    [SerializeField] CurrentTargetsOnRange targetDetection;
 
-    public ICurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
+    public CurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
 
 
     public override void InitializeComponent()
@@ -37,7 +37,7 @@ public class ShootToEnemy : EffectComponent
     {
         objectPooler = ObjectPooler.GetInstance();
         turretStats = GetComponentInParent<TurretStats>();
-        targetDetection = GetComponent<ICurrentTargetsOnRange>();
+        targetDetection = GetComponent<CurrentTargetsOnRange>();
         enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
     }
 

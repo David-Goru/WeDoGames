@@ -6,12 +6,11 @@ public class RotationToEnemy : EffectComponent
 {
     [SerializeField] float rotationSpeed = 300f;
     [SerializeField] Transform objectToRotate = null;
+    [SerializeField] CurrentTargetsOnRange enemyDetection;
     public Transform ObjectToRotate { get { return objectToRotate; } set { objectToRotate = value; } }
-    ICurrentTargetsOnRange enemyDetection;
 
     public override void InitializeComponent()
     {
-        enemyDetection = transform.GetComponent<ICurrentTargetsOnRange>();
     }
 
     public override void UpdateComponent()

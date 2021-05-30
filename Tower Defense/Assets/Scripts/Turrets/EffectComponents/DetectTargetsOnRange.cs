@@ -4,13 +4,13 @@ using UnityEngine;
 /// <summary>
 /// This is a class
 /// </summary>
-public class DetectTargetsOnRange : EffectComponent, ICurrentTargetsOnRange
+public class DetectTargetsOnRange : CurrentTargetsOnRange
 {
     ITargetsDetector targetsDetector;
     TurretStats turretStats;
     [SerializeField] LayerMask targetLayer = 0;
 
-    public List<Transform> CurrentTargets { get { return getTargets(); } private set { } }
+    public override List<Transform> CurrentTargets { get { return getTargets(); } }
 
     public override void InitializeComponent()
     {

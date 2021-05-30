@@ -1,33 +1,20 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// This is a class
-/// </summary>
-public class DamageEnemiesOnRange : EffectComponent
+public class ConstantDamageToEnemiesInRange : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
     [SerializeField] ParticleSystem particles = null;
 
-    float timer = 0f;
-
     public override void InitializeComponent()
     {
         GetDependencies();
-        timer = 0f;
     }
 
     public override void UpdateComponent()
     {
-        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
-        {
-            doDamage();
-        }
-        else
-        {
-            timer += Time.deltaTime;
-        }
+        doDamage();
     }
 
     void GetDependencies()
@@ -39,7 +26,7 @@ public class DamageEnemiesOnRange : EffectComponent
     void doDamage()
     {
         if (ReferenceEquals(targetDetection, null)) return;
-        if(particles != null) particles.Play();
+        if (particles != null) particles.Play();
 
         float damage = turretStats.GetStatValue(StatType.DAMAGE);
         foreach (Transform target in targetDetection.CurrentTargets)
@@ -47,9 +34,8 @@ public class DamageEnemiesOnRange : EffectComponent
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
             if (turretDamageable != null)
             {
-                turretDamageable.OnTurretHit(transform, damage, enemyDamageHandler);
+                turretDamageable.OnTurretHit(transform, damage * Time.deltaTime, enemyDamageHandler);
             }
         }
-        timer = 0f;
     }
 }
