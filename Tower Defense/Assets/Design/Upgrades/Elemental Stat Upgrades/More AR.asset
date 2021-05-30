@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da379d7e3c4994f458fed84dba259dca, type: 3}
-  m_Name: TestActiveAction
+  m_Script: {fileID: 11500000, guid: e7318dc4174fca24e82a93f462266790, type: 3}
+  m_Name: More AR
   m_EditorClassIdentifier: 
-  cooldownUI: {fileID: 0}
-  activeCooldown: 30
-  activeRange: 1.5
-  activeAreaColor: {r: 0, g: 0, b: 0, a: 0}
+  description: Attack rate is reduced by 0.1
+  price: 100
+  element: 0
+  stats:
+  - type: 4
+    value: -0.1

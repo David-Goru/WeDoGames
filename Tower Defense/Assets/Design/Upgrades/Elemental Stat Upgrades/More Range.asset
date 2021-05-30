@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7318dc4174fca24e82a93f462266790, type: 3}
-  m_Name: More AR
+  m_Name: More Range
   m_EditorClassIdentifier: 
-  description: Attack rate is reduced by 0.1
+  description: Attack range is increased by 1
   price: 100
+  element: 0
   stats:
-  - type: 4
-    value: -0.1
+  - type: 3
+    value: 1

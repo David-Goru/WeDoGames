@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "StunActiveAction", menuName = "Upgrades/StunActiveActions/StunActiveAction", order = 0)]
+[CreateAssetMenu(fileName = "StunActiveAction", menuName = "Upgrades/ActiveActions/StunActiveAction", order = 0)]
 public class StunActiveAction : ActiveAction
 {
     Collider[] colsCache = new Collider[32];
