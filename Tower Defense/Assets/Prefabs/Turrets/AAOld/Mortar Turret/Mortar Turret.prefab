@@ -523,6 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 300
   objectToRotate: {fileID: 5673856947355111135}
+  enemyDetection: {fileID: 318811786}
 --- !u!114 &6402317720488130948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 6d829e7ac9e793946bf8e0838c5f4014, type: 2}
   spawnPosition: {fileID: 5673856948056275773}
+  targetDetection: {fileID: 318811786}
 --- !u!114 &4616495875951490175
 MonoBehaviour:
   m_ObjectHideFlags: 0

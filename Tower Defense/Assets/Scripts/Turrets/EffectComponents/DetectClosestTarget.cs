@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// This class detects the first enemy on enter the range. When enemy dies, take the closest one and mantains it until he dies.
 /// </summary>
-public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
+public class DetectClosestTarget : CurrentTargetsOnRange
 {
     const float TIME_OFFSET_FOR_CHECKING_RANGE = 0.2f;
 
@@ -19,7 +19,7 @@ public class DetectClosestTarget : EffectComponent, ICurrentTargetsOnRange
 
     protected TurretStats turretStats;
 
-    public List<Transform> CurrentTargets { get { return currentTargets; } private set { } }
+    public override List<Transform> CurrentTargets { get { return currentTargets; } }
 
     public override void InitializeComponent()
     {

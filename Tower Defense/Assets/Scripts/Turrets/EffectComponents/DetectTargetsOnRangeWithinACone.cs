@@ -1,0 +1,60 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+
+public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
+{
+    ITargetsDetector targetsDetector;
+    TurretStats turretStats;
+    [SerializeField] LayerMask targetLayer = 0;
+    [SerializeField] Transform centerPointPivot;
+
+    public override List<Transform> CurrentTargets { get { return getTargets(); } }
+
+    public override void InitializeComponent()
+    {
+        turretStats = GetComponentInParent<TurretStats>();
+        targetsDetector = GetComponent<ITargetsDetector>();
+    }
+
+    public override void UpdateComponent()
+    {
+    }
+
+    List<Transform> getTargets()
+    {
+        float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        List<Transform> targets = targetsDetector.GetTargets(range, targetLayer);
+        selectTargetsWithinTheCone(targets);
+        return targets;
+    }
+
+    void selectTargetsWithinTheCone(List<Transform> targets)
+    {
+        float angle = turretStats.GetStatValue(StatType.CONEANGLE)/2;
+        for (int i = targets.Count - 1; i >= 0; i--)
+        {
+            Vector3 DirToEnemy = targets[i].position - centerPointPivot.position;
+            DirToEnemy.y = 0f;
+            if(!(Vector3.Angle(centerPointPivot.forward, DirToEnemy) <= angle))
+            {
+                targets.Remove(targets[i]);
+            }
+        }
+    }
+
+    [SerializeField] float debugRange = 2f;
+    [SerializeField] float debugAngle = 45f;
+    [SerializeField] Color coneColor = Color.red;
+    void OnDrawGizmos()
+    {
+        Handles.color = coneColor;
+        if (turretStats != null)
+        {
+            debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
+            debugAngle = turretStats.GetStatValue(StatType.CONEANGLE);
+        }
+        Vector3 fromVector = Quaternion.Euler(0, -debugAngle/2, 0) * centerPointPivot.forward;
+        Handles.DrawSolidArc(centerPointPivot.position, Vector3.up, fromVector, debugAngle, debugRange);
+    }
+}
