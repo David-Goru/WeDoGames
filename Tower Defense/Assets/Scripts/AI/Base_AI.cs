@@ -283,10 +283,10 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Turret"))
+        if (other.CompareTag("Turret") && currentTurret == null)
         {
             currentTurret = other.transform;
-            currentState = new Attack(this, anim, currentTurret);
+            currentState = new Move(this, anim, currentTurret);
         }
     }
 
