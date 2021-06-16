@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Turret
   - Nexus
+  - TurretTrigger
   layers:
   - Default
   - TransparentFX
