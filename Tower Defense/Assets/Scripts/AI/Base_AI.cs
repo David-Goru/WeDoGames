@@ -286,7 +286,6 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         if (other.CompareTag("TurretTrigger") && currentTurret == null)
         {
             currentTurretDamage = other.transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
-            print(currentTurretDamage);
             currentTurret = other.transform.parent;
             currentState = new Move(this, anim, currentTurret);
         }
