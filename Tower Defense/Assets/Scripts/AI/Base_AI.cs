@@ -34,6 +34,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     bool isStunned;
     float fearDuration;
     bool isFeared;
+    bool isKnockbacked;
 
     public float Damage { get => damage; set => damage = value; }
     public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
@@ -45,6 +46,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public bool PathSuccessful { get => pathSuccessful; set => pathSuccessful = value; }
     public float StunDuration { get => stunDuration; set => stunDuration = value; }
     public bool IsStunned { get => isStunned; set => isStunned = value; }
+    public bool IsKnockbacked { get => isKnockbacked; set => isKnockbacked = value; }
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
     public bool IsFeared { get => isFeared; set => isFeared = value; }
 
