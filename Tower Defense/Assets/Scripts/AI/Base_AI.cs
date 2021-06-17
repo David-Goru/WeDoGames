@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 // </summary>
 
 [SelectionBase]
-public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable
+public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable
 {
     [SerializeField] float damage = 0f;
     [SerializeField] float attackSpeed = 0f;
@@ -31,6 +31,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     bool pathSuccessful;
     Vector3 currentWaypoint;
     float stunDuration;
+    float pushDistance;
     bool isStunned;
     float fearDuration;
     bool isFeared;
@@ -45,6 +46,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public bool PathReached { get => pathReached; set => pathReached = value; }
     public bool PathSuccessful { get => pathSuccessful; set => pathSuccessful = value; }
     public float StunDuration { get => stunDuration; set => stunDuration = value; }
+    public float PushDistance { get => pushDistance; set => pushDistance = value; }
     public bool IsStunned { get => isStunned; set => isStunned = value; }
     public bool IsKnockbacked { get => isKnockbacked; set => isKnockbacked = value; }
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
@@ -274,6 +276,17 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         rotationSpeed /= 2f;
 
         anim.SetFloat("animSpeed", 1f);
+    }
+
+
+    public void Knockback(float knockbackDistance)
+    {
+        pushDistance = knockbackDistance;
+        isKnockbacked = true;
+
+        StopCoroutine("FollowPath");
+
+        currentState = new Knockback(this, anim, goal);
     }
 
     public void GetDamage(float damage)
