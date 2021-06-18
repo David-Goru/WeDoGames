@@ -5,5 +5,5 @@
 /// </summary>
 public interface IKnockbackable
 {
-    void Knockback(float knockbackDistance);
+    void Knockback(float knockbackDistance, Vector3 knockbackDirection);
 }

@@ -7,6 +7,7 @@ public class Knockback : State
 {
 	RaycastHit hit;
 	float pushDistance;
+	Vector3 pushDirection;
 	float maxViewRange = 2f;
 	float lerpSpeed = 5f;
 
@@ -22,19 +23,18 @@ public class Knockback : State
 
 		npc.CurrentTurret = null;
 		pushDistance = npc.PushDistance;
+		pushDirection = npc.PushDirection;
 	}
 
 	public override void Update()
 	{
-		//Por ahora doy por hecho que se empuja en la dirección opuesta para debug (cambiar a la dirección del proyectil)
-        if (Vector3.Distance(npc.transform.position, -npc.transform.forward * pushDistance + npc.transform.position) < 0.1f)
+        if (Vector3.Distance(npc.transform.position, pushDirection * pushDistance + npc.transform.position) < 0.1f)
         {
 			npc.transform.position = -npc.transform.forward * pushDistance + npc.transform.position;
 			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
-		//-npc.transform... debería ser el lugar al que vas a ser empujado, por ahora lo dejo así para debug
-		else if (Physics.Raycast(npc.transform.position, -npc.transform.forward, out hit, maxViewRange))
+		else if (Physics.Raycast(npc.transform.position, pushDirection, out hit, maxViewRange))
 		{
 			if (hit.transform.CompareTag("Turret"))
 			{
@@ -42,10 +42,9 @@ public class Knockback : State
 				stage = EVENT.EXIT;
 			}
 		}
-		//De nuevo, cambiar la dirección a la del proyectil en el futuro
 		else
 		{
-			npc.transform.position = Vector3.Lerp(npc.transform.position, -npc.transform.forward * pushDistance + npc.transform.position, lerpSpeed * Time.deltaTime);
+			npc.transform.position = Vector3.Lerp(npc.transform.position, pushDirection * pushDistance + npc.transform.position, lerpSpeed * Time.deltaTime);
 		}
 	}
 

@@ -32,6 +32,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     Vector3 currentWaypoint;
     float stunDuration;
     float pushDistance;
+    Vector3 pushDirection;
     bool isStunned;
     float fearDuration;
     bool isFeared;
@@ -47,6 +48,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public bool PathSuccessful { get => pathSuccessful; set => pathSuccessful = value; }
     public float StunDuration { get => stunDuration; set => stunDuration = value; }
     public float PushDistance { get => pushDistance; set => pushDistance = value; }
+    public Vector3 PushDirection { get => pushDirection; }
     public bool IsStunned { get => isStunned; set => isStunned = value; }
     public bool IsKnockbacked { get => isKnockbacked; set => isKnockbacked = value; }
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
@@ -279,9 +281,10 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     }
 
 
-    public void Knockback(float knockbackDistance)
+    public void Knockback(float knockbackDistance, Vector3 knockbackDirection)
     {
         pushDistance = knockbackDistance;
+        pushDirection = knockbackDirection;
         isKnockbacked = true;
 
         StopCoroutine("FollowPath");
