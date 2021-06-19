@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Mortar Turret Blueprint
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7929621584254921936, guid: 3a03b05b52191fb4f8b2b292721708c3, type: 3}
+  prefab: {fileID: 7929621584254921936, guid: e41bb629795f29047a58202e8a477d68, type: 3}
   size: 1
   tag: Mortar Turret Blueprint
