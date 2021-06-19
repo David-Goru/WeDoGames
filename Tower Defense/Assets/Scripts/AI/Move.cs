@@ -22,12 +22,12 @@ public class Move : State
 
 	public override void Update()
 	{
-		if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && npc.PathSuccessful)
+		if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && !npc.IsKnockbacked && npc.PathSuccessful)
         {
 			nextState = new Attack(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
-		else if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && !npc.PathSuccessful) // If PathSuccessful = false, then the path didn't reach the objective. So, try again
+		else if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && !npc.IsKnockbacked && !npc.PathSuccessful) // If PathSuccessful = false, then the path didn't reach the objective. So, try again
 		{
 			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
