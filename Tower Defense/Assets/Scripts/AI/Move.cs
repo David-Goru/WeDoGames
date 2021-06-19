@@ -27,7 +27,7 @@ public class Move : State
 			nextState = new Attack(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
-		else if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && npc.PathSuccessful)
+		else if (npc.PathReached && !npc.IsStunned && !npc.IsFeared && !npc.PathSuccessful) // If PathSuccessful = false, then the path didn't reach the objective. So, try again
 		{
 			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
