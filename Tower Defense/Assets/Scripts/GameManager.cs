@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject chatPanel, textObject;
     public InputField chatBox;
 
-    public GameObject ChatLogView, ChatLogInput;
+    public GameObject ChatLogView;
 
     public Color playerMessage, info, errorColor;
 
@@ -33,16 +33,8 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && chatBox.text == "")
         {
-            if (ChatLogView.activeSelf == false)
-            {
-                ChatLogInput.SetActive(true);
-                ChatLogView.SetActive(true);
-            }
-            else
-            {
-                ChatLogInput.SetActive(false);
-                ChatLogView.SetActive(false);
-            }
+            if (ChatLogView.activeSelf == false) ChatLogView.SetActive(true);
+            else ChatLogView.SetActive(false);
         }
 
         if(chatBox.text != "")
