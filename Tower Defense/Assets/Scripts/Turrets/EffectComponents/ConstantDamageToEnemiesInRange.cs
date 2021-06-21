@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ConstantDamageToEnemiesInRange : EffectComponent
 {
-    [SerializeField] CurrentTargetsOnRange targetDetection;
+    [SerializeField] CurrentTargetsOnRange targetDetection = null;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
     [SerializeField] ParticleSystem particles = null;

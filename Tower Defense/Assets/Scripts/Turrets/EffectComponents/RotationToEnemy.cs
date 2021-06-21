@@ -6,7 +6,7 @@ public class RotationToEnemy : EffectComponent
 {
     [SerializeField] float rotationSpeed = 300f;
     [SerializeField] Transform objectToRotate = null;
-    [SerializeField] CurrentTargetsOnRange enemyDetection;
+    [SerializeField] CurrentTargetsOnRange enemyDetection = null;
     public Transform ObjectToRotate { get { return objectToRotate; } set { objectToRotate = value; } }
 
     public override void InitializeComponent()

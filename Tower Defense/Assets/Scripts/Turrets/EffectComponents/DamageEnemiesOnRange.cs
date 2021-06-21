@@ -5,7 +5,7 @@
 /// </summary>
 public class DamageEnemiesOnRange : EffectComponent
 {
-    [SerializeField] CurrentTargetsOnRange targetDetection;
+    [SerializeField] CurrentTargetsOnRange targetDetection = null;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
     [SerializeField] ParticleSystem particles = null;

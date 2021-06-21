@@ -7,7 +7,7 @@ public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
     ITargetsDetector targetsDetector;
     TurretStats turretStats;
     [SerializeField] LayerMask targetLayer = 0;
-    [SerializeField] Transform centerPointPivot;
+    [SerializeField] Transform centerPointPivot = null;
 
     public override List<Transform> CurrentTargets { get { return getTargets(); } }
 
