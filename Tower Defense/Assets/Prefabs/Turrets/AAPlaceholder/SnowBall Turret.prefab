@@ -116,7 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8098751255983673235}
   - component: {fileID: 1554927661211244197}
-  - component: {fileID: 4147746941848449782}
   - component: {fileID: 6354773191730646451}
   - component: {fileID: 4687161048777328902}
   - component: {fileID: 169108654005245976}
@@ -155,24 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 4147746941848449782}
   - {fileID: 6354773191730646451}
   - {fileID: 4687161048777328902}
   - {fileID: 169108654005245976}
---- !u!114 &4147746941848449782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114912812976779413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a80d2bb90a0d6540a3a7a0f4c6e32dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetDetection: {fileID: 4687161048777328902}
-  particles: {fileID: 0}
 --- !u!114 &6354773191730646451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7c3c793a81fca4caa4dbf969d6347a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 11400000, guid: 98eae141677f13443b5c4e894a94e279, type: 2}
   spawnPosition: {fileID: 7125410709113921190}
   targetDetection: {fileID: 4687161048777328902}
 --- !u!114 &8435510888718156883
@@ -338,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c4b1380a9bdd548acac4fcb902445d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingInfo: {fileID: 11400000, guid: f992d604937b53140836a1e467fce8d7, type: 2}
+  buildingInfo: {fileID: 11400000, guid: 2a5bbb52af8593d4985f74930cc1001a, type: 2}
   currentHp: 0
 --- !u!114 &7125410708980199863
 MonoBehaviour:

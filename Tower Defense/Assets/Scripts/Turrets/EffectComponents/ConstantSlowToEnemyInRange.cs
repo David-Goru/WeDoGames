@@ -31,11 +31,19 @@ public class ConstantSlowToEnemyInRange : EffectComponent
 
     private void checkIfCurrentEnemyChanged()
     {
-        Transform currentEnemy = targetDetection.CurrentTargets[0];
-        if (enemy != currentEnemy)
+        if(targetDetection.CurrentTargets.Count > 0)
         {
-            enemy = currentEnemy;
-            enemyISlowable = enemy.GetComponent<ISlowable>();
+            Transform currentEnemy = targetDetection.CurrentTargets[0];
+            if (enemy != currentEnemy)
+            {
+                enemy = currentEnemy;
+                enemyISlowable = enemy.GetComponent<ISlowable>();
+            }
+        }
+        else
+        {
+            enemy = null;
+            enemyISlowable = null;
         }
     }
 

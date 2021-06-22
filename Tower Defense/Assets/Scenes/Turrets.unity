@@ -229,7 +229,7 @@ PrefabInstance:
     - target: {fileID: 6125964326492962260, guid: cca373ba9afecdb4ca63e9333c501ef5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6125964326492962267, guid: cca373ba9afecdb4ca63e9333c501ef5,
         type: 3}
@@ -307,7 +307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &575232570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &623024987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,7 +676,7 @@ PrefabInstance:
     - target: {fileID: 7407901596507321689, guid: 50f3a28c530af204cb4ad571e095e3ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f3a28c530af204cb4ad571e095e3ca, type: 3}
@@ -801,7 +801,7 @@ PrefabInstance:
     - target: {fileID: 3124885295755851924, guid: b741bfc6d48d4dc46a43542febd167b7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3124885295755851931, guid: b741bfc6d48d4dc46a43542febd167b7,
         type: 3}
@@ -994,7 +994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1105166592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1207,7 @@ PrefabInstance:
     - target: {fileID: 4790984498408443622, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5275737887537206364, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
@@ -1290,7 +1290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1994877447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,7 +1396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2055120043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1553,7 +1553,7 @@ PrefabInstance:
     - target: {fileID: 1269008495316496044, guid: 0bb69c52cb1ef874594ed26e66b3543e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb69c52cb1ef874594ed26e66b3543e, type: 3}
@@ -1778,6 +1778,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Ray Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434797, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6157477616902100360, guid: eac568587a8431d4886a93108b655e9e,
         type: 3}
       propertyPath: m_UseWorldSpace
@@ -1855,7 +1860,7 @@ PrefabInstance:
     - target: {fileID: 4224321588919385869, guid: 610850b7a9c2c6d42b34ae1ee8bc4dca,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 610850b7a9c2c6d42b34ae1ee8bc4dca, type: 3}
@@ -1870,6 +1875,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flamethrower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876607102681809634, guid: e350ff1d8b890184c8e45eb1fc090318,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6876607102681809649, guid: e350ff1d8b890184c8e45eb1fc090318,
         type: 3}

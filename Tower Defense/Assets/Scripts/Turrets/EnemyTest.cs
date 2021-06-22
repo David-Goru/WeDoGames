@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable
+public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, IKnockbackable
 {
     MeshRenderer meshRenderer;
     float timer = 0f;
@@ -47,5 +47,10 @@ public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable
     public void Poison(float secondsPoisoned, float poisonDamagePerSecond)
     {
         print("I have been poisoned for " + secondsPoisoned + " seconds with a damage of " + poisonDamagePerSecond + " per second");
+    }
+
+    public void Knockback(float knockbackDistance, Vector3 knockbackDirection)
+    {
+        transform.Translate(knockbackDirection * knockbackDistance);
     }
 }
