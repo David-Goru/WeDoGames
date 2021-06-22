@@ -36,7 +36,7 @@ public class HoverUI : MonoBehaviour
         if (HoverPanel == null) return;
 
         hoverText.text = text;
-        hoverRect.transform.position = Input.mousePosition + new Vector3(0, -25, 0);
+        UpdatePosition();
         HoverPanel.SetActive(true);
     }
 

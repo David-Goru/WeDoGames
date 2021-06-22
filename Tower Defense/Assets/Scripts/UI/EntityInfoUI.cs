@@ -41,6 +41,8 @@ public class EntityInfoUI : MonoBehaviour
     {
         if (ui == null) return;
 
+        int yPos = hasUpperScreenSpaceAvailable(240) ? 120 : -120;
+        ui.transform.position = Input.mousePosition + new Vector3(0, yPos, 0);
         currentEntity = entity;
         enableUI();
     }
@@ -63,5 +65,10 @@ public class EntityInfoUI : MonoBehaviour
     {
         if (ui != null) ui.SetActive(false);
         enabled = false;
+    }
+
+    bool hasUpperScreenSpaceAvailable(int pixelsRequired)
+    {
+        return (Input.mousePosition.y + pixelsRequired) < Screen.height;
     }
 }

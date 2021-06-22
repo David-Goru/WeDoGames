@@ -23,6 +23,7 @@ public class WavesHandler : MonoBehaviour
 
     [SerializeField] int currentWave = 0;
     [SerializeField] float planningTime = 0;
+    [SerializeField] Text currentWaveUI;
 
     [Header("Predetermined enemy waves")]
     public List<EnemyList> enemyWaves;
@@ -59,6 +60,7 @@ public class WavesHandler : MonoBehaviour
         }
 
         objectPooler = ObjectPooler.GetInstance();
+        updateWaveUI();
     }
 
     void Update()
@@ -78,6 +80,7 @@ public class WavesHandler : MonoBehaviour
             else
             {
                 currentWave++;
+                updateWaveUI();
                 timer = 0;
                 onPlanningPhase = false;
                 spawnEnemies();
@@ -177,6 +180,11 @@ public class WavesHandler : MonoBehaviour
     public static void EnemyKilled()
     {
         enemiesSpawned--;
+    }
+
+    void updateWaveUI()
+    {
+        if (currentWaveUI != null) currentWaveUI.text = string.Format("WAVE {0}", currentWave);
     }
 }
 
