@@ -6,6 +6,7 @@ public class ShootToEnemy : EffectComponent
 {
     [SerializeField] Pool projectile = null;
     [SerializeField] Transform spawnPosition = null;
+    [SerializeField] Animator anim = null;
     ObjectPooler objectPooler;
     GameObject obj;
 
@@ -52,6 +53,10 @@ public class ShootToEnemy : EffectComponent
         {
             obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
             obj.GetComponent<Projectile>().SetInfo(enemy, transform.parent, turretStats, enemyDamageHandler);
+            if(anim != null)
+            {
+                anim.SetTrigger("Shoot");
+            }
             resetTimer();
         }
         else

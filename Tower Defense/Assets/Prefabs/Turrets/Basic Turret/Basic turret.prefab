@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4224321588919385865}
   - component: {fileID: 6162162570867468129}
   m_Layer: 10
-  m_Name: Basic Turret
+  m_Name: Basic turret
   m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: c4775841c211b434382c1a406e642445, type: 2}
   spawnPosition: {fileID: 4224321589051985944}
+  anim: {fileID: 8276932497824608311}
   targetDetection: {fileID: 1833353660241889208}
 --- !u!114 &21943914123297549
 MonoBehaviour:
@@ -393,25 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6536f67b5424248b5283b787131a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &8276932497824608311
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9087414750265569172}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 220d4ff87dca0ed46b13cdda2953f961, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8276932496320129301
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +425,25 @@ Transform:
   m_Father: {fileID: 4224321588919385858}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8276932497824608311
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9087414750265569172}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220d4ff87dca0ed46b13cdda2953f961, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8276932496171750085
 PrefabInstance:
   m_ObjectHideFlags: 0
