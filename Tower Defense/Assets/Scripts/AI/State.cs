@@ -50,12 +50,12 @@ public class State
 
 	public void OnTurretHit(Transform turretTransform)
 	{
-		if (!turretTransform.gameObject.activeSelf && !npc.IsStunned && !npc.IsFeared)
+		if (!turretTransform.gameObject.activeSelf && !npc.IsStunned && !npc.IsFeared && !npc.IsKnockbacked)
         {
 			nextState = new Move(npc, anim, npc.Goal);
 			stage = EVENT.EXIT;
 		}
-        else if (!npc.IsStunned && !npc.IsFeared)
+        else if (!npc.IsStunned && !npc.IsFeared && !npc.IsKnockbacked)
         {
 			npc.CurrentTurret = turretTransform.transform;
 			nextState = new Move(npc, anim, turretTransform);
