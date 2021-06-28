@@ -6,9 +6,9 @@
 public class DamageEnemiesOnRange : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
+    [SerializeField] ParticleSystem particles = null;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
-    [SerializeField] ParticleSystem particles = null;
 
     float timer = 0f;
 
@@ -20,14 +20,8 @@ public class DamageEnemiesOnRange : EffectComponent
 
     public override void UpdateComponent()
     {
-        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
-        {
-            doDamage();
-        }
-        else
-        {
-            timer += Time.deltaTime;
-        }
+        if (isTimeToDamage()) doDamage();
+        else timer += Time.deltaTime;
     }
 
     void GetDependencies()
@@ -36,20 +30,27 @@ public class DamageEnemiesOnRange : EffectComponent
         enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
     }
 
+    bool isTimeToDamage()
+    {
+        return timer >= turretStats.GetStatValue(StatType.ATTACKSPEED);
+    }
+
     void doDamage()
     {
         if (ReferenceEquals(targetDetection, null)) return;
-        if(particles != null) particles.Play();
+        playParticles();
 
         float damage = turretStats.GetStatValue(StatType.DAMAGE);
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
-            if (turretDamageable != null)
-            {
-                turretDamageable.OnTurretHit(transform, damage, enemyDamageHandler);
-            }
+            if (turretDamageable != null) turretDamageable.OnTurretHit(transform, damage, enemyDamageHandler);
         }
         timer = 0f;
+    }
+    
+    void playParticles()
+    {
+        if (particles != null) particles.Play();
     }
 }

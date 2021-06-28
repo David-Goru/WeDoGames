@@ -7,31 +7,24 @@ public class ShootToEnemy : EffectComponent
     [SerializeField] Pool projectile = null;
     [SerializeField] Transform spawnPosition = null;
     [SerializeField] Animator anim = null;
-    ObjectPooler objectPooler;
-    GameObject obj;
-
-    float timer = 0;
-
-    TurretStats turretStats;
-    IEnemyDamageHandler enemyDamageHandler;
     [SerializeField] CurrentTargetsOnRange targetDetection;
 
-    public CurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
+    ObjectPooler objectPooler;
+    TurretStats turretStats;
+    IEnemyDamageHandler enemyDamageHandler;
+    float timer = 0;
 
+    public CurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
 
     public override void InitializeComponent()
     {
         GetDependencies();
-        timer = 0f;
+        resetTimer();
     }
 
     public override void UpdateComponent()
     {
-        if (ReferenceEquals(targetDetection, null)) return;
-        foreach (Transform target in targetDetection.CurrentTargets)
-        {
-            ShootEnemy(target);
-        }
+        shootEnemies();
     }
 
     void GetDependencies()
@@ -42,7 +35,16 @@ public class ShootToEnemy : EffectComponent
         enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
     }
 
-    public void ShootEnemy(Transform enemy)
+    void shootEnemies()
+    {
+        if (ReferenceEquals(targetDetection, null)) return;
+        foreach (Transform target in targetDetection.CurrentTargets)
+        {
+            shootEnemy(target);
+        }
+    }
+
+    void shootEnemy(Transform enemy)
     {
         if(enemy == null)
         {
@@ -51,18 +53,22 @@ public class ShootToEnemy : EffectComponent
         }
         if(timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
         {
-            obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
-            obj.GetComponent<Projectile>().SetInfo(enemy, transform.parent, turretStats, enemyDamageHandler);
-            if(anim != null)
-            {
-                anim.SetTrigger("Shoot");
-            }
+            spawnAndInitializeProjectile(enemy);
+            doAnimation();
             resetTimer();
         }
-        else
-        {
-            timer += Time.deltaTime;
-        }
+        else timer += Time.deltaTime;
+    }
+
+    void spawnAndInitializeProjectile(Transform enemy)
+    {
+        GameObject obj = objectPooler.SpawnObject(projectile.tag, spawnPosition.position);
+        obj.GetComponent<Projectile>().SetInfo(enemy, transform.parent, turretStats, enemyDamageHandler);
+    }
+
+    void doAnimation()
+    {
+        if (anim != null) anim.SetTrigger("Shoot");
     }
 
     void resetTimer()

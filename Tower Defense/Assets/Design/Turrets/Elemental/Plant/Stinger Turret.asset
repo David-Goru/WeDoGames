@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
+  m_Name: Stinger Turret
+  m_EditorClassIdentifier: 
+  description: Stinger Turret description
+  turretElement: 3
+  turretTier: 2
+  Stats:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 100
+  - type: 2
+    value: 3
+  - type: 3
+    value: 6
+  - type: 4
+    value: 1
+  - type: 7
+    value: 3
+  - type: 5
+    value: 3
+  buildingPool: {fileID: 11400000, guid: 0cb943c0189582e4b8d75a14ae299d30, type: 2}
+  buildingBlueprintPool: {fileID: 11400000, guid: 24c9a7d453d799d41903cadd2c832b5e,
+    type: 2}
+  currentStats:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 100
+  - type: 2
+    value: 3
+  - type: 3
+    value: 6
+  - type: 4
+    value: 1
+  - type: 7
+    value: 3
+  - type: 5
+    value: 3

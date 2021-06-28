@@ -5,7 +5,6 @@ public class ConstantSlowToEnemyInRange : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
     TurretStats turretStats;
-
     Transform enemy;
     ISlowable enemyISlowable;
     
@@ -20,27 +19,19 @@ public class ConstantSlowToEnemyInRange : EffectComponent
     public override void UpdateComponent()
     {
         getStats();
-        checkIfCurrentEnemyChanged();
+        checkCurrentEnemyValidity();
         slowEnemy();
     }
 
-    private void getStats()
+    void getStats()
     {
         slowDuration = turretStats.GetStatValue(StatType.EFFECTDURATION);
         slowReduction = turretStats.GetStatValue(StatType.SLOWREDUCTION);
     }
 
-    private void checkIfCurrentEnemyChanged()
+    void checkCurrentEnemyValidity()
     {
-        if(targetDetection.CurrentTargets.Count > 0)
-        {
-            Transform currentEnemy = targetDetection.CurrentTargets[0];
-            if (enemy != currentEnemy)
-            {
-                enemy = currentEnemy;
-                enemyISlowable = enemy.GetComponent<ISlowable>();
-            }
-        }
+        if(isThereAnEnemyNearby()) checkIfEnemyChanged();
         else
         {
             enemy = null;
@@ -48,7 +39,24 @@ public class ConstantSlowToEnemyInRange : EffectComponent
         }
     }
 
-    private void slowEnemy()
+    bool isThereAnEnemyNearby()
+    {
+        return targetDetection.CurrentTargets.Count > 0;
+    }
+
+    void checkIfEnemyChanged()
+    {
+        Transform currentEnemy = targetDetection.CurrentTargets[0];
+        if (enemy != currentEnemy) changeCurrentEnemy(currentEnemy);
+    }
+
+    void changeCurrentEnemy(Transform currentEnemy)
+    {
+        enemy = currentEnemy;
+        enemyISlowable = enemy.GetComponent<ISlowable>();
+    }
+
+    void slowEnemy()
     {
         if(enemyISlowable != null)
             enemyISlowable.Slow(slowDuration, slowReduction);
