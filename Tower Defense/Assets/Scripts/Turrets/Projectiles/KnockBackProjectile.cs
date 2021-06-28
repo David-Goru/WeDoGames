@@ -13,11 +13,11 @@ public class KnockBackProjectile : Projectile
     public override void SetInfo(Transform target, Transform turret, TurretStats turretStats, IEnemyDamageHandler enemyDamageHandler)
     {
         base.SetInfo(target, turret, turretStats, enemyDamageHandler);
-        calculateDirection();
+        calculateMoveDirection();
         initMembers();
     }
 
-    void calculateDirection()
+    void calculateMoveDirection()
     {
         Vector3 enemyDirection = (target.position - transform.position).normalized;
         moveDirection = new Vector3(enemyDirection.x, 0, enemyDirection.z).normalized;
@@ -37,28 +37,26 @@ public class KnockBackProjectile : Projectile
         checkLifeSpan();
     }
 
-    private void checkLifeSpan()
-    {
-        if (timer >= lifeSpan)
-            disable();
-        else
-        {
-            timer += Time.deltaTime;
-        }
-    }
-
     private void moveTowardsDirection()
     {
         float speed = turretStats.GetStatValue(StatType.PROJECTILESPEED);
         transform.Translate(moveDirection * speed * Time.deltaTime);
     }
 
+    private void checkLifeSpan()
+    {
+        if (timer >= lifeSpan) disable();
+        else timer += Time.deltaTime;
+    }
+
     protected override void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && !enemiesCollided.Contains(other))
-        {
-            OnEnemyCollision(other);
-        }
+        if (isValidObject(other)) OnEnemyCollision(other);
+    }
+
+    bool isValidObject(Collider other)
+    {
+        return other.gameObject.layer == LayerMask.NameToLayer("Enemy") && !enemiesCollided.Contains(other);
     }
 
     protected override void OnEnemyCollision(Collider enemy)
@@ -72,8 +70,7 @@ public class KnockBackProjectile : Projectile
     void CheckRemainingObjectives()
     {
         remainingObjectives--;
-        if (remainingObjectives <= 0)
-            disable();
+        if (remainingObjectives <= 0) disable();
     }
 
     void knockbackEnemy(Collider enemy)

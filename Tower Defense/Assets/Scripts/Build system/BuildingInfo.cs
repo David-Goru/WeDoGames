@@ -4,12 +4,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Building", menuName = "ScriptableObjects/BuildingInfo", order = 0)]
 public class BuildingInfo : ScriptableObject
 {
+    [Space(10)] [Header("Building System Stuff")] [Space(15)]
+    [SerializeField] protected Pool buildingPool = null;
+    [SerializeField] protected Pool buildingBlueprintPool = null;
+
+    [Space(10)] [Header("Upgrade System Stuff")] [Space(15)]
     [SerializeField] string description = "";
     [SerializeField] TurretElement turretElement = TurretElement.NONE;
     [SerializeField] TurretTier turretTier = TurretTier.FIRST;
+
+    [Space(10)] [Header("Design Stuff")] [Space(15)]
     [SerializeField] List<Stat> Stats = null;
-    [SerializeField] protected Pool buildingPool = null;
-    [SerializeField] protected Pool buildingBlueprintPool = null;
 
     [Header("Debug")]
     [SerializeField] public List<Stat> currentStats = new List<Stat>();
@@ -24,10 +29,7 @@ public class BuildingInfo : ScriptableObject
     {
         for (int i = 0; i < currentStats.Count; i++)
         {
-            if (currentStats[i].Type == type)
-            {
-                return currentStats[i].Value;
-            }
+            if (currentStats[i].Type == type) return currentStats[i].Value;
         }
         Debug.LogError("There is no " + type + " on " + name);
         return 0f;
