@@ -25,10 +25,7 @@ public class TurretStats : MonoBehaviour, IHealable
     {
         for (int i = 0; i < buildingInfo.currentStats.Count; i++)
         {
-            if (buildingInfo.currentStats[i].Type == statType)
-            {
-                return buildingInfo.currentStats[i].Value;
-            }
+            if (buildingInfo.currentStats[i].Type == statType) return buildingInfo.currentStats[i].Value;
         }
         Debug.LogError("There is no " + statType + "on " + buildingInfo.name);
         return 0f;

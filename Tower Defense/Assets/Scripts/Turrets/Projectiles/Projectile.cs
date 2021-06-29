@@ -40,10 +40,7 @@ public class Projectile : MonoBehaviour, IPooledObject
     protected void damageEnemy(Collider enemy)
     {
         turretDamageable = enemy.GetComponent<ITurretDamage>();
-        if (turretDamageable != null)
-        {
-            turretDamageable.OnTurretHit(turret, turretStats.SearchStatValue(StatType.DAMAGE), enemyDamageHandler);
-        }
+        if (turretDamageable != null) turretDamageable.OnTurretHit(turret, turretStats.SearchStatValue(StatType.DAMAGE), enemyDamageHandler);
     }
 
     protected virtual void OnTriggerEnter(Collider other)

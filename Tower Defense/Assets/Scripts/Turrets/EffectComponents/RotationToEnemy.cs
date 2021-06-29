@@ -7,6 +7,7 @@ public class RotationToEnemy : EffectComponent
     [SerializeField] float rotationSpeed = 300f;
     [SerializeField] Transform objectToRotate = null;
     [SerializeField] CurrentTargetsOnRange enemyDetection = null;
+
     public Transform ObjectToRotate { get { return objectToRotate; } set { objectToRotate = value; } }
 
     public override void InitializeComponent()
@@ -18,10 +19,6 @@ public class RotationToEnemy : EffectComponent
         RotateToEnemy();
     }
 
-    /// <summary>
-    /// Rotate the turret towards the enemy
-    /// </summary>
-    /// <param name="enemy"> the transform of the enemy</param>
     public void RotateToEnemy()
     {
         if(ReferenceEquals(enemyDetection, null))
@@ -29,7 +26,7 @@ public class RotationToEnemy : EffectComponent
             Debug.LogError("You don't have an enemy detector on " + transform.gameObject.name);
             return;
         }
-        if (enemyDetection.CurrentTargets.Count == 0 || enemyDetection.CurrentTargets[0] == null) return;
+        if (!isEnemyTargetable()) return;
 
         //Create a variable with the same enemy position but putting the same y than the turret so it only rotates on the y-axis.
         Vector3 enemyPosition = new Vector3(enemyDetection.CurrentTargets[0].position.x, objectToRotate.position.y, enemyDetection.CurrentTargets[0].position.z);
@@ -42,5 +39,8 @@ public class RotationToEnemy : EffectComponent
 
     }
 
-
+    bool isEnemyTargetable()
+    {
+        return (enemyDetection.CurrentTargets.Count > 0 && enemyDetection.CurrentTargets[0] != null);
+    }
 }

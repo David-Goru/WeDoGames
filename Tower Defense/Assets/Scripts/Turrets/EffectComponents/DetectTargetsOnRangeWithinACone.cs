@@ -34,15 +34,18 @@ public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
         float angle = turretStats.GetStatValue(StatType.CONEANGLE)/2;
         for (int i = targets.Count - 1; i >= 0; i--)
         {
-            Vector3 DirToEnemy = targets[i].position - centerPointPivot.position;
-            DirToEnemy.y = 0f;
-            if(!(Vector3.Angle(centerPointPivot.forward, DirToEnemy) <= angle))
-            {
-                targets.Remove(targets[i]);
-            }
+            Vector3 dirToEnemy = targets[i].position - centerPointPivot.position;
+            dirToEnemy.y = 0f;
+            if (!isWithinCone(dirToEnemy, angle)) targets.Remove(targets[i]);
         }
     }
 
+    bool isWithinCone(Vector3 dirToEnemy, float angle)
+    {
+        return Vector3.Angle(centerPointPivot.forward, dirToEnemy) <= angle;
+    }
+
+    ////////////////////////////DEBUG////////////////////////////////////
     [SerializeField] float debugRange = 2f;
     [SerializeField] float debugAngle = 45f;
     [SerializeField] Color coneColor = Color.red;
@@ -57,4 +60,6 @@ public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
         Vector3 fromVector = Quaternion.Euler(0, -debugAngle/2, 0) * centerPointPivot.forward;
         Handles.DrawSolidArc(centerPointPivot.position, Vector3.up, fromVector, debugAngle, debugRange);
     }
+    ////////////////////////////DEBUG////////////////////////////////////
+
 }

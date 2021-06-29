@@ -6,9 +6,9 @@ using UnityEngine;
 /// </summary>
 public class DetectTargetsOnRange : CurrentTargetsOnRange
 {
+    [SerializeField] LayerMask targetLayer = 0;
     ITargetsDetector targetsDetector;
     TurretStats turretStats;
-    [SerializeField] LayerMask targetLayer = 0;
 
     public override List<Transform> CurrentTargets { get { return getTargets(); } }
 
@@ -28,12 +28,13 @@ public class DetectTargetsOnRange : CurrentTargetsOnRange
         return targetsDetector.GetTargets(range, targetLayer);
     }
 
+    ////////////////////////////DEBUG////////////////////////////////////
     [SerializeField] float debugRange = 2f;
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        if (turretStats != null)
-            debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        if (turretStats != null) debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
         Gizmos.DrawWireSphere(this.transform.position, debugRange);
     }
+    ////////////////////////////DEBUG////////////////////////////////////
 }

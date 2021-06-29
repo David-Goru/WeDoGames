@@ -11,10 +11,7 @@ public class EnemyDamageHandler : MonoBehaviour, IEnemyDamageHandler
     
     public void OnEnemyHit(float damage)
     {
-        foreach (EnemyDamage enemyDamageBehaviour in enemyDamagesBehaviours)
-        {
-            enemyDamageBehaviour.OnEnemyHit(damage);
-        }
+        foreach (EnemyDamage enemyDamageBehaviour in enemyDamagesBehaviours) enemyDamageBehaviour.OnEnemyHit(damage);
     }
 
     public void AddEnemyDamageBehaviour(EnemyDamage enemyDamageBehaviour)

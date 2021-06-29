@@ -38,10 +38,7 @@ public class ShootToEnemy : EffectComponent
     void shootEnemies()
     {
         if (ReferenceEquals(targetDetection, null)) return;
-        foreach (Transform target in targetDetection.CurrentTargets)
-        {
-            shootEnemy(target);
-        }
+        foreach (Transform target in targetDetection.CurrentTargets) shootEnemy(target);
     }
 
     void shootEnemy(Transform enemy)

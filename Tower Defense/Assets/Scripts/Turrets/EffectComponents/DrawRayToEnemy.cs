@@ -12,10 +12,12 @@ public class DrawRayToEnemy : EffectComponent
 
     public override void UpdateComponent()
     {
-        if(targetDetection.CurrentTargets.Count <= 0)
-        {
-            line.enabled = false;
-        }
+        drawRay();
+    }
+
+    void drawRay()
+    {
+        if (targetDetection.CurrentTargets.Count <= 0) line.enabled = false;
         else
         {
             line.enabled = true;

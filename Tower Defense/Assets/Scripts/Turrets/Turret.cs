@@ -27,18 +27,12 @@ public class Turret : MonoBehaviour, IPooledObject
 
     void Update()
     {
-        foreach (var behaviour in behaviours)
-        {
-            behaviour.UpdateBehaviour();
-        }
+        foreach (var behaviour in behaviours) behaviour.UpdateBehaviour();
     }
 
     private void InilitalizeBehaviours()
     {
-        foreach (var behaviour in behaviours)
-        {
-            behaviour.InitializeBehaviour();
-        }
+        foreach (var behaviour in behaviours) behaviour.InitializeBehaviour();
     }
 
     public void AddBehaviour(ITurretBehaviour behaviour)

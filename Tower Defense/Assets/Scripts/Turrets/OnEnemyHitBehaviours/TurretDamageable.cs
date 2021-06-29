@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class TurretDamageable : EnemyDamage
 {
-    TurretStats turretStats;
     [SerializeField] List<TurretNoHealth> turretNoHealthBehaviours = null;
+    TurretStats turretStats;
 
     private void Awake()
     {
@@ -25,10 +25,7 @@ public class TurretDamageable : EnemyDamage
                 Debug.LogError("Your turret " + gameObject.name +" doesn't have any Behaviour when it has no health ");
                 return;
             }
-            foreach (var noHealthBehaviour in turretNoHealthBehaviours)
-            {
-                noHealthBehaviour.OnTurretNoHealth();
-            }
+            foreach (var noHealthBehaviour in turretNoHealthBehaviours) noHealthBehaviour.OnTurretNoHealth();
         }
     }
 }

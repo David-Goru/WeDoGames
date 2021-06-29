@@ -5,10 +5,9 @@ using UnityEngine;
 public class BasicProjectile : Projectile
 {
 
-    protected override void updateProjectile() //Function called on Update
+    protected override void updateProjectile()
     {
-        if (!target.gameObject.activeSelf) //If enemy has died before projectile reaches it
-            disable();
+        if (!target.gameObject.activeSelf) disable();
         ChaseEnemy();
     }
 
@@ -20,10 +19,7 @@ public class BasicProjectile : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if(other.transform == target) //If projectile collides with the enemy is chasing
-        {
-            OnEnemyCollision(other);
-        }
+        if (other.transform == target) OnEnemyCollision(other);
     }
 
     protected override void OnEnemyCollision(Collider other)

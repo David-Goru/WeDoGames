@@ -8,16 +8,14 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 {
     const float TIME_OFFSET_FOR_CHECKING_RANGE = 0.2f;
 
-    ITargetsDetector targetsDetector;
     [SerializeField] LayerMask targetLayer = 0;
-
+    ITargetsDetector targetsDetector;
+    protected TurretStats turretStats;
     protected List<Transform> currentTargets = new List<Transform>();
-    
+
     protected bool isTargetingEnemy;
 
     float timer = 0;
-
-    protected TurretStats turretStats;
 
     public override List<Transform> CurrentTargets { get { return currentTargets; } }
 
@@ -39,15 +37,12 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     void UpdateTarget()
     {
-        if (!isTargetingEnemy)
-            detectEnemiesOnRangeAndSelectTheNearest();
-        else
-        {
-            checkIfEnemyIsStillTargetableAndInRange();
-            if (isTargetingEnemy)
-                Debug.DrawLine(transform.position, currentTargets[0].transform.position, Color.green);
+        if (!isTargetingEnemy) detectEnemiesOnRangeAndSelectTheNearest();
+        else checkIfEnemyIsStillTargetableAndInRange();
 
-        }
+        ////////////////////////////DEBUG////////////////////////////////////
+        if (isTargetingEnemy) Debug.DrawLine(transform.position, currentTargets[0].transform.position, Color.green);
+        ////////////////////////////DEBUG////////////////////////////////////
     }
 
     void detectEnemiesOnRangeAndSelectTheNearest()
@@ -69,60 +64,49 @@ public class DetectClosestTarget : CurrentTargetsOnRange
     protected virtual void selectTheNearestEnemy(List<Transform> targetsOnRange)
     {
         float minDistanceToTurret = Mathf.Infinity;
-        int listCount = targetsOnRange.Count;
-        for (int i = 0; i < listCount; i++)
+        int nTargets = targetsOnRange.Count;
+        for (int i = 0; i < nTargets; i++)
         {
             float newDistanceToTurret = Vector3.Distance(transform.position, targetsOnRange[i].transform.position);
             if (newDistanceToTurret < minDistanceToTurret)
             {
                 minDistanceToTurret = newDistanceToTurret;
-                if (currentTargets.Count > 0)
-                    currentTargets[0] = targetsOnRange[i];
-                else
-                    currentTargets.Add(targetsOnRange[i]);
+                if (currentTargets.Count > 0) currentTargets[0] = targetsOnRange[i];
+                else currentTargets.Add(targetsOnRange[i]);
             }
         }
     }
 
     void checkIfEnemyIsStillTargetableAndInRange()
     {
-        if (!checkIfEnemyIsStillTargetable())
+        if (!isEnemyStillTargetable())
         {
             deleteCurrentEnemy();
             timer = 0;
         }
-        
-        //this part of code is called each a certain amount of time in order to increase the performance
+
+        // this part of the code is only called from time to time to increase performance
         else if (timer > TIME_OFFSET_FOR_CHECKING_RANGE)
         {
-            if (!checkIfEnemyIsStillInRange())
-            {
-                deleteCurrentEnemy();
-            }
+            if (!isEnemyStillInRange()) deleteCurrentEnemy();
             timer = 0;
         }
-        else
-        {
-            timer += Time.deltaTime;
-        }
+        else timer += Time.deltaTime;
     }
 
-    bool checkIfEnemyIsStillTargetable()
+    bool isEnemyStillTargetable()
     {
-        if (currentTargets[0] == null || !currentTargets[0].gameObject.activeSelf)
-            return false;
-        return true;
+        return (currentTargets[0] == null || !currentTargets[0].gameObject.activeSelf);
     }
 
-    protected virtual bool checkIfEnemyIsStillInRange()
+    protected virtual bool isEnemyStillInRange()
     {
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
-        List<Transform> targets = detectTargets(range);
 
+        List<Transform> targets = detectTargets(range);
         for (int i = 0; i < targets.Count; i++)
         {
-            if (targets[i] == currentTargets[0])
-                return true;
+            if (targets[i] == currentTargets[0]) return true;
         }
         return false;
     }
@@ -133,12 +117,13 @@ public class DetectClosestTarget : CurrentTargetsOnRange
         currentTargets.Clear();
     }
 
+    ////////////////////////////DEBUG////////////////////////////////////
     [SerializeField] float debugRange = 2f;
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        if (turretStats != null)
-            debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        if (turretStats != null) debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
         Gizmos.DrawWireSphere(this.transform.position, debugRange);
     }
+    ////////////////////////////DEBUG////////////////////////////////////
 }

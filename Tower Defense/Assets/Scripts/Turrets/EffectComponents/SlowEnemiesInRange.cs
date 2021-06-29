@@ -15,14 +15,8 @@ public class SlowEnemiesInRange : EffectComponent
 
     public override void UpdateComponent()
     {
-        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
-        {
-            slowEnemies();
-        }
-        else
-        {
-            timer += Time.deltaTime;
-        }
+        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED)) slowEnemies();
+        else timer += Time.deltaTime;
     }
 
     private void slowEnemies()
@@ -34,10 +28,7 @@ public class SlowEnemiesInRange : EffectComponent
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ISlowable enemyISlowable = target.GetComponent<ISlowable>();
-            if (enemyISlowable != null)
-            {
-                enemyISlowable.Slow(secondsSlowed, slowReduction);
-            }
+            if (enemyISlowable != null)  enemyISlowable.Slow(secondsSlowed, slowReduction);
         }
         timer = 0f;
     }
