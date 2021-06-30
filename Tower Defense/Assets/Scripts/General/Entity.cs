@@ -19,6 +19,6 @@ public class Entity : MonoBehaviour
 
     private void OnMouseDown()
     {
-        EntityInfoUI.Instance.ShowUI(this);
+        UI.ShowEntityInfoUI(this);
     }
 }

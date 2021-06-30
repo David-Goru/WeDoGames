@@ -1,29 +1,37 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
-/// <summary>
-/// This is a class
-/// </summary>
 public class ActivesUI : UIList
 {
-    [SerializeField] GameObject UIActivePrefab = null;
-
     List<Active> activesAvailable = null;
     List<Active> activesEnabled = null;
 
     public List<Active> ActivesAvailable { get => activesAvailable; }
 
-    public override void Initialize(MasterInfo masterInfo, Transform masterObject)
+    void Start()
     {
         activesAvailable = new List<Active>();
         activesEnabled = new List<Active>();
-        loadUpgrades(masterInfo);
+        loadUpgrades();
+
+        UI.Instance.ActivesUI = this;
+        hideUI();
     }
 
-    void loadUpgrades(MasterInfo masterInfo)
+    public void EnableActive(Upgrade upgrade)
     {
-        foreach (Upgrade upgrade in masterInfo.UpgradesSet)
+        activesAvailable.Remove((Active)upgrade);
+        activesEnabled.Add((Active)upgrade);
+        ListUIObject.Find(upgrade.name).gameObject.SetActive(true);
+
+        float newWidth = GetComponent<RectTransform>().rect.width == 0 ? 100 : GetComponent<RectTransform>().rect.width + 90;
+        GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, GetComponent<RectTransform>().rect.height);
+        showUI();
+    }
+
+    void loadUpgrades()
+    {
+        foreach (Upgrade upgrade in Master.Instance.MasterInfo.UpgradesSet)
         {
             if (upgrade is Active)
             {
@@ -35,21 +43,25 @@ public class ActivesUI : UIList
 
     void addActiveToUI(Upgrade upgrade)
     {
-        Transform objectUI = Instantiate(UIActivePrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        objectUI.name = upgrade.name;
-        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
-        objectUI.GetComponent<Button>().onClick.AddListener(() => MasterHandler.Instance.ActiveMode.SetActive(((Active)upgrade).ActiveAction));
-        objectUI.GetComponent<HoverUIElement>().HoverText = upgrade.Description;
-        objectUI.SetParent(ListUIObject, false);
-        objectUI.gameObject.SetActive(false);
+        Transform button = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
+        UI.SetButtonInfo(button, ListUIObject, upgrade.name, upgrade.Description, () => Master.Instance.ActiveMode.SetActive(((Active)upgrade).ActiveAction));
+        button.gameObject.SetActive(false);
 
-        ((Active)upgrade).ActiveAction.cooldownUI = objectUI.GetComponent<CooldownUI>();
+        ((Active)upgrade).ActiveAction.cooldownUI = button.GetComponent<CooldownUI>();
     }
 
-    public void EnableActive(Upgrade upgrade)
+    void showUI()
     {
-        activesAvailable.Remove((Active)upgrade);
-        activesEnabled.Add((Active)upgrade);
-        ListUIObject.Find(upgrade.name).gameObject.SetActive(true);
+        changeVisibility(true);
+    }
+
+    void hideUI()
+    {
+        changeVisibility(false);
+    }
+
+    void changeVisibility(bool visible)
+    {
+        gameObject.SetActive(visible);
     }
 }

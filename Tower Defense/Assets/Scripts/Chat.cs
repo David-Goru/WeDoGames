@@ -9,10 +9,9 @@ public class Chat : MonoBehaviour
     const int maxMessagesDisplayed = 25;
 
     [Header("References")]
-    [SerializeField] GameObject textPrefab;
-    [SerializeField] GameObject messagesContainer;
-    [SerializeField] GameObject ui;
-    [SerializeField] InputField input;
+    [SerializeField] GameObject textPrefab = null;
+    [SerializeField] GameObject messagesContainer = null;
+    [SerializeField] InputField input = null;
 
     [Header("Message colors")]
     [SerializeField] Color playerMessage = Color.white;
@@ -27,11 +26,10 @@ public class Chat : MonoBehaviour
     [SerializeField] KeyCode sendMessageKey = KeyCode.Return;
     [SerializeField] char commandPrefix = '/';
 
-    public static Chat Instance;
-
-    void Awake()
+    void Start()
     {
-        if (Instance == null) Instance = this;
+        UI.Instance.Chat = this;
+        changeUIVisibility();
     }
 
     void Update()
@@ -55,7 +53,7 @@ public class Chat : MonoBehaviour
 
     void changeUIVisibility()
     {
-        ui.SetActive(!ui.activeSelf);
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     bool isPlayerSendingMessage()

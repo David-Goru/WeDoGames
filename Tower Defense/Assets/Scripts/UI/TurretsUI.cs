@@ -2,19 +2,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Initializes the UI turrets list
-/// </summary>
 public class TurretsUI : UIList
 {
     List<KeyValuePair<Transform, BuildingInfo>> turretsSlots;
-    Transform masterObject;
 
-    public override void Initialize(MasterInfo masterInfo, Transform masterObject)
+    void Start()
     {
-        this.masterObject = masterObject;
         turretsSlots = new List<KeyValuePair<Transform, BuildingInfo>>();
-        loadInitialSlots(masterInfo);
+        loadInitialSlots();
+
+        UI.Instance.TurretsUI = this;
     }
 
     public void UpdateTurretInfo(BuildingInfo buildingInfo)
@@ -117,9 +114,9 @@ public class TurretsUI : UIList
         }
     }
 
-    void loadInitialSlots(MasterInfo masterInfo)
+    void loadInitialSlots()
     {
-        foreach (BuildingInfo buildingInfo in masterInfo.GetInitialTurretsSet())
+        foreach (BuildingInfo buildingInfo in Master.Instance.MasterInfo.GetInitialTurretsSet())
         {
             turretsSlots.Add(new KeyValuePair<Transform, BuildingInfo>(addTurretToUI(buildingInfo), buildingInfo));
         }
@@ -137,8 +134,8 @@ public class TurretsUI : UIList
     void setTurretInfo(Transform objectUI, BuildingInfo buildingInfo)
     {
         objectUI.name = buildingInfo.name;
-        objectUI.GetComponent<Button>().onClick.AddListener(() => masterObject.GetComponent<BuildObject>().StartBuilding(buildingInfo));
-        objectUI.GetComponent<HoverUIElement>().HoverText = buildingInfo.Description;
+        objectUI.GetComponent<Button>().onClick.AddListener(() => Master.StartBuilding(buildingInfo));
+        objectUI.GetComponent<HoverElement>().SetHoverText(buildingInfo.Description);
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", buildingInfo.name);
         objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} coins", buildingInfo.GetStat(StatType.PRICE));
     }

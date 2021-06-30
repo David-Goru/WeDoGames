@@ -1,70 +1,72 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// This is a class
-/// </summary>
 public class EntityInfoUI : MonoBehaviour
 {
-    [Header("Attributes")]
-    [SerializeField] GameObject ui = null;
-
     [Header("Debug")]
     [SerializeField] Entity currentEntity;
 
-    public static EntityInfoUI Instance;
-
     void Start()
     {
-        Instance = this;
-        enabled = false;
-
-        if (ui == null) Debug.Log("EntityInfoUI doesn't have a UI defined.");
+        UI.Instance.EntityInfo = this;
+        hideUI();
     }
 
     void Update()
     {
-        if (enabled)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (!Physics.Raycast(ray, out hit) || hit.transform != currentEntity.transform) disableUI();
-            }
-            else if (currentEntity.IsDead) disableUI();
-            else updateUI();
-        }
+        if (!isVisible()) return;
+
+        if (Input.GetMouseButton(0) && mouseIsOutOfUI()) hideUI();
+        else if (entityIsNotAvailable()) hideUI();
+        else updateUI();
     }
 
     public void ShowUI(Entity entity)
     {
-        if (ui == null) return;
-
         int yPos = hasUpperScreenSpaceAvailable(240) ? 120 : -120;
-        ui.transform.position = Input.mousePosition + new Vector3(0, yPos, 0);
+        transform.position = Input.mousePosition + new Vector3(0, yPos, 0);
         currentEntity = entity;
-        enableUI();
+        showUI();
     }
 
     void updateUI()
     {
-        ui.transform.Find("Others").GetComponent<Text>().text = currentEntity.GetExtraInfo();
-        ui.transform.Find("Title").GetComponent<Text>().text = currentEntity.Title;
-        ui.transform.Find("HP").GetComponent<Text>().text = string.Format("{0}/{1}", currentEntity.CurrentHP, currentEntity.MaxHP);
+        transform.Find("Title").GetComponent<Text>().text = currentEntity.Title;
+        transform.Find("HP").GetComponent<Text>().text = string.Format("{0}/{1}", currentEntity.CurrentHP, currentEntity.MaxHP);
+        transform.Find("Others").GetComponent<Text>().text = currentEntity.GetExtraInfo();
     }
 
-    void enableUI()
+    void showUI()
     {
         updateUI();
-        if (ui != null) ui.SetActive(true);
-        enabled = true;
+        changeVisibility(true);
     }
 
-    void disableUI()
+    void hideUI()
     {
-        if (ui != null) ui.SetActive(false);
-        enabled = false;
+        changeVisibility(false);
+    }
+
+    void changeVisibility(bool visible)
+    {
+        gameObject.SetActive(visible);
+    }
+
+    bool isVisible()
+    {
+        return gameObject.activeSelf;
+    }
+
+    bool mouseIsOutOfUI()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        return !Physics.Raycast(ray, out hit) || hit.transform != currentEntity.transform;
+    }
+
+    bool entityIsNotAvailable()
+    {
+        return currentEntity.IsDead;
     }
 
     bool hasUpperScreenSpaceAvailable(int pixelsRequired)

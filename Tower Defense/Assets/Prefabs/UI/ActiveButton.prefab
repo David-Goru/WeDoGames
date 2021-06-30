@@ -91,8 +91,8 @@ GameObject:
   - component: {fileID: 6098062959915957875}
   - component: {fileID: 5366975949601723194}
   - component: {fileID: 5511266525364070321}
-  - component: {fileID: 5386768559106850047}
   - component: {fileID: -2865470458413670655}
+  - component: {fileID: 3914971270391113210}
   m_Layer: 5
   m_Name: ActiveButton
   m_TagString: Untagged
@@ -115,10 +115,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 106, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3758770602438822681
 CanvasRenderer:
@@ -141,14 +141,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.48980603, g: 1, b: 0.41960788, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6ddb668a0477bc445a10d9b3bcf474da, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -220,18 +220,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &5386768559106850047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3475225525718764195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9f3a8a6e596774385c3c4391aba294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-2865470458413670655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,3 +235,15 @@ MonoBehaviour:
   enabledColor: {r: 0.48980603, g: 1, b: 0.41960788, a: 1}
   disabledColor: {r: 1, g: 0.4198113, b: 0.45328358, a: 1}
   UIimage: {fileID: 6098062959915957875}
+--- !u!114 &3914971270391113210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475225525718764195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad438c6c30445e84790fb28025466e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

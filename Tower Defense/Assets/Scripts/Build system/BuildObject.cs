@@ -58,6 +58,11 @@ public class BuildObject : MonoBehaviour
 
         SetVertexSize();
         objectPooler = ObjectPooler.GetInstance();
+    }
+
+    private void Start()
+    {
+        Master.Instance.BuildObject = this;
         enabled = false;
     }
 
@@ -82,7 +87,7 @@ public class BuildObject : MonoBehaviour
 
     public void StartBuilding(BuildingInfo buildingInfo)
     {
-        if (!MasterHandler.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
+        if (!Master.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
 
         stopBuildingButton.SetActive(true);
 
@@ -148,7 +153,7 @@ public class BuildObject : MonoBehaviour
     void placeObject()
     {
         if (objectBlueprint == null || buildable == false) return;
-        if (!MasterHandler.Instance.UpdateBalance(-buildingInfo.GetStat(StatType.PRICE))) return;
+        if (!Master.Instance.UpdateBalance(-buildingInfo.GetStat(StatType.PRICE))) return;
 
         GameObject turretPlaced = objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
         grid.SetWalkableNodes(false, objectBlueprint.transform.position, turretPlaced.GetComponent<BuildingRange>().Range, turretPlaced.transform);

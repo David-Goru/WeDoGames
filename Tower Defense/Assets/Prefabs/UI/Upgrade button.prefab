@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -65}
-  m_SizeDelta: {x: -10, y: -140}
+  m_AnchoredPosition: {x: 0, y: -47.5}
+  m_SizeDelta: {x: -10, y: -105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7729192713131170779
 CanvasRenderer:
@@ -112,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 25}
-  m_SizeDelta: {x: -10, y: -60}
+  m_AnchoredPosition: {x: 0, y: 10}
+  m_SizeDelta: {x: -10, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5399155082602299673
 CanvasRenderer:
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6098062959915957875}
   - component: {fileID: 5366975949601723194}
   - component: {fileID: 5511266525364070321}
-  - component: {fileID: 5386768559106850047}
+  - component: {fileID: 4967146393443433940}
   m_Layer: 5
   m_Name: Upgrade button
   m_TagString: Untagged
@@ -196,7 +196,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 215, y: 190}
+  m_SizeDelta: {x: 106, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3758770602438822681
 CanvasRenderer:
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6ddb668a0477bc445a10d9b3bcf474da, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &5386768559106850047
+--- !u!114 &4967146393443433940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,6 +307,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3475225525718764195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9f3a8a6e596774385c3c4391aba294, type: 3}
+  m_Script: {fileID: 11500000, guid: ad438c6c30445e84790fb28025466e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

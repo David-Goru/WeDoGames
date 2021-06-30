@@ -1,54 +1,59 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// This is a class
-/// </summary>
 public class HoverUI : MonoBehaviour
 {
-    [Tooltip("Object where the text will be displayed")]
-    public GameObject HoverPanel;
-
     Text hoverText;
     RectTransform hoverRect;
 
-    public static HoverUI Instance;
-
     void Start()
     {
-        Instance = this;
+        hoverText = transform.Find("Text").GetComponent<Text>();
+        hoverRect = GetComponent<RectTransform>();
 
-        if (HoverPanel == null) Debug.Log("HoverUI text not defined.");
-        else
-        {
-            hoverText = HoverPanel.transform.Find("Text").GetComponent<Text>();
-            hoverRect = HoverPanel.GetComponent<RectTransform>();
-        }
+        UI.Instance.HoverUI = this;
+        hideUI();
     }
 
     private void Update()
     {
-        if (HoverPanel.activeSelf) UpdatePosition();
+        if (isVisible()) updatePosition();
     }
 
-    public void Show(string text)
+    public void ShowUI(string text)
     {
-        if (HoverPanel == null) return;
-
-        hoverText.text = text;
-        UpdatePosition();
-        HoverPanel.SetActive(true);
+        setText(text);
+        updatePosition();
+        changeVisibility(true);
     }
 
-    public void UpdatePosition()
+    public void HideUI()
+    {
+        hideUI();
+    }
+
+    void updatePosition()
     {
         hoverRect.transform.position = Input.mousePosition + new Vector3(125, 0, 0);
     }
 
-    public void Hide()
+    void hideUI()
     {
-        if (HoverPanel == null) return;
+        changeVisibility(false);
+    }
 
-        HoverPanel.SetActive(false);
+    void setText(string newText)
+    {
+        hoverText.text = newText;
+    }
+
+    void changeVisibility(bool visible)
+    {
+        gameObject.SetActive(visible);
+    }
+
+    bool isVisible()
+    {
+        return gameObject.activeSelf;
     }
 }
