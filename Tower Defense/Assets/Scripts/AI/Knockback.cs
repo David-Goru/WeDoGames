@@ -12,6 +12,8 @@ public class Knockback : State
 	float lerpSpeed = 5f;
 	Vector3 originPos;
 
+	LayerMask obstacleLayerMask = LayerMask.NameToLayer("Object");
+
 	public Knockback(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		name = STATE.KNOCKBACK;
@@ -35,23 +37,16 @@ public class Knockback : State
         {
 			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
-			//Debug.Log("Push distance reached");
 		}
-		else if (Physics.Raycast(npc.transform.position, pushDirection, out hit, maxViewRange))
+		else if (Physics.Raycast(npc.transform.position, pushDirection, out hit, maxViewRange, obstacleLayerMask))
 		{
-			//Debug.Log("Raycast entered");
-			if (hit.transform.CompareTag("Turret"))
-			{
-				nextState = new Move(npc, anim, Target);
-				stage = EVENT.EXIT;
-				//Debug.Log("Push hit reached");
-			}
+			nextState = new Move(npc, anim, Target);
+			stage = EVENT.EXIT;
 		}
 		else
 		{
 			//pushDirection * pushDistance + npc.transform.position si NO quiero un movimiento que decelere al llegar al destino
 			npc.transform.position = Vector3.Lerp(npc.transform.position, pushDirection * pushDistance + originPos, lerpSpeed * Time.deltaTime);
-			//Debug.Log("Pushing...");
 		}
 	}
 
