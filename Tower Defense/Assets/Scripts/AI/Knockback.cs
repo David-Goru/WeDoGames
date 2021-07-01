@@ -8,7 +8,7 @@ public class Knockback : State
 	RaycastHit hit;
 	float pushDistance;
 	Vector3 pushDirection;
-	float maxViewRange = 2f;
+	float maxViewRange = 0.5f;
 	float lerpSpeed = 5f;
 	Vector3 originPos;
 
