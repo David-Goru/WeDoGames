@@ -6,7 +6,8 @@ We Do games!!!
 - [x] Finish sprint 3 (24 Apr, 2021)
 - [x] Finish sprint 4 (23 May, 2021)
 - [x] Finish sprint 5 (13 Jun, 2021)
-- [ ] Finish sprint 6 (23 Jun, 2021)
+- [x] Finish sprint 6 (23 Jun, 2021)
+- [ ] Finish sprint 7 (7 Jul, 2021)
 
 # Tower Defense
 3D rogue-lite tower defense.
