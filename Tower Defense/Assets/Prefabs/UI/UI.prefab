@@ -392,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 8862287953249008130, guid: cca4434d4d6fcb44c8539069e5890359,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cca4434d4d6fcb44c8539069e5890359, type: 3}
@@ -865,7 +865,7 @@ PrefabInstance:
     - target: {fileID: 7878881614374861542, guid: 23ed2639e044f664fb7d3126f230f34a,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878881615238291804, guid: 23ed2639e044f664fb7d3126f230f34a,
         type: 3}
@@ -1280,17 +1280,17 @@ PrefabInstance:
     - target: {fileID: 8800175212069636852, guid: b51338d8e1ed9f9438ff97be04b33a05,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8800175212069636852, guid: b51338d8e1ed9f9438ff97be04b33a05,
         type: 3}
       propertyPath: m_Size
-      value: 1
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 8800175212324672916, guid: b51338d8e1ed9f9438ff97be04b33a05,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8800175212367138936, guid: b51338d8e1ed9f9438ff97be04b33a05,
         type: 3}
@@ -1583,11 +1583,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityInfoUI
       objectReference: {fileID: 0}
-    - target: {fileID: 3178235832859704574, guid: c6b538b8fdaf56242957ceabdf93cdbc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3178235832859704575, guid: c6b538b8fdaf56242957ceabdf93cdbc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1661,7 +1656,7 @@ PrefabInstance:
     - target: {fileID: 3178235832859704575, guid: c6b538b8fdaf56242957ceabdf93cdbc,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 480
+      value: 144
       objectReference: {fileID: 0}
     - target: {fileID: 3178235832859704575, guid: c6b538b8fdaf56242957ceabdf93cdbc,
         type: 3}
@@ -1967,7 +1962,7 @@ PrefabInstance:
     - target: {fileID: 6822941216851607479, guid: 4bac381fdc616f54c926876544ed5b52,
         type: 3}
       propertyPath: m_Size
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6822941217196245069, guid: 4bac381fdc616f54c926876544ed5b52,
         type: 3}
