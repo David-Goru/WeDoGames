@@ -20,6 +20,13 @@ public class UI : MonoBehaviour
         Instance = this;
     }
 
+    public static void UpdateUI()
+    {
+        if (Instance == null) return;
+
+        if (Instance.Chat != null) Instance.Chat.CheckPlayerInput();
+    }
+
     public static void ShowEntityInfoUI(Entity entity)
     {
         if (Instance == null) return;
@@ -130,11 +137,11 @@ public class UI : MonoBehaviour
         if (Instance.GeneralInfoUI != null) Instance.GeneralInfoUI.UpdateBalanceText(balance);
     }
 
-    public static void UpdateEnergyText(int energy)
+    public static void UpdateNexusLifeText(int nexusLife)
     {
         if (Instance == null) return;
 
-        if (Instance.GeneralInfoUI != null) Instance.GeneralInfoUI.UpdateEnergyText(energy);
+        if (Instance.GeneralInfoUI != null) Instance.GeneralInfoUI.UpdateNexusLifeText(nexusLife);
     }
 
     public static void UpdateWaveText(int wave)

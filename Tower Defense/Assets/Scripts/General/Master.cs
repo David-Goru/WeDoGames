@@ -22,14 +22,9 @@ public class Master : MonoBehaviour
         UI.AddChatCommand("addMoney", addMoney);
     }
 
-    private void addMoney(string[] parameters)
+    void Update()
     {
-        if (parameters.Length == 0) return; 
-
-        int money;
-        int.TryParse(parameters[0], out money);
-
-        UpdateBalance(money);
+        UI.UpdateUI();
     }
 
     public float GetBalance() { return MasterInfo.Balance; }
@@ -56,5 +51,15 @@ public class Master : MonoBehaviour
     public void StopBuilding()
     {
         BuildObject.StopBuilding();
+    }
+
+    void addMoney(string[] parameters)
+    {
+        if (parameters.Length == 0) return;
+
+        int money;
+        int.TryParse(parameters[0], out money);
+
+        UpdateBalance(money);
     }
 }

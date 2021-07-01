@@ -19,7 +19,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     [SerializeField] Transform goal;
     [SerializeField] Transform currentTurret;
     [SerializeField] IEnemyDamageHandler currentTurretDamage;
-    [SerializeField] LayerMask objectsLayer;
+    [SerializeField] LayerMask objectsLayer = new LayerMask();
 
     Animator anim;
     State currentState;

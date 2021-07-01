@@ -31,13 +31,8 @@ public class Chat : MonoBehaviour
         UI.Instance.Chat = this;
         changeUIVisibility();
     }
-
-    void Update()
-    {
-        checkPlayerInput();
-    }
     
-    void checkPlayerInput()
+    public void CheckPlayerInput()
     {
         if (isPlayerChangingUIVisibility()) changeUIVisibility();
 

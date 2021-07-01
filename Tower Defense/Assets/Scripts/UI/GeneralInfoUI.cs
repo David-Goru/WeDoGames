@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class GeneralInfoUI : MonoBehaviour
 {
     [SerializeField] Text balanceText = null;
-    [SerializeField] Text energyText = null;
+    [SerializeField] Text nexusLifeText = null;
     [SerializeField] Text waveText = null;
 
     void Start()
@@ -17,9 +17,9 @@ public class GeneralInfoUI : MonoBehaviour
         balanceText.text = string.Format("{0}", balance);
     }
 
-    public void UpdateEnergyText(int energy)
+    public void UpdateNexusLifeText(int nexusLife)
     {
-        energyText.text = string.Format("{0}", energy);
+        nexusLifeText.text = string.Format("{0} HP", nexusLife);
     }
 
     public void UpdateWaveText(int wave)

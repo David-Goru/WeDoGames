@@ -28,5 +28,7 @@ public class Nexus : Entity
     public void GetHit(float damage)
     {
         currentHP -= Mathf.RoundToInt(damage);
+
+        UI.UpdateNexusLifeText(currentHP);
     }
 }
