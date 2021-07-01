@@ -12,7 +12,7 @@ public class Knockback : State
 	float lerpSpeed = 5f;
 	Vector3 originPos;
 
-	LayerMask obstacleLayerMask = LayerMask.NameToLayer("Object");
+	LayerMask obstacleLayerMask = LayerMask.GetMask("Object");
 
 	public Knockback(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
