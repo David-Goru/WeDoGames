@@ -23,9 +23,6 @@ public class ActivesUI : UIList
         activesAvailable.Remove((Active)upgrade);
         activesEnabled.Add((Active)upgrade);
         ListUIObject.Find(upgrade.name).gameObject.SetActive(true);
-
-        float newWidth = GetComponent<RectTransform>().rect.width == 0 ? 100 : GetComponent<RectTransform>().rect.width + 90;
-        GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, GetComponent<RectTransform>().rect.height);
         showUI();
     }
 

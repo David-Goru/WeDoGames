@@ -15,12 +15,12 @@ public class WavesHandler : MonoBehaviour
     public MasterInfo MasterInfo;
     public Transform Spawners;
     public Image[] Signals;
-    public Text WaveTimerText;
     Vector3[] spawnerPositions;
     List<Image> signalsImages;
 
     [SerializeField] int currentWave = 0;
     [SerializeField] float planningTime = 0;
+    [SerializeField] Text waveObjectiveText = null;
 
     [Header("Predetermined enemy waves")]
     public List<EnemyList> enemyWaves;
@@ -58,6 +58,7 @@ public class WavesHandler : MonoBehaviour
 
         objectPooler = ObjectPooler.GetInstance();
         UI.UpdateWaveText(currentWave);
+        waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60);
     }
 
     void Update()
@@ -71,7 +72,7 @@ public class WavesHandler : MonoBehaviour
         {
             if (timer < planningTime)
             {
-                WaveTimerText.text = string.Format("Next wave: {0:0} seconds", planningTime - timer);
+                UI.UpdateWaveTimerText(Mathf.RoundToInt(planningTime - timer));
                 timer += Time.deltaTime;
             }
             else
@@ -82,6 +83,7 @@ public class WavesHandler : MonoBehaviour
                 onPlanningPhase = false;
                 spawnEnemies();
                 UI.CloseUpgrades();
+                UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
             }
         }
         else
@@ -90,8 +92,9 @@ public class WavesHandler : MonoBehaviour
             else
             {
                 timer += Time.deltaTime;
-                if (timer < 60) WaveTimerText.text = string.Format("Wave objective: {0:0} seconds", 60 - timer);
-                else WaveTimerText.text = string.Format("Objective not achieved");
+                UI.UpdateWaveTimerText(Mathf.RoundToInt(timer));
+                if (timer < 60) waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60 - timer);
+                else waveObjectiveText.text = string.Format("Objective not achieved");
             }
         }
     }
@@ -102,6 +105,7 @@ public class WavesHandler : MonoBehaviour
         if (timer <= 60) Master.Instance.UpdateBalance(100); // Objective 1 completed
         if (Nexus.Instance.IsFullHealth) Master.Instance.UpdateBalance(100); // Objective 2 completed
         timer = 0;
+        waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60);
         onPlanningPhase = true;
         UI.OpenUpgrades(3);
     }

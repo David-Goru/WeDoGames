@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class Master : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class Master : MonoBehaviour
 
     public static Master Instance;
 
-    void Awake()
+    void Start()
     {
         if (Instance == null) Instance = this;
 

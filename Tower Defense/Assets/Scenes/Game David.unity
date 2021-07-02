@@ -466,9 +466,9 @@ MonoBehaviour:
   - {fileID: 1849686582}
   - {fileID: 952627867}
   - {fileID: 4826652}
-  WaveTimerText: {fileID: 1137308906}
   currentWave: 0
   planningTime: 2
+  waveObjectiveText: {fileID: 1137308906}
   enemyWaves:
   - enemyWave:
     - enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
@@ -1056,6 +1056,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883686696978771043, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 537000329}
+    - target: {fileID: 4883686696978771043, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopBuilding
       objectReference: {fileID: 0}
     - target: {fileID: 4883686697021493227, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}

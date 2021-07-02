@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
@@ -151,10 +152,23 @@ public class UI : MonoBehaviour
         if (Instance.GeneralInfoUI != null) Instance.GeneralInfoUI.UpdateWaveText(wave);
     }
 
+    public static void UpdateWaveTimerText(int secondsRemaining)
+    {
+        if (Instance == null) return;
+
+        if (Instance.GeneralInfoUI != null) Instance.GeneralInfoUI.UpdateWaveTimerText(secondsRemaining);
+    }
+
     public static void AddChatCommand(string commandName, UnityAction<string[]> commandAction)
     {
         if (Instance == null) return;
 
+        Instance.StartCoroutine(Instance.LateAddChatCommand(commandName, commandAction));
+    }
+
+    public IEnumerator LateAddChatCommand(string commandName, UnityAction<string[]> commandAction)
+    {
+        yield return new WaitForSeconds(0.5f);
         if (Instance.Chat != null) Instance.Chat.AddCommand(commandName, commandAction);
     }
 
