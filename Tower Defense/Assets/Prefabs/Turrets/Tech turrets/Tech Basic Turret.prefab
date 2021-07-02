@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 8378990343160236921}
   - component: {fileID: 1276940305768485455}
   - component: {fileID: 3186318844120015964}
-  - component: {fileID: 6637211312623356249}
   - component: {fileID: 4981130904395238892}
   - component: {fileID: 8159493917602283705}
   m_Layer: 0
@@ -168,7 +167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 3186318844120015964}
-  - {fileID: 6637211312623356249}
   - {fileID: 4981130904395238892}
 --- !u!114 &3186318844120015964
 MonoBehaviour:
@@ -184,22 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 7b17a5c91b7a0cc4091496599ae6bc48, type: 2}
   spawnPosition: {fileID: 7407901596361071180}
+  anim: {fileID: 0}
   targetDetection: {fileID: 4981130904395238892}
---- !u!114 &6637211312623356249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4411196050328941695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95423ec0ac064dc4a885d3ba8cf27a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 300
-  objectToRotate: {fileID: 7865914063715337508}
-  enemyDetection: {fileID: 4981130904395238892}
 --- !u!114 &4981130904395238892
 MonoBehaviour:
   m_ObjectHideFlags: 0

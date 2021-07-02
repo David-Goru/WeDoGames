@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
   m_Name: Tech Basic Turret
   m_EditorClassIdentifier: 
+  buildingPool: {fileID: 11400000, guid: 13bc13cf2891000489c1ef6da7fd5213, type: 2}
+  buildingBlueprintPool: {fileID: 11400000, guid: a6881fa5a5c687e44acce5e0a1864850,
+    type: 2}
   description: Tech Basic Turret description
   turretElement: 4
   turretTier: 1
-  isBasic: 0
   Stats:
   - type: 0
     value: 100
@@ -38,6 +40,3 @@ MonoBehaviour:
     value: 3
   - type: 4
     value: 1
-  buildingPool: {fileID: 11400000, guid: cf96598f6056251419184e71914d19bd, type: 2}
-  buildingBlueprintPool: {fileID: 11400000, guid: 50df6a11e338dc3468725d62580382d5,
-    type: 2}

@@ -32,7 +32,7 @@ public class Pathfinding : MonoBehaviour
     //For testing diagnostics and optimization
     private Stopwatch sw;
 
-    private float randomOffset = 0.05f;
+    private float randomOffset = 0.25f;
 
     private void Awake()
     {

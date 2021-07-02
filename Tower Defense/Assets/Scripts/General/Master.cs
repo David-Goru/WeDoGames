@@ -19,6 +19,8 @@ public class Master : MonoBehaviour
         MasterInfo.InitializeVariables();
 
         UI.AddChatCommand("addMoney", addMoney);
+        UI.AddChatCommand("pause", pause);
+        UI.AddChatCommand("resume", resume);
     }
 
     void Update()
@@ -60,5 +62,15 @@ public class Master : MonoBehaviour
         int.TryParse(parameters[0], out money);
 
         UpdateBalance(money);
+    }
+
+    void pause(string[] parameters)
+    {
+        Time.timeScale = 0;
+    }
+
+    void resume(string[] parameters)
+    {
+        Time.timeScale = 1;
     }
 }
