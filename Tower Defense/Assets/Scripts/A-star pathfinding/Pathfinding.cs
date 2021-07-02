@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // <summary>
 // A* algorithm (modified)
@@ -30,6 +31,8 @@ public class Pathfinding : MonoBehaviour
 
     //For testing diagnostics and optimization
     private Stopwatch sw;
+
+    private float randomOffset = 0.05f;
 
     private void Awake()
     {
@@ -148,8 +151,13 @@ public class Pathfinding : MonoBehaviour
         {
             Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
             if(directionNew != directionOld)
-            {
-                waypoints.Add(path[i].worldPos);
+            {       
+                //Randomize an offset for the waypoint position
+                Vector3 waypointPos = path[i].worldPos;
+                waypointPos.x += Random.Range(-randomOffset, randomOffset);
+                waypointPos.z += Random.Range(-randomOffset, randomOffset);
+                
+                waypoints.Add(waypointPos);
             }
             directionOld = directionNew;
         }

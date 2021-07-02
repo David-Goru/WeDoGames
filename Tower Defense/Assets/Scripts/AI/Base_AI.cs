@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 [SelectionBase]
 public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable
 {
+    [Header("Enemy stats")]
     [SerializeField] float damage = 0f;
     [SerializeField] float attackSpeed = 0f;
     [SerializeField] float range = 0f;
@@ -67,16 +68,6 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         currentTurret = null;
 
         EnemiesActive.Instance.enemiesList.Add(this);
-    }
-
-    void Start()
-    {
-        if (SceneManager.GetActiveScene().name == "Game") return;
-        goal = Nexus.GetTransform;
-        currentHP = maxHP;
-        anim = transform.Find("Model").GetComponent<Animator>();
-        currentState = new Move(this, anim, goal);
-        currentTurret = null;
     }
 
     public void EnemyUpdate()
