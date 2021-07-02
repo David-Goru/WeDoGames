@@ -17,6 +17,7 @@ public class DrawRayToEnemy : EffectComponent
 
     void drawRay()
     {
+        print(targetDetection.CurrentTargets.Count <= 0);
         if (targetDetection.CurrentTargets.Count <= 0) line.enabled = false;
         else
         {

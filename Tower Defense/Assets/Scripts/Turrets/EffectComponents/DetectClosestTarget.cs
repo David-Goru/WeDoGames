@@ -96,7 +96,7 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     bool isEnemyStillTargetable()
     {
-        return (currentTargets[0] == null || !currentTargets[0].gameObject.activeSelf);
+        return (currentTargets[0] != null && currentTargets[0].gameObject.activeSelf);
     }
 
     protected virtual bool isEnemyStillInRange()
