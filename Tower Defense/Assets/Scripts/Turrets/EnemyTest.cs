@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, IKnockbackable
+public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, IKnockbackable, IStunnable
 {
     MeshRenderer meshRenderer;
     float timer = 0f;
@@ -52,5 +52,10 @@ public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, I
     public void Knockback(float knockbackDistance, Vector3 knockbackDirection)
     {
         transform.Translate(knockbackDirection * knockbackDistance);
+    }
+
+    public void Stun(float secondsStunned)
+    {
+        print("I have been stunned for " + secondsStunned);
     }
 }
