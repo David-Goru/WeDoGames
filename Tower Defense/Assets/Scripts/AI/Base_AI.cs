@@ -24,20 +24,24 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     Animator anim;
     State currentState;
+
+    Vector3[] path;
+    Vector3 currentWaypoint;
+    Vector3 pushDirection;
+
+    int targetIndex;
+
     float speed;
     float rotationSpeed;
-    Vector3[] path;
-    int targetIndex;
-    bool pathReached;
-    bool pathSuccessful;
-    Vector3 currentWaypoint;
     float stunDuration;
     float pushDistance;
-    Vector3 pushDirection;
-    bool isStunned;
     float fearDuration;
+
+    bool isStunned;
     bool isFeared;
     bool isKnockbacked;
+    bool pathReached;
+    bool pathSuccessful;
 
     public float Damage { get => damage; set => damage = value; }
     public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
@@ -74,7 +78,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         currentState = currentState.Process();
 
-        if (currentTurret != null && !currentTurret.gameObject.activeSelf) currentTurret = null;
+        if (isTargetTurretDead()) currentTurret = null;
     }
 
     void OnDisable()
@@ -82,27 +86,41 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         StopCoroutine("FollowPath");
     }
 
+    bool isTargetTurretDead()
+    {
+        return currentTurret != null && !currentTurret.gameObject.activeSelf;
+    }
+
     bool checkDeath()
     {
-        if (currentHP <= 0 && gameObject.activeSelf)
+        if (isEnemyDead())
         {
-            StopAllCoroutines();
-            ObjectPooler.GetInstance().ReturnToThePool(this.transform);
-            WavesHandler.EnemyKilled();
-            EnemiesActive.Instance.enemiesList.Remove(this);
-
+            killEnemy();
             return true;
         }
         return false;
+    }
+
+    bool isEnemyDead()
+    {
+        return currentHP <= 0 && gameObject.activeSelf;
+    }
+
+    void killEnemy()
+    {
+        StopAllCoroutines();
+        ObjectPooler.GetInstance().ReturnToThePool(this.transform);
+        WavesHandler.EnemyKilled();
+        EnemiesActive.Instance.enemiesList.Remove(this);
     }
 
     public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)
     {
         if (!pathReached)
         {
-            Vector3 direction = path[targetIndex] - transform.position;
-            
+            Vector3 direction = path[targetIndex] - transform.position;         
             RaycastHit hit;
+
             if (Physics.Raycast(transform.position, direction.normalized, out hit, direction.magnitude, objectsLayer))
             {
                 if (!hit.collider.CompareTag("Nexus")) //Make sure it's not the nexus what I'm detecting

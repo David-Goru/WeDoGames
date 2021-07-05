@@ -36,7 +36,7 @@ public class Chat : MonoBehaviour
     {
         if (isPlayerChangingUIVisibility()) changeUIVisibility();
 
-        if (isPlayerFocusingInput()) input.ActivateInputField();       
+        if (isPlayerChangingInputFocus()) changeInputFocus();
         
         if (isPlayerSendingMessage()) sendMessage();
     }
@@ -59,6 +59,12 @@ public class Chat : MonoBehaviour
     bool messageIsCommand()
     {
         return input.text[0] == commandPrefix;
+    }
+
+    void changeInputFocus()
+    {
+        if (input.isFocused) input.DeactivateInputField();
+        else input.ActivateInputField();
     }
 
     void sendCommand()
@@ -86,9 +92,9 @@ public class Chat : MonoBehaviour
         input.text = "";
     }
 
-    bool isPlayerFocusingInput()
+    bool isPlayerChangingInputFocus()
     {
-        return !input.isFocused && Input.GetKeyDown(sendMessageKey);
+        return input.text == "" && Input.GetKeyDown(sendMessageKey);
     }
 
     void sendMessageToChat(string text, Message.MessageType messageType)
