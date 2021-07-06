@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Building", menuName = "ScriptableObjects/BuildingInfo", order = 0)]
-public class BuildingInfo : ScriptableObject
+[CreateAssetMenu(fileName = "TurretInfo", menuName = "ScriptableObjects/TurretInfo", order = 0)]
+public class TurretInfo : ScriptableObject
 {
     [Space(10)] [Header("Building System Stuff")] [Space(15)]
-    [SerializeField] protected Pool buildingPool = null;
-    [SerializeField] protected Pool buildingBlueprintPool = null;
+    [SerializeField] protected Pool turretPool = null;
+    [SerializeField] protected Pool turretBlueprintPool = null;
 
     [Space(10)] [Header("Upgrade System Stuff")] [Space(15)]
     [SerializeField] string description = "";
@@ -22,8 +22,8 @@ public class BuildingInfo : ScriptableObject
     public string Description { get => description; }
     public TurretElement TurretElement { get => turretElement; }
     public TurretTier TurretTier { get => turretTier; set => turretTier = value; }
-    public Pool GetBuildingPool() { return buildingPool; }
-    public Pool GetBuildingBlueprintPool() { return buildingBlueprintPool; }
+    public Pool GetBuildingPool() { return turretPool; }
+    public Pool GetBuildingBlueprintPool() { return turretBlueprintPool; }
 
     public float GetStat(StatType type) 
     {

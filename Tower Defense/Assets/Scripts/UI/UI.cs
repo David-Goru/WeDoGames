@@ -78,7 +78,7 @@ public class UI : MonoBehaviour
         if (Instance.TurretsUI != null) Instance.TurretsUI.AddTurretUpgrade((TurretTransformation)upgrade);
     }
 
-    public static void UpdateTurretInfo(BuildingInfo buildingInfo)
+    public static void UpdateTurretInfo(TurretInfo buildingInfo)
     {
         if (Instance == null) return;
 
@@ -109,7 +109,7 @@ public class UI : MonoBehaviour
         return false;
     }
 
-    public static bool ExistsTurret(BuildingInfo buildingInfo)
+    public static bool ExistsTurret(TurretInfo buildingInfo)
     {
         if (Instance == null) return false;
 
@@ -172,28 +172,32 @@ public class UI : MonoBehaviour
         if (Instance.Chat != null) Instance.Chat.AddCommand(commandName, commandAction);
     }
 
-    public static void SetButtonInfo(Transform button, Transform parent, string name, string description, UnityEngine.Events.UnityAction action)
+    public static void SetButtonInfo(Transform button, Transform parent, string name, string description, Sprite icon, UnityEngine.Events.UnityAction action)
     {
         Text nameText = button.Find("Name").GetComponent<Text>();
+        Image iconImage = button.Find("Icon").GetComponent<Image>();
         HoverElement hoverElement = button.GetComponent<HoverElement>();
         Button buttonComponent = button.GetComponent<Button>();
 
         button.name = name;
         nameText.text = name;
+        iconImage.sprite = icon;
         buttonComponent.onClick.AddListener(action);
         if (hoverElement) hoverElement.HoverText = description;
         button.SetParent(parent, false);
     }
 
-    public static void SetButtonInfoWithCost(Transform button, Transform parent, string name, string description, int cost, UnityEngine.Events.UnityAction action)
+    public static void SetButtonInfoWithCost(Transform button, Transform parent, string name, string description, Sprite icon, int cost, UnityEngine.Events.UnityAction action)
     {
         Text nameText = button.Find("Name").GetComponent<Text>();
+        Image iconImage = button.Find("Icon").GetComponent<Image>();
         Text costText = button.Find("Cost").GetComponent<Text>();
         HoverElement hoverElement = button.GetComponent<HoverElement>();
         Button buttonComponent = button.GetComponent<Button>();
 
         button.name = name;
         nameText.text = name;
+        iconImage.sprite = icon;
         costText.text = string.Format("{0} coins", cost);
         buttonComponent.onClick.AddListener(action);
         if (hoverElement) hoverElement.HoverText = description;

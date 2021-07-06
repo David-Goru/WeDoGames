@@ -41,7 +41,7 @@ public class ActivesUI : UIList
     void addActiveToUI(Upgrade upgrade)
     {
         Transform button = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        UI.SetButtonInfo(button, ListUIObject, upgrade.name, upgrade.Description, () => Master.Instance.ActiveMode.SetActive(((Active)upgrade).ActiveAction));
+        UI.SetButtonInfo(button, ListUIObject, upgrade.name, upgrade.Description, upgrade.Icon, () => Master.Instance.ActiveMode.SetActive(((Active)upgrade).ActiveAction));
         button.gameObject.SetActive(false);
 
         ((Active)upgrade).ActiveAction.cooldownUI = button.GetComponent<CooldownUI>();

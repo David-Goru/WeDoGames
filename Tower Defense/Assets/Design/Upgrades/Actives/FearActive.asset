@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: FearActive
   m_EditorClassIdentifier: 
   description: Fear enemies
-  points: 1
+  price: 0
+  icon: {fileID: 21300000, guid: 3e901aa07e31f924c949d08733461983, type: 3}
   activeAction: {fileID: 11400000, guid: 6d64dc84643a0a4458d5af7fb21f5481, type: 2}

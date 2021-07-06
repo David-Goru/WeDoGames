@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DamageActive
   m_EditorClassIdentifier: 
   description: Damage enemies
-  points: 1
+  price: 0
+  icon: {fileID: 21300000, guid: a3fec122387b4fb4c96ada2394454031, type: 3}
   activeAction: {fileID: 11400000, guid: 81c7931512c8d2b43ba0166ac46c9ec1, type: 2}

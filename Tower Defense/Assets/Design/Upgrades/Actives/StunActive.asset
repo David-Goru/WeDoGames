@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: StunActive
   m_EditorClassIdentifier: 
   description: Stun enemies
-  points: 1
+  price: 0
+  icon: {fileID: 21300000, guid: 664da68afb155a14c99ea55c9dd6f12c, type: 3}
   activeAction: {fileID: 11400000, guid: 94cd0b4da589c8f4885714198c7959f1, type: 2}

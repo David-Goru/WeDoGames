@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class TurretStats : MonoBehaviour, IHealable
 {
-    [SerializeField] BuildingInfo buildingInfo = null;
+    [SerializeField] TurretInfo buildingInfo = null;
 
     public float currentHp;
 

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: HealActive
   m_EditorClassIdentifier: 
   description: Heal your turrets
-  points: 1
+  price: 0
+  icon: {fileID: 21300000, guid: 1265cbcd32e341048ab3f336aab53f67, type: 3}
   activeAction: {fileID: 11400000, guid: 83d709e13322234449589b78eaf07056, type: 2}

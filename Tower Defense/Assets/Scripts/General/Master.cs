@@ -42,7 +42,7 @@ public class Master : MonoBehaviour
         return true;
     }
 
-    public static void StartBuilding(BuildingInfo buildingInfo)
+    public static void StartBuilding(TurretInfo buildingInfo)
     {
         if (Instance == null) return;
 

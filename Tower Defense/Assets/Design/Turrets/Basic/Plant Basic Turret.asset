@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
+  m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
   m_Name: Plant Basic Turret
   m_EditorClassIdentifier: 
+  turretPool: {fileID: 11400000, guid: cf96598f6056251419184e71914d19bd, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: 50df6a11e338dc3468725d62580382d5,
+    type: 2}
   description: Plant Basic Turret description
   turretElement: 3
   turretTier: 1
-  isBasic: 0
   Stats:
   - type: 0
     value: 100
@@ -46,6 +48,3 @@ MonoBehaviour:
     value: 2
   - type: 5
     value: 5
-  buildingPool: {fileID: 11400000, guid: cf96598f6056251419184e71914d19bd, type: 2}
-  buildingBlueprintPool: {fileID: 11400000, guid: 50df6a11e338dc3468725d62580382d5,
-    type: 2}

@@ -99,15 +99,10 @@ public class UpgradesUI : UIList
 
     void addUpgradeToUI(Upgrade upgrade)
     {
-        Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        objectUI.name = upgrade.name;
-        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", upgrade.name);
-        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} coins", upgrade.Price);
-        objectUI.GetComponent<Button>().onClick.AddListener(() => addUpgradeAction(upgrade));
-        objectUI.GetComponent<HoverElement>().HoverText = upgrade.Description;
-        objectUI.SetParent(ListUIObject, false);
-        objectUI.gameObject.SetActive(false);
-        upgrade.ObjectUI = objectUI;
+        Transform button = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
+        UI.SetButtonInfoWithCost(button, ListUIObject, upgrade.name, upgrade.Description, upgrade.Icon, upgrade.Price, () => addUpgradeAction(upgrade));
+        button.gameObject.SetActive(false);
+        upgrade.ObjectUI = button;
     }
 
     void addUpgradeAction(Upgrade upgrade)
@@ -125,8 +120,8 @@ public class UpgradesUI : UIList
         else if (upgrade is ElementalStatUpgrade)
         {
             ElementalStatUpgrade elementalStatUpgrade = (ElementalStatUpgrade)upgrade;
-            BuildingInfo[] turrets = Master.Instance.MasterInfo.GetTurretsSet();
-            foreach (BuildingInfo turret in turrets)
+            TurretInfo[] turrets = Master.Instance.MasterInfo.GetTurretsSet();
+            foreach (TurretInfo turret in turrets)
             {
                 if (turret.TurretElement == elementalStatUpgrade.Element)
                 {

@@ -22,7 +22,7 @@ public class BuildObject : MonoBehaviour
     [SerializeField] float vertexSize = 0.0f;
     [SerializeField] Texture groundSprite = null;
     [SerializeField] Renderer ground = null;
-    [SerializeField] BuildingInfo buildingInfo = null;
+    [SerializeField] TurretInfo buildingInfo = null;
     [SerializeField] GameObject objectBlueprint = null;
     [SerializeField] Material blueprintMaterial = null;
     [SerializeField] Vector3 lastPos;
@@ -85,7 +85,7 @@ public class BuildObject : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) placeObject();
     }
 
-    public void StartBuilding(BuildingInfo buildingInfo)
+    public void StartBuilding(TurretInfo buildingInfo)
     {
         if (!Master.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
 
