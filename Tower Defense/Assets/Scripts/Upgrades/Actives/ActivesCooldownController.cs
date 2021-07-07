@@ -6,7 +6,7 @@ public class ActivesCooldownController : MonoBehaviour
     List<ActiveAction> activesInCoolDown = new List<ActiveAction>();
     List<float> timers = new List<float>();
     
-    private void Update()
+    void Update()
     {
         updateCooldowns();
     }
@@ -17,21 +17,23 @@ public class ActivesCooldownController : MonoBehaviour
         {
             activesInCoolDown.Add(active);
             timers.Add(0f);
-            active.cooldownUI.startCooldown();
+            active.cooldownUI.StartCooldown();
+            active.cooldownUI.SetCooldownText(Mathf.CeilToInt(active.activeCooldown));
         }
     }
 
-    private void updateCooldowns()
+    void updateCooldowns()
     {
         for (int i = activesInCoolDown.Count - 1; i >= 0; i--)
         {
             timers[i] += Time.deltaTime;
-            if(timers[i] >= activesInCoolDown[i].activeCooldown)
+            if (timers[i] >= activesInCoolDown[i].activeCooldown)
             {
-                activesInCoolDown[i].cooldownUI.endCooldown();
+                activesInCoolDown[i].cooldownUI.EndCooldown();
                 timers.RemoveAt(i);
                 activesInCoolDown.RemoveAt(i);
             }
+            else activesInCoolDown[i].cooldownUI.SetCooldownText(Mathf.CeilToInt(activesInCoolDown[i].activeCooldown - timers[i]));
         }
     }
 
