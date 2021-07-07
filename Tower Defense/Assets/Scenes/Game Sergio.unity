@@ -698,10 +698,7 @@ MonoBehaviour:
   currentWave: 0
   planningTime: 2
   waveObjectiveText: {fileID: 1164689901}
-  enemyWaves:
-  - enemyWave:
-    - enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
-      numberOfEnemies: 25
+  info: {fileID: 11400000, guid: efc2cc779e766584288a0c56a00bae63, type: 2}
 --- !u!114 &537000335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2018,6 +2015,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 441985960912111927, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441985961113379860, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3024634002317192653, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_AnchorMax.x

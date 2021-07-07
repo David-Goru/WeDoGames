@@ -23,8 +23,8 @@ public class WavesHandler : MonoBehaviour
     [SerializeField] Text waveObjectiveText = null;
 
     [Header("Predetermined enemy waves")]
-    public List<EnemyList> enemyWaves;
-    private int waveIndex = 0;
+    [SerializeField] WavesInfo info = null;
+    int waveIndex = 0;
 
     float timer = 0f;
     bool onPlanningPhase = true;
@@ -33,7 +33,7 @@ public class WavesHandler : MonoBehaviour
 
     void Start()
     {
-        predeterminedWaves = enemyWaves.Count > 0;
+        predeterminedWaves = info.EnemyWaves.Count > 0;
 
         int childsActive = 0;
         for (int j = 0; j < Spawners.childCount; j++)
@@ -126,19 +126,19 @@ public class WavesHandler : MonoBehaviour
         }
         else //Predetermined waves
         {
-            for (int i = 0; i < enemyWaves[waveIndex].enemyWave.Count; i++)
+            for (int i = 0; i < info.EnemyWaves[waveIndex].enemyWave.Count; i++)
             {
-                for(int j = 0; j < enemyWaves[waveIndex].enemyWave[i].numberOfEnemies; j++)
+                for(int j = 0; j < info.EnemyWaves[waveIndex].enemyWave[i].numberOfEnemies; j++)
                 {
                     int randInd = Random.Range(0, spawnerNum);
                     Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
-                    objectPooler.SpawnObject(enemyWaves[waveIndex].enemyWave[i].enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
+                    objectPooler.SpawnObject(info.EnemyWaves[waveIndex].enemyWave[i].enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
                     StartCoroutine(activateSignal(randInd));
                     enemiesSpawned++;
                 }
             }
 
-            if(waveIndex < enemyWaves.Count - 1) waveIndex++;
+            if(waveIndex < info.EnemyWaves.Count - 1) waveIndex++;
         }
     }
 
@@ -198,12 +198,23 @@ public class EnemyList
 [System.Serializable]
 public class EnemyPool
 {
+    [Header("Wave enemies")]
     public Pool enemy;
     public int numberOfEnemies;
 
-    public EnemyPool(Pool _enemy, int _numberOfEnemies)
+    [Header("Spawn Positions")]
+    public bool UP;
+    public bool DOWN;
+    public bool RIGHT;
+    public bool LEFT;
+
+    public EnemyPool(Pool _enemy, int _numberOfEnemies, bool _up, bool _down, bool _left, bool _right)
     {
         enemy = _enemy;
         numberOfEnemies = _numberOfEnemies;
+        UP = _up;
+        DOWN = _down;
+        LEFT = _left;
+        RIGHT = _right;
     }
 }

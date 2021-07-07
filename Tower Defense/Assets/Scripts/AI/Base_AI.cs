@@ -9,12 +9,7 @@ using UnityEngine.SceneManagement;
 [SelectionBase]
 public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable
 {
-    [Header("Enemy stats")]
-    [SerializeField] float damage = 0f;
-    [SerializeField] float attackSpeed = 0f;
-    [SerializeField] float range = 0f;
-    [SerializeField] float defaultSpeed = 5f;
-    [SerializeField] float initRotationSpeed = 300f;
+    [SerializeField] EnemyInfo info = null;
 
     [Header("Debug")]
     [SerializeField] Transform goal;
@@ -43,9 +38,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     bool pathReached;
     bool pathSuccessful;
 
-    public float Damage { get => damage; set => damage = value; }
-    public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
-    public float Range { get => range; set => range = value; }
+    public EnemyInfo Info { get => info; }
     public Transform Goal { get => goal; set => goal = value; }
     public Transform CurrentTurret { get => currentTurret; set => currentTurret = value; }
     public IEnemyDamageHandler CurrentTurretDamage { get => currentTurretDamage; set => currentTurretDamage = value; }
@@ -62,12 +55,13 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public void OnObjectSpawn()
     {
         goal = Nexus.GetTransform;
-        currentHP = maxHP;
+        currentHP = Info.MaxHealth;
+        maxHP = Info.MaxHealth;
         anim = transform.Find("Model").GetComponent<Animator>();
         isFeared = false;
         isStunned = false;
-        speed = defaultSpeed;
-        rotationSpeed = initRotationSpeed;
+        speed = info.DefaultSpeed;
+        rotationSpeed = info.InitRotationSpeed;
         currentState = new Move(this, anim, goal);
         currentTurret = null;
 
@@ -144,7 +138,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
             newTarget = new PathData(Goal.position, Goal);
         }
 
-        PathRequestManager.RequestPath(transform.position, newTarget, Range, OnPathFound);
+        PathRequestManager.RequestPath(transform.position, newTarget, info.Range, OnPathFound);
     }
 
     public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
@@ -319,7 +313,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     }
 
     /* UI */
-    const string info = @"Attack Range: {0:0.##}
+    const string infoUI = @"Attack Range: {0:0.##}
 Attack Rate: {1:0.##}
 Attack Damage: {2:0.##}
 Speed: {3:0.##}
@@ -339,7 +333,7 @@ Speed: {3:0.##}
             states = char.ToUpper(states[0]) + states.Substring(1);
         }
 
-        return string.Format(info, range, attackSpeed, damage, speed, states);
+        return string.Format(infoUI, info.Range, info.AttackSpeed, info.Damage, speed, states);
     }
 
     /* Editor */

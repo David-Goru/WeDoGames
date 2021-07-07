@@ -67,17 +67,10 @@ MonoBehaviour:
   title: Goblin 0
   currentHP: 0
   maxHP: 50
-  damage: 2
-  attackSpeed: 1.5
-  range: 0.5
-  defaultSpeed: 3
-  initRotationSpeed: 300
+  info: {fileID: 11400000, guid: 71d5fd22cf4a21a41ad1374c77e5c579, type: 2}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
   objectsLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  Obstacle:
     serializedVersion: 2
     m_Bits: 1024
 --- !u!136 &93575881696546574

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2420166829465913508}
+  - component: {fileID: 1626206352909718189}
+  - component: {fileID: 4446894764222395510}
   m_Layer: 0
   m_Name: Rat 1
   m_TagString: Untagged
@@ -31,6 +33,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626206352909718189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420166829465913509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  currentHP: 0
+  maxHP: 0
+  info: {fileID: 11400000, guid: 64365bf72b213554a917feb8d9117e7d, type: 2}
+  goal: {fileID: 0}
+  currentTurret: {fileID: 0}
+  objectsLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!136 &4446894764222395510
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420166829465913509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.18453038
+  m_Height: 1.1289823
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.13283765, z: -0.12900865}
 --- !u!95 &2420166830049819500
 Animator:
   serializedVersion: 3

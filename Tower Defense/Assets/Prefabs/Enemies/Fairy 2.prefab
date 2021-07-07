@@ -67,11 +67,7 @@ MonoBehaviour:
   title: Fairy 2
   currentHP: 0
   maxHP: 75
-  damage: 10
-  attackSpeed: 2.5
-  range: 12
-  defaultSpeed: 8
-  initRotationSpeed: 300
+  info: {fileID: 11400000, guid: ea85bc492546b6b4d96a0be513f4ebd8, type: 2}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
   objectsLayer:

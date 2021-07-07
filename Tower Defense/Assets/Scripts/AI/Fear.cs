@@ -22,7 +22,7 @@ public class Fear : State
 		PathData fearPosition = new PathData(-npc.transform.forward * 10.0f);
 		npc.CurrentTurret = null;
 		fearDuration = npc.FearDuration;
-		PathRequestManager.RequestPath(npc.transform.position, fearPosition, npc.Range, npc.OnPathFound);
+		PathRequestManager.RequestPath(npc.transform.position, fearPosition, npc.Info.Range, npc.OnPathFound);
 	}
 
 	public override void Update()

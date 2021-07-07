@@ -28,7 +28,7 @@ public class Attack : State
 	public override void Update()
 	{
 		attackTimer += Time.deltaTime;
-		if (attackTimer >= npc.AttackSpeed)
+		if (attackTimer >= npc.Info.AttackSpeed)
         {
 			resetTimer();
 			attackTarget();
@@ -57,7 +57,7 @@ public class Attack : State
 
 	void attackTarget()
     {
-        if (Target.gameObject.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Damage);
-		else if (Target.gameObject.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Damage);
+        if (Target.gameObject.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Info.Damage);
+		else if (Target.gameObject.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Info.Damage);
     }
 }

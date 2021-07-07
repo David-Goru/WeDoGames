@@ -17,7 +17,7 @@ public class Move : State
 		base.Enter();
 
 		PathData newTarget = new PathData(Target.position, Target);
-		PathRequestManager.RequestPath(npc.transform.position, newTarget, npc.Range, npc.OnPathFound);
+		PathRequestManager.RequestPath(npc.transform.position, newTarget, npc.Info.Range, npc.OnPathFound);
 	}
 
 	public override void Update()
