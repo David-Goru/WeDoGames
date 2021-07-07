@@ -131,12 +131,13 @@ public class TurretsUI : UIList
         return objectUI;
     }
 
-    void setTurretInfo(Transform objectUI, TurretInfo buildingInfo)
+    void setTurretInfo(Transform objectUI, TurretInfo turretInfo)
     {
-        objectUI.name = buildingInfo.name;
-        objectUI.GetComponent<Button>().onClick.AddListener(() => Master.StartBuilding(buildingInfo));
-        objectUI.GetComponent<HoverElement>().SetHoverText(buildingInfo.Description);
-        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", buildingInfo.name);
-        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} coins", buildingInfo.GetStat(StatType.PRICE));
+        objectUI.name = turretInfo.name;
+        objectUI.GetComponent<Button>().onClick.AddListener(() => Master.StartBuilding(turretInfo));
+        objectUI.GetComponent<HoverElement>().SetHoverText(turretInfo.Description);
+        objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", turretInfo.name);
+        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} coins", turretInfo.GetStat(StatType.PRICE));
+        objectUI.Find("Icon").GetComponent<Image>().sprite = turretInfo.Icon;
     }
 }

@@ -10,6 +10,7 @@ public class TurretInfo : ScriptableObject
 
     [Space(10)] [Header("Upgrade System Stuff")] [Space(15)]
     [SerializeField] string description = "";
+    [SerializeField] Sprite icon = null;
     [SerializeField] TurretElement turretElement = TurretElement.NONE;
     [SerializeField] TurretTier turretTier = TurretTier.FIRST;
 
@@ -20,6 +21,7 @@ public class TurretInfo : ScriptableObject
     [SerializeField] public List<Stat> currentStats = new List<Stat>();
 
     public string Description { get => description; }
+    public Sprite Icon { get => icon; set => icon = value; }
     public TurretElement TurretElement { get => turretElement; }
     public TurretTier TurretTier { get => turretTier; set => turretTier = value; }
     public Pool GetBuildingPool() { return turretPool; }

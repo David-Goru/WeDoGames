@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Attack range is increased by 1
   price: 100
+  icon: {fileID: 21300000, guid: 364036e4736a5b949a7113ee4e8ff16d, type: 3}
   element: 0
   stats:
   - type: 3

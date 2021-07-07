@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Something cool
   price: 10
+  icon: {fileID: 21300000, guid: f35738a4ad4107b4d913bde5980dbef7, type: 3}
   turretToUpgrade: {fileID: 11400000, guid: 7c8b22b11a7cf3244a4b410da5b983f6, type: 2}
   statChanges:
   - type: 3

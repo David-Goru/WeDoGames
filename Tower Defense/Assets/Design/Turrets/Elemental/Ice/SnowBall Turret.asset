@@ -9,50 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c570eb963cfb34d8c0b8e8602a901b, type: 3}
+  m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
   m_Name: SnowBall Turret
   m_EditorClassIdentifier: 
-  description: Ice Ray Turret description
+  turretPool: {fileID: 11400000, guid: 13da6d7973fbc824880ac3b151c577ce, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: fdd92c52c4f11874bbb80e2589c0889c,
+    type: 2}
+  description: 
+  icon: {fileID: 21300000, guid: dab0203f2a6598644ba20f9defac2556, type: 3}
   turretElement: 2
   turretTier: 2
-  Stats:
-  - type: 0
-    value: 100
-  - type: 1
-    value: 100
-  - type: 2
-    value: 3
-  - type: 3
-    value: 3
-  - type: 4
-    value: 1
-  - type: 5
-    value: 3
-  - type: 10
-    value: 2
-  - type: 11
-    value: 2
-  - type: 12
-    value: 3
-  buildingPool: {fileID: 11400000, guid: 13da6d7973fbc824880ac3b151c577ce, type: 2}
-  buildingBlueprintPool: {fileID: 11400000, guid: fdd92c52c4f11874bbb80e2589c0889c,
-    type: 2}
-  currentStats:
-  - type: 0
-    value: 100
-  - type: 1
-    value: 100
-  - type: 2
-    value: 3
-  - type: 3
-    value: 3
-  - type: 4
-    value: 1
-  - type: 5
-    value: 3
-  - type: 10
-    value: 2
-  - type: 11
-    value: 2
-  - type: 12
-    value: 3
+  Stats: []
+  currentStats: []
