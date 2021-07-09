@@ -28,6 +28,7 @@ public class WavesHandler : MonoBehaviour
 
     float timer = 0f;
     bool onPlanningPhase = true;
+    bool signalsActive = false;
     ObjectPooler objectPooler;
     bool predeterminedWaves;
 
@@ -47,13 +48,13 @@ public class WavesHandler : MonoBehaviour
         int i = 0;
         foreach (Transform t in Spawners)
         {
-            if (t.gameObject.activeSelf)
-            {
-                addImageSpawner(t);
+            spawnerPositions[i] = t.position;
+            i++;
+        }
 
-                spawnerPositions[i] = t.position;
-                i++;
-            }
+        foreach(Image img in Signals)
+        {
+            signalsImages.Add(img);
         }
 
         objectPooler = ObjectPooler.GetInstance();
@@ -83,12 +84,25 @@ public class WavesHandler : MonoBehaviour
                 onPlanningPhase = false;
                 spawnEnemies();
                 UI.CloseUpgrades();
-                UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
+                UI.UpdateWaveTimerText(Mathf.RoundToInt(0));             
+            }
+
+            if (!signalsActive)
+            {
+                foreach (EnemyPool enemyPool in info.EnemyWaves[waveIndex].enemyWave)
+                {
+                    activateSignals(enemyPool);
+                }
+                signalsActive = true;
             }
         }
         else
         {
-            if (enemiesSpawned == 0) nextWave();
+            if (enemiesSpawned == 0)
+            {
+                nextWave();
+                signalsActive = false;
+            }
             else
             {
                 timer += Time.deltaTime;
@@ -96,7 +110,7 @@ public class WavesHandler : MonoBehaviour
                 if (timer < 60) waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60 - timer);
                 else waveObjectiveText.text = string.Format("Objective not achieved");
             }
-        }
+        }   
     }
 
     void nextWave()
@@ -112,70 +126,59 @@ public class WavesHandler : MonoBehaviour
 
     void spawnEnemies()
     {
-        int spawnerNum = getSpawnerNum();
-        if (!predeterminedWaves) //Random waves
+        int spawnerNum = 0;
+
+        for (int i = 0; i < info.EnemyWaves[waveIndex].enemyWave.Count; i++)
         {
-            for (int i = 0; i < currentWave * ENEMIES_PER_WAVE_MULTIPLIER; i++)
+            spawnerNum = getSpawnerNum(i);
+            for (int j = 0; j < info.EnemyWaves[waveIndex].enemyWave[i].numberOfEnemies; j++)
             {
-                int randInd = Random.Range(0, spawnerNum);
-                Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
-                objectPooler.SpawnObject(getRandomEnemy(), randomPos, Quaternion.Euler(0, 0, 0));
-                StartCoroutine(activateSignal(randInd));
+                Vector3 randomPos = spawnerPositions[spawnerNum] + Vector3.forward * Random.Range(-3f, 3f) + Vector3.right * Random.Range(-3f, 3f);
+                objectPooler.SpawnObject(info.EnemyWaves[waveIndex].enemyWave[i].enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
                 enemiesSpawned++;
             }
         }
-        else //Predetermined waves
+
+        foreach (EnemyPool enemyPool in info.EnemyWaves[waveIndex].enemyWave)
         {
-            for (int i = 0; i < info.EnemyWaves[waveIndex].enemyWave.Count; i++)
-            {
-                for(int j = 0; j < info.EnemyWaves[waveIndex].enemyWave[i].numberOfEnemies; j++)
-                {
-                    int randInd = Random.Range(0, spawnerNum);
-                    Vector3 randomPos = spawnerPositions[randInd] + Vector3.forward * Random.Range(-3, 3) + Vector3.right * Random.Range(-3, 3);
-                    objectPooler.SpawnObject(info.EnemyWaves[waveIndex].enemyWave[i].enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
-                    StartCoroutine(activateSignal(randInd));
-                    enemiesSpawned++;
-                }
-            }
-
-            if(waveIndex < info.EnemyWaves.Count - 1) waveIndex++;
+            desactivateSignals(enemyPool);
         }
+
+        if (waveIndex < info.EnemyWaves.Count - 1) waveIndex++;
     }
 
-    private int getSpawnerNum()
+    int getSpawnerNum(int index)
     {
-        int spawnersNum = 1; //Round 1 - 4
-        if (currentWave >= 5 && currentWave <= 9 && spawnerPositions.Length > 1 || (currentWave >= 5 && spawnerPositions.Length == 2)) //Round 5 - 9
-            spawnersNum = 2;
-        else if (currentWave >= 10 && currentWave <= 14 && spawnerPositions.Length > 2 || (currentWave >= 10 && spawnerPositions.Length == 3)) //Round 10 - 14
-            spawnersNum = 3;
-        else if (currentWave >= 15 && spawnerPositions.Length > 3) //Round 15++
-            spawnersNum = 4;
-        return spawnersNum;
+        if (info.EnemyWaves[waveIndex].enemyWave[index].DOWN) return 0;
+        else if (info.EnemyWaves[waveIndex].enemyWave[index].RIGHT) return 1;
+        else if (info.EnemyWaves[waveIndex].enemyWave[index].LEFT) return 2;
+        else return 3; //Default: UP
     }
 
-    private void addImageSpawner(Transform t)
+    void activateSignals(EnemyPool enemyPool)
     {
-        if (t.gameObject.name == "SpawnerAbajo") signalsImages.Add(Signals[0]);
-        else if (t.gameObject.name == "SpawnerDerecha") signalsImages.Add(Signals[1]);
-        else if (t.gameObject.name == "SpawnerIzquierda") signalsImages.Add(Signals[2]);
-        else signalsImages.Add(Signals[3]);
+        if (enemyPool.DOWN) signalActivator(0);
+        else if (enemyPool.RIGHT) signalActivator(1);
+        else if (enemyPool.LEFT) signalActivator(2);
+        else signalActivator(3); //UP
     }
 
-    private IEnumerator activateSignal(int index)
+    void signalActivator(int index)
     {
         signalsImages[index].gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(1f);
-
-        signalsImages[index].gameObject.SetActive(false);
     }
 
-    string getRandomEnemy()
+    void desactivateSignals(EnemyPool enemyPool)
     {
-        int maxEnemyId = currentWave > MasterInfo.GetEnemiesSet().Length ? MasterInfo.GetEnemiesSet().Length : currentWave;
-        int enemyId = Random.Range(0, maxEnemyId);
-        return MasterInfo.GetEnemiesSet()[enemyId].tag;
+        if (enemyPool.DOWN) signalDesactivator(0);
+        else if (enemyPool.RIGHT) signalDesactivator(1);
+        else if (enemyPool.LEFT) signalDesactivator(2);
+        else signalDesactivator(3); //UP
+    }
+
+    void signalDesactivator(int index)
+    {
+        signalsImages[index].gameObject.SetActive(false);
     }
 
     public static void EnemyKilled()
@@ -203,18 +206,18 @@ public class EnemyPool
     public int numberOfEnemies;
 
     [Header("Spawn Positions")]
-    public bool UP;
     public bool DOWN;
     public bool RIGHT;
     public bool LEFT;
+    public bool UP;
 
     public EnemyPool(Pool _enemy, int _numberOfEnemies, bool _up, bool _down, bool _left, bool _right)
     {
         enemy = _enemy;
         numberOfEnemies = _numberOfEnemies;
-        UP = _up;
         DOWN = _down;
-        LEFT = _left;
         RIGHT = _right;
+        LEFT = _left;
+        UP = _up;
     }
 }
