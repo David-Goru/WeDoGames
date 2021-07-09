@@ -4,14 +4,14 @@
 public class EnemyInfo : ScriptableObject
 {
     [SerializeField] int maxHealth = 0;
-    [SerializeField] float damage = 0f;
+    [SerializeField] int damage = 0;
     [SerializeField] float attackSpeed = 0f;
     [SerializeField] float range = 0f;
     [SerializeField] float defaultSpeed = 0f;
     [SerializeField] float initRotationSpeed = 0f;
 
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public float Damage { get => damage; set => damage = value; }
+    public int Damage { get => damage; set => damage = value; }
     public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
     public float Range { get => range; set => range = value; }
     public float DefaultSpeed { get => defaultSpeed; set => defaultSpeed = value; }

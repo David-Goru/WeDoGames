@@ -31,7 +31,6 @@ public class EntityInfoUI : MonoBehaviour
 
     void updateUI()
     {
-        currentEntity.SetInfo();
         transform.Find("Title").GetComponent<Text>().text = currentEntity.Title;
         transform.Find("HP").GetComponent<Text>().text = string.Format("{0}/{1}", currentEntity.CurrentHP, currentEntity.MaxHP);
     }

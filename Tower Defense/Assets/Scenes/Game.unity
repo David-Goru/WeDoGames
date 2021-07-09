@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 2a71edc2d98007f4f86f751895f6301b,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -463,7 +463,7 @@ MonoBehaviour:
   currentWave: 0
   planningTime: 10
   waveObjectiveText: {fileID: 2102561728}
-  info: {fileID: 11400000, guid: efc2cc779e766584288a0c56a00bae63, type: 2}
+  info: {fileID: 11400000, guid: 69c084df68b0d3c42bc60d1379a9e279, type: 2}
 --- !u!114 &537000335
 MonoBehaviour:
   m_ObjectHideFlags: 0

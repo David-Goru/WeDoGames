@@ -100,7 +100,6 @@ GameObject:
   - component: {fileID: 5673856947705442405}
   - component: {fileID: 520202089597382337}
   - component: {fileID: 1248103357}
-  - component: {fileID: -7169875764950382637}
   m_Layer: 10
   m_Name: Mortar Turret
   m_TagString: Turret
@@ -165,7 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingInfo: {fileID: 11400000, guid: 29bbb812666d7e04f83605fd68e7fe00, type: 2}
-  currentHp: 0
 --- !u!114 &1248103357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,21 +177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
---- !u!114 &-7169875764950382637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4790984498408443622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748efb8d39a4b094c835c8bbbaac0302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Heavy Turret
-  currentHP: 0
-  maxHP: 0
 --- !u!1 &4848038110795061030
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 6d829e7ac9e793946bf8e0838c5f4014, type: 2}
   spawnPosition: {fileID: 5673856948056275773}
+  anim: {fileID: 0}
   targetDetection: {fileID: 318811786}
 --- !u!114 &4616495875951490175
 MonoBehaviour:

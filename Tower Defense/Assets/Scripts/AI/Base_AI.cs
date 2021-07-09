@@ -142,9 +142,9 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         PathRequestManager.RequestPath(transform.position, newTarget, info.Range, OnPathFound);
     }
 
-    public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
+    public void OnTurretHit(Transform turretTransform, int damage, IEnemyDamageHandler enemyDamage)
     {
-        currentHP -= Mathf.RoundToInt(damage);
+        currentHP -= damage;
 
         if (checkDeath()) return;
         if (currentTurret == null || currentState.Target == goal)
@@ -247,7 +247,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         while (timer < secondsPoisoned)
         {
             yield return new WaitForSeconds(1.0f);
-            GetDamage(damagePerSecond);
+            GetDamage(Mathf.RoundToInt(damagePerSecond));
             timer++;
         }
 
@@ -296,9 +296,9 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         currentState = new Knockback(this, anim, goal);
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(int damage)
     {
-        currentHP -= Mathf.RoundToInt(damage);
+        currentHP -= damage;
 
         checkDeath();
     }
