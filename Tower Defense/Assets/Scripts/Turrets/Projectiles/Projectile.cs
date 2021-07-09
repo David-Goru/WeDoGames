@@ -21,6 +21,14 @@ public class Projectile : MonoBehaviour, IPooledObject
         this.turret = turret;
         this.enemyDamageHandler = enemyDamageHandler;
     }
+    
+    public virtual void SetInfo(Transform turret, TurretStats turretStats)
+    {
+        this.target = null;
+        this.turretStats = turretStats;
+        this.turret = turret;
+        this.enemyDamageHandler = null;
+    }
 
     void Update()
     {
@@ -40,7 +48,7 @@ public class Projectile : MonoBehaviour, IPooledObject
     protected void damageEnemy(Collider enemy)
     {
         turretDamageable = enemy.GetComponent<ITurretDamage>();
-        if (turretDamageable != null) turretDamageable.OnTurretHit(turret, turretStats.SearchStatValue(StatType.DAMAGE), enemyDamageHandler);
+        if (turretDamageable != null) turretDamageable.OnTurretHit(turret, (int)turretStats.SearchStatValue(StatType.DAMAGE), enemyDamageHandler);
     }
 
     protected virtual void OnTriggerEnter(Collider other)

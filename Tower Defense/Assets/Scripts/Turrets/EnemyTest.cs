@@ -32,7 +32,7 @@ public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, I
         }
     }
 
-    public void OnTurretHit(Transform turretTransform, float damage, IEnemyDamageHandler enemyDamage)
+    public void OnTurretHit(Transform turretTransform, int damage, IEnemyDamageHandler enemyDamage)
     {
         hit = true;
         timer = 0f;

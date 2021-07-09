@@ -1,24 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// This class stores all the stats of the turret
 /// </summary>
-public class TurretStats : MonoBehaviour, IHealable
+public class TurretStats : Entity, IHealable
 {
     [SerializeField] TurretInfo buildingInfo = null;
 
-    public float currentHp;
-
     private void Start()
     {
-        InitializeStats();
+        Initialize();
     }
 
-    public void InitializeStats()
+    public void Initialize()
     {
-        currentHp = buildingInfo.GetStat(StatType.MAXHEALTH);
-
+        title = buildingInfo.name;
+        currentHP = (int)GetStatValue(StatType.MAXHEALTH);
+        maxHP = currentHP;
     }
 
     public float SearchStatValue(StatType statType)
@@ -36,8 +36,8 @@ public class TurretStats : MonoBehaviour, IHealable
         return buildingInfo.GetStat(type);
     }
 
-    public void Heal(float healValue)
+    public void Heal(int healValue)
     {
-        currentHp = Mathf.Clamp(currentHp + healValue, 0, buildingInfo.GetStat(StatType.MAXHEALTH));
+        currentHP = Mathf.Clamp(currentHP + healValue, 0, maxHP);
     }
 }

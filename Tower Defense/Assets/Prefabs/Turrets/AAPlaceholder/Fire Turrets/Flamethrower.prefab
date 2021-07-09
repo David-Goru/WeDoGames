@@ -358,7 +358,6 @@ GameObject:
   - component: {fileID: 6876607102681809653}
   - component: {fileID: 6876607102681809655}
   - component: {fileID: 6876607102681809663}
-  - component: {fileID: 2206257010271927320}
   m_Layer: 10
   m_Name: Flamethrower
   m_TagString: Turret
@@ -436,21 +435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
---- !u!114 &2206257010271927320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6876607102681809634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748efb8d39a4b094c835c8bbbaac0302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Area Melee Turret
-  currentHP: 0
-  maxHP: 0
 --- !u!1 &8288088174157906054
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,10 +8,10 @@ public class BasicProjectile : Projectile
     protected override void updateProjectile()
     {
         if (!target.gameObject.activeSelf) disable();
-        ChaseEnemy();
+        chaseEnemy();
     }
 
-    void ChaseEnemy()
+    void chaseEnemy()
     {
         transform.LookAt(target);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);

@@ -15,10 +15,10 @@ public class TurretDamageable : EnemyDamage
         turretStats = GetComponentInParent<TurretStats>();
     }
 
-    public override void OnEnemyHit(float damage)
+    public override void OnEnemyHit(int damage)
     {
-        turretStats.currentHp -= damage;
-        if (turretStats.currentHp <= 0)
+        turretStats.CurrentHP -= damage;
+        if (turretStats.CurrentHP <= 0)
         {
             if (turretNoHealthBehaviours.Count == 0)
             {

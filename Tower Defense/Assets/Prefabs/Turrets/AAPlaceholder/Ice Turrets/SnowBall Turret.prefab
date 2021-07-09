@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 98eae141677f13443b5c4e894a94e279, type: 2}
   spawnPosition: {fileID: 7125410709113921190}
+  anim: {fileID: 0}
   targetDetection: {fileID: 4687161048777328902}
 --- !u!114 &8435510888718156883
 MonoBehaviour:
@@ -259,7 +260,6 @@ GameObject:
   - component: {fileID: 7125410708980199864}
   - component: {fileID: 7125410708980199869}
   - component: {fileID: 7125410708980199863}
-  - component: {fileID: 1006874915032902111}
   m_Layer: 10
   m_Name: SnowBall Turret
   m_TagString: Turret
@@ -337,21 +337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
---- !u!114 &1006874915032902111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7125410708980199859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748efb8d39a4b094c835c8bbbaac0302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Basic Turret
-  currentHP: 0
-  maxHP: 0
 --- !u!1 &7125410709113921191
 GameObject:
   m_ObjectHideFlags: 0

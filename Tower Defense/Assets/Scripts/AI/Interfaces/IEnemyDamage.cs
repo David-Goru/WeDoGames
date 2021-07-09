@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEnemyDamage
 {
-    void OnEnemyHit(float damage);
+    void OnEnemyHit(int damage);
 }

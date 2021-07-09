@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1269008495316496039}
   - component: {fileID: 1269008495316496034}
   - component: {fileID: 1269008495316496040}
-  - component: {fileID: 9117472230358660800}
   m_Layer: 10
   m_Name: Plant Basic Turret
   m_TagString: Turret
@@ -91,21 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
---- !u!114 &9117472230358660800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269008495316496044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748efb8d39a4b094c835c8bbbaac0302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Basic Turret
-  currentHP: 0
-  maxHP: 0
 --- !u!1 &1269008495725920696
 GameObject:
   m_ObjectHideFlags: 0

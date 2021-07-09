@@ -57,6 +57,6 @@ public class Turret : MonoBehaviour, IPooledObject
 
     private void InitializeTurretStats()
     {
-        turretStats.InitializeStats();
+        turretStats.Initialize();
     }
 }

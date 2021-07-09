@@ -60,10 +60,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7460484674784721487}
   - component: {fileID: 177974009844130681}
-  - component: {fileID: 4609649728603247978}
-  - component: {fileID: 5754699411249297519}
-  - component: {fileID: 6260100447651347674}
-  - component: {fileID: 7132725884486840719}
+  - component: {fileID: 6275928706609203339}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -98,10 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 4609649728603247978}
-  - {fileID: 5754699411249297519}
-  - {fileID: 6260100447651347674}
---- !u!114 &4609649728603247978
+  - {fileID: 6275928706609203339}
+--- !u!114 &6275928706609203339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,56 +105,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3384287399998719305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e7c3c793a81fca4caa4dbf969d6347a, type: 3}
+  m_Script: {fileID: 11500000, guid: bd119efaf4ee9f74996926e7b12600c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: 9ae6610d76eb20148b7b62b81730b69b, type: 2}
-  spawnPosition: {fileID: 8434951121362086778}
-  anim: {fileID: 182427755836651086}
-  targetDetection: {fileID: 6260100447651347674}
---- !u!114 &5754699411249297519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384287399998719305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95423ec0ac064dc4a885d3ba8cf27a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 300
-  objectToRotate: {fileID: 182427755017517503}
-  enemyDetection: {fileID: 6260100447651347674}
---- !u!114 &6260100447651347674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384287399998719305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35f6b31ca543254baa3d0cc6244ba3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  debugRange: 2
---- !u!114 &7132725884486840719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384287399998719305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbeb25e62a6b3a468b12cb4650c85fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  particles: {fileID: 0}
+  projectilePool: {fileID: 11400000, guid: 68004b0387962b847a78b054c9bacf9a, type: 2}
 --- !u!1 &4507879214043505532
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +301,6 @@ GameObject:
   - component: {fileID: 8434951121762075748}
   - component: {fileID: 8434951121762075745}
   - component: {fileID: 8434951121762075755}
-  - component: {fileID: 1879513379876871171}
   m_Layer: 10
   m_Name: Spore Spawner Turret
   m_TagString: Turret
@@ -429,21 +378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
---- !u!114 &1879513379876871171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8434951121762075759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748efb8d39a4b094c835c8bbbaac0302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Basic Turret
-  currentHP: 0
-  maxHP: 0
 --- !u!1001 &182427755932128353
 PrefabInstance:
   m_ObjectHideFlags: 0

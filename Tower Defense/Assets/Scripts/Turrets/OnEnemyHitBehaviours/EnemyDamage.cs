@@ -2,5 +2,5 @@
 
 public abstract class EnemyDamage : MonoBehaviour
 {
-    public abstract void OnEnemyHit(float damage);
+    public abstract void OnEnemyHit(int damage);
 }

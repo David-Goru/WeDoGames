@@ -1964,7 +1964,7 @@ PrefabInstance:
     - target: {fileID: 8434951121762075759, guid: 29cc709e51b2d524d913684bf2ded532,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29cc709e51b2d524d913684bf2ded532, type: 3}
@@ -2256,6 +2256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Over Growth Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663482345343404504, guid: 980710e7a73fb044a825e5532e780e8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 980710e7a73fb044a825e5532e780e8c, type: 3}

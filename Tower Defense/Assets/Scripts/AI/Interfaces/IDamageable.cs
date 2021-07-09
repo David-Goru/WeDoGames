@@ -5,5 +5,5 @@
 /// </summary>
 public interface IDamageable
 {
-    void GetDamage(float damage);
+    void GetDamage(int damage);
 }

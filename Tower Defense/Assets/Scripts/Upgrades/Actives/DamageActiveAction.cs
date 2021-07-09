@@ -5,7 +5,7 @@ public class DamageActiveAction : ActiveAction
 {
     Collider[] colsCache = new Collider[128];
     LayerMask enemyLayer;
-    [SerializeField] float damageValue = 20f;
+    [SerializeField] int damageValue = 20;
 
     private void Awake()
     {
@@ -14,14 +14,12 @@ public class DamageActiveAction : ActiveAction
 
     public override void UseActive(Vector3 position)
     {
-        if(enemyLayer == 0)
-            enemyLayer = LayerMask.GetMask("Enemy");
+        if(enemyLayer == 0) enemyLayer = LayerMask.GetMask("Enemy");
         int nEnemies = Physics.OverlapSphereNonAlloc(position, activeRange, colsCache, enemyLayer);
         for (int i = 0; i < nEnemies; i++)
         {
             IDamageable enemy = colsCache[i].GetComponent<IDamageable>();
-            if (enemy != null)
-                enemy.GetDamage(damageValue);
+            if (enemy != null) enemy.GetDamage(damageValue);
         }
     }
 }

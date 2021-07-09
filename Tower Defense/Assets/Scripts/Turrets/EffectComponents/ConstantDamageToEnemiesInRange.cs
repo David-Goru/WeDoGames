@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ConstantDamageToEnemiesInRange : EffectComponent
 {
@@ -29,11 +28,11 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
         if (ReferenceEquals(targetDetection, null)) return;
         playParticles();
 
-        float damage = turretStats.GetStatValue(StatType.DAMAGE);
+        int damage = (int)turretStats.GetStatValue(StatType.DAMAGE);
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
-            if (turretDamageable != null) turretDamageable.OnTurretHit(transform, damage * Time.deltaTime, enemyDamageHandler);
+            //if (turretDamageable != null) turretDamageable.OnTurretHit(transform, damage * Time.deltaTime, enemyDamageHandler);
         }
     }
 

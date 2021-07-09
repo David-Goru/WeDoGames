@@ -316,7 +316,6 @@ GameObject:
   - component: {fileID: 7407901596507321682}
   - component: {fileID: 7407901596507321687}
   - component: {fileID: 7407901596507321693}
-  - component: {fileID: 708630227421556021}
   m_Layer: 10
   m_Name: Tech Basic Turret
   m_TagString: Turret
@@ -394,21 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
---- !u!114 &708630227421556021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7407901596507321689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748efb8d39a4b094c835c8bbbaac0302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Basic Turret
-  currentHP: 0
-  maxHP: 0
 --- !u!1001 &8473376272426334636
 PrefabInstance:
   m_ObjectHideFlags: 0

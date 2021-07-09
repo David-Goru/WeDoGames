@@ -40,7 +40,7 @@ public class DamageEnemiesOnRange : EffectComponent
         if (ReferenceEquals(targetDetection, null)) return;
         playParticles();
 
-        float damage = turretStats.GetStatValue(StatType.DAMAGE);
+        int damage = (int)turretStats.GetStatValue(StatType.DAMAGE);
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();

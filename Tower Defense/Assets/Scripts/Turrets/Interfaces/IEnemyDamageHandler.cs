@@ -2,5 +2,5 @@
 
 public interface IEnemyDamageHandler
 {
-	void OnEnemyHit(float damage);
+	void OnEnemyHit(int damage);
 }

@@ -9,7 +9,7 @@ public class EnemyDamageHandler : MonoBehaviour, IEnemyDamageHandler
 {
     [SerializeField] List<EnemyDamage> enemyDamagesBehaviours = null;
     
-    public void OnEnemyHit(float damage)
+    public void OnEnemyHit(int damage)
     {
         foreach (EnemyDamage enemyDamageBehaviour in enemyDamagesBehaviours) enemyDamageBehaviour.OnEnemyHit(damage);
     }

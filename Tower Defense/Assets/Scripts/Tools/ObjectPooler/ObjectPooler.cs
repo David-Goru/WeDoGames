@@ -54,7 +54,7 @@ public class ObjectPooler : MonoBehaviour
         obj = checkIfPoolHasAnUnusedItem(tag);
 
         if (obj == null)
-            obj = instansiateNewObject(tag);
+            obj = instantiateNewObject(tag);
         obj.transform.position = position;
         obj.SetActive(true);
         checkIPooledObjectInterface(obj);
@@ -67,7 +67,7 @@ public class ObjectPooler : MonoBehaviour
         obj = checkIfPoolHasAnUnusedItem(tag);
 
         if (obj == null)
-            obj = instansiateNewObject(tag);
+            obj = instantiateNewObject(tag);
         obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
         checkIPooledObjectInterface(obj);
@@ -97,7 +97,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    GameObject instansiateNewObject(string tag)
+    GameObject instantiateNewObject(string tag)
     {
         for (int i = 0; i < Pools.Length; i++)
         {

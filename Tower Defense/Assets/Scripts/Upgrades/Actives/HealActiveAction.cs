@@ -5,7 +5,7 @@ public class HealActiveAction : ActiveAction
 {
     Collider[] colsCache = new Collider[32];
     LayerMask objectLayer;
-    [SerializeField] float healingValue = 20f;
+    [SerializeField] int healingValue = 20;
 
     private void Awake()
     {
@@ -20,8 +20,7 @@ public class HealActiveAction : ActiveAction
         for (int i = 0; i < nTurrets; i++)
         {
             IHealable turret = colsCache[i].GetComponent<IHealable>();
-            if(turret != null)
-                turret.Heal(healingValue);
+            if(turret != null) turret.Heal(healingValue);
         }
     }
 }

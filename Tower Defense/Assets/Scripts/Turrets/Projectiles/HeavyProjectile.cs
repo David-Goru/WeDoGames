@@ -114,7 +114,7 @@ public class HeavyProjectile : Projectile
         if(!other.CompareTag("Turret") && !other.CompareTag("Nexus"))
         {
             int nEnemies = Physics.OverlapSphereNonAlloc(transform.position, radiusOfImpact, collidersCache, enemyLayer);
-            float damage = turretStats.SearchStatValue(StatType.DAMAGE);
+            int damage = (int)turretStats.SearchStatValue(StatType.DAMAGE);
             for (int i = 0; i < nEnemies; i++)
             {
                 collidersCache[i].GetComponent<ITurretDamage>().OnTurretHit(turret, damage, enemyDamageHandler);
