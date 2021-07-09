@@ -65,9 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73d2713f8be0514d809d440f6d15e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Nexus
-  currentHP: 0
-  maxHP: 100
+  StartingHP: 100
 --- !u!114 &2546666841175952488
 MonoBehaviour:
   m_ObjectHideFlags: 0

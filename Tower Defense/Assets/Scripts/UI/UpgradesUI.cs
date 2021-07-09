@@ -27,13 +27,7 @@ public class UpgradesUI : UIList
 
         // TODO: Add nexus upgrades
 
-        if (UI.ExistsTier(TurretTier.FIRST))
-        {
-            foreach (TurretTransformation upgrade in turretTransformations.FindAll(x => x.TurretTier == TurretTier.SECOND))
-            {
-                upgradesAvailable.Add(upgrade);
-            }
-        }
+        if (UI.ExistsTier(TurretTier.FIRST)) upgradesAvailable.AddRange(turretTransformations.FindAll(x => x.TurretTier == TurretTier.SECOND));
         else if (UI.ExistsTier(TurretTier.SECOND))
         {
             foreach (TurretTransformation upgrade in turretTransformations.FindAll(x => x.TurretTier == TurretTier.THIRD))
@@ -117,41 +111,37 @@ public class UpgradesUI : UIList
     void addUpgrade(Upgrade upgrade)
     {
         if (upgrade is Active) UI.EnableActive(upgrade);
-        else if (upgrade is ElementalStatUpgrade)
-        {
-            ElementalStatUpgrade elementalStatUpgrade = (ElementalStatUpgrade)upgrade;
-            TurretInfo[] turrets = Master.Instance.MasterInfo.GetTurretsSet();
-            foreach (TurretInfo turret in turrets)
-            {
-                if (turret.TurretElement == elementalStatUpgrade.Element)
-                {
-                    foreach (Stat stat in elementalStatUpgrade.Stats)
-                    {
-                        turret.IncrementStat(stat.Type, stat.Value);
-                    }
-                }
-            }
-
-            UI.UpdateTurretElement(elementalStatUpgrade.Element);
-        }
-        else if (upgrade is TurretTransformation)
-        {
-            UI.AddTurretUpgrade((TurretTransformation)upgrade);
-        }
-        else if (upgrade is TurretUpgrade)
-        {
-            TurretUpgrade turretUpgrade = (TurretUpgrade)upgrade;
-            turretUpgrade.CurrentUsages++;
-
-            foreach (Stat stat in turretUpgrade.StatChanges)
-            {
-                turretUpgrade.TurretToUpgrade.TurretInfo.IncrementStat(stat.Type, stat.Value);
-            }
-
-            UI.UpdateTurretInfo(turretUpgrade.TurretToUpgrade.TurretInfo);
-        }
+        else if (upgrade is ElementalStatUpgrade) enableElementalStatUpgrade((ElementalStatUpgrade)upgrade);
+        else if (upgrade is TurretTransformation) UI.AddTurretUpgrade((TurretTransformation)upgrade);
+        else if (upgrade is TurretUpgrade) enableTurretUpgrade((TurretUpgrade)upgrade);
 
         CloseUpgrades();
+    }
+
+    void enableElementalStatUpgrade(ElementalStatUpgrade upgrade)
+    {
+        TurretInfo[] turrets = Master.Instance.MasterInfo.GetTurretsSet();
+        foreach (TurretInfo turret in turrets)
+        {
+            if (turret.TurretElement == upgrade.Element) addStatsToTurret(upgrade.Stats.ToArray(), turret);
+        }
+        UI.UpdateTurretElement(upgrade.Element);
+    }
+
+    void enableTurretUpgrade(TurretUpgrade upgrade)
+    {
+        upgrade.CurrentUsages++;
+        addStatsToTurret(upgrade.StatChanges, upgrade.TurretToUpgrade.TurretInfo);
+
+        UI.UpdateTurretInfo(upgrade.TurretToUpgrade.TurretInfo);
+    }
+
+    void addStatsToTurret(Stat[] stats, TurretInfo turret)
+    {
+        foreach (Stat stat in stats)
+        {
+            turret.IncrementStat(stat.Type, stat.Value);
+        }
     }
 
     void showUI()

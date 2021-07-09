@@ -2,7 +2,7 @@
 
 public class Nexus : Entity
 {
-    const string textUI = "Evil beings try to get you out of the planet. But don't worry, your Nexus will keep' em entertained while you pium pium them.";
+    [SerializeField] private int StartingHP = 0;
 
     public bool IsFullHealth { get => currentHP == maxHP; }
     public bool IsAlive { get => currentHP > 0; }
@@ -17,12 +17,9 @@ public class Nexus : Entity
 
     void Start()
     {
+        title = name;
+        maxHP = StartingHP;
         currentHP = maxHP;
-    }
-
-    public override string GetExtraInfo()
-    {
-        return textUI;
     }
 
     public void GetHit(float damage)
