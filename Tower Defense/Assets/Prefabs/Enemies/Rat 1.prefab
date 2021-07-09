@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2420166829465913508}
   - component: {fileID: 1626206352909718189}
   - component: {fileID: 4446894764222395510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rat 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: 
-  currentHP: 0
-  maxHP: 0
   info: {fileID: 11400000, guid: 64365bf72b213554a917feb8d9117e7d, type: 2}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
@@ -167,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f8addc6d5debf03449c14d3336930509,
         type: 3}
       propertyPath: m_Name
-      value: Rat 1
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 8417361359673230750, guid: f8addc6d5debf03449c14d3336930509,
         type: 3}

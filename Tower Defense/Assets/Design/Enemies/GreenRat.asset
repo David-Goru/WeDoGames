@@ -16,5 +16,5 @@ MonoBehaviour:
   damage: 1
   attackSpeed: 1
   range: 1
-  defaultSpeed: 1
-  initRotationSpeed: 1
+  defaultSpeed: 3
+  initRotationSpeed: 300

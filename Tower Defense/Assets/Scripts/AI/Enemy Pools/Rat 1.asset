@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
-  m_Name: RedRat
+  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
+  m_Name: Rat 1
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  damage: 1
-  attackSpeed: 1
-  range: 1
-  defaultSpeed: 3
-  initRotationSpeed: 300
+  prefab: {fileID: 2420166829465913509, guid: fb4d9c617c89c8746ab81434a549ad82, type: 3}
+  size: 100
+  tag: Rat 1

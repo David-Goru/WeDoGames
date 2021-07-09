@@ -128,14 +128,13 @@ public class WavesHandler : MonoBehaviour
 
     void spawnEnemies()
     {
-        int spawnerNum = 0;
-
         for (int i = 0; i < info.EnemyWaves[waveIndex].enemyWave.Count; i++)
         {
-            spawnerNum = getSpawnerNum(i);
+            List<int> possibleSpawners = getRandomSpawnerNum(i);
             for (int j = 0; j < info.EnemyWaves[waveIndex].enemyWave[i].numberOfEnemies; j++)
             {
-                Vector3 randomPos = spawnerPositions[spawnerNum] + Vector3.forward * Random.Range(-3f, 3f) + Vector3.right * Random.Range(-3f, 3f);
+                int getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
+                Vector3 randomPos = spawnerPositions[getRandomSpawn] + Vector3.forward * Random.Range(-3f, 3f) + Vector3.right * Random.Range(-3f, 3f);
                 objectPooler.SpawnObject(info.EnemyWaves[waveIndex].enemyWave[i].enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
                 enemiesSpawned++;
             }
@@ -149,20 +148,24 @@ public class WavesHandler : MonoBehaviour
         if (waveIndex < info.EnemyWaves.Count - 1) waveIndex++;
     }
 
-    int getSpawnerNum(int index)
+    List<int> getRandomSpawnerNum(int index)
     {
-        if (info.EnemyWaves[waveIndex].enemyWave[index].DOWN) return nDOWN;
-        else if (info.EnemyWaves[waveIndex].enemyWave[index].RIGHT) return nRIGHT;
-        else if (info.EnemyWaves[waveIndex].enemyWave[index].LEFT) return nLEFT;
-        else return nUP; //Default: UP
+        List<int> possibleSpawners = new List<int>();
+        if (info.EnemyWaves[waveIndex].enemyWave[index].DOWN) possibleSpawners.Add(nDOWN);
+        if (info.EnemyWaves[waveIndex].enemyWave[index].RIGHT) possibleSpawners.Add(nRIGHT);
+        if (info.EnemyWaves[waveIndex].enemyWave[index].LEFT) possibleSpawners.Add(nLEFT);
+        if (info.EnemyWaves[waveIndex].enemyWave[index].UP) possibleSpawners.Add(nUP);
+
+        if (possibleSpawners.Count == 0) possibleSpawners.Add(nDOWN);
+        return possibleSpawners;
     }
 
     void activateSignals(EnemyPool enemyPool)
     {
         if (enemyPool.DOWN) signalActivator(nDOWN);
-        else if (enemyPool.RIGHT) signalActivator(nRIGHT);
-        else if (enemyPool.LEFT) signalActivator(nLEFT);
-        else signalActivator(nUP); //UP
+        if (enemyPool.RIGHT) signalActivator(nRIGHT);
+        if (enemyPool.LEFT) signalActivator(nLEFT);
+        if (enemyPool.UP) signalActivator(nUP); //UP
     }
 
     void signalActivator(int index)
@@ -173,9 +176,9 @@ public class WavesHandler : MonoBehaviour
     void desactivateSignals(EnemyPool enemyPool)
     {
         if (enemyPool.DOWN) signalDesactivator(nDOWN);
-        else if (enemyPool.RIGHT) signalDesactivator(nRIGHT);
-        else if (enemyPool.LEFT) signalDesactivator(nLEFT);
-        else signalDesactivator(nUP); //UP
+        if (enemyPool.RIGHT) signalDesactivator(nRIGHT);
+        if (enemyPool.LEFT) signalDesactivator(nLEFT);
+        if (enemyPool.UP) signalDesactivator(nUP); //UP
     }
 
     void signalDesactivator(int index)

@@ -461,7 +461,7 @@ MonoBehaviour:
   - {fileID: 5036265520982063698}
   - {fileID: 5036265520778827637}
   currentWave: 0
-  planningTime: 10
+  planningTime: 2
   waveObjectiveText: {fileID: 2102561728}
   info: {fileID: 11400000, guid: 69c084df68b0d3c42bc60d1379a9e279, type: 2}
 --- !u!114 &537000335
@@ -1620,6 +1620,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883686696978771043, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 537000327}
+    - target: {fileID: 4883686696978771043, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883686696978771043, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883686696978771043, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4883686697053016961, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
