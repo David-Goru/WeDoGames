@@ -30,12 +30,14 @@ public class WavesHandler : MonoBehaviour
     bool onPlanningPhase = true;
     bool signalsActive = false;
     ObjectPooler objectPooler;
-    bool predeterminedWaves;
+
+    int nDOWN = 0;
+    int nRIGHT = 1;
+    int nLEFT = 2;
+    int nUP = 3;
 
     void Start()
     {
-        predeterminedWaves = info.EnemyWaves.Count > 0;
-
         int childsActive = 0;
         for (int j = 0; j < Spawners.childCount; j++)
         {
@@ -149,18 +151,18 @@ public class WavesHandler : MonoBehaviour
 
     int getSpawnerNum(int index)
     {
-        if (info.EnemyWaves[waveIndex].enemyWave[index].DOWN) return 0;
-        else if (info.EnemyWaves[waveIndex].enemyWave[index].RIGHT) return 1;
-        else if (info.EnemyWaves[waveIndex].enemyWave[index].LEFT) return 2;
-        else return 3; //Default: UP
+        if (info.EnemyWaves[waveIndex].enemyWave[index].DOWN) return nDOWN;
+        else if (info.EnemyWaves[waveIndex].enemyWave[index].RIGHT) return nRIGHT;
+        else if (info.EnemyWaves[waveIndex].enemyWave[index].LEFT) return nLEFT;
+        else return nUP; //Default: UP
     }
 
     void activateSignals(EnemyPool enemyPool)
     {
-        if (enemyPool.DOWN) signalActivator(0);
-        else if (enemyPool.RIGHT) signalActivator(1);
-        else if (enemyPool.LEFT) signalActivator(2);
-        else signalActivator(3); //UP
+        if (enemyPool.DOWN) signalActivator(nDOWN);
+        else if (enemyPool.RIGHT) signalActivator(nRIGHT);
+        else if (enemyPool.LEFT) signalActivator(nLEFT);
+        else signalActivator(nUP); //UP
     }
 
     void signalActivator(int index)
@@ -170,10 +172,10 @@ public class WavesHandler : MonoBehaviour
 
     void desactivateSignals(EnemyPool enemyPool)
     {
-        if (enemyPool.DOWN) signalDesactivator(0);
-        else if (enemyPool.RIGHT) signalDesactivator(1);
-        else if (enemyPool.LEFT) signalDesactivator(2);
-        else signalDesactivator(3); //UP
+        if (enemyPool.DOWN) signalDesactivator(nDOWN);
+        else if (enemyPool.RIGHT) signalDesactivator(nRIGHT);
+        else if (enemyPool.LEFT) signalDesactivator(nLEFT);
+        else signalDesactivator(nUP); //UP
     }
 
     void signalDesactivator(int index)
