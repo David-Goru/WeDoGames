@@ -19,5 +19,29 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a88aeae75d5800645a62df3d13e07987, type: 3}
   turretElement: 3
   turretTier: 2
-  Stats: []
-  currentStats: []
+  Stats:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 100
+  - type: 2
+    value: 3
+  - type: 3
+    value: 3
+  - type: 4
+    value: 2
+  - type: 13
+    value: 3
+  currentStats:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 100
+  - type: 2
+    value: 3
+  - type: 3
+    value: 3
+  - type: 4
+    value: 2
+  - type: 13
+    value: 3

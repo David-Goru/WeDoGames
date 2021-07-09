@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Basic Turret
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4224321588919385869, guid: ae9d32eee2dc1854d9ed94c86e738d7b, type: 3}
+  prefab: {fileID: 4224321588919385869, guid: 610850b7a9c2c6d42b34ae1ee8bc4dca, type: 3}
   size: 20
   tag: Basic Turret
