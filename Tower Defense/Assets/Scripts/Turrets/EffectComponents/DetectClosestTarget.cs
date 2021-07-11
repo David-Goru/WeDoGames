@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -21,7 +22,8 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     public override void InitializeComponent()
     {
-        GetDependencies();
+        getDependencies();
+        initializeMembers();
     }
 
     public override void UpdateComponent()
@@ -29,10 +31,17 @@ public class DetectClosestTarget : CurrentTargetsOnRange
         UpdateTarget();
     }
 
-    private void GetDependencies()
+    private void getDependencies()
     {
         turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
+    }
+
+    private void initializeMembers()
+    {
+        isTargetingEnemy = false;
+        timer = 0f;
+        currentTargets.Clear();
     }
 
     void UpdateTarget()

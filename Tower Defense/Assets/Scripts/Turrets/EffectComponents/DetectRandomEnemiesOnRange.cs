@@ -13,12 +13,19 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
 
     public override void InitializeComponent()
     {
-        turretStats = GetComponentInParent<TurretStats>();
-        targetsDetector = GetComponent<ITargetsDetector>();
+        getDependencies();
+        currentTargets.Clear();
     }
+
 
     public override void UpdateComponent()
     {
+    }
+
+    private void getDependencies()
+    {
+        turretStats = GetComponentInParent<TurretStats>();
+        targetsDetector = GetComponent<ITargetsDetector>();
     }
 
     public void RandomizeTargets()
