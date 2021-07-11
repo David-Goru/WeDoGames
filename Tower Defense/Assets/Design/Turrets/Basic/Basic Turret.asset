@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
   m_Name: Basic Turret
   m_EditorClassIdentifier: 
-  turretPool: {fileID: 11400000, guid: bb6d39890c030204e837b0bf7f02da20, type: 2}
+  turretPool: {fileID: 11400000, guid: a298100e7207e264e805ca4fae693a92, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 69fa069c880212243a57c0bae90626f5,
     type: 2}
   description: Basic Turret description
