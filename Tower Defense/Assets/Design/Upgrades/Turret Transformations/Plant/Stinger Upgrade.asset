@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
+  m_Name: Stinger Upgrade
+  m_EditorClassIdentifier: 
+  description: Upgrade your turret into an stinger
+  price: 100
+  icon: {fileID: 21300000, guid: 3a1a08c6e150a3d4999cf3889b83b898, type: 3}
+  turret: {fileID: 11400000, guid: 0cb943c0189582e4b8d75a14ae299d30, type: 2}
+  turretTier: 2
+  turretElement: 3
+  turretInfo: {fileID: 11400000, guid: 1055398023d9b7f41b5e8dc763fc4f4e, type: 2}
+  parentTurretInfo: {fileID: 11400000, guid: a2068d2dc6e1c2440af1009aebef74fb, type: 2}

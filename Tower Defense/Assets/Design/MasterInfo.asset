@@ -40,6 +40,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2213715776399e748ba5049515e6b67e, type: 2}
   - {fileID: 11400000, guid: 29b7a8e9fdd3bce4abed73f12180dc50, type: 2}
   - {fileID: 11400000, guid: 7c8b22b11a7cf3244a4b410da5b983f6, type: 2}
+  - {fileID: 11400000, guid: 0f72d9b622638a4448cf25bdfa3314ee, type: 2}
+  - {fileID: 11400000, guid: a51d29a6a01176e4b95a7bcb137d4b73, type: 2}
+  - {fileID: 11400000, guid: d6be1f0fccd63ed4ea344a701ec490c5, type: 2}
+  - {fileID: 11400000, guid: de9a4a066f8503847ba8d1e7554dc141, type: 2}
+  - {fileID: 11400000, guid: 44192dbe96dc18041ad94149f00a2aec, type: 2}
+  - {fileID: 11400000, guid: 81573ddf71c4447478003c1bca0368a5, type: 2}
+  - {fileID: 11400000, guid: fab1a4266e0475a4ab7feb9b46b1ef7b, type: 2}
+  - {fileID: 11400000, guid: ac44ff62dc417c8438600e9dd0667b5f, type: 2}
+  - {fileID: 11400000, guid: f0abd890281b3994482b6659699e05dd, type: 2}
   enemiesSet:
   - {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
   - {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}

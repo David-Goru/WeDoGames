@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
-  m_Name: Fire BasicTurret Upgrade 1
+  m_Name: Tech Basic Turret
   m_EditorClassIdentifier: 
-  description: Upgrade your turret into a fire one
+  description: Upgrade your turret into a tech one
   price: 100
-  icon: {fileID: 21300000, guid: da8e3816eaa8c9e4798d93ef63d0f5b1, type: 3}
-  turret: {fileID: 11400000, guid: d6cddcffc661a5b47870311e0f940527, type: 2}
+  icon: {fileID: 21300000, guid: d4b98ffe9469e0d4fb5bf2b503903cc0, type: 3}
+  turret: {fileID: 11400000, guid: 13bc13cf2891000489c1ef6da7fd5213, type: 2}
   turretTier: 1
-  turretElement: 1
-  turretInfo: {fileID: 11400000, guid: 16ef39b4fdaa5d9468b5e2fc66238df3, type: 2}
+  turretElement: 4
+  turretInfo: {fileID: 11400000, guid: f7272536fe36e154a8618ae190fd6f86, type: 2}
   parentTurretInfo: {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}

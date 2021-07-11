@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
+  m_Name: Hail Storm Upgrade
+  m_EditorClassIdentifier: 
+  description: Upgrade your turret into a hail storm
+  price: 100
+  icon: {fileID: 21300000, guid: 0e26e8c36750ff84aa3e16c21ac447e8, type: 3}
+  turret: {fileID: 11400000, guid: bb950014c877fcc448057f12f6416272, type: 2}
+  turretTier: 2
+  turretElement: 2
+  turretInfo: {fileID: 11400000, guid: 2baf7a85aa8577f44a4cac6eb01473ac, type: 2}
+  parentTurretInfo: {fileID: 11400000, guid: 1ea48da23443c09448614fc46f0b2e3b, type: 2}
