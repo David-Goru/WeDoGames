@@ -231,7 +231,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     }
 
     Coroutine currentPoison = null;
-    public void Poison(float secondsPoisoned, float damagePerSecond)
+    public void Poison(float secondsPoisoned, int damagePerSecond)
     {
         if (!gameObject.activeSelf) return;
 

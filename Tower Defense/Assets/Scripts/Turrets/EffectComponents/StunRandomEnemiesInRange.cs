@@ -3,7 +3,6 @@
 public class StunRandomEnemiesInRange : EffectComponent
 {
     [SerializeField] DetectRandomEnemiesOnRange targetDetection = null;
-    [SerializeField] ParticleSystem particles = null;
     TurretStats turretStats;
 
     float timer = 0f;

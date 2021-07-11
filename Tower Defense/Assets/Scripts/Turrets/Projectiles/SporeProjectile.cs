@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SporeProjectile : Projectile
 {
-    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] LayerMask enemyLayer = 0;
     Action onDisableAction;
     ITargetsDetector targetsDetector;
     bool hasTarget = false;

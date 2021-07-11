@@ -48,15 +48,22 @@ public class SpawnProjectilesAroundTurret : EffectComponent
 
     void spawn()
     {
+        playParticles();
+        createAndInitializeProjectile();
+        checkIfIsFull();
+    }
+
+    private void playParticles()
+    {
+        if (particles != null) particles.Play();
+    }
+
+    void createAndInitializeProjectile()
+    {
         GameObject obj = objectPooler.SpawnObject(projectilePool.tag, getRandomPositionAroundTurret(), Quaternion.identity);
-        obj.GetComponent<SporeProjectile>().SetInfo( transform.parent, turretStats);
+        obj.GetComponent<SporeProjectile>().SetInfo(transform.parent, turretStats);
         obj.GetComponent<SporeProjectile>().SetSpawnerInfo(onProjectileDisabled);
         projectilesSpawned += 1;
-        if (projectilesSpawned >= turretStats.GetStatValue(StatType.MAXSPORES))
-        {
-            isFull = true;
-            timer = 0f;
-        }
     }
 
     Vector3 getRandomPositionAroundTurret()
@@ -68,4 +75,14 @@ public class SpawnProjectilesAroundTurret : EffectComponent
         Vector3 position = direction + transform.position;
         return position;
     }
+
+    private void checkIfIsFull()
+    {
+        if (projectilesSpawned >= turretStats.GetStatValue(StatType.MAXSPORES))
+        {
+            isFull = true;
+            timer = 0f;
+        }
+    }
+
 }

@@ -1,4 +1,4 @@
 ﻿public interface IPoisonable
 {
-    void Poison(float secondsPoisoned, float poisonDamagePerSecond);
+    void Poison(float secondsPoisoned, int poisonDamagePerSecond);
 }
