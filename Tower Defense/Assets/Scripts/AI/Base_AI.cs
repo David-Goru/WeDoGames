@@ -111,7 +111,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)
     {
-        if (!pathReached)
+        if (!pathReached && path != null && path.Length > targetIndex)
         {
             Vector3 direction = path[targetIndex] - transform.position;         
             RaycastHit hit;
