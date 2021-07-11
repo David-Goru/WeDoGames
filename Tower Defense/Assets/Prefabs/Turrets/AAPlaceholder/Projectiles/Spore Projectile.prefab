@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4210224186134083026}
   - component: {fileID: 8211901558642580615}
   - component: {fileID: 3839134120819558364}
+  - component: {fileID: 5606237518350100381}
   m_Layer: 0
   m_Name: Spore Projectile
   m_TagString: Untagged
@@ -75,7 +76,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df3cf65939e4584dad3decd1a442b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  rotationSpeed: 100
+--- !u!114 &5606237518350100381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4249176769582216368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbeb25e62a6b3a468b12cb4650c85fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4277641203969900574
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,9 +18,8 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     public override void InitializeComponent()
     {
         getDependencies();
-        onProjectileDisabled += decrementProjectilesSpawned;
+        initializeMembers();
     }
-
     public override void UpdateComponent()
     {
         if (!isFull)
@@ -38,6 +37,14 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     {
         turretStats = GetComponentInParent<TurretStats>();
         objectPooler = ObjectPooler.GetInstance();
+    }
+
+    private void initializeMembers()
+    {
+        projectilesSpawned = 0;
+        timer = 0f;
+        isFull = false;
+        onProjectileDisabled += decrementProjectilesSpawned;
     }
 
     void decrementProjectilesSpawned()
@@ -83,6 +90,11 @@ public class SpawnProjectilesAroundTurret : EffectComponent
             isFull = true;
             timer = 0f;
         }
+    }
+
+    private void OnDisable()
+    {
+        onProjectileDisabled -= decrementProjectilesSpawned;
     }
 
 }

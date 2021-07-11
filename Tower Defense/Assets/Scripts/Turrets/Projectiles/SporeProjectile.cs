@@ -5,6 +5,7 @@ using UnityEngine;
 public class SporeProjectile : Projectile
 {
     [SerializeField] LayerMask enemyLayer = 0;
+    [SerializeField] float rotationSpeed = 1f;
     Action onDisableAction;
     ITargetsDetector targetsDetector;
     bool hasTarget = false;
@@ -33,6 +34,7 @@ public class SporeProjectile : Projectile
 
     protected override void updateProjectile()
     {
+        if (!turret.gameObject.activeSelf) disable();
         if (!hasTarget)
         {
             rotateAroundTurret();
@@ -84,11 +86,35 @@ public class SporeProjectile : Projectile
     protected override void OnEnemyCollision(Collider other)
     {
         damageEnemy(other);
+        damageSurroundingEnemies(other);
         disable();
+        onDisableAction.Invoke();
+    }
+
+    private void damageSurroundingEnemies(Collider mainEnemy)
+    {
+        Transform mainEnemyTransform = mainEnemy.transform;
+        float range = turretStats.GetStatValue(StatType.PROJECTILEEXPLOSIONRADIUS);
+        int damage = (int)turretStats.GetStatValue(StatType.REDUCEDDAMAGE);
+        List<Transform> targets = targetsDetector.GetTargets(range, enemyLayer);
+        foreach (Transform target in targets)
+        {
+            if (target != mainEnemyTransform) target.GetComponent<IDamageable>().GetDamage(damage);
+        }
     }
 
     private void rotateAroundTurret()
     {
-        transform.RotateAround(turret.position, Vector3.up, speed * Time.deltaTime);
+        transform.RotateAround(turret.position, Vector3.up, rotationSpeed * Time.deltaTime);
     }
+
+    ////////////////////////////DEBUG////////////////////////////////////
+    [SerializeField] float debugRange = 2f;
+    protected virtual void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if (turretStats != null) debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        Gizmos.DrawWireSphere(this.transform.position, debugRange);
+    }
+    ////////////////////////////DEBUG////////////////////////////////////
 }

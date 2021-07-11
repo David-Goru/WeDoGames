@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, IKnockbackable, IStunnable
+public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, IKnockbackable, IStunnable, IDamageable
 {
     MeshRenderer meshRenderer;
     float timer = 0f;
@@ -37,6 +37,7 @@ public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, I
         hit = true;
         timer = 0f;
         meshRenderer.material.color = Color.red;
+        print("I have taken " + damage + " points of damage");
     }
 
     public void Slow(float secondsSlowed, float slowReduction)
@@ -57,5 +58,13 @@ public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, I
     public void Stun(float secondsStunned)
     {
         print("I have been stunned for " + secondsStunned);
+    }
+
+    public void GetDamage(int damage)
+    {
+        hit = true;
+        timer = 0f;
+        meshRenderer.material.color = Color.red;
+        print("I have taken " + damage + " points of damage");
     }
 }

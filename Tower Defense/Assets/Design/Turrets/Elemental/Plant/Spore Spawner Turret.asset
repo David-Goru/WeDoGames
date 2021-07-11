@@ -32,6 +32,10 @@ MonoBehaviour:
     value: 2
   - type: 13
     value: 3
+  - type: 14
+    value: 2
+  - type: 15
+    value: 1
   currentStats:
   - type: 0
     value: 100
@@ -45,3 +49,7 @@ MonoBehaviour:
     value: 2
   - type: 13
     value: 3
+  - type: 14
+    value: 2
+  - type: 15
+    value: 1

@@ -23,6 +23,7 @@ public class Turret : MonoBehaviour, IPooledObject
     void Start()
     {
         InilitalizeBehaviours();
+        initializeTurretStats();
     }
 
     void Update()
@@ -51,11 +52,11 @@ public class Turret : MonoBehaviour, IPooledObject
     /// </summary>
     public void OnObjectSpawn()
     {
-        InitializeTurretStats();
+        initializeTurretStats();
         InilitalizeBehaviours();
     }
 
-    private void InitializeTurretStats()
+    private void initializeTurretStats()
     {
         turretStats.Initialize();
     }
