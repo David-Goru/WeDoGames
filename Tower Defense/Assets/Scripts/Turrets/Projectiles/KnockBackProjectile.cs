@@ -9,9 +9,8 @@ public class KnockBackProjectile : Projectile
     float timer = 0f;
     float lifeSpan = 0f;
 
-    public override void SetInfo(Transform target, Transform turret, TurretStats turretStats, IEnemyDamageHandler enemyDamageHandler)
+    protected override void initializate()
     {
-        base.SetInfo(target, turret, turretStats, enemyDamageHandler);
         calculateMoveDirection();
         initMembers();
     }

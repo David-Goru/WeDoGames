@@ -9,7 +9,7 @@ public class LaserProjectile : BasicProjectile
     ITargetsDetector targetsDetector;
 
     Vector3 lastEnemyPos = Vector3.zero;
-    bool isEnemyAlive = true;
+    bool isTargetAlive = true;
     int nEnemiesCollided = 0;
 
     private void Awake()
@@ -20,14 +20,14 @@ public class LaserProjectile : BasicProjectile
     protected override void initializate()
     {
         enemiesCollided.Clear();
-        isEnemyAlive = true;
+        isTargetAlive = true;
         nEnemiesCollided = 0;
     }
 
     protected override void updateProjectile()
     {
-        if (!target.gameObject.activeSelf) isEnemyAlive = false;
-        if (isEnemyAlive)
+        if (!target.gameObject.activeSelf) isTargetAlive = false;
+        if (isTargetAlive)
         {
             chaseEnemy();
             lastEnemyPos = target.position;
@@ -35,7 +35,7 @@ public class LaserProjectile : BasicProjectile
         else
         {
             goToLastEnemyPos();
-            if (Vector3.Distance(transform.position, lastEnemyPos) <= 0.25f) checkIfCanSearchAnotherTarget(); ;
+            if (Vector3.Distance(transform.position, lastEnemyPos) <= 0.25f) checkIfCanSearchAnotherTarget();
         }
     }
 
@@ -73,7 +73,7 @@ public class LaserProjectile : BasicProjectile
         { 
             this.target = target;
             lastEnemyPos = target.position;
-            isEnemyAlive = true;
+            isTargetAlive = true;
         }   
         else disable();
     }

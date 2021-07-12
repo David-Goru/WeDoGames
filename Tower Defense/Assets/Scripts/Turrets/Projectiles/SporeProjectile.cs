@@ -9,22 +9,20 @@ public class SporeProjectile : Projectile
     Action onDisableAction;
     ITargetsDetector targetsDetector;
     bool hasTarget = false;
+    bool isTargetAlive = true;
+
+    Vector3 lastEnemyPos = Vector3.zero;
 
     void Awake()
     {
         targetsDetector = GetComponent<ITargetsDetector>();
     }
 
-    public override void SetInfo(Transform target, Transform turret, TurretStats turretStats, IEnemyDamageHandler enemyDamageHandler)
+    protected override void initializate()
     {
-        base.SetInfo(target, turret, turretStats, enemyDamageHandler);
         hasTarget = false;
-    }
-
-    public override void SetInfo(Transform turret, TurretStats turretStats)
-    {
-        base.SetInfo(turret, turretStats);
-        hasTarget = false;
+        isTargetAlive = true;
+        lastEnemyPos = Vector3.zero;
     }
 
     public void SetSpawnerInfo(Action onDisableAction)
@@ -42,8 +40,27 @@ public class SporeProjectile : Projectile
         }
         else
         {
-            if (!target.gameObject.activeSelf) disable();
+            if (!target.gameObject.activeSelf) isTargetAlive = false;
+            goToTarget();
+        }
+    }
+
+    private void goToTarget()
+    {
+        if (isTargetAlive)
+        {
             chaseEnemy();
+            lastEnemyPos = target.position;
+        }
+        else
+        {
+            goToLastEnemyPos();
+            if (Vector3.Distance(transform.position, lastEnemyPos) <= 0.25f)
+            {
+                damageSurroundingEnemies(null);
+                disable();
+                onDisableAction.Invoke();
+            }
         }
     }
 
@@ -81,23 +98,26 @@ public class SporeProjectile : Projectile
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
+    private void goToLastEnemyPos()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, lastEnemyPos, speed * Time.deltaTime);
+    }
+
     protected override void OnTriggerEnter(Collider other)
     {
-        bool isEnemy = LayerMaskUtilities.ContainsLayer(enemyLayer, other.gameObject.layer);
-        if (isEnemy) OnEnemyCollision(other);
+        if (other.transform == target) OnEnemyCollision(other);
     }
 
     protected override void OnEnemyCollision(Collider other)
     {
         damageEnemy(other);
-        damageSurroundingEnemies(other);
+        damageSurroundingEnemies(other.transform);
         disable();
         onDisableAction.Invoke();
     }
 
-    private void damageSurroundingEnemies(Collider mainEnemy)
+    private void damageSurroundingEnemies(Transform mainEnemyTransform)
     {
-        Transform mainEnemyTransform = mainEnemy.transform;
         float range = turretStats.GetStatValue(StatType.PROJECTILEEXPLOSIONRADIUS);
         int damage = (int)turretStats.GetStatValue(StatType.REDUCEDDAMAGE);
         List<Transform> targets = targetsDetector.GetTargets(range, enemyLayer);
@@ -114,11 +134,18 @@ public class SporeProjectile : Projectile
 
     ////////////////////////////DEBUG////////////////////////////////////
     [SerializeField] float debugRange = 2f;
+    [SerializeField] float debugExplosionRange = 1f;
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        if (turretStats != null) debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        if (turretStats != null)
+        {
+            debugRange = turretStats.GetStatValue(StatType.ATTACKRANGE);
+            debugExplosionRange = turretStats.GetStatValue(StatType.PROJECTILEEXPLOSIONRADIUS);
+        }
         Gizmos.DrawWireSphere(this.transform.position, debugRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(this.transform.position, debugExplosionRange);
     }
     ////////////////////////////DEBUG////////////////////////////////////
 }
