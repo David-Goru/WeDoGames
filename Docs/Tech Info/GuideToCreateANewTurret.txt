@@ -1,0 +1,12 @@
+-Create Prefab
+-Create Turret Info
+-Asign turret Info to the prefab
+-Create Pools of the turret and the blueprint
+-Put them into the Objectpooler
+-Asign pools to the turret info
+
+OPTIONAL(If it has projectile)
+-Create Prefab
+-Create Pool
+-Put it into the Objectpooler
+-Asign pool to the turret

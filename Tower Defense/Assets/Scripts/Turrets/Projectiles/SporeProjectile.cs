@@ -40,7 +40,11 @@ public class SporeProjectile : Projectile
             rotateAroundTurret();
             detectEnemies();
         }
-        else chaseEnemy();
+        else
+        {
+            if (!target.gameObject.activeSelf) disable();
+            chaseEnemy();
+        }
     }
 
     private void detectEnemies()

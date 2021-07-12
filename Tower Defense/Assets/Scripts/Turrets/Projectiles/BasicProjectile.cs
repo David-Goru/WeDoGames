@@ -11,7 +11,7 @@ public class BasicProjectile : Projectile
         chaseEnemy();
     }
 
-    void chaseEnemy()
+    protected void chaseEnemy()
     {
         transform.LookAt(target);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
