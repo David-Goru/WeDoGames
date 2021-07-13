@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: Basic Turret
+  m_Script: {fileID: 11500000, guid: 5c49a7e6d2f12b34ca55e596e0af1d60, type: 3}
+  m_Name: WaveSergio
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4224321588919385869, guid: ae9d32eee2dc1854d9ed94c86e738d7b, type: 3}
-  size: 20
-  tag: Basic Turret
+  enemyWaves:
+  - enemyWave:
+    - enemy: {fileID: 11400000, guid: d5abd168ac6553e44b5333a18e0034d7, type: 2}
+      numberOfEnemies: 1
+      DOWN: 0
+      RIGHT: 1
+      LEFT: 0
+      UP: 0

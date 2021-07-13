@@ -32,7 +32,7 @@ GameObject:
   - component: {fileID: 7197626279890794676}
   m_Layer: 8
   m_Name: Fairy 2
-  m_TagString: Untagged
+  m_TagString: Fairy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,9 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Fairy 2
-  currentHP: 0
-  maxHP: 75
   info: {fileID: 11400000, guid: ea85bc492546b6b4d96a0be513f4ebd8, type: 2}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
