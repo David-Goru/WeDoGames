@@ -12,113 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c49a7e6d2f12b34ca55e596e0af1d60, type: 3}
   m_Name: Game Waves
   m_EditorClassIdentifier: 
+  planningTime: 5
   enemyWaves:
-  - enemyWave:
-    - enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
+  - EnemyWave:
+    - Enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
+      NumberOfEnemies: 1
+      DOWN: 0
       RIGHT: 1
       LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      numberOfEnemies: 20
+      UP: 0
+  - EnemyWave:
+    - Enemy: {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}
+      NumberOfEnemies: 1
       DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
-      UP: 1
-    - enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      numberOfEnemies: 20
-      DOWN: 1
-      RIGHT: 1
-      LEFT: 1
+      RIGHT: 0
+      LEFT: 0
       UP: 1

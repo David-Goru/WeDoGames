@@ -105,7 +105,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         StopAllCoroutines();
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
-        WavesHandler.EnemyKilled();
+        Waves.KillEnemy();
         EnemiesActive.Instance.enemiesList.Remove(this);
     }
 

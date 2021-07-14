@@ -459,20 +459,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca5fc5f2b82a642a34a24997f2525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MasterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
-  Spawners: {fileID: 1032362607}
-  Signals:
+  masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
+  wavesInfo: {fileID: 11400000, guid: 69c084df68b0d3c42bc60d1379a9e279, type: 2}
+  spawners: {fileID: 1032362607}
+  signals:
   - {fileID: 1523362193}
   - {fileID: 1849686582}
   - {fileID: 952627867}
   - {fileID: 4826652}
-  currentWave: 0
-  planningTime: 10
   waveObjectiveText: {fileID: 1137308906}
-  enemyWaves:
-  - enemyWave:
-    - enemy: {fileID: 11400000, guid: fe81f61df2e34b0498987e01c8b03516, type: 2}
-      numberOfEnemies: 50
 --- !u!114 &537000335
 MonoBehaviour:
   m_ObjectHideFlags: 0

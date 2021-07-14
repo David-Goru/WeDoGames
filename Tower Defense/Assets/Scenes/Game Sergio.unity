@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 2a71edc2d98007f4f86f751895f6301b,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -688,17 +688,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca5fc5f2b82a642a34a24997f2525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MasterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
-  Spawners: {fileID: 1032362607}
-  Signals:
+  masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
+  wavesInfo: {fileID: 11400000, guid: efc2cc779e766584288a0c56a00bae63, type: 2}
+  spawners: {fileID: 1032362607}
+  signals:
   - {fileID: 105597187}
   - {fileID: 1776329028}
   - {fileID: 916403085}
   - {fileID: 999950037}
-  currentWave: 0
-  planningTime: 2
   waveObjectiveText: {fileID: 1164689901}
-  info: {fileID: 11400000, guid: efc2cc779e766584288a0c56a00bae63, type: 2}
 --- !u!114 &537000335
 MonoBehaviour:
   m_ObjectHideFlags: 0
