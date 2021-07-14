@@ -7,14 +7,42 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
 
+    float timer = 0f;
+    float damageInterval = 0f;
+    float damage = 0f;
+
     public override void InitializeComponent()
     {
         GetDependencies();
+        initMembers();
     }
 
     public override void UpdateComponent()
     {
-        doDamage();
+        checkIfDamageChanged();
+        if (timer >= damageInterval)
+        {
+            doDamage();
+            timer = 0f;
+        }
+        else timer += Time.deltaTime;
+    }
+
+    void initMembers()
+    {
+        timer = 0f;
+        damage = turretStats.GetStatValue(StatType.DAMAGE);
+        damageInterval = 1 / damage;
+    }
+
+    void checkIfDamageChanged()
+    {
+        float currentDamage = turretStats.GetStatValue(StatType.DAMAGE);
+        if (damage != currentDamage)
+        {
+            damage = currentDamage;
+            damageInterval = 1 / damage;
+        }
     }
 
     void GetDependencies()
@@ -28,11 +56,10 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
         if (ReferenceEquals(targetDetection, null)) return;
         playParticles();
 
-        int damage = (int)turretStats.GetStatValue(StatType.DAMAGE);
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
-            //if (turretDamageable != null) turretDamageable.OnTurretHit(transform, damage * Time.deltaTime, enemyDamageHandler);
+            if (turretDamageable != null) turretDamageable.OnTurretHit(transform, 1, enemyDamageHandler);
         }
     }
 
