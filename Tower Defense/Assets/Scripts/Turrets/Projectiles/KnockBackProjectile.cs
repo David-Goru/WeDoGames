@@ -49,10 +49,10 @@ public class KnockBackProjectile : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if (isValidObject(other)) OnEnemyCollision(other);
+        if (isValidTarget(other)) OnEnemyCollision(other);
     }
 
-    bool isValidObject(Collider other)
+    bool isValidTarget(Collider other)
     {
         return other.gameObject.layer == LayerMask.NameToLayer("Enemy") && !enemiesCollided.Contains(other);
     }

@@ -26,7 +26,7 @@ public class LaserProjectile : BasicProjectile
 
     protected override void updateProjectile()
     {
-        if (!target.gameObject.activeSelf) isTargetAlive = false;
+        isTargetAlive = target.gameObject.activeSelf;
         if (isTargetAlive)
         {
             chaseEnemy();
@@ -35,11 +35,17 @@ public class LaserProjectile : BasicProjectile
         else
         {
             goToLastEnemyPos();
-            if (Vector3.Distance(transform.position, lastEnemyPos) <= 0.25f) checkIfCanSearchAnotherTarget();
+            checkDistanceToLastEnemyPos();
         }
     }
 
-    private void goToLastEnemyPos()
+    void checkDistanceToLastEnemyPos()
+    {
+        float distanceToEnemy = Vector3.Distance(transform.position, lastEnemyPos);
+        if (distanceToEnemy <= 0.25f) checkIfCanSearchAnotherTarget();
+    }
+
+    void goToLastEnemyPos()
     {
         transform.position = Vector3.MoveTowards(transform.position, lastEnemyPos, speed * Time.deltaTime);
     }

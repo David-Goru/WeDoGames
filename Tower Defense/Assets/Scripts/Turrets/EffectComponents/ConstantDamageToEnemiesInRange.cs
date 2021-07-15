@@ -13,7 +13,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
 
     public override void InitializeComponent()
     {
-        GetDependencies();
+        getDependencies();
         initMembers();
     }
 
@@ -26,6 +26,12 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
             timer = 0f;
         }
         else timer += Time.deltaTime;
+    }
+
+    void getDependencies()
+    {
+        turretStats = GetComponentInParent<TurretStats>();
+        enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
     }
 
     void initMembers()
@@ -43,12 +49,6 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
             damage = currentDamage;
             damageInterval = 1 / damage;
         }
-    }
-
-    void GetDependencies()
-    {
-        turretStats = GetComponentInParent<TurretStats>();
-        enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
     }
 
     void doDamage()
