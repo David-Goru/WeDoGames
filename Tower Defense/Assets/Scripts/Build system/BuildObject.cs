@@ -114,7 +114,7 @@ public class BuildObject : MonoBehaviour
                 objectBlueprint = objectPooler.SpawnObject(buildingInfo.GetBuildingBlueprintPool().tag, pos, Quaternion.Euler(0, 0, 0));
                 lastPos = pos;
                 blueprintMaterial = objectBlueprint.transform.Find("Model").GetComponent<Renderer>().material;
-                blueprintMaterial.SetColor("_Color", Color.red);
+                blueprintMaterial.color = Color.red;
                 checkPosition(pos, vPos);
             }
             else if (lastPos != pos && lastPos != vPos) checkPosition(pos, vPos);
@@ -131,13 +131,13 @@ public class BuildObject : MonoBehaviour
         if (Physics.CheckSphere(vPos, 0.3f, 1 << LayerMask.NameToLayer("Object")))
         {
             lastPos = pos;
-            blueprintMaterial.SetColor("_Color", Color.red);
+            blueprintMaterial.color = Color.red;
             buildable = false;
         }
         else
         {
             lastPos = vPos;
-            blueprintMaterial.SetColor("_Color", Color.green);
+            blueprintMaterial.color = Color.green;
             buildable = true;
         }
         objectBlueprint.transform.position = lastPos;

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Basic Turret Blueprint
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7929621584254921936, guid: e41bb629795f29047a58202e8a477d68, type: 3}
+  prefab: {fileID: 8926534695084720854, guid: 98cac4c7e62ec5448a31c3a9b3995b1e, type: 3}
   size: 1
   tag: Basic Turret Blueprint
