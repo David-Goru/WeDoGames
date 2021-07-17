@@ -1,23 +1,32 @@
 fileFormatVersion: 2
-guid: b4cbf5b8eb7f56d4e9b5e1cad186f2a1
+guid: afe9406dc1e458048aee96b3553aedda
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: -2960431054826544567
-    second: Armature.004|BasicTurret
+      74: -1011734654696887191
+    second: Roundcube.005|BasicTurret
   - first:
-      74: -2493160083389614673
-    second: Armature.004|FireBasicTurret
+      74: -8143855172902052961
+    second: Roundcube.005|FireBasicTurret
   - first:
-      74: 4309008838311772889
-    second: Armature.004|Ice ray 1
+      74: -7403437606705484988
+    second: Armature.005|BasicTurret
   - first:
-      74: 1576123598806415450
-    second: Armature.004|Ice ray 2
+      74: 7373873437669943848
+    second: Armature.005|FireBasicTurret
   - first:
-      74: -5637383556208374008
-    second: Armature.004|IceBasicTurret
+      74: 4301893484472944685
+    second: Armature.005|Ice ray 1
+  - first:
+      74: 1270472950437662595
+    second: Armature.005|Ice ray 2
+  - first:
+      74: -684909404861947301
+    second: Armature.005|IceBasicTurret
+  - first:
+      74: -3042105139336457727
+    second: Armature.005|SnowBallTurret
   externalObjects: {}
   materials:
     materialImportMode: 1
