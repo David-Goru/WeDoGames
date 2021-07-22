@@ -16,8 +16,8 @@ MonoBehaviour:
   enemyWaves:
   - EnemyWave:
     - Enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
-      NumberOfEnemies: 10
-      DOWN: 1
+      NumberOfEnemies: 1
+      DOWN: 0
       RIGHT: 1
-      LEFT: 1
-      UP: 1
+      LEFT: 0
+      UP: 0
