@@ -38,6 +38,7 @@ public class Attack : State
 			resetTimer();
 			npc.StartCoroutine(dealDamage());
 
+			//anim.ResetTrigger("attacking");
 			anim.SetTrigger("attacking");
 		}
 

@@ -21,3 +21,15 @@ MonoBehaviour:
       RIGHT: 1
       LEFT: 0
       UP: 0
+    - Enemy: {fileID: 11400000, guid: d5abd168ac6553e44b5333a18e0034d7, type: 2}
+      NumberOfEnemies: 1
+      DOWN: 1
+      RIGHT: 0
+      LEFT: 0
+      UP: 0
+    - Enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
+      NumberOfEnemies: 1
+      DOWN: 0
+      RIGHT: 0
+      LEFT: 1
+      UP: 0
