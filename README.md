@@ -1,14 +1,15 @@
 We Do games!!!
 
 # Roadmap
-- [x] Finish sprint 1 (13 Jan, 2021)
-- [x] Finish sprint 2 (10 Apr, 2021)
-- [x] Finish sprint 3 (24 Apr, 2021)
-- [x] Finish sprint 4 (23 May, 2021)
-- [x] Finish sprint 5 (13 Jun, 2021)
-- [x] Finish sprint 6 (23 Jun, 2021)
-- [x] Finish sprint 7 (7 Jul, 2021)
-- [ ] Finish sprint 8 (14 Jul, 2021)
+- [x] Sprint 1 (13 Jan, 2021)
+- [x] Sprint 2 (10 Apr, 2021)
+- [x] Sprint 3 (24 Apr, 2021)
+- [x] Sprint 4 (23 May, 2021)
+- [x] Sprint 5 (13 Jun, 2021)
+- [x] Sprint 6 (23 Jun, 2021)
+- [x] Sprint 7 (7 Jul, 2021)
+- [x] Sprint 8 (14 Jul, 2021)
+- [ ] Sprint 9 (8 Aug, 2021)
 
 # Tower Defense
 3D rogue-lite tower defense.
