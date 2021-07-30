@@ -1,20 +1,44 @@
 fileFormatVersion: 2
-guid: 61dedc2f2e59c084c8c33be2438e4a0f
+guid: bf175f5a210dab54783b10045c04ed96
 ModelImporter:
-  serializedVersion: 19301
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -7453387558714718212
-    second: Armature|Shoot
+      74: 8701741107619361958
+    second: Armature.011|BasicTurret
   - first:
-      74: 6560591198430667156
-    second: Armature|Shoot.001
+      74: 6052439399537246457
+    second: Armature.011|ExplosiveTurret
   - first:
-      74: -5590790758660890860
-    second: Roundcube.002|Shoot
+      74: 5894715516750925035
+    second: Armature.011|FireBasicTurret
+  - first:
+      74: -8699631481792738024
+    second: Armature.011|Flamethrower 1
+  - first:
+      74: 3736837141441295140
+    second: Armature.011|Flamethrower 2
+  - first:
+      74: 2802061334614121545
+    second: Armature.011|Ice ray 1
+  - first:
+      74: 55868935107161731
+    second: Armature.011|Ice ray 2
+  - first:
+      74: -2226977056616022371
+    second: Armature.011|IceBasicTurret
+  - first:
+      74: -170707040712142564
+    second: Armature.011|Mortar
+  - first:
+      74: -1317191810278766300
+    second: Armature.011|SnowBallTurret
+  - first:
+      74: 3120381179144770644
+    second: Armature.011|StingerTurret
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -58,6 +82,7 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -67,6 +92,9 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -100,6 +128,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
