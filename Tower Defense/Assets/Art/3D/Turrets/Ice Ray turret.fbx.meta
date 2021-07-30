@@ -4,8 +4,11 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 4867429941484902380
-    second: Armature.004|Armature.002Action
+      74: -1382500618865110450
+    second: Armature.004|Flamethrower 1
+  - first:
+      74: 5910432356413910726
+    second: Armature.004|Flamethrower 2
   - first:
       74: 4309008838311772889
     second: Armature.004|Ice ray 1
@@ -15,6 +18,9 @@ ModelImporter:
   - first:
       74: -5637383556208374008
     second: Armature.004|IceBasicTurret
+  - first:
+      74: -6911971132343191392
+    second: Armature.004|SnowBallTurret
   externalObjects: {}
   materials:
     materialImportMode: 2

@@ -4,9 +4,6 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -894896622507537408
-    second: Armature.003|Armature.002Action
-  - first:
       74: 1319868193241915809
     second: Armature.003|BasicTurret
   - first:
