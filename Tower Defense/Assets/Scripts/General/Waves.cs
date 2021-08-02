@@ -27,6 +27,7 @@ public class Waves : MonoBehaviour
         objectPooler = ObjectPooler.GetInstance();
         UI.UpdateWaveText(currentWave);
         waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60);
+        setSignalsVisuals(true);
     }
 
     void Update()

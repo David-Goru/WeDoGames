@@ -16,14 +16,14 @@ MonoBehaviour:
   enemyWaves:
   - EnemyWave:
     - Enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
-      NumberOfEnemies: 1
+      NumberOfEnemies: 5
       DOWN: 0
       RIGHT: 1
       LEFT: 1
       UP: 0
   - EnemyWave:
     - Enemy: {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}
-      NumberOfEnemies: 1
+      NumberOfEnemies: 3
       DOWN: 1
       RIGHT: 0
       LEFT: 0
