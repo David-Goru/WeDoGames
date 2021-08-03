@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Ice Basic Turret Blueprint
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7929621584254921936, guid: e41bb629795f29047a58202e8a477d68, type: 3}
+  prefab: {fileID: 7834384740306000125, guid: 951d8394e9252f74ba592f6fad4e7946, type: 3}
   size: 1
   tag: Ice Basic Turret Blueprint

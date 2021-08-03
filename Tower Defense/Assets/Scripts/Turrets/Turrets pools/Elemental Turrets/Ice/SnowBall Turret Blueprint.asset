@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: SnowBall Turret Blueprint
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7929621584254921936, guid: e41bb629795f29047a58202e8a477d68, type: 3}
+  prefab: {fileID: 3996224319857911522, guid: 9301fe8a8df59104da01b675439f3ecd, type: 3}
   size: 1
   tag: Snowball Turret Blueprint
