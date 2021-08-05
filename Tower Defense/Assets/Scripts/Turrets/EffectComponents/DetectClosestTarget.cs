@@ -14,8 +14,6 @@ public class DetectClosestTarget : CurrentTargetsOnRange
     protected TurretStats turretStats;
     protected List<Transform> currentTargets = new List<Transform>();
 
-    protected bool isTargetingEnemy;
-
     float timer = 0;
 
     public override List<Transform> CurrentTargets { get { return currentTargets; } }
@@ -39,18 +37,18 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     private void initializeMembers()
     {
-        isTargetingEnemy = false;
+        areTargetsInRange = false;
         timer = 0f;
         currentTargets.Clear();
     }
 
     void UpdateTarget()
     {
-        if (!isTargetingEnemy) detectEnemiesOnRangeAndSelectTheNearest();
+        if (!areTargetsInRange) detectEnemiesOnRangeAndSelectTheNearest();
         else checkIfEnemyIsStillTargetableAndInRange();
 
         ////////////////////////////DEBUG////////////////////////////////////
-        if (isTargetingEnemy) Debug.DrawLine(transform.position, currentTargets[0].transform.position, Color.green);
+        if (areTargetsInRange) Debug.DrawLine(transform.position, currentTargets[0].transform.position, Color.green);
         ////////////////////////////DEBUG////////////////////////////////////
     }
 
@@ -60,7 +58,7 @@ public class DetectClosestTarget : CurrentTargetsOnRange
         List<Transform> targetsOnRange = detectTargets(range);
         if (targetsOnRange.Count > 0)
         {
-            isTargetingEnemy = true;
+            areTargetsInRange = true;
             selectTheNearestEnemy(targetsOnRange);
         }
     }
@@ -122,7 +120,7 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     void deleteCurrentEnemy()
     {
-        isTargetingEnemy = false;
+        areTargetsInRange = false;
         currentTargets.Clear();
     }
 

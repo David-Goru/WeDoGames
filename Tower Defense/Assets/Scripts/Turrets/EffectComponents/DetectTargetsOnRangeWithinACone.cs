@@ -25,6 +25,7 @@ public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
     {
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         List<Transform> targets = targetsDetector.GetTargets(range, targetLayer);
+        areTargetsInRange = targets.Count > 0;
         selectTargetsWithinTheCone(targets);
         return targets;
     }

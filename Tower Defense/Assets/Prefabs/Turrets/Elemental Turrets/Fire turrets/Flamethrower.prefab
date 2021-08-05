@@ -622,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDetection: {fileID: 8288088174157906053}
   particles: {fileID: 0}
+  anim: {fileID: 372359527646265302}
 --- !u!114 &8288088174157906053
 MonoBehaviour:
   m_ObjectHideFlags: 0

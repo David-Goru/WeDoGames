@@ -4,6 +4,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
     [SerializeField] ParticleSystem particles = null;
+    [SerializeField] Animator anim = null;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
 
@@ -19,6 +20,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
 
     public override void UpdateComponent()
     {
+        setAnimationState();
         checkIfDamageChanged();
         if (timer >= damageInterval)
         {
@@ -26,6 +28,11 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
             timer = 0f;
         }
         else timer += Time.deltaTime;
+    }
+
+    private void setAnimationState()
+    {
+        if (anim != null) anim.SetBool("IsShooting", targetDetection.AreTargetsInRange);
     }
 
     void getDependencies()

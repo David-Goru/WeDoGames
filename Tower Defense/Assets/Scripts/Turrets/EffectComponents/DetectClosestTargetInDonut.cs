@@ -19,7 +19,7 @@ public class DetectClosestTargetInDonut : DetectClosestTarget
                 else currentTargets.Add(targetsOnRange[i]);
             }
         }
-        if (minDistanceToTurret == Mathf.Infinity) isTargetingEnemy = false;
+        if (minDistanceToTurret == Mathf.Infinity) areTargetsInRange = false;
     }
 
     protected override bool isEnemyStillInRange()

@@ -679,7 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 6d829e7ac9e793946bf8e0838c5f4014, type: 2}
   spawnPosition: {fileID: 806383918045475417}
-  anim: {fileID: 0}
+  anim: {fileID: 4083488233931742259}
   targetDetection: {fileID: 318811786}
 --- !u!114 &4616495875951490175
 MonoBehaviour:

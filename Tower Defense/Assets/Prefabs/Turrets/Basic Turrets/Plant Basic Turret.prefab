@@ -403,7 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 361518eb367a3e64d85ace72299b988c, type: 2}
   spawnPosition: {fileID: 2383726746570496109}
-  anim: {fileID: 0}
+  anim: {fileID: 7630658955178364559}
   targetDetection: {fileID: 3635183261357315609}
 --- !u!114 &3120527549680734892
 MonoBehaviour:
@@ -725,6 +725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8491562841395630860}
+  - component: {fileID: 7630658955178364559}
   m_Layer: 0
   m_Name: Plant basic turret
   m_TagString: Untagged
@@ -748,3 +749,22 @@ Transform:
   m_Father: {fileID: 1269008495316496035}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7630658955178364559
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9120853321022392758}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3528ec24be517864cbe14b5cfdb35f27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
