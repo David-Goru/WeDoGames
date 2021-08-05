@@ -303,7 +303,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         checkDeath();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("TurretTrigger") && currentTurret == null)
         {

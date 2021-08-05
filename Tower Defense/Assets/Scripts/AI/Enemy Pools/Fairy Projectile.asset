@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
+  m_Name: Fairy Projectile
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1996964862326505234, guid: f0ec7c520a3c20740a69326ae7a9d596, type: 3}
+  size: 100
+  tag: Fairy Projectile

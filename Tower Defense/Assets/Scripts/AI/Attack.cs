@@ -66,8 +66,15 @@ public class Attack : State
 
 	void attackTarget()
     {
-        if (Target.gameObject.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Info.Damage);
-		else if (Target.gameObject.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Info.Damage);
+        if (npc.CompareTag("Fairy")) //If the enemy AI is a fairy, spawn projectil
+        {
+			spawnProjectil();
+        }
+        else //Else, attack directly the target
+        {
+			if (Target.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Info.Damage);
+			else if (Target.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Info.Damage);
+		}
     }
 
 	IEnumerator dealDamage()
@@ -75,6 +82,12 @@ public class Attack : State
 		yield return new WaitForSeconds(attackDelay);
 		attackTarget();
 	}
+
+	void spawnProjectil()
+    {
+		GameObject obj = ObjectPooler.GetInstance().SpawnObject("Fairy Projectile", npc.transform.position);
+		obj.GetComponent<FairyProjectile>().SetInfo(Target, npc.Info.Damage);
+    }
 
 	float getClipLength(Animator anim, string clipName)
 	{
