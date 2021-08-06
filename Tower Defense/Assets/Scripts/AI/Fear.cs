@@ -14,26 +14,22 @@ public class Fear : State
 
 	public override void Enter()
 	{
-		Debug.Log("Fear started");
 		npc.PathReached = false;
 		anim.SetFloat("animSpeed", 0.5f);
 		anim.SetTrigger("moving");
 		base.Enter();
 
 		PathData fearPosition = new PathData(-npc.transform.forward * 10.0f);
-		npc.CurrentTurret = null;
+		if (npc.IsTargetTurretDead()) npc.CurrentTurret = null;
 		fearDuration = npc.FearDuration;
 		PathRequestManager.RequestPath(npc.transform.position, fearPosition, npc.Info.Range, npc.OnPathFound);
 	}
 
 	public override void Update()
 	{
-		//Debug.Log("Duration: " + fearDuration);
-		//Debug.Log("DeltaTime: " + Time.deltaTime);
 		fearDuration -= Time.deltaTime;
 		if (fearDuration <= 0)
 		{
-			Debug.Log("Fear ended");
 			nextState = new Move(npc, anim, npc.Goal);
 			stage = EVENT.EXIT;
 		}
@@ -41,7 +37,6 @@ public class Fear : State
 
 	public override void Exit()
 	{
-		Debug.Log("Exit fear");
 		anim.ResetTrigger("moving");
 		anim.SetFloat("animSpeed", 1f);
 		npc.IsFeared = false;

@@ -72,9 +72,9 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public void EnemyUpdate()
     {
         currentState = currentState.Process();
-        print(currentState.GetType());
+        //print(currentState.GetType()); //Debug states
 
-        if (isTargetTurretDead()) currentTurret = null;
+        if (IsTargetTurretDead()) currentTurret = null;
     }
 
     void OnDisable()
@@ -82,7 +82,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         StopCoroutine("FollowPath");
     }
 
-    bool isTargetTurretDead()
+    public bool IsTargetTurretDead()
     {
         return currentTurret != null && !currentTurret.gameObject.activeSelf;
     }
@@ -194,7 +194,8 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
         StopCoroutine("FollowPath");
 
-        currentState = new Stun(this, anim, goal);
+        if(currentTurret != null) currentState = new Stun(this, anim, currentTurret);
+        else currentState = new Stun(this, anim, goal);
     }
 
     float baseSpeed = 0.0f;
@@ -266,7 +267,8 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
         StopCoroutine("FollowPath");
 
-        currentState = new Fear(this, anim, goal);
+        if (currentTurret != null) currentState = new Fear(this, anim, currentTurret);
+        else currentState = new Fear(this, anim, goal);
     }
 
     IEnumerator fearEnemy(float secondsFear)
@@ -304,7 +306,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         checkDeath();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("TurretTrigger") && currentTurret == null)
         {
