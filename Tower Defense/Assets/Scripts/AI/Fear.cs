@@ -20,7 +20,6 @@ public class Fear : State
 		base.Enter();
 
 		PathData fearPosition = new PathData(-npc.transform.forward * 10.0f);
-		if (npc.IsTargetTurretDead()) npc.CurrentTurret = null;
 		fearDuration = npc.FearDuration;
 		PathRequestManager.RequestPath(npc.transform.position, fearPosition, npc.Info.Range, npc.OnPathFound);
 	}

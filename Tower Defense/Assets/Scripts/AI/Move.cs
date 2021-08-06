@@ -16,6 +16,12 @@ public class Move : State
 		anim.SetTrigger("moving");
 		base.Enter();
 
+		if (Target == null)
+		{
+			if (npc.CurrentTurret != null) Target = npc.CurrentTurret;
+			else Target = npc.Goal;
+		}
+
 		PathData newTarget = new PathData(Target.position, Target);
 		PathRequestManager.RequestPath(npc.transform.position, newTarget, npc.Info.Range, npc.OnPathFound);
 	}

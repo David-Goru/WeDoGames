@@ -17,7 +17,6 @@ public class Stun : State
 		anim.SetTrigger("stunned");
 		base.Enter();
 
-		if(npc.IsTargetTurretDead()) npc.CurrentTurret = null;
 		stunDuration = npc.StunDuration;
 	}
 

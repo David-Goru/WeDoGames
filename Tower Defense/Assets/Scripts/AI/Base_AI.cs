@@ -74,7 +74,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         currentState = currentState.Process();
         //print(currentState.GetType()); //Debug states
 
-        if (IsTargetTurretDead()) currentTurret = null;
+        if (isTargetTurretDead()) currentTurret = null;
     }
 
     void OnDisable()
@@ -82,7 +82,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         StopCoroutine("FollowPath");
     }
 
-    public bool IsTargetTurretDead()
+    bool isTargetTurretDead()
     {
         return currentTurret != null && !currentTurret.gameObject.activeSelf;
     }
