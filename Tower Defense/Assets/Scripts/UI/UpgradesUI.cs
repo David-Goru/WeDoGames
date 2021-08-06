@@ -5,6 +5,8 @@ using System.Linq;
 
 public class UpgradesUI : UIList
 {
+    [SerializeField] AudioClip clickSound = null;
+
     List<Upgrade> upgradesList = null;
     List<TurretTransformation> turretTransformations = null;
     List<TurretUpgrade> turretUpgrades = null;
@@ -115,6 +117,7 @@ public class UpgradesUI : UIList
         else if (upgrade is TurretTransformation) UI.AddTurretUpgrade((TurretTransformation)upgrade);
         else if (upgrade is TurretUpgrade) enableTurretUpgrade((TurretUpgrade)upgrade);
 
+        Master.Instance.RunSound(clickSound);
         CloseUpgrades();
     }
 

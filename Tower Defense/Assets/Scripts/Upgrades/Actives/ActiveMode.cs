@@ -8,6 +8,7 @@ public class ActiveMode : MonoBehaviour
     LayerMask groundMask;
     [SerializeField] ActivesCooldownController activesCooldownController = null;
     [SerializeField] GameObject activeAreaPrefab = null;
+    [SerializeField] AudioClip startActiveSound = null;
     GameObject activeArea = null;
 
     private void Start()
@@ -43,6 +44,7 @@ public class ActiveMode : MonoBehaviour
     {
         if (!activesCooldownController.CheckIfIsInCooldown(activeAction))
         {
+            Master.Instance.RunSound(startActiveSound);
             isActive = true;
             this.activeAction = activeAction;
             setActiveArea();

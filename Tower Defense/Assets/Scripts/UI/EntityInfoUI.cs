@@ -5,6 +5,7 @@ public class EntityInfoUI : MonoBehaviour
 {
     [Header("Debug")]
     [SerializeField] Entity currentEntity;
+    [SerializeField] AudioClip clickEntitySound = null;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class EntityInfoUI : MonoBehaviour
 
     public void ShowUI(Entity entity)
     {
+        Master.Instance.RunSound(clickEntitySound);
         int yPos = hasUpperScreenSpaceAvailable(240) ? 120 : -120;
         transform.position = Input.mousePosition + new Vector3(0, yPos, 0);
         currentEntity = entity;

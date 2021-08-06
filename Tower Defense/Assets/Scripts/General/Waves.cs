@@ -11,6 +11,8 @@ public class Waves : MonoBehaviour
     [SerializeField] Transform spawners = null;
     [SerializeField] Image[] signals = null;
     [SerializeField] Text waveObjectiveText = null;
+    [SerializeField] AudioClip waveStartSound = null;
+    [SerializeField] AudioClip waveFinishSound = null;
 
     List<Vector3> spawnersPositions; 
     int currentWave = 0;
@@ -39,12 +41,12 @@ public class Waves : MonoBehaviour
     {
         if (onPlanningPhase)
         {
-            if (planningPhaseFinished()) newWave();
+            if (planningPhaseFinished()) startWave();
             else updatePlanningPhase();
         }
         else
         {
-            if (currentWaveHasFinished()) nextWave();
+            if (currentWaveHasFinished()) endWave();
             else updateCurrentWave();
         }   
     }
@@ -59,7 +61,7 @@ public class Waves : MonoBehaviour
         return EnemiesRemaining == 0;
     }
 
-    void newWave()
+    void startWave()
     {
         currentWave++;
         timer = 0;
@@ -70,6 +72,7 @@ public class Waves : MonoBehaviour
         UI.UpdateWaveText(currentWave);
         UI.CloseUpgrades();
         UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
+        Master.Instance.RunSound(waveStartSound);
     }
 
     void updateCurrentWave()
@@ -86,12 +89,13 @@ public class Waves : MonoBehaviour
         timer += Time.deltaTime;
     }
 
-    void nextWave()
+    void endWave()
     {
         checkObjectives();
         timer = 0;
         waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60);
         onPlanningPhase = true;
+        Master.Instance.RunSound(waveFinishSound);
         setSignalsVisuals(true);
         UI.OpenUpgrades(3);
     }

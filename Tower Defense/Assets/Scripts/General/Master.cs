@@ -4,6 +4,7 @@ public class Master : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] MasterInfo masterInfo = null;
+    [SerializeField] Audio audioScript = null;
 
     public ActiveMode ActiveMode;
     public Grid grid;
@@ -15,6 +16,7 @@ public class Master : MonoBehaviour
     void Start()
     {
         if (Instance == null) Instance = this;
+        if (audioScript == null) Debug.Log("Audio script not specified at Master script");
 
         MasterInfo.InitializeVariables();
 
@@ -52,6 +54,12 @@ public class Master : MonoBehaviour
     public void StopBuilding()
     {
         BuildObject.StopBuilding();
+    }
+    
+    public void RunSound(AudioClip clip)
+    {
+        if (audioScript == null) return;
+        audioScript.RunSound(clip);
     }
 
     void addMoney(string[] parameters)

@@ -12,7 +12,6 @@ public class BuildObject : MonoBehaviour
     [SerializeField] Grid grid = null;
     [SerializeField] GameObject stopBuildingButton = null;
     [SerializeField] AudioClip buildSound = null;
-    [SerializeField] AudioSource audioSource = null;
 
     [Header("Debug")]
     [SerializeField] float vertexSize = 0.0f;
@@ -51,8 +50,6 @@ public class BuildObject : MonoBehaviour
             return;
         }
         groundSprite = ground.material.mainTexture;
-
-        if (audioSource == null) Debug.Log("Audio Source not specified at BuildObject script");
 
         SetVertexSize();
         objectPooler = ObjectPooler.GetInstance();
@@ -160,21 +157,11 @@ public class BuildObject : MonoBehaviour
         objectPooler.ReturnToThePool(objectBlueprint.transform);
         objectBlueprint = null;
         blueprintMaterial = null;
-        runAudio(buildSound);
+        Master.Instance.RunSound(buildSound);
 
         StartCoroutine("delayCheckPath");
 
         StopBuilding();
-    }
-
-    void runAudio(AudioClip clip)
-    {
-        if (clip == null) Debug.Log("No clip found at BuildObject script");
-        if (audioSource != null)
-        {
-            audioSource.clip = clip;
-            audioSource.Play();
-        }
     }
 
     private IEnumerator delayCheckPath()
