@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: IceRay2
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5793413540114468521}
@@ -46,8 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1576123598806415450, guid: d943f373dff274044a02b1fedf673d30,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 24f52334c131ba84f8bc627bd1ec439d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -114,7 +113,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: IceRay1
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 63808044231029875}
@@ -127,8 +126,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4309008838311772889, guid: d943f373dff274044a02b1fedf673d30,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: f26d41df85d2d92418301118be2b1988, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
