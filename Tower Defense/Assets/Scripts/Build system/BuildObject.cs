@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Building system. Enabled when selecting an object to build. Starts with the object's blueprint, that the player can move and rotate above the ground. 
-/// The object can be moved freely in X and Z axis, but is fixed to Y = 0. The rotation is done from 90 to 90 degrees.
-/// Once the player selects a spot (clicking with the blueprint in the mouse position), if there's enough money the object is placed and the building system stopped.
-/// The player can start/stop building at any time, but can't start building if there's not enough money for the object selected.
-/// </summary>
 public class BuildObject : MonoBehaviour
 {
     [Header("Modifiable values"), Tooltip("Avoid pair values")]
@@ -17,6 +11,8 @@ public class BuildObject : MonoBehaviour
     [SerializeField] Texture buildingGrid = null;
     [SerializeField] Grid grid = null;
     [SerializeField] GameObject stopBuildingButton = null;
+    [SerializeField] AudioClip buildSound = null;
+    [SerializeField] AudioSource audioSource = null;
 
     [Header("Debug")]
     [SerializeField] float vertexSize = 0.0f;
@@ -55,6 +51,8 @@ public class BuildObject : MonoBehaviour
             return;
         }
         groundSprite = ground.material.mainTexture;
+
+        if (audioSource == null) Debug.Log("Audio Source not specified at BuildObject script");
 
         SetVertexSize();
         objectPooler = ObjectPooler.GetInstance();
@@ -162,10 +160,21 @@ public class BuildObject : MonoBehaviour
         objectPooler.ReturnToThePool(objectBlueprint.transform);
         objectBlueprint = null;
         blueprintMaterial = null;
+        runAudio(buildSound);
 
         StartCoroutine("delayCheckPath");
 
         StopBuilding();
+    }
+
+    void runAudio(AudioClip clip)
+    {
+        if (clip == null) Debug.Log("No clip found at BuildObject script");
+        if (audioSource != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
     }
 
     private IEnumerator delayCheckPath()
