@@ -14,6 +14,7 @@ public class Fear : State
 
 	public override void Enter()
 	{
+		Debug.Log("Fear started");
 		npc.PathReached = false;
 		anim.SetFloat("animSpeed", 0.5f);
 		anim.SetTrigger("moving");
@@ -27,9 +28,12 @@ public class Fear : State
 
 	public override void Update()
 	{
+		//Debug.Log("Duration: " + fearDuration);
+		//Debug.Log("DeltaTime: " + Time.deltaTime);
 		fearDuration -= Time.deltaTime;
 		if (fearDuration <= 0)
 		{
+			Debug.Log("Fear ended");
 			nextState = new Move(npc, anim, npc.Goal);
 			stage = EVENT.EXIT;
 		}
@@ -37,6 +41,7 @@ public class Fear : State
 
 	public override void Exit()
 	{
+		Debug.Log("Exit fear");
 		anim.ResetTrigger("moving");
 		anim.SetFloat("animSpeed", 1f);
 		npc.IsFeared = false;

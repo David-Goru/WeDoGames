@@ -72,6 +72,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public void EnemyUpdate()
     {
         currentState = currentState.Process();
+        print(currentState.GetType());
 
         if (isTargetTurretDead()) currentTurret = null;
     }

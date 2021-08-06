@@ -34,13 +34,13 @@ public class FairyProjectile : MonoBehaviour, IPooledObject
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if(other.transform == target)
+        if (collision.transform == target)
         {
             if (target.CompareTag("Turret"))
             {
-                enemyDamageHandler = other.GetComponent<IEnemyDamageHandler>();
+                enemyDamageHandler = collision.collider.GetComponentInChildren<IEnemyDamageHandler>();
                 if (enemyDamageHandler != null) enemyDamageHandler.OnEnemyHit(damage);
             }
             else if (target.CompareTag("Nexus")) Nexus.Instance.GetHit(damage);

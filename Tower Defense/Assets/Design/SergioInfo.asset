@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232628d55de1e0f4fa2a347b161bbdf0, type: 3}
+  m_Name: SergioInfo
+  m_EditorClassIdentifier: 
+  initialBalance: 500
+  turretsSet:
+  - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
+  - {fileID: 11400000, guid: 16ef39b4fdaa5d9468b5e2fc66238df3, type: 2}
+  - {fileID: 11400000, guid: 1ea48da23443c09448614fc46f0b2e3b, type: 2}
+  - {fileID: 11400000, guid: a2068d2dc6e1c2440af1009aebef74fb, type: 2}
+  - {fileID: 11400000, guid: f7272536fe36e154a8618ae190fd6f86, type: 2}
+  - {fileID: 11400000, guid: 29bbb812666d7e04f83605fd68e7fe00, type: 2}
+  initialTurretsSet:
+  - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
+  - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
+  - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
+  upgradesSet:
+  - {fileID: 11400000, guid: fc41d48e7df49754daa4fbd77969a5be, type: 2}
+  enemiesSet:
+  - {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
+  - {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}
+  - {fileID: 11400000, guid: fe81f61df2e34b0498987e01c8b03516, type: 2}
+  - {fileID: 11400000, guid: d5abd168ac6553e44b5333a18e0034d7, type: 2}
+  - {fileID: 11400000, guid: c0234dbddfa978748ac7d06d3360073c, type: 2}
+  - {fileID: 11400000, guid: 9195ec200e632344bac23106d783e89f, type: 2}
