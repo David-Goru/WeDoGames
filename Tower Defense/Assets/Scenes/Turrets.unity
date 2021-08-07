@@ -1338,6 +1338,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767758251}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!198 &812497726 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3228998272848249547, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+    type: 3}
+  m_PrefabInstance: {fileID: 670727000155754499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922261808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,15 +2880,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1381308985}
     m_Modifications:
+    - target: {fileID: 954200605, guid: c0e7d64528b75554c8ad4a8d8fa13433, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 812497726}
+    - target: {fileID: 433723364323846826, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 670727000040579085, guid: c0e7d64528b75554c8ad4a8d8fa13433,
         type: 3}
       propertyPath: m_Name
       value: Explosive Turret
-      objectReference: {fileID: 0}
-    - target: {fileID: 670727000040579085, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 670727000040579102, guid: c0e7d64528b75554c8ad4a8d8fa13433,
         type: 3}
@@ -2938,6 +2948,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158389456679946804, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.0000024477104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158389456679946804, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.01777744e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2796506786473382714, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228998272848249547, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357471969817239886, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951916985296777048, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766308131636826989, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e7d64528b75554c8ad4a8d8fa13433, type: 3}

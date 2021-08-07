@@ -9,23 +9,27 @@ public class DetectTargetsOnRange : CurrentTargetsOnRange
     [SerializeField] LayerMask targetLayer = 0;
     ITargetsDetector targetsDetector;
     TurretStats turretStats;
+    List<Transform> currentTargets = new List<Transform>();
 
-    public override List<Transform> CurrentTargets { get { return getTargets(); } }
+    public override List<Transform> CurrentTargets { get => currentTargets; }
 
     public override void InitializeComponent()
     {
         turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
+        currentTargets.Clear();
     }
 
     public override void UpdateComponent()
     {
+        getTargets();
     }
 
-    List<Transform> getTargets()
+    void getTargets()
     {
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
-        return targetsDetector.GetTargets(range, targetLayer);
+        currentTargets = targetsDetector.GetTargets(range, targetLayer);
+        if (currentTargets.Count > 0) areTargetsInRange = true;
     }
 
     ////////////////////////////DEBUG////////////////////////////////////

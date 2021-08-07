@@ -207,8 +207,8 @@ Transform:
   m_Children:
   - {fileID: 5386722528732660482}
   - {fileID: 3863830221500671678}
-  m_Father: {fileID: 2077095101039907910}
-  m_RootOrder: 1
+  m_Father: {fileID: 4297708559673022952}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3228998272848249547
 ParticleSystem:
@@ -226,7 +226,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5072,7 +5072,7 @@ Transform:
   - {fileID: 2158389456679946804}
   m_Father: {fileID: 813871193211262077}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.000013660378, y: 90.00001, z: 90.00001}
 --- !u!1 &2077095101039907911
 GameObject:
   m_ObjectHideFlags: 0
@@ -5101,8 +5101,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4297708559673022952}
-  - {fileID: 3491834686955009465}
-  - {fileID: 8247660709422347375}
   m_Father: {fileID: 670727000040579102}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5227,9 +5225,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4752975977546720869}
   - component: {fileID: 1221466403759463397}
-  - component: {fileID: 1405250687571781653}
   - component: {fileID: 1819583760506200628}
   - component: {fileID: 3763464198001955437}
+  - component: {fileID: 954200605}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -5265,21 +5263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1819583760506200628}
-  - {fileID: 1405250687571781653}
---- !u!114 &1405250687571781653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2676632787584672361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b768575fe96cc40a1335d3f3a4b2de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetDetection: {fileID: 1819583760506200628}
-  particles: {fileID: 3228998272848249547}
+  - {fileID: 954200605}
 --- !u!114 &1819583760506200628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5308,6 +5292,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbeb25e62a6b3a468b12cb4650c85fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &954200605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676632787584672361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b8b7e69f62cb64c836bb38d8e7d0f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDetection: {fileID: 1819583760506200628}
+  anim: {fileID: 4336472035529743543}
+  animationName: ExplosiveTurretExplosion
 --- !u!1 &3381767899985039501
 GameObject:
   m_ObjectHideFlags: 0
@@ -5338,7 +5337,7 @@ Transform:
   - {fileID: 5632347927295817843}
   m_Father: {fileID: 4297708559673022952}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!1 &3526133269341340498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,6 +5369,8 @@ Transform:
   - {fileID: 813871193211262077}
   - {fileID: 746351749782703881}
   - {fileID: 5894420505633687284}
+  - {fileID: 3491834686955009465}
+  - {fileID: 8247660709422347375}
   m_Father: {fileID: 2077095101039907910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5421,7 +5422,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5632347927295817843}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -89.99998, z: 0}
 --- !u!1 &3783542536607627311
 GameObject:
   m_ObjectHideFlags: 0
@@ -5446,12 +5447,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3783542536607627311}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2077095101039907910}
-  m_RootOrder: 2
+  m_Father: {fileID: 4297708559673022952}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &4978312228142912803
 Light:
@@ -5544,7 +5545,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5632347927295817843}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 89.999985, z: 0}
 --- !u!1 &5513143577261817241
 GameObject:
   m_ObjectHideFlags: 0
@@ -5593,7 +5594,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -10455,7 +10456,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -15447,4 +15448,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5632347927295817843}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.0000024477104, y: -89.999985, z: -1.01777744e-13}
