@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// This is a class
@@ -7,6 +8,7 @@ public class DamageEnemiesOnRange : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
     [SerializeField] ParticleSystem particles = null;
+    [SerializeField] AudioSource audioSource = null;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
 
@@ -39,6 +41,7 @@ public class DamageEnemiesOnRange : EffectComponent
     {
         if (ReferenceEquals(targetDetection, null)) return;
         playParticles();
+        playSound();
 
         int damage = (int)turretStats.GetStatValue(StatType.DAMAGE);
         foreach (Transform target in targetDetection.CurrentTargets)
@@ -48,7 +51,12 @@ public class DamageEnemiesOnRange : EffectComponent
         }
         timer = 0f;
     }
-    
+
+    void playSound()
+    {
+        if (audioSource != null) audioSource.Play();
+    }
+
     void playParticles()
     {
         if (particles != null) particles.Play();

@@ -35,6 +35,7 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
         int objectives = (int)turretStats.GetStatValue(StatType.OBJECTIVESTOHIT);
 
         List<Transform> targets = targetsDetector.GetTargets(range, targetLayer);
+        areTargetsInRange = targets.Count > 0;
         for (int i = 0; i < objectives; i++)
         {
             if (targets.Count <= 0) return;

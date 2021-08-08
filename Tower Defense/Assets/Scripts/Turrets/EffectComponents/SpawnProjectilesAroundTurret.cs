@@ -7,6 +7,7 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     [SerializeField] ParticleSystem particles = null;
     [SerializeField] Pool projectilePool = null;
     [SerializeField] Animator anim = null;
+    [SerializeField] AudioSource audioSource = null;
     TurretStats turretStats;
     ObjectPooler objectPooler;
 
@@ -58,6 +59,7 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     {
         playAnimation();
         playParticles();
+        playSound();
         createAndInitializeProjectile();
         checkIfIsFull();
     }
@@ -70,6 +72,11 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     void playParticles()
     {
         if (particles != null) particles.Play();
+    }
+
+    void playSound()
+    {
+        if (audioSource != null) audioSource.Play();
     }
 
     void createAndInitializeProjectile()

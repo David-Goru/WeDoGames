@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class ShootToEnemy : EffectComponent
     [SerializeField] Transform spawnPosition = null;
     [SerializeField] Animator anim = null;
     [SerializeField] CurrentTargetsOnRange targetDetection;
+    [SerializeField] AudioSource audioSource;
 
     ObjectPooler objectPooler;
     TurretStats turretStats;
@@ -52,6 +54,7 @@ public class ShootToEnemy : EffectComponent
         {
             spawnAndInitializeProjectile(enemy);
             doAnimation();
+            playSound();
             resetTimer();
         }
         else timer += Time.deltaTime;
@@ -66,6 +69,11 @@ public class ShootToEnemy : EffectComponent
     void doAnimation()
     {
         if (anim != null) anim.SetTrigger("Shoot");
+    }
+
+    void playSound()
+    {
+        if (audioSource != null) audioSource.Play();
     }
 
     void resetTimer()

@@ -18,6 +18,7 @@ public class DetectTargetsOnRange : CurrentTargetsOnRange
         turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
         currentTargets.Clear();
+        areTargetsInRange = false;
     }
 
     public override void UpdateComponent()
@@ -29,7 +30,7 @@ public class DetectTargetsOnRange : CurrentTargetsOnRange
     {
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         currentTargets = targetsDetector.GetTargets(range, targetLayer);
-        if (currentTargets.Count > 0) areTargetsInRange = true;
+        areTargetsInRange = currentTargets.Count > 0;
     }
 
     ////////////////////////////DEBUG////////////////////////////////////
