@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6845927696548314328}
   m_Layer: 0
-  m_Name: Inhibidor turret blueprint
+  m_Name: Inhibitor turret blueprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

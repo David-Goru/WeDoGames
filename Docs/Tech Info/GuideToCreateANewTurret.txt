@@ -1,4 +1,5 @@
 -Create Prefab
+	-Adjust Collider
 -Create Turret Info
 -Asign turret Info to the prefab
 -Create Pools of the turret and the blueprint
