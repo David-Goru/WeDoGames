@@ -6,11 +6,12 @@ public class Waves : MonoBehaviour
 {
     public static int EnemiesRemaining = 0;
 
-    [SerializeField] MasterInfo masterInfo;
     [SerializeField] WavesInfo wavesInfo = null;
+    [SerializeField] Objectives objectivesInfo = null;
     [SerializeField] Transform spawners = null;
     [SerializeField] Image[] signals = null;
-    [SerializeField] Text waveObjectiveText = null;
+    [SerializeField] Transform objectivesList = null;
+    [SerializeField] GameObject objectivePrefab = null;
     [SerializeField] AudioClip waveStartSound = null;
     [SerializeField] AudioClip waveFinishSound = null;
 
@@ -28,13 +29,53 @@ public class Waves : MonoBehaviour
 
         objectPooler = ObjectPooler.GetInstance();
         UI.UpdateWaveText(currentWave);
-        waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60);
         setSignalsVisuals(true);
     }
 
     void Update()
     {
         updateWaveState();
+    }
+
+    void setUpObjectives()
+    {
+        if (currentWave != 0) removeCurrentObjectives();
+
+        int objectivesIndex = currentWave;
+        if (currentWave >= objectivesInfo.ObjectivesOrder.Length) objectivesIndex = objectivesInfo.ObjectivesOrder.Length - 1;
+
+        foreach (Objective objective in objectivesInfo.ObjectivesOrder[objectivesIndex].Objectives)
+        {
+            objective.UIObject = createObjectiveUI();
+            objective.SetDisplayText();
+        }
+    }
+
+    void removeCurrentObjectives()
+    {
+        foreach (Objective objective in objectivesInfo.ObjectivesOrder[currentWave - 1].Objectives)
+        {
+            if (objective.UIObject != null) Destroy(objective.UIObject);
+        }
+    }
+
+    GameObject createObjectiveUI()
+    {
+        GameObject uiObject = Instantiate(objectivePrefab);
+        uiObject.transform.SetParent(objectivesList, false);
+
+        return uiObject;
+    }
+
+    void checkObjectives()
+    {
+        int objectivesIndex = currentWave;
+        if (currentWave >= objectivesInfo.ObjectivesOrder.Length) objectivesIndex = objectivesInfo.ObjectivesOrder.Length - 1;
+
+        foreach (Objective objective in objectivesInfo.ObjectivesOrder[objectivesIndex].Objectives)
+        {
+            if (objective.HasBeenCompleted()) Debug.Log(objective.name + " completed!");
+        }
     }
 
     void updateWaveState()
@@ -68,6 +109,7 @@ public class Waves : MonoBehaviour
         onPlanningPhase = false;
         spawnEnemies();
         setSignalsVisuals(false);
+        setUpObjectives();
         if (waveIndex < wavesInfo.EnemyWaves.Count - 1) waveIndex++;
         UI.UpdateWaveText(currentWave);
         UI.CloseUpgrades();
@@ -79,8 +121,6 @@ public class Waves : MonoBehaviour
     {
         timer += Time.deltaTime;
         UI.UpdateWaveTimerText(Mathf.RoundToInt(timer));
-        if (timer < 60) waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60 - timer);
-        else waveObjectiveText.text = string.Format("Objective not achieved");
     }
 
     void updatePlanningPhase()
@@ -91,20 +131,12 @@ public class Waves : MonoBehaviour
 
     void endWave()
     {
-        checkObjectives();
         timer = 0;
-        waveObjectiveText.text = string.Format("Wave objective: {0:0} seconds", 60);
         onPlanningPhase = true;
         Master.Instance.RunSound(waveFinishSound);
         setSignalsVisuals(true);
         UI.OpenUpgrades(3);
-    }
-
-    void checkObjectives()
-    {
-        Master.Instance.UpdateBalance(100); // Wave won
-        if (timer <= 60) Master.Instance.UpdateBalance(100); // Objective 1 completed
-        if (Nexus.Instance.IsFullHealth) Master.Instance.UpdateBalance(100); // Objective 2 completed
+        checkObjectives();
     }
 
     void spawnEnemies()
@@ -153,6 +185,11 @@ public class Waves : MonoBehaviour
     void changeSignalState(int signalIndex, bool newState)
     {
         signals[signalIndex].gameObject.SetActive(newState);
+    }
+
+    public bool WaveCompletedInLessThan(float time)
+    {
+        return timer <= time;
     }
 
     public static void KillEnemy()

@@ -123,7 +123,7 @@ public class BuildObject : MonoBehaviour
 
     void checkPosition(Vector3 pos, Vector3 vPos)
     {
-        if (Physics.CheckSphere(vPos, 0.3f, 1 << LayerMask.NameToLayer("Object")))
+        if (Physics.CheckSphere(vPos, 0.3f, 1 << LayerMask.NameToLayer("Object")) || Physics.CheckSphere(vPos, 0.3f, 1 << LayerMask.NameToLayer("Enemy")))
         {
             lastPos = pos;
             blueprintMaterial.color = Color.red;

@@ -51,6 +51,13 @@ public class Master : MonoBehaviour
         if (Instance.BuildObject != null) Instance.BuildObject.StartBuilding(buildingInfo);
     }
 
+    public static bool WaveCompletedInLessThan(float time)
+    {
+        if (Instance == null) return false;
+
+        return Instance.GetComponent<Waves>().WaveCompletedInLessThan(time);
+    }
+
     public void StopBuilding()
     {
         BuildObject.StopBuilding();

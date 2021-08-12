@@ -383,9 +383,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537000328}
-  - component: {fileID: 537000327}
   - component: {fileID: 537000329}
   - component: {fileID: 537000330}
+  - component: {fileID: 537000327}
   - component: {fileID: 537000335}
   - component: {fileID: 537000336}
   - component: {fileID: 537000331}
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73a88e95544b594297a3eb9fe7f62ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
+  masterInfo: {fileID: 11400000, guid: 56b187381b6e4cd42b4fc09c61480e29, type: 2}
   audioScript: {fileID: 537000331}
   ActiveMode: {fileID: 537000335}
   grid: {fileID: 102513636}
@@ -464,15 +464,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca5fc5f2b82a642a34a24997f2525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterInfo: {fileID: 11400000, guid: 3fc3558da7bfee74aa4c4499343502c4, type: 2}
   wavesInfo: {fileID: 11400000, guid: 69c084df68b0d3c42bc60d1379a9e279, type: 2}
+  objectivesInfo: {fileID: 11400000, guid: 1cd6b86ae78926c4682013dcd13151ae, type: 2}
   spawners: {fileID: 1032362607}
   signals:
   - {fileID: 1523362193}
   - {fileID: 1849686582}
   - {fileID: 952627867}
   - {fileID: 4826652}
-  waveObjectiveText: {fileID: 1137308906}
+  objectivesList: {fileID: 1137308906}
+  objectivePrefab: {fileID: 1725602169141735929, guid: 0b323531152029e4ea1e3ebe89b54a57,
+    type: 3}
   waveStartSound: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
   waveFinishSound: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
 --- !u!114 &537000331
@@ -1545,18 +1547,12 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c73d9b70784606418c6b501b172e0a8, type: 3}
---- !u!114 &1137308906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4883686698361043111, guid: 9c73d9b70784606418c6b501b172e0a8,
+--- !u!224 &1137308906 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8180840077874718612, guid: 9c73d9b70784606418c6b501b172e0a8,
     type: 3}
   m_PrefabInstance: {fileID: 1137308905}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1142838541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4883686696978771045, guid: 9c73d9b70784606418c6b501b172e0a8,
@@ -2195,7 +2191,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 25.5
+  field of view: 33
   orthographic: 0
   orthographic size: 1.8
   m_Depth: -1
