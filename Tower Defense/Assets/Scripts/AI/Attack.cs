@@ -12,6 +12,8 @@ public class Attack : State
 	float timeBetweenAttacks;
 	float attackDelay;
 
+	Vector3 shootOffset = new Vector3(0f, 0.95f, 0f);
+
 	public Attack(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		name = STATE.ATTACK;
@@ -66,15 +68,8 @@ public class Attack : State
 
 	void attackTarget()
     {
-        if (npc.CompareTag("Fairy")) //If the enemy AI is a fairy, spawn projectil
-        {
-			spawnProjectil();
-        }
-        else //Else, attack directly the target
-        {
-			if (Target.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Info.Damage);
-			else if (Target.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Info.Damage);
-		}
+		if (npc.CompareTag("Fairy")) spawnProjectile();
+		else meleeAttack();
     }
 
 	IEnumerator dealDamage()
@@ -83,11 +78,18 @@ public class Attack : State
 		attackTarget();
 	}
 
-	void spawnProjectil()
+	void spawnProjectile()
     {
-		GameObject obj = ObjectPooler.GetInstance().SpawnObject("Fairy Projectile", npc.transform.position);
+		GameObject obj = ObjectPooler.GetInstance().SpawnObject("Fairy Projectile", 
+			npc.transform.position + Vector3.ClampMagnitude(npc.transform.forward, 0.4f) + Vector3.ClampMagnitude(npc.transform.right, -0.2f) + shootOffset);
 		obj.GetComponent<FairyProjectile>().SetInfo(Target, npc.Info.Damage);
     }
+
+	void meleeAttack()
+    {
+		if (Target.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Info.Damage);
+		else if (Target.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Info.Damage);
+	}
 
 	float getClipLength(Animator anim, string clipName)
 	{

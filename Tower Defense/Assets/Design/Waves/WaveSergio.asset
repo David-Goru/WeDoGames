@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c49a7e6d2f12b34ca55e596e0af1d60, type: 3}
   m_Name: WaveSergio
   m_EditorClassIdentifier: 
-  planningTime: 5
+  planningTime: 2
   enemyWaves:
   - EnemyWave:
-    - Enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
+    - Enemy: {fileID: 11400000, guid: d5abd168ac6553e44b5333a18e0034d7, type: 2}
       NumberOfEnemies: 2
       DOWN: 0
       RIGHT: 1

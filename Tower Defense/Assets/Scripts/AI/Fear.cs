@@ -19,7 +19,7 @@ public class Fear : State
 		anim.SetTrigger("moving");
 		base.Enter();
 
-		PathData fearPosition = new PathData(-npc.transform.forward * 10.0f);
+		PathData fearPosition = new PathData(-npc.transform.forward * 20.0f);
 		fearDuration = npc.FearDuration;
 		PathRequestManager.RequestPath(npc.transform.position, fearPosition, npc.Info.Range, npc.OnPathFound);
 	}
