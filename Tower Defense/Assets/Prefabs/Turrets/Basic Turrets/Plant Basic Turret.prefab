@@ -408,6 +408,7 @@ MonoBehaviour:
   anim: {fileID: 7630658955178364559}
   targetDetection: {fileID: 3635183261357315609}
   audioSource: {fileID: 2323999372933097570}
+  particles: {fileID: 7789987182567026894}
 --- !u!114 &3120527549680734892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,9 +833,9 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

@@ -46,9 +46,9 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5430,6 +5430,7 @@ MonoBehaviour:
   anim: {fileID: 1191334383368534893}
   targetDetection: {fileID: 626983262470963233}
   audioSource: {fileID: 5498462309589699386}
+  particles: {fileID: 1777761558191357176}
 --- !u!114 &1265486601318745236
 MonoBehaviour:
   m_ObjectHideFlags: 0

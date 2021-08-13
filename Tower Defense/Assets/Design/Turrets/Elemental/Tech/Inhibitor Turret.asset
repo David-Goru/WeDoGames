@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
   m_Name: Inhibitor Turret
   m_EditorClassIdentifier: 
-  turretPool: {fileID: 11400000, guid: 7166681c3565cc149ad4243cd95cf4c2, type: 2}
-  turretBlueprintPool: {fileID: 11400000, guid: 8e84fc7d63eb5564592dda17c802a66d,
+  turretPool: {fileID: 11400000, guid: d17c709415905c94ab3fb265cdb19ff9, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: 80a391b40b33fa842867af3028ec1ee1,
     type: 2}
   description: 
   icon: {fileID: 21300000, guid: 45c3809b362b75e4da639392c8708eb1, type: 3}

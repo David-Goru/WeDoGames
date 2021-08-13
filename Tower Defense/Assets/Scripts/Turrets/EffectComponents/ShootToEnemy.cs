@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootToEnemy : EffectComponent
@@ -8,8 +6,9 @@ public class ShootToEnemy : EffectComponent
     [SerializeField] Pool projectile = null;
     [SerializeField] Transform spawnPosition = null;
     [SerializeField] Animator anim = null;
-    [SerializeField] CurrentTargetsOnRange targetDetection;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] CurrentTargetsOnRange targetDetection = null;
+    [SerializeField] AudioSource audioSource = null;
+    [SerializeField] ParticleSystem particles = null;
 
     ObjectPooler objectPooler;
     TurretStats turretStats;
@@ -55,9 +54,15 @@ public class ShootToEnemy : EffectComponent
             spawnAndInitializeProjectile(enemy);
             doAnimation();
             playSound();
+            playParticles();
             resetTimer();
         }
         else timer += Time.deltaTime;
+    }
+
+    void playParticles()
+    {
+        particles.Play();
     }
 
     void spawnAndInitializeProjectile(Transform enemy)
@@ -80,5 +85,4 @@ public class ShootToEnemy : EffectComponent
     {
         timer = 0;
     }
-
 }
