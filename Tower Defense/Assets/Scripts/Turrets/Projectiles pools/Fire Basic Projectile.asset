@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Fire Basic Projectile
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1799863066066264101, guid: 068903fcca78ad342a54b8fc5a3aa7d6, type: 3}
+  prefab: {fileID: 1799863066066264101, guid: 6666497fdeb69e3499a4a5760cbbf89a, type: 3}
   size: 50
   tag: Fire Basic Projectile

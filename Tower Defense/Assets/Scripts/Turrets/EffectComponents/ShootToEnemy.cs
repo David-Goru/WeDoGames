@@ -62,7 +62,7 @@ public class ShootToEnemy : EffectComponent
 
     void playParticles()
     {
-        particles.Play();
+        if(particles != null) particles.Play();
     }
 
     void spawnAndInitializeProjectile(Transform enemy)
