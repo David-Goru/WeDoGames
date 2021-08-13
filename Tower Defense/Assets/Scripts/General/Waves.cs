@@ -39,8 +39,6 @@ public class Waves : MonoBehaviour
 
     void setUpObjectives()
     {
-        if (currentWave != 0) removeCurrentObjectives();
-
         int objectivesIndex = currentWave;
         if (currentWave >= objectivesInfo.ObjectivesOrder.Length) objectivesIndex = objectivesInfo.ObjectivesOrder.Length - 1;
 
@@ -53,7 +51,10 @@ public class Waves : MonoBehaviour
 
     void removeCurrentObjectives()
     {
-        foreach (Objective objective in objectivesInfo.ObjectivesOrder[currentWave - 1].Objectives)
+        int objectivesIndex = currentWave;
+        if (currentWave >= objectivesInfo.ObjectivesOrder.Length) objectivesIndex = objectivesInfo.ObjectivesOrder.Length - 1;
+
+        foreach (Objective objective in objectivesInfo.ObjectivesOrder[objectivesIndex].Objectives)
         {
             if (objective.UIObject != null) Destroy(objective.UIObject);
         }
@@ -137,6 +138,7 @@ public class Waves : MonoBehaviour
         setSignalsVisuals(true);
         UI.OpenUpgrades(3);
         checkObjectives();
+        removeCurrentObjectives();
     }
 
     void spawnEnemies()
