@@ -9,6 +9,8 @@ public class TurretStats : Entity, IHealable
 {
     [SerializeField] TurretInfo buildingInfo = null;
 
+    public TurretInfo BuildingInfo { get => buildingInfo; set => buildingInfo = value; }
+
     private void Start()
     {
         Initialize();

@@ -20,6 +20,9 @@ public class TurretDamageable : EnemyDamage
         turretStats.CurrentHP -= damage;
         if (turretStats.CurrentHP <= 0)
         {
+            Master.Instance.NumberOfTurrets--;
+            turretStats.BuildingInfo.NumberOfTurretsPlaced--;
+
             if (turretNoHealthBehaviours.Count == 0)
             {
                 Debug.LogError("Your turret " + gameObject.name +" doesn't have any Behaviour when it has no health ");

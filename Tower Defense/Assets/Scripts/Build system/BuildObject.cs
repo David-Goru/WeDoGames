@@ -158,6 +158,9 @@ public class BuildObject : MonoBehaviour
         objectBlueprint = null;
         blueprintMaterial = null;
         Master.Instance.RunSound(buildSound);
+        Master.Instance.NumberOfTurrets++;
+        Master.Instance.WavesWithoutBuildingTurrets = 0;
+        buildingInfo.NumberOfTurretsPlaced++;
 
         StartCoroutine("delayCheckPath");
 

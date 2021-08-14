@@ -19,11 +19,14 @@ public class TurretInfo : ScriptableObject
 
     [Header("Debug")]
     [SerializeField] public List<Stat> currentStats = new List<Stat>();
+    int numberOfTurretsPlaced = 0;
 
     public string Description { get => description; }
     public Sprite Icon { get => icon; set => icon = value; }
     public TurretElement TurretElement { get => turretElement; }
     public TurretTier TurretTier { get => turretTier; set => turretTier = value; }
+    public int NumberOfTurretsPlaced { get => numberOfTurretsPlaced; set => numberOfTurretsPlaced = value; }
+
     public Pool GetBuildingPool() { return turretPool; }
     public Pool GetBuildingBlueprintPool() { return turretBlueprintPool; }
 
@@ -52,6 +55,7 @@ public class TurretInfo : ScriptableObject
     void OnEnable()
     {
         resetCurrentStats();
+        NumberOfTurretsPlaced = 0;
     }
 
     void resetCurrentStats()

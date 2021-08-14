@@ -64,6 +64,7 @@ public class ActiveMode : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100, groundMask))
         {
+            Master.Instance.NoActivesUsedInLastWave = false;
             activeAction.UseActive(hit.point);
             isActive = false;
             activesCooldownController.StartCooldown(activeAction);

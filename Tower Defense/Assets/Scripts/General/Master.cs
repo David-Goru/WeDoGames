@@ -12,6 +12,9 @@ public class Master : MonoBehaviour
     [System.NonSerialized] public BuildObject BuildObject;
 
     public static Master Instance;
+    public int NumberOfTurrets = 0;
+    public int WavesWithoutBuildingTurrets = 0;
+    public bool NoActivesUsedInLastWave = false;
 
     void Start()
     {

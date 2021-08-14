@@ -4,7 +4,8 @@ using UnityEngine;
 public class Objective : ScriptableObject
 {
     [System.NonSerialized] public GameObject UIObject;
+    public bool Completed = false;
 
-    public virtual bool HasBeenCompleted() { return false; }
+    public virtual void UpdateCompleteState() { }
     public virtual void SetDisplayText() { }
 }

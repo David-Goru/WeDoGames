@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5a85e030f99f34d8769850b0c64ffe, type: 3}
   m_Name: Objectives Order
   m_EditorClassIdentifier: 
-  objectivesOrder:
-  - objectives:
-    - {fileID: 11400000, guid: 99eb6f5f28d7aea409e6594607307bfc, type: 2}
-    - {fileID: 11400000, guid: e4fe9a807e3ea54459dec2a7a1ceed5a, type: 2}
+  levelObjectives:
+  - {fileID: 11400000, guid: ea34864186db85148ba2224286ff8447, type: 2}
+  - {fileID: 11400000, guid: 66224839392b06442a6c30609bd421e7, type: 2}
+  - {fileID: 11400000, guid: 99eb6f5f28d7aea409e6594607307bfc, type: 2}
+  - {fileID: 11400000, guid: e4fe9a807e3ea54459dec2a7a1ceed5a, type: 2}
+  - {fileID: 11400000, guid: 17af2a86b828d784e8fbe0c6faf18c84, type: 2}
+  - {fileID: 11400000, guid: 223667a30573bf740bf62af11803b921, type: 2}
+  - {fileID: 11400000, guid: 407dd6263d294214d9060f68d072fdeb, type: 2}

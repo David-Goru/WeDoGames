@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "Faster Than Light", menuName = "Objectives/FasterThanLight", order = 1)]
-public class FasterThanLight : Objective
+[CreateAssetMenu(fileName = "AFK", menuName = "Objectives/AFK", order = 1)]
+public class AFK : Objective
 {
-    [SerializeField] float maximumTime = 0.0f;
+    [SerializeField] int wavesWithoutBuilding = 0;
 
     public override void UpdateCompleteState()
     {
         if (Completed) return;
-        Completed = Master.WaveCompletedInLessThan(maximumTime);
+        Completed = Master.Instance.WavesWithoutBuildingTurrets >= wavesWithoutBuilding;
     }
 
     public override void SetDisplayText()
@@ -23,6 +23,6 @@ public class FasterThanLight : Objective
 
     string getDisplayText()
     {
-        return string.Format("Complete the wave in less than {0} seconds", maximumTime);
+        return string.Format("Don't place any turret for {0} waves", wavesWithoutBuilding);
     }
 }

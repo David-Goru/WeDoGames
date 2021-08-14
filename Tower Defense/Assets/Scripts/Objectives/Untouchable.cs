@@ -4,9 +4,10 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Untouchable", menuName = "Objectives/Untouchable", order = 1)]
 public class Untouchable : Objective
 {
-    public override bool HasBeenCompleted()
+    public override void UpdateCompleteState()
     {
-        return Nexus.Instance.IsFullHealth;
+        if (Completed) return;
+        Completed = Nexus.Instance.IsFullHealth;
     }
 
     public override void SetDisplayText()
@@ -20,6 +21,6 @@ public class Untouchable : Objective
 
     string getDisplayText()
     {
-        return "End the wave with a full HP Nexus";
+        return "End the game with a full HP Nexus";
     }
 }

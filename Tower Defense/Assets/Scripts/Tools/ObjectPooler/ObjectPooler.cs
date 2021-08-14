@@ -37,6 +37,12 @@ public class ObjectPooler : MonoBehaviour
         PoolDictionary = new Dictionary<string, List<GameObject>>();
         foreach (Pool pool in Pools)
         {
+            if (pool.prefab == null)
+            {
+                Debug.Log("No prefab found for " + pool.name);
+                continue;
+            }
+
             List<GameObject> list = new List<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {

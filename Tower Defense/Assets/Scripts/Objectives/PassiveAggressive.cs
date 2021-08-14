@@ -1,15 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "Faster Than Light", menuName = "Objectives/FasterThanLight", order = 1)]
-public class FasterThanLight : Objective
+[CreateAssetMenu(fileName = "Passive-Aggressive", menuName = "Objectives/PassiveAggressive", order = 1)]
+public class PassiveAggressive : Objective
 {
-    [SerializeField] float maximumTime = 0.0f;
-
     public override void UpdateCompleteState()
     {
         if (Completed) return;
-        Completed = Master.WaveCompletedInLessThan(maximumTime);
+        Completed = Master.Instance.NoActivesUsedInLastWave;
     }
 
     public override void SetDisplayText()
@@ -23,6 +21,6 @@ public class FasterThanLight : Objective
 
     string getDisplayText()
     {
-        return string.Format("Complete the wave in less than {0} seconds", maximumTime);
+        return "Complete the wave without using any active";
     }
 }

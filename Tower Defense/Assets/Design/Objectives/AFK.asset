@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: Ice Basic Projectile
+  m_Script: {fileID: 11500000, guid: a62edf69aad74f64dacef21861b8b6d7, type: 3}
+  m_Name: AFK
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8499496479977784783, guid: 21a821c42aca4ad489ca53d3a8326121, type: 3}
-  size: 50
-  tag: Ice Basic Projectile
+  Completed: 0
+  wavesWithoutBuilding: 3

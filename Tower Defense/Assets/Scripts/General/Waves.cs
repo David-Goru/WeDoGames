@@ -21,6 +21,7 @@ public class Waves : MonoBehaviour
     float timer = 0f;
     bool onPlanningPhase = true;
     ObjectPooler objectPooler;
+    Objective[] gameObjectives;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class Waves : MonoBehaviour
         objectPooler = ObjectPooler.GetInstance();
         UI.UpdateWaveText(currentWave);
         setSignalsVisuals(true);
+        setUpObjectives();
     }
 
     void Update()
@@ -39,24 +41,26 @@ public class Waves : MonoBehaviour
 
     void setUpObjectives()
     {
-        int objectivesIndex = currentWave;
-        if (currentWave >= objectivesInfo.ObjectivesOrder.Length) objectivesIndex = objectivesInfo.ObjectivesOrder.Length - 1;
+        gameObjectives = new Objective[3];
 
-        foreach (Objective objective in objectivesInfo.ObjectivesOrder[objectivesIndex].Objectives)
+        int maxIndex = objectivesInfo.LevelObjectives.Length - 1;
+
+        if (maxIndex < 2) return;
+
+        int firstObjective = Random.Range(0, maxIndex);
+        int secondObjective = Random.Range(0, maxIndex);
+        while (firstObjective == secondObjective) secondObjective = Random.Range(0, maxIndex);
+        int thirdObjective = Random.Range(0, maxIndex);
+        while (firstObjective == thirdObjective || secondObjective == thirdObjective) thirdObjective = Random.Range(0, maxIndex);
+
+        gameObjectives[0] = objectivesInfo.LevelObjectives[firstObjective];
+        gameObjectives[1] = objectivesInfo.LevelObjectives[secondObjective];
+        gameObjectives[2] = objectivesInfo.LevelObjectives[thirdObjective];
+
+        foreach (Objective objective in gameObjectives)
         {
             objective.UIObject = createObjectiveUI();
             objective.SetDisplayText();
-        }
-    }
-
-    void removeCurrentObjectives()
-    {
-        int objectivesIndex = currentWave;
-        if (currentWave >= objectivesInfo.ObjectivesOrder.Length) objectivesIndex = objectivesInfo.ObjectivesOrder.Length - 1;
-
-        foreach (Objective objective in objectivesInfo.ObjectivesOrder[objectivesIndex].Objectives)
-        {
-            if (objective.UIObject != null) Destroy(objective.UIObject);
         }
     }
 
@@ -66,17 +70,6 @@ public class Waves : MonoBehaviour
         uiObject.transform.SetParent(objectivesList, false);
 
         return uiObject;
-    }
-
-    void checkObjectives()
-    {
-        int objectivesIndex = currentWave;
-        if (currentWave >= objectivesInfo.ObjectivesOrder.Length) objectivesIndex = objectivesInfo.ObjectivesOrder.Length - 1;
-
-        foreach (Objective objective in objectivesInfo.ObjectivesOrder[objectivesIndex].Objectives)
-        {
-            if (objective.HasBeenCompleted()) Debug.Log(objective.name + " completed!");
-        }
     }
 
     void updateWaveState()
@@ -110,12 +103,13 @@ public class Waves : MonoBehaviour
         onPlanningPhase = false;
         spawnEnemies();
         setSignalsVisuals(false);
-        setUpObjectives();
         if (waveIndex < wavesInfo.EnemyWaves.Count - 1) waveIndex++;
         UI.UpdateWaveText(currentWave);
         UI.CloseUpgrades();
         UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
         Master.Instance.RunSound(waveStartSound);
+        Master.Instance.WavesWithoutBuildingTurrets++;
+        Master.Instance.NoActivesUsedInLastWave = true;
     }
 
     void updateCurrentWave()
@@ -137,8 +131,6 @@ public class Waves : MonoBehaviour
         Master.Instance.RunSound(waveFinishSound);
         setSignalsVisuals(true);
         UI.OpenUpgrades(3);
-        checkObjectives();
-        removeCurrentObjectives();
     }
 
     void spawnEnemies()
