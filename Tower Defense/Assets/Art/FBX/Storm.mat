@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Storm
+  m_Shader: {fileID: -6465566751694194690, guid: d0335a675b045064390b6a5502a79afd,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_0335e415ffbf4d3d8bc79658d6720dbd: 20
+    - Vector1_0eaa4b70a31241c2ba706d45e6c9a35f: 0
+    - Vector1_19b2f3c4ece44c4ead1101d16022d2a7: 2
+    - Vector1_47cc3b3dd2674ee692a02da1b4e6afd4: 0.5
+    - Vector1_c92ef0632b8948cfafe4af5d853d2115: 0.7
+    m_Colors:
+    - Color_00b14f2cae0d4ddaa8f692b764a66d25: {r: 1, g: 0, b: 0, a: 0}
+    - Color_a65d8695a78749d9a3444b59b3431a78: {r: 0.602285, g: 0.735305, b: 0.739,
+        a: 0}
+    - Color_bf5f6b504a4d412ab15fafa4b4a4c71f: {r: 0.3586, g: 0.40608335, b: 0.44,
+        a: 1}
+  m_BuildTextureStacks: []
