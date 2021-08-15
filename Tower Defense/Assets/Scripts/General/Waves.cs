@@ -19,7 +19,7 @@ public class Waves : MonoBehaviour
     int currentWave = 0;
     int waveIndex = 0;
     float timer = 0f;
-    bool onPlanningPhase = true;
+    public static bool onPlanningPhase = true;
     ObjectPooler objectPooler;
     Objective[] gameObjectives;
 

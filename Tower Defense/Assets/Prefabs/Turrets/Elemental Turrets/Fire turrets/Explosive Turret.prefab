@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5894420505633687284
 Transform:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -5072,7 +5072,7 @@ Transform:
   - {fileID: 2158389456679946804}
   m_Father: {fileID: 813871193211262077}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.000013660378, y: 90.00001, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: -0.000013430206, y: 90.00001, z: 90.00001}
 --- !u!1 &2077095101039907911
 GameObject:
   m_ObjectHideFlags: 0
@@ -5306,7 +5306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDetection: {fileID: 1819583760506200628}
-  particles: {fileID: 0}
+  particles: {fileID: 3228998272848249547}
   anim: {fileID: 4336472035529743543}
   audioSource: {fileID: 5955947474799331996}
   animationName: ExplosiveTurretExplosion
@@ -5691,7 +5691,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10553,7 +10553,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -15547,4 +15547,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5632347927295817843}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -0.0000024477104, y: -89.999985, z: -1.01777744e-13}
+  m_LocalEulerAnglesHint: {x: -0.0000028001805, y: -89.999985, z: -1.1643375e-13}

@@ -19,7 +19,7 @@ public class ShootToEnemy : EffectComponent
 
     public override void InitializeComponent()
     {
-        GetDependencies();
+        getDependencies();
         resetTimer();
     }
 
@@ -28,7 +28,7 @@ public class ShootToEnemy : EffectComponent
         shootEnemies();
     }
 
-    void GetDependencies()
+    void getDependencies()
     {
         objectPooler = ObjectPooler.GetInstance();
         turretStats = GetComponentInParent<TurretStats>();

@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 6781190574183378597}
   m_Layer: 2
   m_Name: ColliderForEnemiesToDetectYou
-  m_TagString: Turret
+  m_TagString: TurretTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,6 +683,7 @@ MonoBehaviour:
   anim: {fileID: 4083488233931742259}
   targetDetection: {fileID: 318811786}
   audioSource: {fileID: 7033327303584210775}
+  particles: {fileID: 0}
 --- !u!114 &4616495875951490175
 MonoBehaviour:
   m_ObjectHideFlags: 0

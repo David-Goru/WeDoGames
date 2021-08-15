@@ -58,7 +58,35 @@ public class ConstantSlowToEnemyInRange : EffectComponent
 
     void slowEnemy()
     {
-        if(enemyISlowable != null)
-            enemyISlowable.Slow(slowDuration, slowReduction);
+        if(enemyISlowable != null) enemyISlowable.Slow(slowDuration, slowReduction);
     }
+}
+
+public class ConstantDamageReductionInRange : EffectComponent
+{
+    [SerializeField] CurrentTargetsOnRange targetDetection = null;
+    TurretStats turretStats;
+    Transform enemy;
+    IDamageReductible enemyIDamageReductible;
+
+    float damageReductionDuration;
+    float damageReduction;
+
+    public override void InitializeComponent()
+    {
+        turretStats = GetComponentInParent<TurretStats>();
+    }
+
+    public override void UpdateComponent()
+    {
+        getStats();
+        //reduceDamage();
+    }
+
+    void getStats()
+    {
+        damageReductionDuration = turretStats.GetStatValue(StatType.EFFECTDURATION);
+        damageReduction = turretStats.GetStatValue(StatType.SLOWREDUCTION);
+    }
+
 }

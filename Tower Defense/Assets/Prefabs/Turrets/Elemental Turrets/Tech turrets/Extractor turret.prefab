@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 3770879655208757953}
   - component: {fileID: 3770879655208757963}
   m_Layer: 10
-  m_Name: Extractor Turret
+  m_Name: Extractor turret
   m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50e7bc7fee7b945a56c6d8bbf8d8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 6048409399489900461}
   audioSource: {fileID: 0}
 --- !u!82 &9075846098602858407
 AudioSource:

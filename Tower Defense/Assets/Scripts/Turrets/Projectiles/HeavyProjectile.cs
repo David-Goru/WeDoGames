@@ -111,7 +111,7 @@ public class HeavyProjectile : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag("Turret") && !other.CompareTag("Nexus"))
+        if(!other.CompareTag("Turret") && !other.CompareTag("Nexus") && !other.CompareTag("TurretTrigger"))
         {
             int nEnemies = Physics.OverlapSphereNonAlloc(transform.position, radiusOfImpact, collidersCache, enemyLayer);
             int damage = (int)turretStats.SearchStatValue(StatType.DAMAGE);

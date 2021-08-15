@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ExtractEnergy : EffectComponent
 {
@@ -6,39 +7,68 @@ public class ExtractEnergy : EffectComponent
     [SerializeField] AudioSource audioSource = null;
 
     TurretStats turretStats;
+    Master master;
 
+    bool onPlanningPhase = true;
     float timer = 0f;
 
     public override void InitializeComponent()
     {
-        GetDependencies();
+        getDependencies();
+        initMembers();
     }
 
     public override void UpdateComponent()
     {
-        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
+        checkIfPlanningPhaseChanged();
+        if (!onPlanningPhase)
         {
-            extract();
-            timer = 0f;
+            if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
+            {
+                extract();
+                timer = 0f;
+            }
+            else timer += Time.deltaTime;
         }
-        else timer += Time.deltaTime;
     }
 
-    void GetDependencies()
+    void checkIfPlanningPhaseChanged()
+    {
+        if(onPlanningPhase != Waves.onPlanningPhase)
+        {
+            onPlanningPhase = Waves.onPlanningPhase;
+            if (onPlanningPhase)
+            {
+                setAnimationState(false);
+                timer = 0f;
+            }
+            else setAnimationState(true);
+        }
+    }
+
+    void getDependencies()
     {
         turretStats = GetComponentInParent<TurretStats>();
+        master = Master.Instance;
+    }
+
+    void initMembers()
+    {
+        onPlanningPhase = true;
+        timer = 0f;
+        setAnimationState(false);
     }
 
     void extract()
     {
-        
+        master.UpdateBalance(turretStats.GetStatValue(StatType.ENERGYTOEXTRACT));
     }
 
-    /*void doAnimation()
+    void setAnimationState(bool isExtracting)
     {
-        if (anim != null) anim.SetTrigger("Shoot");
+        if (anim != null) anim.SetBool("IsExtracting", isExtracting);
     }
-
+    /*
     void playSound()
     {
         if (audioSource != null) audioSource.Play();

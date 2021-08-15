@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 4224321588919385869, guid: ae9d32eee2dc1854d9ed94c86e738d7b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae9d32eee2dc1854d9ed94c86e738d7b, type: 3}
@@ -546,7 +546,7 @@ PrefabInstance:
     - target: {fileID: 3770879655208757967, guid: db59f68eaa3907c498fe19d165a07349,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5270386923456707422, guid: db59f68eaa3907c498fe19d165a07349,
         type: 3}
@@ -563,6 +563,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.2552799
       objectReference: {fileID: 0}
+    - target: {fileID: 6197133487229362341, guid: db59f68eaa3907c498fe19d165a07349,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 708497574}
     - target: {fileID: 6858721331441503443, guid: db59f68eaa3907c498fe19d165a07349,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -815,11 +820,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mortar Turret
       objectReference: {fileID: 0}
-    - target: {fileID: 4790984498408443622, guid: f58bb226fa509614ca6d05e3bec399b2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5275737887537206364, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_RootOrder
@@ -892,7 +892,7 @@ PrefabInstance:
     - target: {fileID: 6125964326492962260, guid: cca373ba9afecdb4ca63e9333c501ef5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6125964326492962267, guid: cca373ba9afecdb4ca63e9333c501ef5,
         type: 3}
@@ -1185,6 +1185,12 @@ Transform:
   m_Father: {fileID: 969697149}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &708497574 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6048409399489900461, guid: db59f68eaa3907c498fe19d165a07349,
+    type: 3}
+  m_PrefabInstance: {fileID: 232401123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &710557159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,12 +1589,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767758251}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!198 &812497726 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3228998272848249547, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-    type: 3}
-  m_PrefabInstance: {fileID: 670727000155754499}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922261808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1797,7 @@ PrefabInstance:
     - target: {fileID: 3124885295755851924, guid: b741bfc6d48d4dc46a43542febd167b7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3124885295755851931, guid: b741bfc6d48d4dc46a43542febd167b7,
         type: 3}
@@ -3064,7 +3064,7 @@ PrefabInstance:
     - target: {fileID: 1269008495316496044, guid: 0bb69c52cb1ef874594ed26e66b3543e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb69c52cb1ef874594ed26e66b3543e, type: 3}
@@ -3234,24 +3234,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1381308985}
     m_Modifications:
-    - target: {fileID: 954200605, guid: c0e7d64528b75554c8ad4a8d8fa13433, type: 3}
-      propertyPath: particles
-      value: 
-      objectReference: {fileID: 812497726}
-    - target: {fileID: 433723364323846826, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 670727000040579085, guid: c0e7d64528b75554c8ad4a8d8fa13433,
         type: 3}
       propertyPath: m_Name
       value: Explosive Turret
-      objectReference: {fileID: 0}
-    - target: {fileID: 670727000040579085, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 670727000040579102, guid: c0e7d64528b75554c8ad4a8d8fa13433,
         type: 3}
@@ -3307,51 +3293,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158389456679946804, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.0000028001805
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158389456679946804, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.1643375e-13
-      objectReference: {fileID: 0}
-    - target: {fileID: 2796506786473382714, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 89.999985
-      objectReference: {fileID: 0}
-    - target: {fileID: 3228998272848249547, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357471969817239886, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5632347927295817843, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.000013430206
-      objectReference: {fileID: 0}
-    - target: {fileID: 5955947474799331996, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_Pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6951916985296777048, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7766308131636826989, guid: c0e7d64528b75554c8ad4a8d8fa13433,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e7d64528b75554c8ad4a8d8fa13433, type: 3}
