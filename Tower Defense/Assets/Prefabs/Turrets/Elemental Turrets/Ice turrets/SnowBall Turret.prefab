@@ -444,6 +444,7 @@ MonoBehaviour:
   anim: {fileID: 1818872794817325426}
   targetDetection: {fileID: 4687161048777328902}
   audioSource: {fileID: 3329924416321774867}
+  particles: {fileID: 0}
 --- !u!114 &8435510888718156883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7125410708980199859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.44, y: 0, z: 12.49}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8098751255983673235}
