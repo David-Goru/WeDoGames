@@ -456,6 +456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tech Basic Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 7407901596507321689, guid: 50f3a28c530af204cb4ad571e095e3ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f3a28c530af204cb4ad571e095e3ca, type: 3}
 --- !u!1 &585114382 stripped
@@ -525,6 +530,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &692628714
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434786, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721921236385434797, guid: eac568587a8431d4886a93108b655e9e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice Ray Turret
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eac568587a8431d4886a93108b655e9e, type: 3}
 --- !u!1001 &696899250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1215,6 +1289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tech Basic Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799863066066264101, guid: ef852600b60d31b429abe2572f8d6a72,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6561168667150677737, guid: ef852600b60d31b429abe2572f8d6a72,
         type: 3}
