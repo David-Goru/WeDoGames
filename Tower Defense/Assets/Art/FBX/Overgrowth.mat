@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Overgrowth
+  m_Shader: {fileID: -6465566751694194690, guid: d9746eeadd80df645a32569bb5a8b6a5,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_02ebfc330eaa4642b0e33cfa813a73a3: 0
+    - Vector1_1b75e0be4ee04c1c88be039207d4ccae: 0
+    - Vector1_8b9737e1d0644aa8a0e80ed62c11dc02: 0
+    - Vector1_91f3157384294aee9664bb482e4aeb24: 0.97
+    - Vector1_f804443927b545a4be23c801817d46c8: -0.08
+    m_Colors:
+    - Color_dce871dcbff7477189d16aa3cbcd3d6e: {r: 0.89, g: 0.49246666, b: 0.29369998,
+        a: 0}
+  m_BuildTextureStacks: []
