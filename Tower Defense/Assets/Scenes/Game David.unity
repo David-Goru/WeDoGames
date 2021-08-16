@@ -452,6 +452,9 @@ MonoBehaviour:
   audioScript: {fileID: 537000331}
   ActiveMode: {fileID: 537000335}
   grid: {fileID: 102513636}
+  NumberOfTurrets: 0
+  WavesWithoutBuildingTurrets: 0
+  NoActivesUsedInLastWave: 0
 --- !u!114 &537000330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavesInfo: {fileID: 11400000, guid: 69c084df68b0d3c42bc60d1379a9e279, type: 2}
-  objectivesInfo: {fileID: 11400000, guid: 1cd6b86ae78926c4682013dcd13151ae, type: 2}
+  objectivesInfo: {fileID: 11400000, guid: 94ff138bb8708d1439f696e6c4f91f6f, type: 2}
   spawners: {fileID: 1032362607}
   signals:
   - {fileID: 1523362193}

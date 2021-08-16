@@ -41,21 +41,29 @@ public class Waves : MonoBehaviour
 
     void setUpObjectives()
     {
-        gameObjectives = new Objective[3];
+        int maxIndex = objectivesInfo.LevelObjectives.Length;
 
-        int maxIndex = objectivesInfo.LevelObjectives.Length - 1;
+        gameObjectives = new Objective[maxIndex > 2 ? 3 : maxIndex];
 
-        if (maxIndex < 2) return;
+        if (maxIndex > 0)
+        {
+            int firstObjective = Random.Range(0, maxIndex);
+            gameObjectives[0] = objectivesInfo.LevelObjectives[firstObjective];
 
-        int firstObjective = Random.Range(0, maxIndex);
-        int secondObjective = Random.Range(0, maxIndex);
-        while (firstObjective == secondObjective) secondObjective = Random.Range(0, maxIndex);
-        int thirdObjective = Random.Range(0, maxIndex);
-        while (firstObjective == thirdObjective || secondObjective == thirdObjective) thirdObjective = Random.Range(0, maxIndex);
+            int secondObjective = Random.Range(0, maxIndex);
+            if (maxIndex > 1)
+            {
+                while (firstObjective == secondObjective) secondObjective = Random.Range(0, maxIndex);
+                gameObjectives[1] = objectivesInfo.LevelObjectives[secondObjective];
+            }
 
-        gameObjectives[0] = objectivesInfo.LevelObjectives[firstObjective];
-        gameObjectives[1] = objectivesInfo.LevelObjectives[secondObjective];
-        gameObjectives[2] = objectivesInfo.LevelObjectives[thirdObjective];
+            int thirdObjective = Random.Range(0, maxIndex);
+            if (maxIndex > 2)
+            {
+                while (firstObjective == thirdObjective || secondObjective == thirdObjective) thirdObjective = Random.Range(0, maxIndex);
+                gameObjectives[2] = objectivesInfo.LevelObjectives[thirdObjective];
+            }
+        }
 
         foreach (Objective objective in gameObjectives)
         {
