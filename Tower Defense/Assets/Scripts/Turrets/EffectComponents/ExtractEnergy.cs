@@ -34,9 +34,9 @@ public class ExtractEnergy : EffectComponent
 
     void checkIfPlanningPhaseChanged()
     {
-        if(onPlanningPhase != Waves.onPlanningPhase)
+        if(onPlanningPhase != Waves.OnPlanningPhase)
         {
-            onPlanningPhase = Waves.onPlanningPhase;
+            onPlanningPhase = Waves.OnPlanningPhase;
             if (onPlanningPhase)
             {
                 setAnimationState(false);

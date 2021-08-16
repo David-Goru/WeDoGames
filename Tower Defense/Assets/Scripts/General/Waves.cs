@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Waves : MonoBehaviour
 {
     public static int EnemiesRemaining = 0;
+    public static bool OnPlanningPhase = true;
 
     [SerializeField] WavesInfo wavesInfo = null;
     [SerializeField] Objectives objectivesInfo = null;
@@ -19,7 +20,6 @@ public class Waves : MonoBehaviour
     int currentWave = 0;
     int waveIndex = 0;
     float timer = 0f;
-    public static bool onPlanningPhase = true;
     ObjectPooler objectPooler;
     Objective[] gameObjectives;
 
@@ -74,7 +74,7 @@ public class Waves : MonoBehaviour
 
     void updateWaveState()
     {
-        if (onPlanningPhase)
+        if (OnPlanningPhase)
         {
             if (planningPhaseFinished()) startWave();
             else updatePlanningPhase();
@@ -100,7 +100,7 @@ public class Waves : MonoBehaviour
     {
         currentWave++;
         timer = 0;
-        onPlanningPhase = false;
+        OnPlanningPhase = false;
         spawnEnemies();
         setSignalsVisuals(false);
         if (waveIndex < wavesInfo.EnemyWaves.Count - 1) waveIndex++;
@@ -127,7 +127,7 @@ public class Waves : MonoBehaviour
     void endWave()
     {
         timer = 0;
-        onPlanningPhase = true;
+        OnPlanningPhase = true;
         Master.Instance.RunSound(waveFinishSound);
         setSignalsVisuals(true);
         UI.OpenUpgrades(3);
