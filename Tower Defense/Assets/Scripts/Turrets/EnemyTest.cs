@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, IKnockbackable, IStunnable, IDamageable
+public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, IKnockbackable, IStunnable, IDamageable, IDamageReductible
 {
     MeshRenderer meshRenderer;
     float timer = 0f;
@@ -66,5 +66,10 @@ public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, I
         timer = 0f;
         meshRenderer.material.color = Color.red;
         print("I have taken " + damage + " points of damage");
+    }
+
+    public void ReduceDamage(float secondsDamageReduced, float damageReduction)
+    {
+        print("I have been damage reduced for " + secondsDamageReduced + " seconds with a reduction of " + damageReduction);
     }
 }

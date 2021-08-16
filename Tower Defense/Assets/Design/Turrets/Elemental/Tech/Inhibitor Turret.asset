@@ -24,16 +24,20 @@ MonoBehaviour:
     value: 100
   - type: 1
     value: 100
-  - type: 4
+  - type: 3
     value: 2
-  - type: 2
-    value: 2
+  - type: 5
+    value: 1
+  - type: 18
+    value: 0.5
   currentStats:
   - type: 0
     value: 100
   - type: 1
     value: 100
-  - type: 4
+  - type: 3
     value: 2
-  - type: 2
-    value: 2
+  - type: 5
+    value: 1
+  - type: 18
+    value: 0.5
