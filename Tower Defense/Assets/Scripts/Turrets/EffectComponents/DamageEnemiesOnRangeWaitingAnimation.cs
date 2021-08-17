@@ -1,12 +1,14 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageEnemiesOnRangeWaitingAnimation : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
     [SerializeField] ParticleSystem particles = null;
     [SerializeField] Animator anim = null;
-    [SerializeField] AudioSource audioSource = null;
+    [SerializeField] AudioSource initialAudio = null;
+    [SerializeField] AudioSource finalAudio = null;
     [SerializeField] string animationName = "";
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
@@ -38,6 +40,7 @@ public class DamageEnemiesOnRangeWaitingAnimation : EffectComponent
             if (isTimeToStartAnimation())
             {
                 startAnimation();
+                playInitialSound();
             }
             else timer += Time.deltaTime;
         }
@@ -75,7 +78,7 @@ public class DamageEnemiesOnRangeWaitingAnimation : EffectComponent
     {
         if (ReferenceEquals(targetDetection, null)) return;
         playParticles();
-        playSound();
+        playFinalSound();
 
         int damage = (int)turretStats.GetStatValue(StatType.DAMAGE);
         foreach (Transform target in targetDetection.CurrentTargets)
@@ -93,9 +96,14 @@ public class DamageEnemiesOnRangeWaitingAnimation : EffectComponent
         if (particles != null) particles.Play();
     }
 
-    void playSound()
+    void playInitialSound()
     {
-        if (audioSource != null) audioSource.Play();
+        if (initialAudio != null) initialAudio.Play();
+    }
+    
+    void playFinalSound()
+    {
+        if (finalAudio != null) finalAudio.Play();
     }
 
     float getClipLength(Animator anim, string clipName)
