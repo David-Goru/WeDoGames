@@ -113,7 +113,7 @@ public class Waves : MonoBehaviour
         setSignalsVisuals(false);
         if (waveIndex < wavesInfo.EnemyWaves.Count - 1) waveIndex++;
         UI.UpdateWaveText(currentWave);
-        UI.CloseUpgrades();
+        UI.ForceCloseUpgrades();
         UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
         Master.Instance.RunSound(waveStartSound);
         Master.Instance.WavesWithoutBuildingTurrets++;

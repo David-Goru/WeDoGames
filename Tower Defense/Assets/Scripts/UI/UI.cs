@@ -131,6 +131,13 @@ public class UI : MonoBehaviour
         if (Instance.UpgradesUI != null) Instance.UpgradesUI.CloseUpgrades();
     }
 
+    public static void ForceCloseUpgrades()
+    {
+        if (Instance == null) return;
+
+        if (Instance.UpgradesUI != null) Instance.UpgradesUI.ForceCloseUpgrades();
+    }
+
     public static void UpdateBalanceText(int balance)
     {
         if (Instance == null) return;
@@ -182,23 +189,6 @@ public class UI : MonoBehaviour
         button.name = name;
         nameText.text = name;
         iconImage.sprite = icon;
-        buttonComponent.onClick.AddListener(action);
-        if (hoverElement) hoverElement.HoverText = description;
-        button.SetParent(parent, false);
-    }
-
-    public static void SetButtonInfoWithCost(Transform button, Transform parent, string name, string description, Sprite icon, int cost, UnityEngine.Events.UnityAction action)
-    {
-        Text nameText = button.Find("Name").GetComponent<Text>();
-        Image iconImage = button.Find("Icon").GetComponent<Image>();
-        Text costText = button.Find("Cost").GetComponent<Text>();
-        HoverElement hoverElement = button.GetComponent<HoverElement>();
-        Button buttonComponent = button.GetComponent<Button>();
-
-        button.name = name;
-        nameText.text = name;
-        iconImage.sprite = icon;
-        costText.text = string.Format("{0} coins", cost);
         buttonComponent.onClick.AddListener(action);
         if (hoverElement) hoverElement.HoverText = description;
         button.SetParent(parent, false);
