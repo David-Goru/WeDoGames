@@ -11,6 +11,7 @@ public class UpgradesUI : UIList
     List<TurretTransformation> turretTransformations = null;
     List<TurretUpgrade> turretUpgrades = null;
     List<ElementalStatUpgrade> elementStatsUpgrades = null;
+    List<Upgrade> upgradesToChoose = null;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class UpgradesUI : UIList
 
     public void OpenUpgrades(int amount)
     {
-        Time.timeScale = 0;
+        if (amount == 0) return;
 
         List<Upgrade> upgradesAvailable = new List<Upgrade>();
 
@@ -55,6 +56,7 @@ public class UpgradesUI : UIList
 
         upgradesAvailable.AddRange(UI.GetAvailableActives());
 
+        upgradesToChoose = new List<Upgrade>();
         int amountOfUpgrades = amount > upgradesAvailable.Count ? upgradesAvailable.Count : amount;
         while (amountOfUpgrades > 0)
         {
@@ -62,11 +64,20 @@ public class UpgradesUI : UIList
             if (!upgrade.ObjectUI.gameObject.activeSelf)
             {
                 amountOfUpgrades--;
+                upgradesToChoose.Add(upgrade);
                 upgrade.ObjectUI.gameObject.SetActive(true);
             }
         }
 
         showUI();
+    }
+
+    public void ForceCloseUpgrades()
+    {
+        if (!isVisible()) return;
+            
+        chooseRandomUpgrade();
+        CloseUpgrades();
     }
 
     public void CloseUpgrades()
@@ -76,7 +87,13 @@ public class UpgradesUI : UIList
             child.gameObject.SetActive(false);
         }
         hideUI();
-        Time.timeScale = 1;
+    }
+
+    void chooseRandomUpgrade()
+    {
+        if (upgradesToChoose.Count == 0) return;
+
+        addUpgradeAction(upgradesToChoose[Random.Range(0, upgradesToChoose.Count)]);
     }
 
     void loadUpgrades()
@@ -96,18 +113,15 @@ public class UpgradesUI : UIList
     void addUpgradeToUI(Upgrade upgrade)
     {
         Transform button = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        UI.SetButtonInfoWithCost(button, ListUIObject, upgrade.name, upgrade.Description, upgrade.Icon, upgrade.Price, () => addUpgradeAction(upgrade));
+        UI.SetButtonInfo(button, ListUIObject, upgrade.name, upgrade.Description, upgrade.Icon, () => addUpgradeAction(upgrade));
         button.gameObject.SetActive(false);
         upgrade.ObjectUI = button;
     }
 
     void addUpgradeAction(Upgrade upgrade)
     {
-        if (Master.Instance.UpdateBalance(-upgrade.Price))
-        {
-            addUpgrade(upgrade);
-            upgrade.ObjectUI.gameObject.SetActive(false);
-        }
+        addUpgrade(upgrade);
+        upgrade.ObjectUI.gameObject.SetActive(false);
     }
 
     void addUpgrade(Upgrade upgrade)
@@ -160,5 +174,10 @@ public class UpgradesUI : UIList
     void changeVisibility(bool visible)
     {
         gameObject.SetActive(visible);
+    }
+
+    bool isVisible()
+    {
+        return gameObject.activeSelf;
     }
 }
