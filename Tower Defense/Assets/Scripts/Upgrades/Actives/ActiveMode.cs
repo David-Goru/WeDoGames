@@ -14,7 +14,6 @@ public class ActiveMode : MonoBehaviour
     private void Start()
     {
         groundMask = LayerMask.GetMask("Ground");
-        activeArea = Instantiate(activeAreaPrefab, Vector3.zero, Quaternion.identity);
     }
 
     void Update()
@@ -28,13 +27,18 @@ public class ActiveMode : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100f, groundMask))
                 {
-                    if(!activeArea.activeSelf)
-                        activeArea.SetActive(true);
+                    if (activeArea == null)
+                    {
+                        activeArea = Instantiate(activeAction.ActiveAreaGO, Vector3.zero, Quaternion.identity);
+                        activeArea.transform.localScale = activeAction.activeRange * 2 * Vector3.one;
+                    }
+
                     activeArea.transform.position = hit.point;
                 }
                 else
                 {
-                    activeArea.SetActive(false);
+                    Destroy(activeArea);
+                    activeArea = null;
                 }
             }
         }
@@ -47,15 +51,7 @@ public class ActiveMode : MonoBehaviour
             Master.Instance.RunSound(startActiveSound);
             isActive = true;
             this.activeAction = activeAction;
-            setActiveArea();
         }
-    }
-
-    void setActiveArea()
-    {
-        activeArea.SetActive(true);
-        activeArea.transform.localScale = activeAction.activeRange * 2 * Vector3.one;
-        activeArea.GetComponent<MeshRenderer>().material.SetColor("_Color", activeAction.activeAreaColor);
     }
 
     void doActive()

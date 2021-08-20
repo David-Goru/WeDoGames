@@ -15,5 +15,6 @@ MonoBehaviour:
   cooldownUI: {fileID: 0}
   activeCooldown: 5
   activeRange: 1.5
-  activeAreaColor: {r: 0.9133022, g: 1, b: 0, a: 0.59607846}
+  ActiveAreaGO: {fileID: 2494665615294443307, guid: 6af9d0588fd7b9f49a6f530f6ef81e76,
+    type: 3}
   stunTime: 3.5
