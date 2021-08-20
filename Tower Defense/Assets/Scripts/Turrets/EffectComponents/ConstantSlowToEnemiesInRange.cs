@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-public class SlowEnemiesInRange : EffectComponent
+public class ConstantSlowToEnemiesInRange : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
     TurretStats turretStats;
+    const float TIME_INTERVAL = 0.2f; //interval time for not slowing enemies in all frames
 
     float timer = 0f;
 
@@ -15,7 +16,7 @@ public class SlowEnemiesInRange : EffectComponent
 
     public override void UpdateComponent()
     {
-        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED)) slowEnemies();
+        if (timer >= TIME_INTERVAL) slowEnemies();
         else timer += Time.deltaTime;
     }
 
@@ -28,7 +29,7 @@ public class SlowEnemiesInRange : EffectComponent
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ISlowable enemyISlowable = target.GetComponent<ISlowable>();
-            if (enemyISlowable != null)  enemyISlowable.Slow(secondsSlowed, slowReduction);
+            if (enemyISlowable != null) enemyISlowable.Slow(secondsSlowed, slowReduction);
         }
         timer = 0f;
     }

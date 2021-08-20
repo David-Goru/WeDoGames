@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4893552598677186232}
   m_Layer: 0
-  m_Name: Hail Storm projectile
+  m_Name: Hail Storm Blizzard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

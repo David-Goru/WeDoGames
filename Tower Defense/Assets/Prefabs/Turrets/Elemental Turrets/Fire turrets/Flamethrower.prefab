@@ -462,7 +462,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6876607102681809634}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.52, y: 0.00999999, z: -0.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -540,6 +540,8 @@ GameObject:
   - component: {fileID: 8288088174157906053}
   - component: {fileID: 7069237036794196098}
   - component: {fileID: 1126432276268281606}
+  - component: {fileID: 2022179568}
+  - component: {fileID: 2022179569}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -641,7 +643,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   centerPointPivot: {fileID: 2931861798558569551}
-  debugRange: 2
+  debugRange: 3
   debugAngle: 45
   coneColor: {r: 1, g: 0.28068668, b: 0, a: 1}
 --- !u!114 &7069237036794196098
@@ -752,6 +754,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2022179568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288088174157906054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopOnExit: 1
+  audioSource: {fileID: 1126432276268281606}
+--- !u!114 &2022179569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288088174157906054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationType: 1
+  anim: {fileID: 372359527646265302}
+  parameterName: IsShooting
 --- !u!1 &9122960112859624922
 GameObject:
   m_ObjectHideFlags: 0

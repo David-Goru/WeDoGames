@@ -831,7 +831,7 @@
     },
     "m_Name": "StormAppears",
     "m_DefaultReferenceName": "Vector1_0eaa4b70a31241c2ba706d45e6c9a35f",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "StormAppears",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,

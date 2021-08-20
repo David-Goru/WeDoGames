@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ConstantDamageToEnemiesInRange : EffectComponent
@@ -7,6 +9,8 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     [SerializeField] ParticleSystem particles = null;
     [SerializeField] Animator anim = null;
     [SerializeField] AudioSource audioSource = null;
+
+    List<ITurretAttackState> attackStateBehaviours = new List<ITurretAttackState>();
 
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
@@ -25,9 +29,9 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
 
     public override void UpdateComponent()
     {
-        areTargetsInRange = targetDetection.AreTargetsInRange;
-        setAnimationState();
-        setSound();
+        checkIfAreTargetsInRangeHasChanged();
+        //setAnimationState();
+        //setSound();
         checkIfDamageChanged();
         if (timer >= damageInterval)
         {
@@ -37,6 +41,25 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
         else timer += Time.deltaTime;
     }
 
+    void checkIfAreTargetsInRangeHasChanged()
+    {
+        if (areTargetsInRange != targetDetection.AreTargetsInRange) 
+        {
+            areTargetsInRange = targetDetection.AreTargetsInRange;
+            if (areTargetsInRange) callAttackStateBehaviours(true);
+            else callAttackStateBehaviours(false);
+        } 
+    }
+
+    void callAttackStateBehaviours(bool enter)
+    {
+        foreach (ITurretAttackState attackStateBehaviour in attackStateBehaviours)
+        {
+            if (enter) attackStateBehaviour.OnAttackEnter();
+            else attackStateBehaviour.OnAttackExit();
+        }
+    }
+
     void setAnimationState()
     {
         if (anim != null) anim.SetBool("IsShooting", targetDetection.AreTargetsInRange);
@@ -44,6 +67,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
 
     void setSound()
     {
+        if (audioSource == null) return;
         if (!audioSource.isPlaying && areTargetsInRange) audioSource.Play();
         else if (audioSource.isPlaying && !areTargetsInRange) audioSource.Stop();
     }
@@ -52,6 +76,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     {
         turretStats = GetComponentInParent<TurretStats>();
         enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
+        attackStateBehaviours = GetComponents<ITurretAttackState>().ToList();
     }
 
     void initMembers()
@@ -75,7 +100,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     void doDamage()
     {
         if (ReferenceEquals(targetDetection, null)) return;
-        playParticles();
+        //playParticles();
 
         foreach (Transform target in targetDetection.CurrentTargets)
         {

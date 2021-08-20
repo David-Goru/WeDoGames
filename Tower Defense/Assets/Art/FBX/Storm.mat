@@ -33,6 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - StormAppears: 1
     - Vector1_0335e415ffbf4d3d8bc79658d6720dbd: 20
     - Vector1_0eaa4b70a31241c2ba706d45e6c9a35f: 0
     - Vector1_19b2f3c4ece44c4ead1101d16022d2a7: 2
