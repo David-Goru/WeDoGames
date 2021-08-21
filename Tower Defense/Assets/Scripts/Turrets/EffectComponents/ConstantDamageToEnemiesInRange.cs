@@ -6,9 +6,6 @@ using UnityEngine;
 public class ConstantDamageToEnemiesInRange : EffectComponent
 {
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
-    [SerializeField] ParticleSystem particles = null;
-    [SerializeField] Animator anim = null;
-    [SerializeField] AudioSource audioSource = null;
 
     List<ITurretAttackState> attackStateBehaviours = new List<ITurretAttackState>();
 
@@ -30,8 +27,6 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     public override void UpdateComponent()
     {
         checkIfAreTargetsInRangeHasChanged();
-        //setAnimationState();
-        //setSound();
         checkIfDamageChanged();
         if (timer >= damageInterval)
         {
@@ -58,18 +53,6 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
             if (enter) attackStateBehaviour.OnAttackEnter();
             else attackStateBehaviour.OnAttackExit();
         }
-    }
-
-    void setAnimationState()
-    {
-        if (anim != null) anim.SetBool("IsShooting", targetDetection.AreTargetsInRange);
-    }
-
-    void setSound()
-    {
-        if (audioSource == null) return;
-        if (!audioSource.isPlaying && areTargetsInRange) audioSource.Play();
-        else if (audioSource.isPlaying && !areTargetsInRange) audioSource.Stop();
     }
 
     void getDependencies()
@@ -100,17 +83,11 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     void doDamage()
     {
         if (ReferenceEquals(targetDetection, null)) return;
-        //playParticles();
 
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
             if (turretDamageable != null) turretDamageable.OnTurretHit(transform, 1, enemyDamageHandler);
         }
-    }
-
-    void playParticles()
-    {
-        if (particles != null) particles.Play();
     }
 }

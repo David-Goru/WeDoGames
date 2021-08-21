@@ -1,22 +1,34 @@
 using UnityEngine;
 
-public class ASObjectActivation : MonoBehaviour, ITurretAttackState
+public class ASObjectActivation : EffectComponent, ITurretAttackState
 {
-    [SerializeField] GameObject obj = null;
+    [SerializeField] GameObject[] objs = null;
     [SerializeField] bool initialState = false;
 
-    void OnEnable()
+    public override void InitializeComponent()
     {
-        obj.SetActive(initialState);
+        setObjectActivation(initialState);
+    }
+
+    public override void UpdateComponent()
+    {
+    }
+
+    void setObjectActivation(bool active)
+    {
+        foreach (GameObject obj in objs)
+        {
+            obj.SetActive(active);
+        }
     }
 
     public void OnAttackEnter()
     {
-        obj.SetActive(!initialState);
+        setObjectActivation(!initialState);
     }
 
     public void OnAttackExit()
     {
-        obj.SetActive(initialState);
+        setObjectActivation(initialState);
     }
 }

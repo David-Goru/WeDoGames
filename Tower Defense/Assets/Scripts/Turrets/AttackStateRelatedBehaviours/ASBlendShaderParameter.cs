@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ASBlendShaderParameter : MonoBehaviour, ITurretAttackState
+public class ASBlendShaderParameter : EffectComponent, ITurretAttackState
 {
     enum BlendState
     {
@@ -23,14 +23,19 @@ public class ASBlendShaderParameter : MonoBehaviour, ITurretAttackState
         material = meshRenderer.material;
     }
 
-    void OnEnable()
+    public override void InitializeComponent()
+    {
+        initMembers();
+    }
+
+    void initMembers()
     {
         blending = maxValue;
         material.SetFloat(renderParameter, blending);
         blendState = BlendState.NONE;
     }
 
-    void Update()
+    public override void UpdateComponent()
     {
         switch (blendState)
         {

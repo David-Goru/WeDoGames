@@ -280,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 4224321588919385858, guid: ae9d32eee2dc1854d9ed94c86e738d7b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 5.37
       objectReference: {fileID: 0}
     - target: {fileID: 4224321588919385858, guid: ae9d32eee2dc1854d9ed94c86e738d7b,
         type: 3}
@@ -1708,12 +1708,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 320255969}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &953004725 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 400146573680716076, guid: 191002d6c403bed4fbfbfe7c59ace9c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 5316625085382754487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &960560648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,12 +1977,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &1066118358 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1318444810572954095, guid: 191002d6c403bed4fbfbfe7c59ace9c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 5316625085382754487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1090632719
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,43 +2630,6 @@ Transform:
   m_Father: {fileID: 1337283501}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1784346423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5203128731738316651, guid: 191002d6c403bed4fbfbfe7c59ace9c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 5316625085382754487}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1784346431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784346423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea68822930f6b548a2d434fc66dc0d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 953004725}
-  renderParameter: StormAppears
-  minValue: 0
-  maxValue: 1
-  blendingSpeed: 2
---- !u!114 &1784346432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784346423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df7552f5c7b85c4a95a74beccb6ae09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 1066118358}
-  initialState: 0
 --- !u!1 &1788211250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,6 +3244,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosive Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 670727000040579085, guid: c0e7d64528b75554c8ad4a8d8fa13433,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 670727000040579102, guid: c0e7d64528b75554c8ad4a8d8fa13433,
         type: 3}
       propertyPath: m_RootOrder
@@ -3422,11 +3378,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6157477616902100360, guid: eac568587a8431d4886a93108b655e9e,
-        type: 3}
-      propertyPath: m_UseWorldSpace
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eac568587a8431d4886a93108b655e9e, type: 3}
 --- !u!1001 &1994404063491020257
@@ -3496,16 +3447,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Over Growth Turret
       objectReference: {fileID: 0}
-    - target: {fileID: 6663482345343404504, guid: 980710e7a73fb044a825e5532e780e8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8001159705588981883, guid: 980710e7a73fb044a825e5532e780e8c,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 980710e7a73fb044a825e5532e780e8c, type: 3}
 --- !u!4 &5176036813008903222 stripped
@@ -3521,11 +3462,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1670661216}
     m_Modifications:
-    - target: {fileID: 1318444810234750013, guid: 191002d6c403bed4fbfbfe7c59ace9c2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1426702291805429314, guid: 191002d6c403bed4fbfbfe7c59ace9c2,
         type: 3}
       propertyPath: m_RootOrder
@@ -3589,11 +3525,9 @@ PrefabInstance:
     - target: {fileID: 1426702291805429325, guid: 191002d6c403bed4fbfbfe7c59ace9c2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7256907362987601448, guid: 191002d6c403bed4fbfbfe7c59ace9c2, type: 3}
-    - {fileID: 8640502312913693682, guid: 191002d6c403bed4fbfbfe7c59ace9c2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 191002d6c403bed4fbfbfe7c59ace9c2, type: 3}
 --- !u!4 &5976727241040924011 stripped
 Transform:
@@ -3612,6 +3546,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flamethrower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876607102681809634, guid: e350ff1d8b890184c8e45eb1fc090318,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6876607102681809649, guid: e350ff1d8b890184c8e45eb1fc090318,
         type: 3}

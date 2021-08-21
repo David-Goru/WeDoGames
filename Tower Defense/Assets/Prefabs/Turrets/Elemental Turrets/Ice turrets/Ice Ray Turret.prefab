@@ -136,6 +136,9 @@ GameObject:
   - component: {fileID: 6384457409502361933}
   - component: {fileID: 6157477616902100360}
   - component: {fileID: 5932413576417325369}
+  - component: {fileID: 1603023481}
+  - component: {fileID: 1603023482}
+  - component: {fileID: 1603023471}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -153,9 +156,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.005, y: 0.321, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1564582876130213486}
-  - {fileID: 4526785438031536246}
+  m_Children: []
   m_Father: {fileID: 5721921236385434786}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,12 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf54fe12d21bcd4eb95119c53251725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 1442580815892778984}
-  - {fileID: 8483201464830013613}
-  - {fileID: 7820208721617253400}
-  - {fileID: 2879559118201673912}
-  - {fileID: 178153675194372646}
 --- !u!114 &1442580815892778984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +355,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!82 &5932413576417325369
 AudioSource:
@@ -458,6 +453,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1603023481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482186905065672075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationType: 1
+  anim: {fileID: 9148968226131861196}
+  parameterName: IsShooting
+--- !u!114 &1603023482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482186905065672075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopOnExit: 1
+  audioSource: {fileID: 5932413576417325369}
+--- !u!114 &1603023471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482186905065672075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df7552f5c7b85c4a95a74beccb6ae09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objs:
+  - {fileID: 3946473291496106791}
+  - {fileID: 6633907000683103645}
+  initialState: 0
 --- !u!1 &2686005251380540535
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +526,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 768519063925282997}
+  - {fileID: 1564582876130213486}
+  - {fileID: 4526785438031536246}
   m_Father: {fileID: 7288979273215347239}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -546,12 +588,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3946473291496106791}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.94999, z: 0.3875}
+  m_LocalRotation: {x: -0.7071068, y: 0.0000000042160853, z: 0.000000057601156, w: 0.7071067}
+  m_LocalPosition: {x: -0.000050001425, y: 0.0036176087, z: -0.000041568186}
+  m_LocalScale: {x: 1, y: 1, z: 0.3875}
   m_Children: []
-  m_Father: {fileID: 6768445277333631629}
-  m_RootOrder: 1
+  m_Father: {fileID: 1270791346049047535}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &3104237032108067188
 ParticleSystem:
@@ -5530,12 +5572,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6633907000683103645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.012}
-  m_LocalScale: {x: 1, y: 1, z: 0.33665946}
+  m_LocalRotation: {x: -0.7071068, y: 0.0000000042160853, z: 0.000000057601156, w: 0.7071067}
+  m_LocalPosition: {x: -0.000050001403, y: 0.0037376091, z: -0.000041568186}
+  m_LocalScale: {x: 1, y: 1, z: 0.3366595}
   m_Children: []
-  m_Father: {fileID: 6768445277333631629}
-  m_RootOrder: 0
+  m_Father: {fileID: 1270791346049047535}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &5139425733917737059
 ParticleSystem:

@@ -6,6 +6,7 @@ public class StunRandomEnemiesInRange : EffectComponent
     TurretStats turretStats;
 
     float timer = 0f;
+    bool areTargetsInRange = false;
 
     public override void InitializeComponent()
     {
@@ -15,6 +16,7 @@ public class StunRandomEnemiesInRange : EffectComponent
 
     public override void UpdateComponent()
     {
+        checkIfAreTargetsInRangeHasChanged();
         if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
         {
             randomizeEnemies();
@@ -28,7 +30,12 @@ public class StunRandomEnemiesInRange : EffectComponent
     {
         turretStats = GetComponentInParent<TurretStats>();
     }
-    
+
+    void checkIfAreTargetsInRangeHasChanged()
+    {
+
+    }
+
     void randomizeEnemies()
     {
         targetDetection.RandomizeTargets();

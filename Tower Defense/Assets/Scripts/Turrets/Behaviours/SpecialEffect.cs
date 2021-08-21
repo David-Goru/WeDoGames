@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-/// <summary>
-/// This is a class
-/// </summary>
 public class SpecialEffect : MonoBehaviour, ITurretBehaviour
 {
-    [SerializeField] List<EffectComponent> components = null;
+    List<EffectComponent> components = null;
+    
+    void Awake()
+    {
+        components = GetComponents<EffectComponent>().ToList();
+    }
+
     public void InitializeBehaviour()
     {
         foreach (EffectComponent component in components) component.InitializeComponent();

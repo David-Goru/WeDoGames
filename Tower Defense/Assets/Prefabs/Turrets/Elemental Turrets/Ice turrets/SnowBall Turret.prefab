@@ -359,6 +359,8 @@ GameObject:
   - component: {fileID: 169108654005245976}
   - component: {fileID: 8435510888718156883}
   - component: {fileID: 3329924416321774867}
+  - component: {fileID: 1012146128998857825}
+  - component: {fileID: 1738517826963126152}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -392,10 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf54fe12d21bcd4eb95119c53251725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 6354773191730646451}
-  - {fileID: 4687161048777328902}
-  - {fileID: 169108654005245976}
 --- !u!114 &6354773191730646451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +551,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1012146128998857825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114912812976779413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationType: 0
+  anim: {fileID: 1818872794817325426}
+  parameterName: Shoot
+--- !u!114 &1738517826963126152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114912812976779413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopOnExit: 0
+  audioSource: {fileID: 3329924416321774867}
 --- !u!1 &4313652068324611114
 GameObject:
   m_ObjectHideFlags: 0

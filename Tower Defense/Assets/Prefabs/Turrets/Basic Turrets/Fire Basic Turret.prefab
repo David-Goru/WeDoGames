@@ -46,6 +46,9 @@ GameObject:
   - component: {fileID: 8569615013369546081}
   - component: {fileID: 4823833648663414836}
   - component: {fileID: 8910186332964929743}
+  - component: {fileID: 4169618010666931648}
+  - component: {fileID: 212906269645769398}
+  - component: {fileID: 2203518885132472135}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -79,10 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf54fe12d21bcd4eb95119c53251725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 2303027446244830417}
-  - {fileID: 8057493732768039380}
-  - {fileID: 8569615013369546081}
 --- !u!114 &2303027446244830417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +239,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4169618010666931648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079276449249869042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationType: 0
+  anim: {fileID: 5227304785045608866}
+  parameterName: Shoot
+--- !u!114 &212906269645769398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079276449249869042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fbbd109347d184ba435abf52e42b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopOnExit: 0
+  particles: {fileID: 2673810548330701912}
+--- !u!114 &2203518885132472135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079276449249869042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopOnExit: 0
+  audioSource: {fileID: 8910186332964929743}
 --- !u!1 &1156626223359223265
 GameObject:
   m_ObjectHideFlags: 0
