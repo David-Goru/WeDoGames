@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482186905065672075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.321, z: 0.26}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5721921236385434786}
@@ -185,9 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDetection: {fileID: 7820208721617253400}
-  particles: {fileID: 0}
-  anim: {fileID: 9148968226131861196}
-  audioSource: {fileID: 5932413576417325369}
 --- !u!114 &8483201464830013613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +215,9 @@ MonoBehaviour:
   rayOrigin: {fileID: 768519063925282997}
   targetDetection: {fileID: 7820208721617253400}
   line: {fileID: 6157477616902100360}
+  particlesTransform:
+  - {fileID: 1564582876130213486}
+  - {fileID: 4526785438031536246}
 --- !u!114 &178153675194372646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationType: 1
   anim: {fileID: 9148968226131861196}
   parameterName: IsShooting
 --- !u!114 &1603023482
@@ -10440,7 +10439,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 1
+  m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0

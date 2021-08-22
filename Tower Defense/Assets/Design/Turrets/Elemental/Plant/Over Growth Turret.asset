@@ -27,11 +27,11 @@ MonoBehaviour:
   - type: 1
     value: 100
   - type: 4
-    value: 1
+    value: 2
   - type: 5
     value: 3
   - type: 2
-    value: 5
+    value: 3
   - type: 10
     value: 3
   currentStats:
@@ -42,10 +42,10 @@ MonoBehaviour:
   - type: 1
     value: 100
   - type: 4
-    value: 1
+    value: 2
   - type: 5
     value: 3
   - type: 2
-    value: 5
+    value: 3
   - type: 10
     value: 3

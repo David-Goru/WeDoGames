@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5692393735596767224}
   - component: {fileID: 3102923874542317262}
-  - component: {fileID: 5568207559266693559}
-  - component: {fileID: 5276607129144108899}
   - component: {fileID: 197600028024038348}
+  - component: {fileID: 9092589527735198855}
   - component: {fileID: 5443460926055185464}
   - component: {fileID: 6132849358830414815}
   - component: {fileID: 8001159705588981883}
@@ -49,32 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf54fe12d21bcd4eb95119c53251725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5568207559266693559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540680221740730622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ffc09fab18b5b04cae6ce589b8cb72d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetDetection: {fileID: 197600028024038348}
---- !u!114 &5276607129144108899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540680221740730622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a80d2bb90a0d6540a3a7a0f4c6e32dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetDetection: {fileID: 197600028024038348}
 --- !u!114 &197600028024038348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +64,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   debugRange: 2
+--- !u!114 &9092589527735198855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540680221740730622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7c3c793a81fca4caa4dbf969d6347a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 11400000, guid: 6db744fe0537ec143817bd6a0d198505, type: 2}
+  spawnPosition: {fileID: 5692393735596767224}
+  targetDetection: {fileID: 197600028024038348}
 --- !u!114 &5443460926055185464
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class StunRandomEnemiesInRange : EffectComponent
 
     void randomizeEnemies()
     {
-        targetDetection.RandomizeTargets();
+        //targetDetection.RandomizeTargets();
     }
 
     private void stunEnemies()

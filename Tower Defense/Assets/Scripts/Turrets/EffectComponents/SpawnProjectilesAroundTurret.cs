@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnProjectilesAroundTurret : EffectComponent
 {
-    [SerializeField] ParticleSystem particles = null;
     [SerializeField] Pool projectilePool = null;
-    [SerializeField] Animator anim = null;
-    [SerializeField] AudioSource audioSource = null;
+    [SerializeField] float radius = 0.5f;
+    [SerializeField] float height = 0.5f;
     TurretStats turretStats;
     ObjectPooler objectPooler;
+
+    List<ITurretShotBehaviour> shotBehaviours = new List<ITurretShotBehaviour>();
 
     int projectilesSpawned = 0;
     bool isFull = false;
@@ -39,6 +41,7 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     {
         turretStats = GetComponentInParent<TurretStats>();
         objectPooler = ObjectPooler.GetInstance();
+        shotBehaviours = GetComponents<ITurretShotBehaviour>().ToList();
     }
 
     private void initializeMembers()
@@ -57,26 +60,14 @@ public class SpawnProjectilesAroundTurret : EffectComponent
 
     void spawn()
     {
-        playAnimation();
-        playParticles();
-        playSound();
+        callShotBehaviours();
         createAndInitializeProjectile();
         checkIfIsFull();
     }
 
-    void playAnimation()
+    void callShotBehaviours()
     {
-        if (anim != null) anim.SetTrigger("Shoot");
-    }
-
-    void playParticles()
-    {
-        if (particles != null) particles.Play();
-    }
-
-    void playSound()
-    {
-        if (audioSource != null) audioSource.Play();
+        foreach (ITurretShotBehaviour shotBehaviour in shotBehaviours) shotBehaviour.OnShot();
     }
 
     void createAndInitializeProjectile()
@@ -89,8 +80,6 @@ public class SpawnProjectilesAroundTurret : EffectComponent
 
     Vector3 getRandomPositionAroundTurret()
     {
-        float radius = 0.5f;
-        float height = 0.5f;
         int randAngle = UnityEngine.Random.Range(0, 360);
         Vector3 direction = Quaternion.Euler(0, randAngle, 0) * (Vector3.forward * radius + Vector3.up * height);
         Vector3 position = direction + transform.position;

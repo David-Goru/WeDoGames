@@ -354,9 +354,9 @@ GameObject:
   - component: {fileID: 3635183261357315609}
   - component: {fileID: 463329512712690508}
   - component: {fileID: 2323999372933097570}
-  - component: {fileID: 3810158050356086092}
-  - component: {fileID: 6811552542690317944}
-  - component: {fileID: 8977017212739572972}
+  - component: {fileID: 4589763939637078049}
+  - component: {fileID: 1059235195437164091}
+  - component: {fileID: 8821721027826058693}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -404,10 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 361518eb367a3e64d85ace72299b988c, type: 2}
   spawnPosition: {fileID: 2383726746570496109}
-  anim: {fileID: 7630658955178364559}
   targetDetection: {fileID: 3635183261357315609}
-  audioSource: {fileID: 2323999372933097570}
-  particles: {fileID: 7789987182567026894}
 --- !u!114 &3120527549680734892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,7 +544,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3810158050356086092
+--- !u!114 &4589763939637078049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -556,27 +553,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5360968763172892554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 43b14443240a83f458d26d60d24c49ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationType: 0
-  anim: {fileID: 7630658955178364559}
-  parameterName: Shoot
---- !u!114 &6811552542690317944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5360968763172892554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1fbbd109347d184ba435abf52e42b98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopOnExit: 0
   particles: {fileID: 7789987182567026894}
---- !u!114 &8977017212739572972
+--- !u!114 &1059235195437164091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -585,11 +566,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5360968763172892554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
+  m_Script: {fileID: 11500000, guid: be28bbe96cf8e2e448c4a5ce0c2e11c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopOnExit: 0
   audioSource: {fileID: 2323999372933097570}
+--- !u!114 &8821721027826058693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360968763172892554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b001f09bf1475c847a717e86435dbcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7630658955178364559}
+  parameter: Shoot
 --- !u!1 &5442293118653656816
 GameObject:
   m_ObjectHideFlags: 0

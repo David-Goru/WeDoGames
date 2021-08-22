@@ -256,6 +256,8 @@ GameObject:
   - component: {fileID: 7460484674784721487}
   - component: {fileID: 177974009844130681}
   - component: {fileID: 6275928706609203339}
+  - component: {fileID: 2950118971777348852}
+  - component: {fileID: 5840024076560886389}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -289,8 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf54fe12d21bcd4eb95119c53251725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 6275928706609203339}
 --- !u!114 &6275928706609203339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,10 +303,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd119efaf4ee9f74996926e7b12600c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 0}
   projectilePool: {fileID: 11400000, guid: 68004b0387962b847a78b054c9bacf9a, type: 2}
+  radius: 0.5
+  height: 0.25
+--- !u!114 &2950118971777348852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384287399998719305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b14443240a83f458d26d60d24c49ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 4095119504110525508}
+--- !u!114 &5840024076560886389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384287399998719305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b001f09bf1475c847a717e86435dbcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   anim: {fileID: 2988053427147499558}
-  audioSource: {fileID: 0}
+  parameter: Shoot
 --- !u!1 &3802090458921966993
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +742,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

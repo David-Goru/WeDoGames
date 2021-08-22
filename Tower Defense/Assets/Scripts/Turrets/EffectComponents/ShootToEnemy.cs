@@ -10,22 +10,26 @@ public class ShootToEnemy : EffectComponent
     [SerializeField] CurrentTargetsOnRange targetDetection = null;
 
     List<ITurretAttackState> attackStateBehaviours = new List<ITurretAttackState>();
+    List<ITurretShotBehaviour> shotBehaviours = new List<ITurretShotBehaviour>();
     ObjectPooler objectPooler;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
     float timer = 0;
+    bool areTargetsInRange = false;
 
     public CurrentTargetsOnRange TargetDetection { set { targetDetection = value; } get { return targetDetection; } }
 
     public override void InitializeComponent()
     {
+        areTargetsInRange = false;
         getDependencies();
         resetTimer();
     }
 
     public override void UpdateComponent()
     {
-        shootEnemies();
+        checkIfAreTargetsInRangeHasChanged();
+        if(areTargetsInRange) shootEnemies();
     }
 
     void getDependencies()
@@ -35,29 +39,47 @@ public class ShootToEnemy : EffectComponent
         targetDetection = GetComponent<CurrentTargetsOnRange>();
         enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
         attackStateBehaviours = GetComponents<ITurretAttackState>().ToList();
+        shotBehaviours = GetComponents<ITurretShotBehaviour>().ToList();
+    }
+
+    void checkIfAreTargetsInRangeHasChanged()
+    {
+        if (areTargetsInRange != targetDetection.AreTargetsInRange)
+        {
+            areTargetsInRange = targetDetection.AreTargetsInRange;
+            if (areTargetsInRange) callAttackStateBehaviours(true);
+            else
+            {
+                callAttackStateBehaviours(false);
+                resetTimer();
+            }
+        }
+    }
+
+    void callAttackStateBehaviours(bool enter)
+    {
+        foreach (ITurretAttackState attackStateBehaviour in attackStateBehaviours)
+        {
+            if (enter) attackStateBehaviour.OnAttackEnter();
+            else attackStateBehaviour.OnAttackExit();
+        }
     }
 
     void shootEnemies()
     {
         if (ReferenceEquals(targetDetection, null)) return;
-        foreach (Transform target in targetDetection.CurrentTargets) shootEnemy(target);
-    }
-
-    void shootEnemy(Transform enemy)
-    {
-        if(enemy == null)  resetTimer();
-        else if(timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
+        if (timer >= turretStats.GetStatValue(StatType.ATTACKSPEED))
         {
-            spawnAndInitializeProjectile(enemy);
-            callAttackStateBehaviours();
+            foreach (Transform target in targetDetection.CurrentTargets) spawnAndInitializeProjectile(target);
+            callShotBehaviours();
             resetTimer();
         }
         else timer += Time.deltaTime;
     }
 
-    void callAttackStateBehaviours()
+    void callShotBehaviours()
     {
-        foreach (ITurretAttackState attackStateBehaviour in attackStateBehaviours) attackStateBehaviour.OnAttackEnter();
+        foreach (ITurretShotBehaviour shotBehaviour in shotBehaviours) shotBehaviour.OnShot();
     }
 
     void spawnAndInitializeProjectile(Transform enemy)

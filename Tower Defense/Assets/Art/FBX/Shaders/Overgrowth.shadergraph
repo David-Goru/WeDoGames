@@ -1595,7 +1595,7 @@
     },
     "m_Name": "Grow",
     "m_DefaultReferenceName": "Vector1_8b9737e1d0644aa8a0e80ed62c11dc02",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "Grow",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,

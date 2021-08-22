@@ -231,8 +231,8 @@ GameObject:
   - component: {fileID: 6028544479383568129}
   - component: {fileID: 7472985900853195348}
   - component: {fileID: 4065318653982732841}
-  - component: {fileID: 2734920888227086109}
-  - component: {fileID: 3958628595793449450}
+  - component: {fileID: 7038518403822542334}
+  - component: {fileID: 5600451799836160760}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -280,10 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 9ae6610d76eb20148b7b62b81730b69b, type: 2}
   spawnPosition: {fileID: 2247257446963249562}
-  anim: {fileID: 3867934579564624011}
   targetDetection: {fileID: 6028544479383568129}
-  audioSource: {fileID: 4065318653982732841}
-  particles: {fileID: 0}
 --- !u!114 &5374243426053192628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +420,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2734920888227086109
+--- !u!114 &7038518403822542334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -432,26 +429,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3152112947103794834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
+  m_Script: {fileID: 11500000, guid: be28bbe96cf8e2e448c4a5ce0c2e11c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationType: 0
-  anim: {fileID: 3867934579564624011}
-  parameterName: Shoot
---- !u!114 &3958628595793449450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3152112947103794834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopOnExit: 0
   audioSource: {fileID: 4065318653982732841}
+--- !u!114 &5600451799836160760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152112947103794834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b001f09bf1475c847a717e86435dbcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 3867934579564624011}
+  parameter: Shoot
 --- !u!1 &3849020335383754884
 GameObject:
   m_ObjectHideFlags: 0

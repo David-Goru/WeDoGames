@@ -12,7 +12,7 @@ public class EnemyTest : MonoBehaviour, ITurretDamage, ISlowable, IPoisonable, I
 
     private void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
         initialColor = meshRenderer.material.color;
     }
 

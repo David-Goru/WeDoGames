@@ -8,7 +8,7 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
     TurretStats turretStats;
     List<Transform> currentTargets = new List<Transform>();
 
-    public override List<Transform> CurrentTargets { get { return currentTargets; } }
+    public override List<Transform> CurrentTargets { get { return getTargets(); } }
 
 
     public override void InitializeComponent()
@@ -20,6 +20,14 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
 
     public override void UpdateComponent()
     {
+        checkIfAreEnemiesNear();
+    }
+
+    void checkIfAreEnemiesNear()
+    {
+        float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
+        List<Transform> targets = targetsDetector.GetTargets(range, targetLayer);
+        areTargetsInRange = targets.Count > 0;
     }
 
     private void getDependencies()
@@ -28,7 +36,13 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
         targetsDetector = GetComponent<ITargetsDetector>();
     }
 
-    public void RandomizeTargets()
+    List<Transform> getTargets()
+    {
+        randomizeTargets();
+        return currentTargets;
+    }
+
+    void randomizeTargets()
     {
         clearTargets();
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
