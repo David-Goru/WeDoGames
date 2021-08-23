@@ -573,7 +573,7 @@ MonoBehaviour:
   buildingGrid: {fileID: 2800000, guid: f7b82bac1d296f144924f1ab22bae71e, type: 3}
   grid: {fileID: 102513636}
   stopBuildingButton: {fileID: 1011053995}
-  buildSound: {fileID: 0}
+  buildSound: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
   vertexSize: 0
   groundSprite: {fileID: 0}
   ground: {fileID: 0}
@@ -682,7 +682,7 @@ MonoBehaviour:
   activesCooldownController: {fileID: 537000336}
   activeAreaPrefab: {fileID: 5700410670610817887, guid: 80b344b6cb9bcbe499aa01f4f12bee8f,
     type: 3}
-  startActiveSound: {fileID: 0}
+  startActiveSound: {fileID: 8300000, guid: 8ad835abbb63cf341b0d6c048a86a381, type: 3}
 --- !u!114 &537000336
 MonoBehaviour:
   m_ObjectHideFlags: 0

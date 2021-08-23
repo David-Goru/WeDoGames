@@ -12,7 +12,7 @@ public class TurretFocusedEnemy : BaseAI
     {
         base.EnemyUpdate();
 
-        if (isTargetingNexus() && isAnyTurretAlive())
+        if (isTargetingNexus() && isAnyTurretAlive() && !isEnemyUnderCC())
         {
             setNewGoal();
             currentState = new Move(this, anim, goal);
@@ -44,5 +44,10 @@ public class TurretFocusedEnemy : BaseAI
     bool isTargetingNexus()
     {
         return goal == Nexus.GetTransform;
+    }
+
+    bool isEnemyUnderCC()
+    {
+        return IsKnockbacked || IsStunned || IsFeared;
     }
 }
