@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 // </summary>
 
 [SelectionBase]
-public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable
+public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable, IDamageReductible
 {
     [SerializeField] EnemyInfo info = null;
 
@@ -297,6 +297,22 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         StopCoroutine("FollowPath");
 
         currentState = new Knockback(this, anim, goal);
+    }
+
+    public void ReduceDamage(float secondsDamageReduced, float damageReduction)
+    {
+        StartCoroutine(reduceDamageTimer(secondsDamageReduced, damageReduction));
+    }
+
+    IEnumerator reduceDamageTimer(float seconds, float damage)
+    {
+        int previousDamage = info.Damage;
+
+        info.Damage = (int)damage;
+
+        yield return new WaitForSeconds(seconds);
+
+        info.Damage = previousDamage;
     }
 
     public void GetDamage(int damage)
