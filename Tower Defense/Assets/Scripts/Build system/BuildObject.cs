@@ -171,9 +171,9 @@ public class BuildObject : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
 
-        List<Base_AI> allEnemies = EnemiesActive.Instance.enemiesList;
+        List<BaseAI> allEnemies = ActiveEnemies.Instance.enemiesList;
 
-        foreach (Base_AI enemy in allEnemies)
+        foreach (BaseAI enemy in allEnemies)
         {
             enemy.checkPath();
         }

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemiesActive : MonoBehaviour
+public class ActiveEnemies : MonoBehaviour
 {
-    public List<Base_AI> enemiesList;
+    public List<BaseAI> enemiesList;
 
-    private static EnemiesActive instance;
+    private static ActiveEnemies instance;
 
-    public static EnemiesActive Instance
+    public static ActiveEnemies Instance
     {
         get
         {
@@ -20,13 +20,13 @@ public class EnemiesActive : MonoBehaviour
     void Awake()
     {
         if (instance == null) instance = this;
-        enemiesList = new List<Base_AI>();
+        enemiesList = new List<BaseAI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach(Base_AI enemy in enemiesList)
+        foreach(BaseAI enemy in enemiesList)
         {
             enemy.EnemyUpdate();
         }

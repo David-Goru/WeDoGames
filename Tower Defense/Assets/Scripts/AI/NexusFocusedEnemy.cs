@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class NexusFocusedEnemy : Base_AI
+public class NexusFocusedEnemy : BaseAI
 {
     public override void OnObjectSpawn()
     {

@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-// <summary>
-// FSM state Attack. In this state the AI will go to the target position and attack it.
-// </summary>
 public class Attack : State
 {
 	float attackTimer;
@@ -14,7 +11,7 @@ public class Attack : State
 
 	Vector3 shootOffset = new Vector3(0f, 0.95f, 0f);
 
-	public Attack(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
+	public Attack(BaseAI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		name = STATE.ATTACK;
 		//Modify agent properties like speed, etc.

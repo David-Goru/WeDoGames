@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurretFocusedEnemy : Base_AI
+public class TurretFocusedEnemy : BaseAI
 {
     public override void OnObjectSpawn()
     {
@@ -12,7 +12,7 @@ public class TurretFocusedEnemy : Base_AI
     {
         base.EnemyUpdate();
 
-        if (isTargetingNexus() && isAnyTurretAlive()) return; //Change currentState to Move to the recently spawned turret
+        if (isTargetingNexus() && isAnyTurretAlive()) currentState = new Move(this, anim, getRandomTarget());
     }
 
     public override void setNewGoal()
@@ -22,19 +22,19 @@ public class TurretFocusedEnemy : Base_AI
 
     Transform findGoal()
     {
-        if (isAnyTurretAlive()) return getClosestTarget();
+        if (isAnyTurretAlive()) return getRandomTarget();
 
         return Nexus.GetTransform;
     }
 
-    Transform getClosestTarget()
+    Transform getRandomTarget()
     {
-        return transform; //Here is where the AI have to decide where is its turret target
+        return Master.Instance.ActiveTurrets[Random.Range(0, Master.Instance.ActiveTurrets.Count)].transform;
     }
 
     bool isAnyTurretAlive()
     {
-        return false;
+        return Master.Instance.ActiveTurrets.Count > 0;
     }
 
     bool isTargetingNexus()

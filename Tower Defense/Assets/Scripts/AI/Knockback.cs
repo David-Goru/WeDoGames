@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 
-// <summary>
-// FSM state Knockback. Enemies on this state will be pushed in the opposite direction they were hit.
-// </summary>
 public class Knockback : State
 {
 	RaycastHit hit;
@@ -14,7 +11,7 @@ public class Knockback : State
 
 	LayerMask obstacleLayerMask = LayerMask.GetMask("Object");
 
-	public Knockback(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
+	public Knockback(BaseAI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		name = STATE.KNOCKBACK;
 	}

@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 
-// <summary>
-// Finite State Machine for AI enemies. Also detects turrets hitting the enemies.
-// </summary>
 public class State
 {
 	public enum STATE
@@ -18,13 +15,13 @@ public class State
     private Transform target;
 	protected STATE name;
 	protected EVENT stage;
-	protected Base_AI npc;
+	protected BaseAI npc;
 	protected Animator anim;
     protected State nextState;
 
 	public Transform Target { get => target; set => target = value; }
 
-    public State(Base_AI _npc, Animator _anim, Transform _target)
+    public State(BaseAI _npc, Animator _anim, Transform _target)
 	{
 		npc = _npc;
 		anim = _anim;

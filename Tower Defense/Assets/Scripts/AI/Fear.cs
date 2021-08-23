@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 
-// <summary>
-// FSM state Fear. Enemies on this state will run away in the opposite direction
-// </summary>
 public class Fear : State
 {
 	float fearDuration;
 
-	public Fear(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
+	public Fear(BaseAI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		name = STATE.FEAR;
 	}

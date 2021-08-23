@@ -1,13 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
-// <summary>
-// Base class for AI enemies. It will trigger the initial behaviours and make the calls to the pathfinding system.
-// </summary>
 
 [SelectionBase]
-public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable, IDamageReductible
+public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable, IDamageReductible
 {
     [SerializeField] EnemyInfo info = null;
     [SerializeField] Color poisonColor = Color.green;
@@ -18,8 +13,8 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     [SerializeField] IEnemyDamageHandler currentTurretDamage;
     [SerializeField] LayerMask objectsLayer = new LayerMask();
 
-    Animator anim;
-    State currentState;
+    protected Animator anim;
+    protected State currentState;
     Material material;
 
     Vector3[] path;
@@ -68,7 +63,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         currentState = new Move(this, anim, goal);
         currentTurret = null;
 
-        EnemiesActive.Instance.enemiesList.Add(this);
+        ActiveEnemies.Instance.enemiesList.Add(this);
     }
 
     public virtual void EnemyUpdate()
@@ -114,7 +109,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         StopAllCoroutines();
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
         Waves.KillEnemy();
-        EnemiesActive.Instance.enemiesList.Remove(this);
+        ActiveEnemies.Instance.enemiesList.Remove(this);
     }
 
     public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)

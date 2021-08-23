@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 
-// <summary>
-// FSM state Move. It will request paths to the pathfinding system.
-// </summary>
 public class Move : State
 {
-	public Move(Base_AI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
+	public Move(BaseAI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
 		name = STATE.MOVE;
 	}
