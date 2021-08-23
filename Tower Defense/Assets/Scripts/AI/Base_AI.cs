@@ -237,21 +237,30 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         if (!gameObject.activeSelf) return;
 
-        if (currentPoison != null) StopCoroutine(currentPoison);
+        if (currentPoison != null)
+        {
+            StopCoroutine(currentPoison);
+            transform.Find("Model").Find("Color").GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+        }
         currentPoison = StartCoroutine(poisonEnemy(secondsPoisoned, damagePerSecond));
     }
 
     IEnumerator poisonEnemy(float secondsPoisoned, float damagePerSecond)
     {
         // Enable visual effects?
+        Material material = transform.Find("Model").Find("Color").GetComponent<Renderer>().material;
+        Color defaultColor = material.color;
+        Color poisonColor = new Color(1, 0, 0);
 
         int timer = 0;
+        material.color = poisonColor;
         while (timer < secondsPoisoned)
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1f);
             GetDamage(Mathf.RoundToInt(damagePerSecond));
             timer++;
         }
+        material.color = defaultColor;
 
         // Disable visual effects?
 
