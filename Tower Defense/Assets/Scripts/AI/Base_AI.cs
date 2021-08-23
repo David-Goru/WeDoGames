@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable, IDamageReductible
 {
     [SerializeField] EnemyInfo info = null;
-    [SerializeField] Color poisonColor = Color.green;
 
     [Header("Debug")]
     [SerializeField] Transform goal;
@@ -20,7 +19,6 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     Animator anim;
     State currentState;
-    Material material;
 
     Vector3[] path;
     Vector3 currentWaypoint;
@@ -56,7 +54,6 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     public void OnObjectSpawn()
     {
-        setUpMaterial();
         title = info.name;
         currentHP = Info.MaxHealth;
         maxHP = Info.MaxHealth;
@@ -83,26 +80,6 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     void OnDisable()
     {
         StopCoroutine("FollowPath");
-    }
-
-    void setUpMaterial()
-    {
-        Transform model = transform.Find("Model");
-        if (model != null)
-        {
-            Transform modelWithColor = model.Find("Color");
-            if (modelWithColor != null)
-            {
-                Renderer renderer = model.Find("Color").GetComponent<Renderer>();
-                material = renderer.material;
-            }
-        }
-    }
-
-    void changeMaterialColor(Color newColor)
-    {
-        if (material == null) return;
-        material.color = newColor;
     }
 
     bool isTargetTurretDead()
@@ -263,24 +240,30 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         if (currentPoison != null)
         {
             StopCoroutine(currentPoison);
-            changeMaterialColor(Color.white);
+            transform.Find("Model").Find("Color").GetComponent<Renderer>().material.color = new Color(1, 1, 1);
         }
         currentPoison = StartCoroutine(poisonEnemy(secondsPoisoned, damagePerSecond));
     }
 
     IEnumerator poisonEnemy(float secondsPoisoned, float damagePerSecond)
     {
-        changeMaterialColor(poisonColor);
+        // Enable visual effects?
+        Material material = transform.Find("Model").Find("Color").GetComponent<Renderer>().material;
+        Color defaultColor = material.color;
+        Color poisonColor = new Color(1, 0, 0);
 
         int timer = 0;
+        material.color = poisonColor;
         while (timer < secondsPoisoned)
         {
             yield return new WaitForSeconds(1f);
             GetDamage(Mathf.RoundToInt(damagePerSecond));
             timer++;
         }
+        material.color = defaultColor;
 
-        changeMaterialColor(Color.white);
+        // Disable visual effects?
+
         currentPoison = null;
     }
 
