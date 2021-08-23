@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 3329924416321774867}
   - component: {fileID: 9173949519827749451}
   - component: {fileID: 201810183337299027}
+  - component: {fileID: 3942845355853151190}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -575,6 +576,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1818872794817325426}
   parameter: Shoot
+--- !u!114 &3942845355853151190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114912812976779413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b14443240a83f458d26d60d24c49ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 4353467298452242318}
 --- !u!1 &4313652068324611114
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,21 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ExtractEnergy : EffectComponent
 {
-    [SerializeField] Animator anim = null;
-    [SerializeField] AudioSource audioSource = null;
 
     TurretStats turretStats;
     Master master;
 
+    List<ITurretAttackState> attackStateBehaviours = new List<ITurretAttackState>();
+
     bool onPlanningPhase = true;
     float timer = 0f;
 
-    public override void InitializeComponent()
+    private void Start()
     {
         getDependencies();
+    }
+
+    public override void InitializeComponent()
+    {
         initMembers();
+    }
+
+    void getDependencies()
+    {
+        turretStats = GetComponentInParent<TurretStats>();
+        master = Master.Instance;
+        attackStateBehaviours = GetComponents<ITurretAttackState>().ToList();
     }
 
     public override void UpdateComponent()
@@ -37,40 +50,31 @@ public class ExtractEnergy : EffectComponent
         if(onPlanningPhase != Waves.OnPlanningPhase)
         {
             onPlanningPhase = Waves.OnPlanningPhase;
-            if (onPlanningPhase)
-            {
-                setAnimationState(false);
-                timer = 0f;
-            }
-            else setAnimationState(true);
+            if (onPlanningPhase) timer = 0f;
+            callAttackStateBehaviours(!onPlanningPhase);
         }
     }
 
-    void getDependencies()
+    void callAttackStateBehaviours(bool enter)
     {
-        turretStats = GetComponentInParent<TurretStats>();
-        master = Master.Instance;
+        foreach (ITurretAttackState attackStateBehaviour in attackStateBehaviours)
+        {
+            if (enter) attackStateBehaviour.OnAttackEnter();
+            else attackStateBehaviour.OnAttackExit();
+        }
     }
 
     void initMembers()
     {
         onPlanningPhase = true;
         timer = 0f;
-        setAnimationState(false);
     }
 
     void extract()
     {
+        print(master);
+        print(turretStats);
         master.UpdateBalance(turretStats.GetStatValue(StatType.ENERGYTOEXTRACT));
     }
 
-    void setAnimationState(bool isExtracting)
-    {
-        if (anim != null) anim.SetBool("IsExtracting", isExtracting);
-    }
-    /*
-    void playSound()
-    {
-        if (audioSource != null) audioSource.Play();
-    }*/
 }

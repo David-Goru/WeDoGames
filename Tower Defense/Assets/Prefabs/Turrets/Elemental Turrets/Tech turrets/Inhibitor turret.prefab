@@ -362,7 +362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4986546768068225284
 Transform:
   m_ObjectHideFlags: 0
@@ -385,13 +385,13 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5613198591271662078}
   serializedVersion: 7
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -5220,6 +5220,7 @@ GameObject:
   - component: {fileID: 2568921151380922159}
   - component: {fileID: 6461830183991369867}
   - component: {fileID: 8249458860710080105}
+  - component: {fileID: 1569536275548936843}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -5253,9 +5254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf54fe12d21bcd4eb95119c53251725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 8249458860710080105}
-  - {fileID: 6461830183991369867}
 --- !u!114 &2568921151380922159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5297,6 +5295,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   debugRange: 2
+--- !u!114 &1569536275548936843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047170839845497833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df7552f5c7b85c4a95a74beccb6ae09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objs:
+  - {fileID: 5613198591271662078}
+  initialState: 0
 --- !u!1 &9211295041777061340
 GameObject:
   m_ObjectHideFlags: 0
