@@ -356,12 +356,17 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("TurretTrigger") && currentTurret == null)
+        if (other.CompareTag("TurretTrigger") && currentTurret == null && !isEnemyUnderCC())
         {
             currentTurretDamage = other.transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
             currentTurret = other.transform.parent;
             currentState = new Move(this, anim, currentTurret);
         }
+    }
+
+    protected bool isEnemyUnderCC()
+    {
+        return IsKnockbacked || IsStunned || IsFeared;
     }
 
     void resetEnemyCC()

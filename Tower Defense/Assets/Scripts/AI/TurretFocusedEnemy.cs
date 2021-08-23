@@ -45,9 +45,4 @@ public class TurretFocusedEnemy : BaseAI
     {
         return goal == Nexus.GetTransform;
     }
-
-    bool isEnemyUnderCC()
-    {
-        return IsKnockbacked || IsStunned || IsFeared;
-    }
 }
