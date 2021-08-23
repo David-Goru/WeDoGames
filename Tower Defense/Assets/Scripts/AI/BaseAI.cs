@@ -33,6 +33,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     bool isStunned;
     bool isFeared;
     bool isKnockbacked;
+    bool isSlowed;
     bool pathReached;
     bool pathSuccessful;
 
@@ -239,8 +240,13 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     IEnumerator slowEnemy(float secondsSlowed, float slowReduction)
     {
-        baseSpeed = speed;
-        baseRotationSpeed = rotationSpeed;
+        isSlowed = true;
+
+        if (!isFeared)
+        {
+            baseSpeed = speed;
+            baseRotationSpeed = rotationSpeed;
+        }
         baseAttackSpeed = attackSpeed;
 
         speed *= slowReduction;
@@ -251,11 +257,16 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         yield return new WaitForSeconds(secondsSlowed);
 
-        speed = baseSpeed;
-        rotationSpeed = baseRotationSpeed;
+        if (!isFeared)
+        {
+            speed = baseSpeed;
+            rotationSpeed = baseRotationSpeed;
+
+            anim.SetFloat("animSpeed", 1.0f);
+        }
         attackSpeed = baseAttackSpeed;
 
-        anim.SetFloat("animSpeed", 1.0f);
+        isSlowed = false;
     }
 
     Coroutine currentPoison = null;
@@ -304,7 +315,12 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     IEnumerator fearEnemy(float secondsFear)
     {
-        //Maybe we should also pass the slow values
+        if (!isSlowed)
+        {
+            baseSpeed = speed;
+            baseRotationSpeed = rotationSpeed;
+        }
+
         speed /= 2f;
         rotationSpeed *= 2f;
 
@@ -312,8 +328,11 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         yield return new WaitForSeconds(secondsFear);
 
-        speed *= 2f;
-        rotationSpeed /= 2f;
+        if (!isSlowed)
+        {
+            speed = baseSpeed;
+            rotationSpeed = baseRotationSpeed;
+        }
 
         anim.SetFloat("animSpeed", 1f);
     }
@@ -366,7 +385,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     protected bool isEnemyUnderCC()
     {
-        return IsKnockbacked || IsStunned || IsFeared;
+        return isKnockbacked || isStunned || isFeared;
     }
 
     void resetEnemyCC()
