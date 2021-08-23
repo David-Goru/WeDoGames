@@ -60,7 +60,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7647630509496845420}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.18453038
   m_Height: 1.1289823
@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: da7cd7774ce38ad45a62cd63b8659205, type: 2}
+  poisonColor: {r: 0, g: 1, b: 0, a: 1}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
   objectsLayer:

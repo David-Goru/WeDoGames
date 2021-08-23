@@ -12,7 +12,11 @@ public class TurretFocusedEnemy : BaseAI
     {
         base.EnemyUpdate();
 
-        if (isTargetingNexus() && isAnyTurretAlive()) currentState = new Move(this, anim, getRandomTarget());
+        if (isTargetingNexus() && isAnyTurretAlive())
+        {
+            setNewGoal();
+            currentState = new Move(this, anim, goal);
+        }
     }
 
     public override void setNewGoal()

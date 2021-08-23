@@ -43,7 +43,7 @@ public class Attack : State
 
 		if (npc.transform.rotation != npcRotation) npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, npcRotation, rotationSpeed * Time.deltaTime);
 
-		if (!Target.gameObject.activeSelf && npc.Goal.gameObject.activeSelf)
+		if (!Target.gameObject.activeSelf)
         {
 			npc.setNewGoal();
 			nextState = new Move(npc, anim, npc.Goal);
