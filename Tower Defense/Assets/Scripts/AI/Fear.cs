@@ -27,7 +27,7 @@ public class Fear : State
 		if (fearDuration <= 0)
 		{
 			npc.setNewGoal();
-			nextState = new Move(npc, anim, npc.Goal);
+			nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
 	}

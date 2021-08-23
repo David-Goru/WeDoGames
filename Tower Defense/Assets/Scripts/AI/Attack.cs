@@ -23,7 +23,7 @@ public class Attack : State
 		base.Enter();
 
 		npcRotation = Quaternion.LookRotation(new Vector3(Target.position.x, npc.transform.position.y, Target.position.z) - npc.transform.position);
-		timeBetweenAttacks = 1 / npc.Info.AttackSpeed;
+		timeBetweenAttacks = 1 / npc.AttackSpeed;
 		attackDelay = getClipLength(anim, "Attack") / 2f;
 
 		npc.StartCoroutine(dealDamage());
@@ -37,7 +37,6 @@ public class Attack : State
 			resetTimer();
 			npc.StartCoroutine(dealDamage());
 
-			//anim.ResetTrigger("attacking");
 			anim.SetTrigger("attacking");
 		}
 
@@ -49,6 +48,8 @@ public class Attack : State
 			nextState = new Move(npc, anim, npc.Goal);
 			stage = EVENT.EXIT;
 		}
+
+		timeBetweenAttacks = 1 / npc.AttackSpeed;
 	}
 
 	public override void Exit()

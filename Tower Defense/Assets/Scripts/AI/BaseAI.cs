@@ -24,6 +24,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     int targetIndex;
 
     float speed;
+    float attackSpeed;
     float rotationSpeed;
     float stunDuration;
     float pushDistance;
@@ -48,6 +49,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     public bool IsKnockbacked { get => isKnockbacked; set => isKnockbacked = value; }
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
     public bool IsFeared { get => isFeared; set => isFeared = value; }
+    public float AttackSpeed { get => attackSpeed; }
 
     public virtual void OnObjectSpawn()
     {
@@ -60,6 +62,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         resetEnemyCC();
         speed = info.DefaultSpeed;
         rotationSpeed = info.InitRotationSpeed;
+        attackSpeed = info.AttackSpeed;
         currentState = new Move(this, anim, goal);
         currentTurret = null;
 
@@ -218,6 +221,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     float baseSpeed = 0.0f;
     float baseRotationSpeed = 0.0f;
+    float baseAttackSpeed = 0.0f;
     Coroutine currentSlow = null;
     public void Slow(float secondsSlowed, float slowReduction)
     {
@@ -228,6 +232,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
             StopCoroutine(currentSlow);
             speed = baseSpeed;
             rotationSpeed = baseRotationSpeed;
+            attackSpeed = baseAttackSpeed;
         }
         currentSlow = StartCoroutine(slowEnemy(secondsSlowed, slowReduction));
     }
@@ -236,16 +241,19 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         baseSpeed = speed;
         baseRotationSpeed = rotationSpeed;
+        baseAttackSpeed = attackSpeed;
 
-        speed -= slowReduction;
-        rotationSpeed -= slowReduction;
+        speed *= slowReduction;
+        rotationSpeed *= slowReduction;
+        attackSpeed *= slowReduction;
 
-        anim.SetFloat("animSpeed", 0.5f); //This could be slowReduction, but for now lets always leave it to half the speed for visual feedback
+        anim.SetFloat("animSpeed", slowReduction);
 
         yield return new WaitForSeconds(secondsSlowed);
 
         speed = baseSpeed;
         rotationSpeed = baseRotationSpeed;
+        attackSpeed = baseAttackSpeed;
 
         anim.SetFloat("animSpeed", 1.0f);
     }
