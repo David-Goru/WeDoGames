@@ -219,10 +219,10 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         baseSpeed = speed;
         baseRotationSpeed = rotationSpeed;
 
-        speed -= speed * slowReduction;
-        rotationSpeed -= rotationSpeed * slowReduction;
+        speed -= slowReduction;
+        rotationSpeed -= slowReduction;
 
-        anim.SetFloat("animSpeed", slowReduction);
+        anim.SetFloat("animSpeed", 0.5f); //This could be slowReduction, but for now lets always leave it to half the speed for visual feedback
 
         yield return new WaitForSeconds(secondsSlowed);
 
@@ -308,7 +308,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         int previousDamage = info.Damage;
 
-        info.Damage = (int)damage;
+        info.Damage -= (int)damage;
 
         yield return new WaitForSeconds(seconds);
 
