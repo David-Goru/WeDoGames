@@ -20,7 +20,7 @@ public class TurretDamageable : EnemyDamage
         turretStats.CurrentHP -= damage;
         if (turretStats.CurrentHP <= 0)
         {
-            Master.Instance.NumberOfTurrets--;
+            Master.Instance.ActiveTurrets.Remove(transform.parent.gameObject);
             turretStats.BuildingInfo.NumberOfTurretsPlaced--;
 
             if (turretNoHealthBehaviours.Count == 0)

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Master : MonoBehaviour
 {
@@ -12,15 +13,16 @@ public class Master : MonoBehaviour
     [System.NonSerialized] public BuildObject BuildObject;
 
     public static Master Instance;
-    public int NumberOfTurrets = 0;
     public int WavesWithoutBuildingTurrets = 0;
     public bool NoActivesUsedInLastWave = false;
+    public List<GameObject> ActiveTurrets;
 
     void Start()
     {
         if (Instance == null) Instance = this;
         if (audioScript == null) Debug.Log("Audio script not specified at Master script");
 
+        ActiveTurrets = new List<GameObject>();
         MasterInfo.InitializeVariables();
 
         UI.AddChatCommand("addMoney", addMoney);

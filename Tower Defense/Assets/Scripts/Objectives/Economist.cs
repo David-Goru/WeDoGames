@@ -9,7 +9,7 @@ public class Economist : Objective
     public override void UpdateCompleteState()
     {
         if (Completed) return;
-        Completed = Master.Instance.NumberOfTurrets <= maxNumberOfTurrets;
+        Completed = Master.Instance.ActiveTurrets.Count <= maxNumberOfTurrets;
     }
 
     public override void SetDisplayText()
