@@ -28,8 +28,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4387422265296729653}
-  - component: {fileID: 8062347098805051269}
   - component: {fileID: 798228652551407103}
+  - component: {fileID: 4990728633428542913}
   m_Layer: 8
   m_Name: Fairy 0
   m_TagString: Fairy
@@ -52,24 +52,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8062347098805051269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4042943404962123225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e80289d9072954cabd1c4375bd9929, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 119080b272858d14a9d923cad3e96652, type: 2}
-  goal: {fileID: 0}
-  currentTurret: {fileID: 0}
-  objectsLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!136 &798228652551407103
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -84,6 +66,24 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &4990728633428542913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042943404962123225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71686bd1ed4e6a4bb61f5d8756cc890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: 119080b272858d14a9d923cad3e96652, type: 2}
+  goal: {fileID: 0}
+  currentTurret: {fileID: 0}
+  objectsLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1001 &3158516400644022254
 PrefabInstance:
   m_ObjectHideFlags: 0

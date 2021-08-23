@@ -21,11 +21,12 @@ public class Knockback : State
 
 	public override void Enter()
 	{
+		npc.IsStunned = false; //Just in case stun got interrupted
+		npc.IsFeared = false; //Just in case fear got interrupted
 		anim.ResetTrigger("moving");
-		anim.SetTrigger("stunned");
+		anim.SetBool("stunned", true);
 		base.Enter();
 
-		npc.CurrentTurret = null;
 		pushDistance = npc.PushDistance;
 		pushDirection = npc.PushDirection;
 		originPos = npc.transform.position;
@@ -52,7 +53,8 @@ public class Knockback : State
 
 	public override void Exit()
 	{
-		anim.ResetTrigger("stunned");
+		anim.SetBool("stunned", false);
+		anim.SetFloat("animSpeed", 1.0f);
 		npc.IsKnockbacked = false;
 		base.Exit();
 	}

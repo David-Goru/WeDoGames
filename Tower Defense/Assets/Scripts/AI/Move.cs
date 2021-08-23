@@ -14,6 +14,7 @@ public class Move : State
 	{
 		npc.PathReached = false;
 		anim.SetTrigger("moving");
+		anim.SetFloat("animSpeed", 1.0f);
 		base.Enter();
 
 		if (Target == null)

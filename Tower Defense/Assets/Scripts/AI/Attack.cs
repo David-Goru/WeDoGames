@@ -48,6 +48,7 @@ public class Attack : State
 
 		if (!Target.gameObject.activeSelf && npc.Goal.gameObject.activeSelf)
         {
+			npc.setNewGoal();
 			nextState = new Move(npc, anim, npc.Goal);
 			stage = EVENT.EXIT;
 		}

@@ -14,7 +14,8 @@ public class Stun : State
 
 	public override void Enter()
 	{
-		anim.SetTrigger("stunned");
+		npc.IsFeared = false; //Just in case fear got interrupted
+		anim.SetBool("stunned", true);
 		base.Enter();
 
 		stunDuration = npc.StunDuration;
@@ -32,7 +33,8 @@ public class Stun : State
 
 	public override void Exit()
 	{
-		anim.ResetTrigger("stunned");
+		anim.SetBool("stunned", false);
+		anim.SetFloat("animSpeed", 1.0f);
 		npc.IsStunned = false;
 		base.Exit();
 	}

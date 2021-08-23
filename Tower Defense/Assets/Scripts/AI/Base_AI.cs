@@ -10,15 +10,17 @@ using UnityEngine.SceneManagement;
 public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable, IDamageReductible
 {
     [SerializeField] EnemyInfo info = null;
+    [SerializeField] Color poisonColor = Color.green;
 
     [Header("Debug")]
-    [SerializeField] Transform goal;
+    [SerializeField] protected Transform goal;
     [SerializeField] Transform currentTurret;
     [SerializeField] IEnemyDamageHandler currentTurretDamage;
     [SerializeField] LayerMask objectsLayer = new LayerMask();
 
     Animator anim;
     State currentState;
+    Material material;
 
     Vector3[] path;
     Vector3 currentWaypoint;
@@ -52,15 +54,15 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
     public bool IsFeared { get => isFeared; set => isFeared = value; }
 
-    public void OnObjectSpawn()
+    public virtual void OnObjectSpawn()
     {
+        setUpMaterial();
         title = info.name;
         currentHP = Info.MaxHealth;
         maxHP = Info.MaxHealth;
-        goal = Nexus.GetTransform;
         anim = transform.Find("Model").GetComponent<Animator>();
-        isFeared = false;
-        isStunned = false;
+        anim.SetBool("stunned", false);
+        resetEnemyCC();
         speed = info.DefaultSpeed;
         rotationSpeed = info.InitRotationSpeed;
         currentState = new Move(this, anim, goal);
@@ -69,7 +71,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         EnemiesActive.Instance.enemiesList.Add(this);
     }
 
-    public void EnemyUpdate()
+    public virtual void EnemyUpdate()
     {
         currentState = currentState.Process();
         //print(currentState.GetType()); //Debug states
@@ -80,6 +82,11 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     void OnDisable()
     {
         StopCoroutine("FollowPath");
+    }
+
+    public virtual void setNewGoal()
+    {
+
     }
 
     bool isTargetTurretDead()
@@ -131,14 +138,8 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     {
         PathData newTarget;
 
-        if (currentTurret != null)
-        {
-            newTarget = new PathData(currentTurret.position, currentTurret);
-        }
-        else
-        {
-            newTarget = new PathData(Goal.position, Goal);
-        }
+        if (currentTurret != null) newTarget = new PathData(currentTurret.position, currentTurret);
+        else newTarget = new PathData(Goal.position, Goal);
 
         PathRequestManager.RequestPath(transform.position, newTarget, info.Range, OnPathFound);
     }
@@ -187,8 +188,30 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         }
     }
 
+    void setUpMaterial()
+    {
+        Transform model = transform.Find("Model");
+        if (model != null)
+        {
+            Transform modelWithColor = model.Find("Color");
+            if (modelWithColor != null)
+            {
+                Renderer renderer = model.Find("Color").GetComponent<Renderer>();
+                material = renderer.material;
+            }
+        }
+    }
+
+    void changeMaterialColor(Color newColor)
+    {
+        if (material == null) return;
+        material.color = newColor;
+    }
+
     public void Stun(float secondsStunned)
     {
+        if (!gameObject.activeSelf || isKnockbacked) return; //Can't stun an enemy that is knockbacked
+
         stunDuration = secondsStunned;
         isStunned = true;
 
@@ -203,7 +226,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
     Coroutine currentSlow = null;
     public void Slow(float secondsSlowed, float slowReduction)
     {
-        if (!gameObject.activeSelf) return;
+        if (!gameObject.activeSelf || isKnockbacked || isStunned || isFeared) return; //Can't slow an enemy that is knockbacked, stunned or feared
 
         if (currentSlow != null)
         {
@@ -247,28 +270,24 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
     IEnumerator poisonEnemy(float secondsPoisoned, float damagePerSecond)
     {
-        // Enable visual effects?
-        Material material = transform.Find("Model").Find("Color").GetComponent<Renderer>().material;
-        Color defaultColor = material.color;
-        Color poisonColor = new Color(1, 0, 0);
+        changeMaterialColor(poisonColor);
 
         int timer = 0;
-        material.color = poisonColor;
         while (timer < secondsPoisoned)
         {
             yield return new WaitForSeconds(1f);
             GetDamage(Mathf.RoundToInt(damagePerSecond));
             timer++;
         }
-        material.color = defaultColor;
 
-        // Disable visual effects?
-
+        changeMaterialColor(Color.white);
         currentPoison = null;
     }
 
     public void Fear(float fearSeconds)
     {
+        if (!gameObject.activeSelf || isKnockbacked || isStunned) return; //Can't fear an enemy that is knockbacked or stunned
+
         StartCoroutine(fearEnemy(fearSeconds)); //Fear also slows enemies
 
         fearDuration = fearSeconds;
@@ -305,7 +324,8 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
 
         StopCoroutine("FollowPath");
 
-        currentState = new Knockback(this, anim, goal);
+        if (currentTurret != null) currentState = new Knockback(this, anim, currentTurret);
+        else currentState = new Knockback(this, anim, goal);
     }
 
     public void ReduceDamage(float secondsDamageReduced, float damageReduction)
@@ -331,7 +351,7 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
         checkDeath();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("TurretTrigger") && currentTurret == null)
         {
@@ -339,6 +359,13 @@ public class Base_AI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowab
             currentTurret = other.transform.parent;
             currentState = new Move(this, anim, currentTurret);
         }
+    }
+
+    void resetEnemyCC()
+    {
+        isKnockbacked = false;
+        isStunned = false;
+        isFeared = false;
     }
 
     /* Editor */
