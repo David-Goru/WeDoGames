@@ -10,7 +10,7 @@ public class Move : State
 	public override void Enter()
 	{
 		npc.PathReached = false;
-		anim.SetTrigger("moving");
+		anim.SetTrigger("MOVE");
 		anim.SetFloat("animSpeed", 1.0f);
 		base.Enter();
 
@@ -40,7 +40,7 @@ public class Move : State
 
 	public override void Exit()
 	{
-		anim.ResetTrigger("moving");
+		anim.ResetTrigger("MOVE");
 		base.Exit();
 	}
 }

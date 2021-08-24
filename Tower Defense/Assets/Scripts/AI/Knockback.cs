@@ -20,8 +20,8 @@ public class Knockback : State
 	{
 		npc.IsStunned = false; //Just in case stun got interrupted
 		npc.IsFeared = false; //Just in case fear got interrupted
-		anim.ResetTrigger("moving");
-		anim.SetBool("stunned", true);
+		anim.ResetTrigger("MOVE");
+		anim.SetTrigger("STUN");
 		base.Enter();
 
 		pushDistance = npc.PushDistance;
@@ -50,7 +50,7 @@ public class Knockback : State
 
 	public override void Exit()
 	{
-		anim.SetBool("stunned", false);
+		anim.ResetTrigger("STUN");
 		anim.SetFloat("animSpeed", 1.0f);
 		npc.IsKnockbacked = false;
 		base.Exit();

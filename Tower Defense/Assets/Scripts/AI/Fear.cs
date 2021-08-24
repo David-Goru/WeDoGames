@@ -13,7 +13,7 @@ public class Fear : State
 	{
 		npc.PathReached = false;
 		anim.SetFloat("animSpeed", 0.5f);
-		anim.SetTrigger("moving");
+		anim.SetTrigger("MOVE");
 		base.Enter();
 
 		PathData fearPosition = new PathData(-npc.transform.forward * 20.0f);
@@ -33,7 +33,7 @@ public class Fear : State
 
 	public override void Exit()
 	{
-		anim.ResetTrigger("moving");
+		anim.ResetTrigger("MOVE");
 		anim.SetFloat("animSpeed", 1f);
 		npc.IsFeared = false;
 

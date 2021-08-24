@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable, IDamageReductible
 {
     [SerializeField] EnemyInfo info = null;
-    [SerializeField] Color poisonColor = Color.magenta;
+    [SerializeField] Color poisonedColor = Color.magenta;
 
     [Header("Debug")]
     [SerializeField] protected Transform goal;
@@ -59,7 +59,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         currentHP = Info.MaxHealth;
         maxHP = Info.MaxHealth;
         anim = transform.Find("Model").GetComponent<Animator>();
-        anim.SetBool("stunned", false);
         resetEnemyCC();
         speed = info.DefaultSpeed;
         rotationSpeed = info.InitRotationSpeed;
@@ -192,10 +191,10 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         Transform model = transform.Find("Model");
         if (model != null)
         {
-            Transform modelWithColor = model.Find("Color");
-            if (modelWithColor != null)
+            Transform body = model.Find("Body");
+            if (body != null)
             {
-                Renderer renderer = model.Find("Color").GetComponent<Renderer>();
+                Renderer renderer = body.GetComponent<Renderer>();
                 material = renderer.material;
             }
         }
@@ -277,14 +276,14 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         if (currentPoison != null)
         {
             StopCoroutine(currentPoison);
-            transform.Find("Model").Find("Body").GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+            changeMaterialColor(new Color(1, 1, 1));
         }
         currentPoison = StartCoroutine(poisonEnemy(secondsPoisoned, damagePerSecond));
     }
 
     IEnumerator poisonEnemy(float secondsPoisoned, float damagePerSecond)
     {
-        changeMaterialColor(poisonColor);
+        changeMaterialColor(poisonedColor);
 
         int timer = 0;
         while (timer < secondsPoisoned)

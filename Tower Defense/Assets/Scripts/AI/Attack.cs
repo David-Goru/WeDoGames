@@ -19,7 +19,7 @@ public class Attack : State
 
 	public override void Enter()
 	{
-		anim.SetTrigger("attacking");
+		anim.SetTrigger("ATTACK");
 		base.Enter();
 
 		npcRotation = Quaternion.LookRotation(new Vector3(Target.position.x, npc.transform.position.y, Target.position.z) - npc.transform.position);
@@ -37,7 +37,7 @@ public class Attack : State
 			resetTimer();
 			npc.StartCoroutine(dealDamage());
 
-			anim.SetTrigger("attacking");
+			anim.SetTrigger("ATTACK");
 		}
 
 		if (npc.transform.rotation != npcRotation) npc.transform.rotation = Quaternion.RotateTowards(npc.transform.rotation, npcRotation, rotationSpeed * Time.deltaTime);
@@ -54,7 +54,7 @@ public class Attack : State
 
 	public override void Exit()
 	{
-		anim.ResetTrigger("attacking");
+		anim.ResetTrigger("ATTACK");
 		anim.SetFloat("animSpeed", npc.Info.DefaultSpeed);
 		base.Exit();
 		attackTimer = 0f;
