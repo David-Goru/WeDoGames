@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: ea85bc492546b6b4d96a0be513f4ebd8, type: 2}
+  poisonColor: {r: 0, g: 1, b: 0, a: 1}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
   objectsLayer:
@@ -160,6 +161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7185991203455494821, guid: 1e5749160edf2a442bb6644670a5732d,
+        type: 3}
+      propertyPath: m_Name
+      value: Body
       objectReference: {fileID: 0}
     - target: {fileID: -736977076920522362, guid: 1e5749160edf2a442bb6644670a5732d,
         type: 3}

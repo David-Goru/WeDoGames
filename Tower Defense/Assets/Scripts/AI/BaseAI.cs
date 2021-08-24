@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowable, IFearable, IDamageable, IPoisonable, IKnockbackable, IDamageReductible
 {
     [SerializeField] EnemyInfo info = null;
-    [SerializeField] Color poisonColor = Color.green;
+    [SerializeField] Color poisonColor = Color.magenta;
 
     [Header("Debug")]
     [SerializeField] protected Transform goal;
@@ -277,7 +277,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         if (currentPoison != null)
         {
             StopCoroutine(currentPoison);
-            transform.Find("Model").Find("Color").GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+            transform.Find("Model").Find("Body").GetComponent<Renderer>().material.color = new Color(1, 1, 1);
         }
         currentPoison = StartCoroutine(poisonEnemy(secondsPoisoned, damagePerSecond));
     }

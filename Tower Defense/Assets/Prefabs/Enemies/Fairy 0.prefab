@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 119080b272858d14a9d923cad3e96652, type: 2}
+  poisonColor: {r: 0, g: 1, b: 0, a: 1}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
   objectsLayer:
@@ -224,7 +225,7 @@ PrefabInstance:
     - target: {fileID: -7185991203455494821, guid: e2fb169cd767e714fa5f0d7fc925010c,
         type: 3}
       propertyPath: m_Name
-      value: Color
+      value: Body
       objectReference: {fileID: 0}
     - target: {fileID: -6832741891313092209, guid: e2fb169cd767e714fa5f0d7fc925010c,
         type: 3}
