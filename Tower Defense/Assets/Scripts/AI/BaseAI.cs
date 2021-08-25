@@ -113,6 +113,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
         Waves.KillEnemy();
         ActiveEnemies.Instance.enemiesList.Remove(this);
+        Master.Instance.UpdateBalance(info.CoinsReward);
     }
 
     public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)
