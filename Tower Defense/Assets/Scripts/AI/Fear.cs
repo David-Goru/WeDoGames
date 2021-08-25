@@ -26,7 +26,12 @@ public class Fear : State
 		fearDuration -= Time.deltaTime;
 		if (fearDuration <= 0)
 		{
-			nextState = new Move(npc, anim, Target);
+			if (!Target.gameObject.activeSelf)
+			{
+				npc.setNewGoal();
+				nextState = new Move(npc, anim, npc.Goal);
+			}
+			else nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
 	}

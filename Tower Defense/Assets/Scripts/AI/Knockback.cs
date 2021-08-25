@@ -33,12 +33,12 @@ public class Knockback : State
 	{
         if (Vector3.Distance(npc.transform.position, pushDirection * pushDistance + originPos) < 0.1f)
         {
-			nextState = new Move(npc, anim, Target);
+			decideTargetToMove();
 			stage = EVENT.EXIT;
 		}
 		else if (Physics.Raycast(npc.transform.position, pushDirection, out hit, maxViewRange, obstacleLayerMask))
 		{
-			nextState = new Move(npc, anim, Target);
+			decideTargetToMove();
 			stage = EVENT.EXIT;
 		}
 		else
@@ -54,5 +54,15 @@ public class Knockback : State
 		anim.SetFloat("animSpeed", 1.0f);
 		npc.IsKnockbacked = false;
 		base.Exit();
+	}
+
+	void decideTargetToMove()
+	{
+		if (!Target.gameObject.activeSelf)
+		{
+			npc.setNewGoal();
+			nextState = new Move(npc, anim, npc.Goal);
+		}
+		else nextState = new Move(npc, anim, Target);
 	}
 }

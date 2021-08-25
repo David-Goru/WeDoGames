@@ -23,7 +23,13 @@ public class Stun : State
 		stunDuration -= Time.deltaTime;
 		if (stunDuration <= 0)
         {
-			nextState = new Move(npc, anim, Target);
+			if (!Target.gameObject.activeSelf)
+			{
+				npc.setNewGoal();
+				nextState = new Move(npc, anim, npc.Goal);
+			}
+			else if (npc.PathReached) nextState = new Attack(npc, anim, Target);
+			else nextState = new Move(npc, anim, Target);
 			stage = EVENT.EXIT;
 		}
 	}
