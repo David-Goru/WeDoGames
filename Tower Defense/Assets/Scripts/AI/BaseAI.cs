@@ -351,7 +351,9 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     IEnumerator changeDamage(float seconds, float damageReduction)
     {
-        damage *= (int)damageReduction;
+        float newDamage = damage * damageReduction;
+
+        damage = (int)newDamage;
 
         yield return new WaitForSeconds(seconds);
 
