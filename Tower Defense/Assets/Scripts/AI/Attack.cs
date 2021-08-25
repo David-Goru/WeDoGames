@@ -81,13 +81,13 @@ public class Attack : State
     {
 		GameObject obj = ObjectPooler.GetInstance().SpawnObject("Fairy Projectile", 
 			npc.transform.position + Vector3.ClampMagnitude(npc.transform.forward, 0.4f) + Vector3.ClampMagnitude(npc.transform.right, -0.2f) + shootOffset);
-		obj.GetComponent<FairyProjectile>().SetInfo(Target, npc.Info.Damage);
+		obj.GetComponent<FairyProjectile>().SetInfo(Target, npc.Damage);
     }
 
 	void meleeAttack()
     {
-		if (Target.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Info.Damage);
-		else if (Target.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Info.Damage);
+		if (Target.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Damage);
+		else if (Target.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Damage);
 	}
 
 	float getClipLength(Animator anim, string clipName)

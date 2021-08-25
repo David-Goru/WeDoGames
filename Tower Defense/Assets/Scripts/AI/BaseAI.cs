@@ -21,7 +21,11 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     Vector3 currentWaypoint;
     Vector3 pushDirection;
 
+    Coroutine currentSlow = null;
+    Coroutine currentDamageReduction = null;
+
     int targetIndex;
+    int damage;
 
     float speed;
     float attackSpeed;
@@ -51,6 +55,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
     public bool IsFeared { get => isFeared; set => isFeared = value; }
     public float AttackSpeed { get => attackSpeed; }
+    public int Damage { get => damage; }
 
     public virtual void OnObjectSpawn()
     {
@@ -63,6 +68,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         speed = info.DefaultSpeed;
         rotationSpeed = info.InitRotationSpeed;
         attackSpeed = info.AttackSpeed;
+        damage = info.Damage;
         currentState = new Move(this, anim, goal);
         currentTurret = null;
 
@@ -143,9 +149,9 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         PathRequestManager.RequestPath(transform.position, newTarget, info.Range, OnPathFound);
     }
 
-    public void OnTurretHit(Transform turretTransform, int damage, IEnemyDamageHandler enemyDamage)
+    public void OnTurretHit(Transform turretTransform, int _damage, IEnemyDamageHandler enemyDamage)
     {
-        currentHP -= damage;
+        currentHP -= _damage;
 
         if (checkDeath()) return;
         if (currentTurret == null || currentState.Target == goal)
@@ -220,10 +226,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         else currentState = new Stun(this, anim, goal);
     }
 
-    float baseSpeed = 0.0f;
-    float baseRotationSpeed = 0.0f;
-    float baseAttackSpeed = 0.0f;
-    Coroutine currentSlow = null;
     public void Slow(float secondsSlowed, float slowReduction)
     {
         if (!gameObject.activeSelf || isKnockbacked || isStunned || isFeared) return; //Can't slow an enemy that is knockbacked, stunned or feared
@@ -231,9 +233,9 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         if (currentSlow != null)
         {
             StopCoroutine(currentSlow);
-            speed = baseSpeed;
-            rotationSpeed = baseRotationSpeed;
-            attackSpeed = baseAttackSpeed;
+            speed = info.DefaultSpeed;
+            rotationSpeed = info.InitRotationSpeed;
+            attackSpeed = info.AttackSpeed;
         }
         currentSlow = StartCoroutine(slowEnemy(secondsSlowed, slowReduction));
     }
@@ -242,29 +244,22 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         isSlowed = true;
 
-        if (!isFeared)
-        {
-            baseSpeed = speed;
-            baseRotationSpeed = rotationSpeed;
-        }
-        baseAttackSpeed = attackSpeed;
-
         speed *= slowReduction;
         rotationSpeed *= slowReduction;
         attackSpeed *= slowReduction;
 
-        anim.SetFloat("animSpeed", slowReduction);
+        anim.SetFloat("animSpeed", anim.GetFloat("animSpeed") * slowReduction);
 
         yield return new WaitForSeconds(secondsSlowed);
 
         if (!isFeared)
         {
-            speed = baseSpeed;
-            rotationSpeed = baseRotationSpeed;
+            speed = info.DefaultSpeed;
+            rotationSpeed = info.InitRotationSpeed;
 
-            anim.SetFloat("animSpeed", 1.0f);
+            anim.SetFloat("animSpeed", 1f);
         }
-        attackSpeed = baseAttackSpeed;
+        attackSpeed = info.AttackSpeed;
 
         isSlowed = false;
     }
@@ -315,26 +310,20 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     IEnumerator fearEnemy(float secondsFear)
     {
-        if (!isSlowed)
-        {
-            baseSpeed = speed;
-            baseRotationSpeed = rotationSpeed;
-        }
-
         speed /= 2f;
         rotationSpeed *= 2f;
 
-        anim.SetFloat("animSpeed", 0.5f);
+        anim.SetFloat("animSpeed", anim.GetFloat("animSpeed") / 2f);
 
         yield return new WaitForSeconds(secondsFear);
 
         if (!isSlowed)
         {
-            speed = baseSpeed;
-            rotationSpeed = baseRotationSpeed;
-        }
+            speed = info.DefaultSpeed;
+            rotationSpeed = info.InitRotationSpeed;
 
-        anim.SetFloat("animSpeed", 1f);
+            anim.SetFloat("animSpeed", 1f);
+        }
     }
 
 
@@ -352,23 +341,26 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void ReduceDamage(float secondsDamageReduced, float damageReduction)
     {
-        StartCoroutine(reduceDamageTimer(secondsDamageReduced, damageReduction));
+        if(currentDamageReduction != null)
+        {
+            StopCoroutine(currentDamageReduction);
+            damage = info.Damage;
+        }
+        currentDamageReduction = StartCoroutine(changeDamage(secondsDamageReduced, damageReduction));
     }
 
-    IEnumerator reduceDamageTimer(float seconds, float damage)
+    IEnumerator changeDamage(float seconds, float damageReduction)
     {
-        int previousDamage = info.Damage;
-
-        info.Damage -= (int)damage;
+        damage *= (int)damageReduction;
 
         yield return new WaitForSeconds(seconds);
 
-        info.Damage = previousDamage;
+        damage = info.Damage;
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int _damage)
     {
-        currentHP -= damage;
+        currentHP -= _damage;
 
         checkDeath();
     }
