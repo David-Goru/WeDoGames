@@ -86,7 +86,7 @@ public class Attack : State
 
 	void meleeAttack()
     {
-		if (Target.CompareTag("Turret")) npc.CurrentTurretDamage.OnEnemyHit(npc.Damage);
+		if (Target.CompareTag("Turret") && npc.CurrentTurretDamage != null) npc.CurrentTurretDamage.OnEnemyHit(npc.Damage);
 		else if (Target.CompareTag("Nexus")) Nexus.Instance.GetHit(npc.Damage);
 	}
 
