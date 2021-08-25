@@ -11,7 +11,8 @@ We Do games!!!
 - [x] Sprint 8 (14 Jul, 2021)
 - [x] Sprint 9 (8 Aug, 2021)
 - [x] Sprint 10 (15 Aug, 2021)
-- [ ] Sprint 11 (22 Aug, 2021)
+- [x] Sprint 11 (22 Aug, 2021)
+- [ ] Sprint 12 (29 Aug, 2021)
 
 # Tower Defense
 3D rogue-lite tower defense.
