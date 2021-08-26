@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73a88e95544b594297a3eb9fe7f62ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterInfo: {fileID: 11400000, guid: ea4286617c4746645bbc8e1ede10e6a0, type: 2}
+  masterInfo: {fileID: 11400000, guid: 9b4bff06622cf494592aada6469e9b67, type: 2}
   audioScript: {fileID: 537000331}
   ActiveMode: {fileID: 537000335}
   grid: {fileID: 102513636}
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca5fc5f2b82a642a34a24997f2525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesInfo: {fileID: 11400000, guid: 69c084df68b0d3c42bc60d1379a9e279, type: 2}
+  wavesInfo: {fileID: 11400000, guid: efc2cc779e766584288a0c56a00bae63, type: 2}
   objectivesInfo: {fileID: 11400000, guid: 94ff138bb8708d1439f696e6c4f91f6f, type: 2}
   spawners: {fileID: 1032362607}
   signals:
