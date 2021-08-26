@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45014328, g: 0.5001837, b: 0.5754405, a: 1}
+  m_IndirectSpecularColor: {r: 0.25868765, g: 0.47505212, b: 0.34823972, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca5fc5f2b82a642a34a24997f2525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesInfo: {fileID: 11400000, guid: efc2cc779e766584288a0c56a00bae63, type: 2}
+  wavesInfo: {fileID: 11400000, guid: 40eeabba892506a43a037cbb8dd13eb7, type: 2}
   objectivesInfo: {fileID: 11400000, guid: 94ff138bb8708d1439f696e6c4f91f6f, type: 2}
   spawners: {fileID: 1032362607}
   signals:

@@ -26,6 +26,12 @@ public class Turret : MonoBehaviour, IPooledObject
         initializeTurretStats();
     }
 
+    public void OnObjectSpawn()
+    {
+        initializeTurretStats();
+        InilitalizeBehaviours();
+    }
+
     void Update()
     {
         foreach (var behaviour in behaviours) behaviour.UpdateBehaviour();
@@ -47,14 +53,6 @@ public class Turret : MonoBehaviour, IPooledObject
         behaviours.Remove(behaviour);
     }
 
-    /// <summary>
-    /// Called when turret spawns. It resets its values.
-    /// </summary>
-    public void OnObjectSpawn()
-    {
-        initializeTurretStats();
-        InilitalizeBehaviours();
-    }
 
     private void initializeTurretStats()
     {

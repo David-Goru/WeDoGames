@@ -49,7 +49,8 @@ public class SpawnProjectilesAroundTurret : EffectComponent
         projectilesSpawned = 0;
         timer = 0f;
         isFull = false;
-        onProjectileDisabled += decrementProjectilesSpawned;
+        if(onProjectileDisabled == null)
+            onProjectileDisabled += decrementProjectilesSpawned;
     }
 
     void decrementProjectilesSpawned()
