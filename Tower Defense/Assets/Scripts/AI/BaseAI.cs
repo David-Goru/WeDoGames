@@ -353,7 +353,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         float newDamage = damage * damageReduction;
 
-        damage = (int)newDamage;
+        damage = (int)Mathf.Floor(newDamage);
 
         yield return new WaitForSeconds(seconds);
 
