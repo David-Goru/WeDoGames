@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ActiveMode : MonoBehaviour
 {
@@ -7,20 +7,19 @@ public class ActiveMode : MonoBehaviour
     ActiveAction activeAction;
     LayerMask groundMask;
     [SerializeField] ActivesCooldownController activesCooldownController = null;
-    [SerializeField] GameObject activeAreaPrefab = null;
     [SerializeField] AudioClip startActiveSound = null;
     GameObject activeArea = null;
 
     private void Start()
     {
-        groundMask = LayerMask.GetMask("Ground");
+        groundMask = LayerMask.GetMask("Terrain");
     }
 
     void Update()
     {
         if (isActive)
         {
-            if (Input.GetMouseButtonDown(0)) doActive();
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) doActive();
             else
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -48,10 +47,23 @@ public class ActiveMode : MonoBehaviour
     {
         if (!activesCooldownController.CheckIfIsInCooldown(activeAction))
         {
+            Master.Instance.StopAllActions();
             Master.Instance.RunSound(startActiveSound);
             isActive = true;
             this.activeAction = activeAction;
         }
+    }
+
+    public void StopActiveMode()
+    {
+        if (isActive == false) return;
+
+        if (activeArea != null)
+        {
+            Destroy(activeArea);
+            activeArea = null;
+        }
+        isActive = false;
     }
 
     void doActive()
@@ -62,9 +74,8 @@ public class ActiveMode : MonoBehaviour
         {
             Master.Instance.NoActivesUsedInLastWave = false;
             activeAction.UseActive(hit.point);
-            isActive = false;
             activesCooldownController.StartCooldown(activeAction);
-            activeArea.SetActive(false);
+            StopActiveMode();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildObject : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class BuildObject : MonoBehaviour
 
     void Update()
     {
-        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             if (objectBlueprint)
             {
@@ -77,12 +78,13 @@ public class BuildObject : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R)) updateRotation();
 
-        if (Input.GetMouseButtonDown(0)) placeObject();
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) placeObject();
     }
 
     public void StartBuilding(TurretInfo buildingInfo)
     {
         if (!Master.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
+        Master.Instance.StopAllActions();
 
         stopBuildingButton.SetActive(true);
 
@@ -181,6 +183,8 @@ public class BuildObject : MonoBehaviour
 
     public void StopBuilding()
     {
+        if (enabled == false) return;
+
         stopBuildingButton.SetActive(false);
 
         if (objectBlueprint != null)

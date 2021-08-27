@@ -63,9 +63,20 @@ public class Master : MonoBehaviour
         return Instance.GetComponent<Waves>().WaveCompletedInLessThan(time);
     }
 
+    public void StopAllActions()
+    {
+        StopBuilding();
+        StopActiveMode();
+    }
+
     public void StopBuilding()
     {
         BuildObject.StopBuilding();
+    }
+
+    public void StopActiveMode()
+    {
+        ActiveMode.StopActiveMode();
     }
     
     public void RunSound(AudioClip clip)
