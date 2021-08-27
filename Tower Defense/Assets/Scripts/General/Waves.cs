@@ -10,7 +10,7 @@ public class Waves : MonoBehaviour
     [SerializeField] WavesInfo wavesInfo = null;
     [SerializeField] Objectives objectivesInfo = null;
     [SerializeField] Transform spawners = null;
-    [SerializeField] Image[] signals = null;
+    [SerializeField] GameObject[] signals = null;
     [SerializeField] Transform objectivesList = null;
     [SerializeField] GameObject objectivePrefab = null;
     [SerializeField] AudioClip waveStartSound = null;
