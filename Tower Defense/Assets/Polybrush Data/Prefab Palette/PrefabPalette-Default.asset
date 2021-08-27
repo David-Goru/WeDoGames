@@ -13,15 +13,32 @@ MonoBehaviour:
   m_Name: PrefabPalette-Default
   m_EditorClassIdentifier: 
   prefabs:
-  - gameObject: {fileID: 5671828783987503858, guid: 6428727fd0e71d649b3c27f8cd011e96,
+  - gameObject: {fileID: 8390004420867511360, guid: cf6650fb5c1d89e4baf938c47676823f,
       type: 3}
     settings:
-      m_Strength: 15
+      m_Strength: 100
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
       m_ScaleRangeMax: {x: 1, y: 1, z: 1}
-      m_UniformScale: {x: 0.42307693, y: 2}
+      m_UniformScale: {x: 0.25, y: 0.75}
+      m_UniformBool: 1
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 0
+      m_YScaleBool: 1
+      m_ZScaleBool: 0
+    name: Grass 2
+  - gameObject: {fileID: 2986550988567197891, guid: 638c6aeaf5f362f47b3e824833cacca9,
+      type: 3}
+    settings:
+      m_Strength: 100
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 360, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 0.25, y: 0.75}
       m_UniformBool: 1
       m_XRotationBool: 0
       m_YRotationBool: 1
@@ -29,16 +46,16 @@ MonoBehaviour:
       m_XScaleBool: 0
       m_YScaleBool: 0
       m_ZScaleBool: 0
-    name: Rock 1
-  - gameObject: {fileID: 7227820026313396697, guid: cf747049be07feb4f9ea33c29bfbf06d,
+    name: Grass 1
+  - gameObject: {fileID: 7252287378724917295, guid: cc1c98da2c0e13b46bfd44d4f4ae1501,
       type: 3}
     settings:
-      m_Strength: 15
+      m_Strength: 50
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
       m_ScaleRangeMax: {x: 1, y: 1, z: 1}
-      m_UniformScale: {x: 0.23076922, y: 2}
+      m_UniformScale: {x: 0.25, y: 0.75}
       m_UniformBool: 1
       m_XRotationBool: 0
       m_YRotationBool: 1
@@ -46,16 +63,16 @@ MonoBehaviour:
       m_XScaleBool: 0
       m_YScaleBool: 0
       m_ZScaleBool: 0
-    name: Rock 2
-  - gameObject: {fileID: 7898961384346040009, guid: 2ae29816f33cbdc43be6cb10564fc99b,
+    name: Dead grass 1
+  - gameObject: {fileID: 5094371204271216588, guid: 41add9981a7ede14e87a269fbd0380f7,
       type: 3}
     settings:
-      m_Strength: 15
+      m_Strength: 50
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
       m_ScaleRangeMax: {x: 1, y: 1, z: 1}
-      m_UniformScale: {x: 0.6153846, y: 2}
+      m_UniformScale: {x: 0.25, y: 0.75}
       m_UniformBool: 1
       m_XRotationBool: 0
       m_YRotationBool: 1
@@ -63,21 +80,4 @@ MonoBehaviour:
       m_XScaleBool: 0
       m_YScaleBool: 0
       m_ZScaleBool: 0
-    name: Stone 6
-  - gameObject: {fileID: 5098704863558671729, guid: ee261a819f9a32046a95f1979d20a86d,
-      type: 3}
-    settings:
-      m_Strength: 15
-      m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 0, y: 360, z: 0}
-      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
-      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
-      m_UniformScale: {x: 0.8076923, y: 2}
-      m_UniformBool: 1
-      m_XRotationBool: 0
-      m_YRotationBool: 1
-      m_ZRotationBool: 0
-      m_XScaleBool: 0
-      m_YScaleBool: 0
-      m_ZScaleBool: 0
-    name: Stone 4
+    name: Dead grass 2
