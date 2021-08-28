@@ -7,11 +7,13 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     [SerializeField] EnemyInfo info = null;
     [SerializeField] Color poisonedColor = Color.magenta;
 
+    [SerializeField] Transform particlesSpawnPos;
+    [SerializeField] LayerMask objectsLayer = new LayerMask();
+
     [Header("Debug")]
     [SerializeField] protected Transform goal;
     [SerializeField] Transform currentTurret;
     [SerializeField] IEnemyDamageHandler currentTurretDamage;
-    [SerializeField] LayerMask objectsLayer = new LayerMask();
 
     protected Animator anim;
     protected State currentState;
@@ -23,6 +25,12 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     Coroutine currentSlow = null;
     Coroutine currentDamageReduction = null;
+    Coroutine currentPoison = null;
+
+    GameObject poisonVFX = null;
+    GameObject slowVFX = null;
+
+    ObjectPooler objectPool;
 
     int targetIndex;
     int damage;
@@ -56,21 +64,32 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     public bool IsFeared { get => isFeared; set => isFeared = value; }
     public float AttackSpeed { get => attackSpeed; }
     public int Damage { get => damage; }
+    public Transform ParticlesSpawnPos { get => particlesSpawnPos; }
+    public ObjectPooler ObjectPool { get => objectPool; }
+
+    void Awake()
+    {
+        setUpMaterial();
+        anim = transform.Find("Model").GetComponent<Animator>();
+        objectPool = ObjectPooler.GetInstance();
+    }
 
     public virtual void OnObjectSpawn()
     {
-        setUpMaterial();
         title = info.name;
         currentHP = Info.MaxHealth;
         maxHP = Info.MaxHealth;
-        anim = transform.Find("Model").GetComponent<Animator>();
         resetEnemyCC();
+        changeMaterialColor(Color.white);
         speed = info.DefaultSpeed;
         rotationSpeed = info.InitRotationSpeed;
         attackSpeed = info.AttackSpeed;
         damage = info.Damage;
         currentState = new Move(this, anim, goal);
         currentTurret = null;
+        slowVFX = null;
+        poisonVFX = null;
+        transform.LookAt(goal);
 
         ActiveEnemies.Instance.enemiesList.Add(this);
     }
@@ -115,6 +134,9 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     void killEnemy()
     {
+        if (poisonVFX != null) objectPool.ReturnToThePool(poisonVFX.transform);
+        else if (slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
+        currentState.Exit();
         StopAllCoroutines();
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
         Waves.KillEnemy();
@@ -217,6 +239,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         if (!gameObject.activeSelf || isKnockbacked) return; //Can't stun an enemy that is knockbacked
 
+        currentState.Exit();
         stunDuration = secondsStunned;
         isStunned = true;
 
@@ -228,7 +251,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Slow(float secondsSlowed, float slowReduction)
     {
-        if (!gameObject.activeSelf || isKnockbacked || isStunned || isFeared) return; //Can't slow an enemy that is knockbacked, stunned or feared
+        if (!gameObject.activeSelf) return;
 
         if (currentSlow != null)
         {
@@ -243,6 +266,12 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     IEnumerator slowEnemy(float secondsSlowed, float slowReduction)
     {
         isSlowed = true;
+        if (slowVFX == null)
+        {
+            slowVFX = objectPool.SpawnObject("SlowVFX", particlesSpawnPos.position);
+            slowVFX.transform.SetParent(particlesSpawnPos);
+            slowVFX.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
 
         speed *= slowReduction;
         rotationSpeed *= slowReduction;
@@ -262,9 +291,10 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         attackSpeed = info.AttackSpeed;
 
         isSlowed = false;
+        objectPool.ReturnToThePool(slowVFX.transform);
+        slowVFX = null;
     }
 
-    Coroutine currentPoison = null;
     public void Poison(float secondsPoisoned, int damagePerSecond)
     {
         if (!gameObject.activeSelf) return;
@@ -280,6 +310,12 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     IEnumerator poisonEnemy(float secondsPoisoned, float damagePerSecond)
     {
         changeMaterialColor(poisonedColor);
+        if (poisonVFX == null)
+        {
+            poisonVFX = objectPool.SpawnObject("PoisonVFX", particlesSpawnPos.position);
+            poisonVFX.transform.SetParent(particlesSpawnPos);
+            poisonVFX.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
 
         int timer = 0;
         while (timer < secondsPoisoned)
@@ -289,6 +325,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
             timer++;
         }
 
+        objectPool.ReturnToThePool(poisonVFX.transform);
+        poisonVFX = null;
         changeMaterialColor(Color.white);
         currentPoison = null;
     }
@@ -299,6 +337,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         StartCoroutine(fearEnemy(fearSeconds)); //Fear also slows enemies
 
+        currentState.Exit();
         fearDuration = fearSeconds;
         isFeared = true;
 
@@ -329,6 +368,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Knockback(float knockbackDistance, Vector3 knockbackDirection)
     {
+        currentState.Exit();
         pushDistance = knockbackDistance;
         pushDirection = knockbackDirection;
         isKnockbacked = true;

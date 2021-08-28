@@ -18,8 +18,8 @@ public class Knockback : State
 
 	public override void Enter()
 	{
-		npc.IsStunned = false; //Just in case stun got interrupted
-		npc.IsFeared = false; //Just in case fear got interrupted
+		//npc.IsStunned = false; //Just in case stun got interrupted
+		//npc.IsFeared = false; //Just in case fear got interrupted
 		anim.ResetTrigger("MOVE");
 		anim.SetTrigger("STUN");
 		base.Enter();

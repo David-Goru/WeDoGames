@@ -79,7 +79,7 @@ public class Attack : State
 
 	void spawnProjectile()
     {
-		GameObject obj = ObjectPooler.GetInstance().SpawnObject("Fairy Projectile", 
+		GameObject obj = npc.ObjectPool.SpawnObject("Fairy Projectile", 
 			npc.transform.position + Vector3.ClampMagnitude(npc.transform.forward, 0.4f) + Vector3.ClampMagnitude(npc.transform.right, -0.2f) + shootOffset);
 		obj.GetComponent<FairyProjectile>().SetInfo(Target, npc.Damage);
     }

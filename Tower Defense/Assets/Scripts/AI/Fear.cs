@@ -3,6 +3,7 @@
 public class Fear : State
 {
 	float fearDuration;
+	GameObject fearVFX;
 
 	public Fear(BaseAI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
@@ -12,7 +13,9 @@ public class Fear : State
 	public override void Enter()
 	{
 		npc.PathReached = false;
-		anim.SetFloat("animSpeed", 0.5f);
+		fearVFX = npc.ObjectPool.SpawnObject("FearVFX", npc.ParticlesSpawnPos.position);
+		fearVFX.transform.SetParent(npc.ParticlesSpawnPos);
+		fearVFX.transform.localScale = new Vector3(1f, 1f, 1f);
 		anim.SetTrigger("MOVE");
 		base.Enter();
 
@@ -39,7 +42,7 @@ public class Fear : State
 	public override void Exit()
 	{
 		anim.ResetTrigger("MOVE");
-		anim.SetFloat("animSpeed", 1f);
+		npc.ObjectPool.ReturnToThePool(fearVFX.transform);
 		npc.IsFeared = false;
 
 		base.Exit();

@@ -3,6 +3,7 @@
 public class Stun : State
 {
 	float stunDuration;
+	GameObject stunVFX;
 
 	public Stun(BaseAI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
 	{
@@ -11,8 +12,9 @@ public class Stun : State
 
 	public override void Enter()
 	{
-		npc.IsFeared = false; //Just in case fear got interrupted
+		//npc.IsFeared = false; //Just in case fear got interrupted
 		anim.SetTrigger("STUN");
+		stunVFX = npc.ObjectPool.SpawnObject("StunVFX", npc.ParticlesSpawnPos.position);
 		base.Enter();
 
 		stunDuration = npc.StunDuration;
@@ -37,7 +39,7 @@ public class Stun : State
 	public override void Exit()
 	{
 		anim.ResetTrigger("STUN");
-		anim.SetFloat("animSpeed", 1.0f);
+		npc.ObjectPool.ReturnToThePool(stunVFX.transform);
 		npc.IsStunned = false;
 		base.Exit();
 	}
