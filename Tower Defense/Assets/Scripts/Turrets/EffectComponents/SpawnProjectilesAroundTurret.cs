@@ -44,7 +44,7 @@ public class SpawnProjectilesAroundTurret : EffectComponent
         shotBehaviours = GetComponents<ITurretShotBehaviour>().ToList();
     }
 
-    private void initializeMembers()
+    void initializeMembers()
     {
         projectilesSpawned = 0;
         timer = 0f;

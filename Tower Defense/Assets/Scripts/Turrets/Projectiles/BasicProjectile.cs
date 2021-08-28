@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BasicProjectile : Projectile
 {
-
     protected override void updateProjectile()
     {
         if (!target.gameObject.activeSelf) disable();
