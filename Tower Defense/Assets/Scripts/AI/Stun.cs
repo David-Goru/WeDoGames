@@ -12,7 +12,7 @@ public class Stun : State
 
 	public override void Enter()
 	{
-		//npc.IsFeared = false; //Just in case fear got interrupted
+		npc.IsStunned = true;
 		anim.SetTrigger("STUN");
 		stunVFX = npc.ObjectPool.SpawnObject("StunVFX", npc.ParticlesSpawnPos.position);
 		base.Enter();

@@ -135,7 +135,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     void killEnemy()
     {
         if (poisonVFX != null) objectPool.ReturnToThePool(poisonVFX.transform);
-        else if (slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
+        if (slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
         currentState.Exit();
         StopAllCoroutines();
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
@@ -241,7 +241,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         currentState.Exit();
         stunDuration = secondsStunned;
-        isStunned = true;
 
         StopCoroutine("FollowPath");
 
@@ -339,7 +338,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         currentState.Exit();
         fearDuration = fearSeconds;
-        isFeared = true;
 
         StopCoroutine("FollowPath");
 
@@ -371,7 +369,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         currentState.Exit();
         pushDistance = knockbackDistance;
         pushDirection = knockbackDirection;
-        isKnockbacked = true;
 
         StopCoroutine("FollowPath");
 

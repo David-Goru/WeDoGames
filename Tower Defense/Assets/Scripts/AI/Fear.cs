@@ -12,10 +12,13 @@ public class Fear : State
 
 	public override void Enter()
 	{
+		npc.IsFeared = true;
 		npc.PathReached = false;
+
 		fearVFX = npc.ObjectPool.SpawnObject("FearVFX", npc.ParticlesSpawnPos.position);
 		fearVFX.transform.SetParent(npc.ParticlesSpawnPos);
 		fearVFX.transform.localScale = new Vector3(1f, 1f, 1f);
+
 		anim.SetTrigger("MOVE");
 		base.Enter();
 
