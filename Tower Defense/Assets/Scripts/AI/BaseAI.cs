@@ -6,9 +6,12 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 {
     [SerializeField] EnemyInfo info = null;
     [SerializeField] Color poisonedColor = Color.magenta;
-
-    [SerializeField] Transform particlesSpawnPos;
     [SerializeField] LayerMask objectsLayer = new LayerMask();
+
+    [Header("Particles Positions")]
+    [SerializeField] Transform particlesSpawnPos;
+    [SerializeField] Transform hitParticlesSpawnPos;
+    [SerializeField] Transform deathParticlesSpawnPos;
 
     [Header("Debug")]
     [SerializeField] protected Transform goal;
@@ -26,11 +29,14 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     Coroutine currentSlow = null;
     Coroutine currentDamageReduction = null;
     Coroutine currentPoison = null;
+    Coroutine currentDeath = null;
 
     GameObject poisonVFX = null;
     GameObject slowVFX = null;
     GameObject damageVFX = null;
     GameObject hitVFX = null;
+    GameObject coinVFX = null;
+    GameObject deathVFX = null;
 
     ObjectPooler objectPool;
 
@@ -48,6 +54,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     bool isFeared;
     bool isKnockbacked;
     bool isSlowed;
+    bool isDying;
     bool pathReached;
     bool pathSuccessful;
 
@@ -60,6 +67,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     public float StunDuration { get => stunDuration; set => stunDuration = value; }
     public float PushDistance { get => pushDistance; set => pushDistance = value; }
     public Vector3 PushDirection { get => pushDirection; }
+    public bool IsDying { get => isDying; }
     public bool IsStunned { get => isStunned; set => isStunned = value; }
     public bool IsKnockbacked { get => isKnockbacked; set => isKnockbacked = value; }
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
@@ -93,14 +101,17 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         poisonVFX = null;
         damageVFX = null;
         hitVFX = null;
+        currentDeath = null;
         transform.LookAt(goal);
+
+        if(deathVFX != null) objectPool.ReturnToThePool(deathVFX.transform);
 
         ActiveEnemies.Instance.enemiesList.Add(this);
     }
 
     public virtual void EnemyUpdate()
     {
-        currentState = currentState.Process();
+        if(!isDying) currentState = currentState.Process();
         //print(currentState.GetType()); //Debug states
 
         if (isTargetTurretDead()) currentTurret = null;
@@ -143,13 +154,35 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         if (damageVFX != null) objectPool.ReturnToThePool(damageVFX.transform);
         if (hitVFX != null) objectPool.ReturnToThePool(hitVFX.transform);
 
-        currentState.Exit();
+        if(currentDeath == null)
+        {
+            currentState.Exit();
 
-        StopAllCoroutines();
+            isDying = true;
+
+            anim.SetTrigger("DIE");
+            coinVFX = objectPool.SpawnObject("CoinVFX", particlesSpawnPos.position);
+
+            StopAllCoroutines();
+
+            currentDeath = StartCoroutine(enemyDeath());
+        }
+    }
+
+    IEnumerator enemyDeath()
+    {
+        yield return new WaitForSeconds(1f);
+
+        objectPool.ReturnToThePool(coinVFX.transform);
+        deathVFX = objectPool.SpawnObject("DeathVFX", deathParticlesSpawnPos.position);
+
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
         Waves.KillEnemy();
         ActiveEnemies.Instance.enemiesList.Remove(this);
         Master.Instance.UpdateBalance(info.CoinsReward);
+
+        anim.ResetTrigger("DIE");
+        isDying = false;
     }
 
     public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)
@@ -200,7 +233,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     void spawnHitVFX()
     {
-        hitVFX = objectPool.SpawnObject("HitVFX", particlesSpawnPos.position - new Vector3(0f, 0.5f, 0f));
+        hitVFX = objectPool.SpawnObject("HitVFX", hitParticlesSpawnPos.position);
         hitVFX.transform.SetParent(particlesSpawnPos);
         hitVFX.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
     }
@@ -300,7 +333,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         rotationSpeed *= slowReduction;
         attackSpeed *= slowReduction;
 
-        anim.SetFloat("animSpeed", anim.GetFloat("animSpeed") * slowReduction);
+        anim.SetFloat("animSpeed", 0.5f);
 
         yield return new WaitForSeconds(secondsSlowed);
 
@@ -375,7 +408,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         speed /= 2f;
         rotationSpeed *= 2f;
 
-        anim.SetFloat("animSpeed", anim.GetFloat("animSpeed") / 2f);
+        anim.SetFloat("animSpeed", 0.5f);
 
         yield return new WaitForSeconds(secondsFear);
 

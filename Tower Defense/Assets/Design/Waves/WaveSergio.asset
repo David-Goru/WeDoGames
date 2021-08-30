@@ -15,6 +15,20 @@ MonoBehaviour:
   planningTime: 2
   enemyWaves:
   - EnemyWave:
+    - Enemy: {fileID: 11400000, guid: ceb27578629086543aec5a20ce0ec1cf, type: 2}
+      NumberOfEnemies: 1
+      DOWN: 0
+      RIGHT: 1
+      LEFT: 0
+      UP: 0
+  - EnemyWave:
+    - Enemy: {fileID: 11400000, guid: d5abd168ac6553e44b5333a18e0034d7, type: 2}
+      NumberOfEnemies: 1
+      DOWN: 0
+      RIGHT: 1
+      LEFT: 0
+      UP: 0
+  - EnemyWave:
     - Enemy: {fileID: 11400000, guid: 18a237466ccf8fd4aad5d4bbf4f84bec, type: 2}
       NumberOfEnemies: 1
       DOWN: 0

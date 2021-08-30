@@ -18,8 +18,7 @@ public class Knockback : State
 
 	public override void Enter()
 	{
-		anim.ResetTrigger("MOVE");
-		anim.SetTrigger("STUN");
+		anim.SetTrigger("IDLE");
 		base.Enter();
 
 		pushDistance = npc.PushDistance;
@@ -48,7 +47,7 @@ public class Knockback : State
 
 	public override void Exit()
 	{
-		anim.ResetTrigger("STUN");
+		anim.ResetTrigger("IDLE");
 		anim.SetFloat("animSpeed", 1.0f);
 		npc.IsKnockbacked = false;
 		base.Exit();

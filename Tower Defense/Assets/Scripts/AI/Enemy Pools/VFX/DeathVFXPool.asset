@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
-  m_Name: HitVFXPool
+  m_Name: DeathVFXPool
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3116471711508665784, guid: fb8dbcc2dfd801340a39a365ae0dc347, type: 3}
+  prefab: {fileID: 1811433596374073976, guid: 88f4c3052df7ab44da4728e17df242b1, type: 3}
   size: 50
-  tag: HitVFX
+  tag: DeathVFX

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1445444442303209677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8917832144144129713}
+  m_Layer: 0
+  m_Name: HitVFXPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8917832144144129713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445444442303209677}
+  m_LocalRotation: {x: -0.000000059604638, y: -1.7763566e-15, z: -1.065814e-14, w: 1}
+  m_LocalPosition: {x: 0, y: 1.55, z: 0.050000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2164550221913337911}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7688632580301246850
 Animator:
   serializedVersion: 3
@@ -19,6 +49,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2516080285293846948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614220401900315152}
+  m_Layer: 0
+  m_Name: DeathVFXPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &614220401900315152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516080285293846948}
+  m_LocalRotation: {x: -0.000000059604638, y: -1.7763566e-15, z: -1.065814e-14, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2164550221913337911}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3286911608557974002
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3286911608557974002}
   m_LocalRotation: {x: -0.000000059604638, y: -1.7763566e-15, z: -1.065814e-14, w: 1}
-  m_LocalPosition: {x: 0, y: 1.9500002, z: 0.050000004}
+  m_LocalPosition: {x: 0, y: 2.1, z: 0.050000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2164550221913337911}
@@ -110,10 +170,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: ea85bc492546b6b4d96a0be513f4ebd8, type: 2}
   poisonedColor: {r: 1, g: 0, b: 1, a: 1}
-  particlesSpawnPos: {fileID: 3643207463350947336}
   objectsLayer:
     serializedVersion: 2
     m_Bits: 1024
+  particlesSpawnPos: {fileID: 3643207463350947336}
+  hitParticlesSpawnPos: {fileID: 8917832144144129713}
+  deathParticlesSpawnPos: {fileID: 614220401900315152}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
 --- !u!1001 &1837679239292147676
