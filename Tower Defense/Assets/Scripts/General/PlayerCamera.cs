@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerCamera : MonoBehaviour
 {
-    float sensitivity = 5.0f;
     bool isRotating = false;
 
     void Update()
