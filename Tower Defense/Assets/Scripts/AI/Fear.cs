@@ -12,7 +12,6 @@ public class Fear : State
 
 	public override void Enter()
 	{
-		npc.IsFeared = true;
 		npc.PathReached = false;
 
 		fearVFX = npc.ObjectPool.SpawnObject("FearVFX", npc.ParticlesSpawnPos.position);

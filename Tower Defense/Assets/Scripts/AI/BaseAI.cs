@@ -239,12 +239,14 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         if (!gameObject.activeSelf || isKnockbacked) return; //Can't stun an enemy that is knockbacked
 
-        currentState.Exit();
-        stunDuration = secondsStunned;
-
         StopCoroutine("FollowPath");
 
-        if(currentTurret != null) currentState = new Stun(this, anim, currentTurret);
+        currentState.Exit();
+
+        stunDuration = secondsStunned;
+        isStunned = true;
+
+        if (currentTurret != null) currentState = new Stun(this, anim, currentTurret);
         else currentState = new Stun(this, anim, goal);
     }
 
@@ -334,12 +336,13 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         if (!gameObject.activeSelf || isKnockbacked || isStunned) return; //Can't fear an enemy that is knockbacked or stunned
 
+        StopCoroutine("FollowPath");
         StartCoroutine(fearEnemy(fearSeconds)); //Fear also slows enemies
 
         currentState.Exit();
-        fearDuration = fearSeconds;
 
-        StopCoroutine("FollowPath");
+        fearDuration = fearSeconds;
+        isFeared = true;
 
         if (currentTurret != null) currentState = new Fear(this, anim, currentTurret);
         else currentState = new Fear(this, anim, goal);
@@ -366,11 +369,13 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Knockback(float knockbackDistance, Vector3 knockbackDirection)
     {
+        StopCoroutine("FollowPath");
+
         currentState.Exit();
+
         pushDistance = knockbackDistance;
         pushDirection = knockbackDirection;
-
-        StopCoroutine("FollowPath");
+        isKnockbacked = true;
 
         if (currentTurret != null) currentState = new Knockback(this, anim, currentTurret);
         else currentState = new Knockback(this, anim, goal);

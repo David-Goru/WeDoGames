@@ -18,7 +18,6 @@ public class Knockback : State
 
 	public override void Enter()
 	{
-		npc.IsKnockbacked = true;
 		anim.ResetTrigger("MOVE");
 		anim.SetTrigger("STUN");
 		base.Enter();
