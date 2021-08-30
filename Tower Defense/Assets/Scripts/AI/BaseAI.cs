@@ -29,6 +29,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     GameObject poisonVFX = null;
     GameObject slowVFX = null;
+    GameObject damageVFX = null;
+    GameObject hitVFX = null;
 
     ObjectPooler objectPool;
 
@@ -89,6 +91,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         currentTurret = null;
         slowVFX = null;
         poisonVFX = null;
+        damageVFX = null;
+        hitVFX = null;
         transform.LookAt(goal);
 
         ActiveEnemies.Instance.enemiesList.Add(this);
@@ -136,7 +140,11 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         if (poisonVFX != null) objectPool.ReturnToThePool(poisonVFX.transform);
         if (slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
+        if (damageVFX != null) objectPool.ReturnToThePool(damageVFX.transform);
+        if (hitVFX != null) objectPool.ReturnToThePool(hitVFX.transform);
+
         currentState.Exit();
+
         StopAllCoroutines();
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
         Waves.KillEnemy();
@@ -175,12 +183,26 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         currentHP -= _damage;
 
+        if (hitVFX == null) spawnHitVFX();
+        else
+        {
+            objectPool.ReturnToThePool(hitVFX.transform);
+            spawnHitVFX();
+        }
+
         if (checkDeath()) return;
         if (currentTurret == null || currentState.Target == goal)
         {
             currentTurretDamage = enemyDamage;
             currentState.OnTurretHit(turretTransform);
         }
+    }
+
+    void spawnHitVFX()
+    {
+        hitVFX = objectPool.SpawnObject("HitVFX", particlesSpawnPos.position - new Vector3(0f, 0.5f, 0f));
+        hitVFX.transform.SetParent(particlesSpawnPos);
+        hitVFX.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -322,7 +344,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         while (timer < secondsPoisoned)
         {
             yield return new WaitForSeconds(1f);
-            GetDamage(Mathf.RoundToInt(damagePerSecond));
+            recieveDamage(Mathf.RoundToInt(damagePerSecond));
             timer++;
         }
 
@@ -404,9 +426,28 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void GetDamage(int _damage)
     {
+        if (damageVFX == null) spawnDamageVFX();
+        else
+        {
+            objectPool.ReturnToThePool(damageVFX.transform);
+            spawnDamageVFX();
+        }
+
+        recieveDamage(_damage);
+    }
+
+    void recieveDamage(int _damage)
+    {
         currentHP -= _damage;
 
         checkDeath();
+    }
+
+    void spawnDamageVFX()
+    {
+        damageVFX = objectPool.SpawnObject("DamageVFX", particlesSpawnPos.position);
+        damageVFX.transform.SetParent(particlesSpawnPos);
+        damageVFX.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     void OnTriggerStay(Collider other)
