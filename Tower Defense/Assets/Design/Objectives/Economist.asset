@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Economist
   m_EditorClassIdentifier: 
   Completed: 0
-  maxNumberOfTurrets: 5
+  maxNumberOfTurrets: 8
