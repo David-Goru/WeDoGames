@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: RedRat
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  damage: 1
-  attackSpeed: 1
+  maxHealth: 60
+  damage: 4
+  coinsReward: 22
+  attackSpeed: 1.5
   range: 1
-  defaultSpeed: 3
+  defaultSpeed: 8
   initRotationSpeed: 300

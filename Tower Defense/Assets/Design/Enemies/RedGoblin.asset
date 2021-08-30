@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: RedGoblin
   m_EditorClassIdentifier: 
   maxHealth: 75
-  damage: 3
-  attackSpeed: 1.75
+  damage: 7
+  coinsReward: 20
+  attackSpeed: 1
   range: 0.5
-  defaultSpeed: 5
+  defaultSpeed: 6
   initRotationSpeed: 300

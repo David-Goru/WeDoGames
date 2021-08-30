@@ -23,13 +23,13 @@ MonoBehaviour:
   - type: 0
     value: 100
   - type: 1
-    value: 100
+    value: 40
   - type: 2
-    value: 3
+    value: 5
   - type: 9
     value: 45
   - type: 3
-    value: 2
+    value: 3
   currentStats:
   - type: 0
     value: 100

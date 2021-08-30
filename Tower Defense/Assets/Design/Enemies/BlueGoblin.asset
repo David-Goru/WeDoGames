@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BlueGoblin
   m_EditorClassIdentifier: 
   maxHealth: 100
-  damage: 5
-  attackSpeed: 2
+  damage: 4
+  coinsReward: 16
+  attackSpeed: 1
   range: 0.5
-  defaultSpeed: 5
+  defaultSpeed: 6
   initRotationSpeed: 300

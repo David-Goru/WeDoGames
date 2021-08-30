@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: GreenGoblin
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  damage: 2
-  coinsReward: 10
-  attackSpeed: 0.72
+  maxHealth: 75
+  damage: 5
+  coinsReward: 12
+  attackSpeed: 1
   range: 0.5
-  defaultSpeed: 3
+  defaultSpeed: 6
   initRotationSpeed: 300

@@ -23,29 +23,29 @@ MonoBehaviour:
   - type: 0
     value: 100
   - type: 1
-    value: 100
+    value: 80
   - type: 2
-    value: 3
+    value: 7
   - type: 3
     value: 3
   - type: 4
-    value: 1
+    value: 0.7
   - type: 6
     value: 0.5
   - type: 5
-    value: 5
+    value: 3
   currentStats:
   - type: 0
     value: 100
   - type: 1
-    value: 100
+    value: 80
   - type: 2
-    value: 3
+    value: 7
   - type: 3
     value: 3
   - type: 4
-    value: 1
+    value: 0.7
   - type: 6
     value: 0.5
   - type: 5
-    value: 5
+    value: 3

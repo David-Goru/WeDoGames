@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: RedFairy
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  damage: 6
-  attackSpeed: 2
+  maxHealth: 70
+  damage: 7
+  coinsReward: 17
+  attackSpeed: 1
   range: 10
-  defaultSpeed: 5
+  defaultSpeed: 6
   initRotationSpeed: 300

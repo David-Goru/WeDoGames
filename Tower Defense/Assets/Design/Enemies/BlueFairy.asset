@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: BlueFairy
   m_EditorClassIdentifier: 
-  maxHealth: 75
-  damage: 10
-  attackSpeed: 2.5
-  range: 12
-  defaultSpeed: 8
+  maxHealth: 93
+  damage: 4
+  coinsReward: 13
+  attackSpeed: 1
+  range: 8
+  defaultSpeed: 6
   initRotationSpeed: 300
