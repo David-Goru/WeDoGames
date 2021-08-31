@@ -53,7 +53,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     bool isStunned;
     bool isFeared;
     bool isKnockbacked;
-    bool isSlowed;
     bool isDying;
     bool pathReached;
     bool pathSuccessful;
@@ -90,6 +89,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         currentHP = Info.MaxHealth;
         maxHP = Info.MaxHealth;
         resetEnemyCC();
+        returnToPoolVFX();
         changeMaterialColor(Color.white);
         speed = info.DefaultSpeed;
         rotationSpeed = info.InitRotationSpeed;
@@ -103,6 +103,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         hitVFX = null;
         currentDeath = null;
         transform.LookAt(goal);
+        anim.SetFloat("animSpeed", 1f);
 
         if(deathVFX != null) objectPool.ReturnToThePool(deathVFX.transform);
 
@@ -149,10 +150,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     void killEnemy()
     {
-        if (poisonVFX != null) objectPool.ReturnToThePool(poisonVFX.transform);
-        if (slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
-        if (damageVFX != null) objectPool.ReturnToThePool(damageVFX.transform);
-        if (hitVFX != null) objectPool.ReturnToThePool(hitVFX.transform);
+        returnToPoolVFX();
 
         if(currentDeath == null)
         {
@@ -183,6 +181,14 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         anim.ResetTrigger("DIE");
         isDying = false;
+    }
+
+    void returnToPoolVFX()
+    {
+        if (poisonVFX != null) objectPool.ReturnToThePool(poisonVFX.transform);
+        if (slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
+        if (damageVFX != null) objectPool.ReturnToThePool(damageVFX.transform);
+        if (hitVFX != null) objectPool.ReturnToThePool(hitVFX.transform);
     }
 
     public void checkPath() //Called if a new object is spawned. Checks if the path should be recalculated (i.e. a new turret is in your way)
@@ -307,21 +313,20 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Slow(float secondsSlowed, float slowReduction)
     {
-        if (!gameObject.activeSelf) return;
+        if (!gameObject.activeSelf || isFeared) return; //Can't be slowed if the enemy is in Fear (because it's already slowed)
 
         if (currentSlow != null)
         {
             StopCoroutine(currentSlow);
-            speed = info.DefaultSpeed;
-            rotationSpeed = info.InitRotationSpeed;
-            attackSpeed = info.AttackSpeed;
+            resetSlowValues();
+            if(slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
+            slowVFX = null;
         }
         currentSlow = StartCoroutine(slowEnemy(secondsSlowed, slowReduction));
     }
 
     IEnumerator slowEnemy(float secondsSlowed, float slowReduction)
     {
-        isSlowed = true;
         if (slowVFX == null)
         {
             slowVFX = objectPool.SpawnObject("SlowVFX", particlesSpawnPos.position);
@@ -337,18 +342,20 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         yield return new WaitForSeconds(secondsSlowed);
 
-        if (!isFeared)
-        {
-            speed = info.DefaultSpeed;
-            rotationSpeed = info.InitRotationSpeed;
+        resetSlowValues();
 
-            anim.SetFloat("animSpeed", 1f);
-        }
+        objectPool.ReturnToThePool(slowVFX.transform);
+        currentSlow = null;
+        slowVFX = null;
+    }
+
+    void resetSlowValues()
+    {
+        speed = info.DefaultSpeed;
+        rotationSpeed = info.InitRotationSpeed;
         attackSpeed = info.AttackSpeed;
 
-        isSlowed = false;
-        objectPool.ReturnToThePool(slowVFX.transform);
-        slowVFX = null;
+        anim.SetFloat("animSpeed", 1f);
     }
 
     public void Poison(float secondsPoisoned, int damagePerSecond)
@@ -359,6 +366,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         {
             StopCoroutine(currentPoison);
             changeMaterialColor(new Color(1, 1, 1));
+            if (poisonVFX != null) objectPool.ReturnToThePool(poisonVFX.transform);
+            poisonVFX = null;
         }
         currentPoison = StartCoroutine(poisonEnemy(secondsPoisoned, damagePerSecond));
     }
@@ -391,6 +400,15 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     {
         if (!gameObject.activeSelf || isKnockbacked || isStunned) return; //Can't fear an enemy that is knockbacked or stunned
 
+        if (currentSlow != null) //Override slow
+        {
+            StopCoroutine(currentSlow);
+            resetSlowValues();
+            if (slowVFX != null) objectPool.ReturnToThePool(slowVFX.transform);
+            slowVFX = null;
+            currentSlow = null;
+        }
+
         StopCoroutine("FollowPath");
         StartCoroutine(fearEnemy(fearSeconds)); //Fear also slows enemies
 
@@ -405,20 +423,15 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     IEnumerator fearEnemy(float secondsFear)
     {
-        speed /= 2f;
-        rotationSpeed *= 2f;
+        speed = info.DefaultSpeed / 2;
 
         anim.SetFloat("animSpeed", 0.5f);
 
         yield return new WaitForSeconds(secondsFear);
 
-        if (!isSlowed)
-        {
-            speed = info.DefaultSpeed;
-            rotationSpeed = info.InitRotationSpeed;
+        speed = info.DefaultSpeed;
 
-            anim.SetFloat("animSpeed", 1f);
-        }
+        anim.SetFloat("animSpeed", 1f);
     }
 
 
