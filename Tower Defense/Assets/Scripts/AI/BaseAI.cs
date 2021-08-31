@@ -234,7 +234,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     void spawnHitVFX()
     {
         hitVFX = objectPool.SpawnObject("HitVFX", hitParticlesSpawnPos.position);
-        hitVFX.transform.SetParent(particlesSpawnPos);
+        hitVFX.transform.SetParent(hitParticlesSpawnPos);
         hitVFX.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
     }
 
@@ -252,7 +252,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     IEnumerator FollowPath()
     {
         currentWaypoint = path[0];
-        while (true)
+        while (!isStunned)
         {
             if (transform.position == currentWaypoint)
             {

@@ -38,7 +38,7 @@ public class Stun : State
 	public override void Exit()
 	{
 		anim.ResetTrigger("STUN");
-		npc.ObjectPool.ReturnToThePool(stunVFX.transform);
+		if(stunVFX != null) npc.ObjectPool.ReturnToThePool(stunVFX.transform);
 		npc.IsStunned = false;
 		base.Exit();
 	}

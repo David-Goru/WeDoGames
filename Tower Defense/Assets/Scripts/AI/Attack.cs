@@ -9,6 +9,8 @@ public class Attack : State
 	float timeBetweenAttacks;
 	float attackDelay;
 
+	Coroutine currentDamage = null;
+
 	Vector3 shootOffset = new Vector3(0f, 0.95f, 0f);
 
 	public Attack(BaseAI _npc, Animator _anim, Transform _target) : base(_npc, _anim, _target)
@@ -26,7 +28,7 @@ public class Attack : State
 		timeBetweenAttacks = 1 / npc.AttackSpeed;
 		attackDelay = getClipLength(anim, "Attack") / 2f;
 
-		npc.StartCoroutine(dealDamage());
+		currentDamage = npc.StartCoroutine(dealDamage());
 	}
 
 	public override void Update()
@@ -35,7 +37,7 @@ public class Attack : State
 		if (attackTimer >= timeBetweenAttacks)
         {
 			resetTimer();
-			npc.StartCoroutine(dealDamage());
+			currentDamage = npc.StartCoroutine(dealDamage());
 
 			anim.SetTrigger("ATTACK");
 		}
@@ -54,7 +56,7 @@ public class Attack : State
 
 	public override void Exit()
 	{
-		npc.StopAllCoroutines();
+		npc.StopCoroutine(currentDamage);
 		anim.ResetTrigger("ATTACK");
 		anim.SetFloat("animSpeed", npc.Info.DefaultSpeed);
 		base.Exit();

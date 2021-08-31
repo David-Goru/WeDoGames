@@ -44,7 +44,7 @@ public class Fear : State
 	public override void Exit()
 	{
 		anim.ResetTrigger("MOVE");
-		npc.ObjectPool.ReturnToThePool(fearVFX.transform);
+		if(fearVFX != null) npc.ObjectPool.ReturnToThePool(fearVFX.transform);
 		npc.IsFeared = false;
 
 		base.Exit();
