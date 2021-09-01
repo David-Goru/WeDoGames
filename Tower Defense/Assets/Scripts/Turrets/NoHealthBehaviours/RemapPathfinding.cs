@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// This is a class
 /// </summary>
 public class RemapPathfinding : TurretNoHealth

@@ -7,12 +7,13 @@ using UnityEngine;
 /// </summary>
 public class TurretDamageable : EnemyDamage
 {
-    [SerializeField] List<TurretNoHealth> turretNoHealthBehaviours = null;
+    List<TurretNoHealth> turretNoHealthBehaviours;
     TurretStats turretStats;
 
     private void Awake()
     {
         turretStats = GetComponentInParent<TurretStats>();
+        turretNoHealthBehaviours = GetComponents<TurretNoHealth>().ToList();
     }
 
     public override void OnEnemyHit(int damage)

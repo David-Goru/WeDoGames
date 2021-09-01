@@ -3,7 +3,10 @@ guid: 36c4b1380a9bdd548acac4fcb902445d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - buildingInfo: {instanceID: 0}
+  - healParticlesPos: {instanceID: 0}
+  - healVFX: {fileID: 11400000, guid: 469fae293cdef3e439c8f9a5d8905c81, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

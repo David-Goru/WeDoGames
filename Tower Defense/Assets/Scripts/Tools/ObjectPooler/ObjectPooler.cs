@@ -7,7 +7,6 @@ public class ObjectPooler : MonoBehaviour
     public Pool[] Pools;
     public Dictionary<string, List<GameObject>> PoolDictionary;
     GameObject pooledObjects;
-    GameObject obj;
 
     void Awake()
     {
@@ -44,6 +43,7 @@ public class ObjectPooler : MonoBehaviour
             }
 
             List<GameObject> list = new List<GameObject>();
+            GameObject obj;
             for (int i = 0; i < pool.size; i++)
             {
                 obj = Instantiate(pool.prefab);
@@ -57,7 +57,7 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject SpawnObject(string tag, Vector3 position)
     {
-        obj = checkIfPoolHasAnUnusedItem(tag);
+        GameObject obj = checkIfPoolHasAnUnusedItem(tag);
 
         if (obj == null)
             obj = instantiateNewObject(tag);
@@ -70,7 +70,7 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject SpawnObject(string tag, Vector3 position, Quaternion rotation)
     {
-        obj = checkIfPoolHasAnUnusedItem(tag);
+        GameObject obj = checkIfPoolHasAnUnusedItem(tag);
 
         if (obj == null)
             obj = instantiateNewObject(tag);
@@ -109,7 +109,7 @@ public class ObjectPooler : MonoBehaviour
         {
             if(tag == Pools[i].tag)
             {
-                obj = Instantiate(Pools[i].prefab);
+                GameObject obj = Instantiate(Pools[i].prefab);
                 obj.transform.SetParent(pooledObjects.transform);
                 PoolDictionary[tag].Add(obj);
                 return obj;

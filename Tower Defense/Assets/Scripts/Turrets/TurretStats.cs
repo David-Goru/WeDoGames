@@ -8,10 +8,18 @@ using UnityEngine;
 public class TurretStats : Entity, IHealable
 {
     [SerializeField] TurretInfo buildingInfo = null;
+    [SerializeField] Transform healParticlesPos = null;
+    [SerializeField] Pool healVFX = null;
+    ObjectPooler objectPooler;
 
     public TurretInfo BuildingInfo { get => buildingInfo; set => buildingInfo = value; }
 
-    private void Start()
+    void Awake()
+    {
+        objectPooler = ObjectPooler.GetInstance();
+    }
+
+    void Start()
     {
         Initialize();
     }
@@ -41,5 +49,6 @@ public class TurretStats : Entity, IHealable
     public void Heal(int healValue)
     {
         currentHP = Mathf.Clamp(currentHP + healValue, 0, maxHP);
+        objectPooler.SpawnObject(healVFX.tag, healParticlesPos.position);
     }
 }
