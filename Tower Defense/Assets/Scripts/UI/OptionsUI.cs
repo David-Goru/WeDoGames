@@ -1,17 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class OptionsUI : MonoBehaviour
 {
-    [SerializeField] Slider musicSlider;
     [SerializeField] Slider soundsSlider;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] AudioMixer soundsSource;
     AudioSource musicSource;
-    AudioSource soundsSource;
 
     void Start()
     {
         //musicSource = GameObject.Find("Music").GetComponent<AudioSource>();
-        soundsSource = GameObject.Find("Camera").GetComponent<AudioSource>();
     }
 
     public void ExitGame()
@@ -26,6 +26,6 @@ public class OptionsUI : MonoBehaviour
 
     public void ChangeSoundsVolume()
     {
-        soundsSource.volume = soundsSlider.value;
+        soundsSource.SetFloat("Volume", -80 + Mathf.RoundToInt(100 * soundsSlider.value));
     }
 }

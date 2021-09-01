@@ -93,8 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c5e8d4e2c1c62438814f05b5ff7245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 3250424456277313950}
   soundsSlider: {fileID: 5427690962548672289}
+  musicSlider: {fileID: 3250424456277313950}
+  soundsSource: {fileID: 24100000, guid: be17c9c930efc9846aff736fd15aac45, type: 2}
 --- !u!1 &7708355458549247835
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2491572209060139754, guid: ef4383fccb3a7af42ad57c9bd836c4d1,
         type: 3}
-      propertyPath: m_Value
+      propertyPath: m_MaxValue
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2491572209060139754, guid: ef4383fccb3a7af42ad57c9bd836c4d1,
@@ -517,11 +518,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SoundSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 2491572209060139754, guid: ef4383fccb3a7af42ad57c9bd836c4d1,
-        type: 3}
-      propertyPath: m_Value
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2491572209060139754, guid: ef4383fccb3a7af42ad57c9bd836c4d1,
         type: 3}
