@@ -313,7 +313,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Slow(float secondsSlowed, float slowReduction)
     {
-        if (!gameObject.activeSelf || isFeared) return; //Can't be slowed if the enemy is in Fear (because it's already slowed)
+        if (!gameObject.activeSelf || isEnemyUnderCC()) return; //Can't be slowed if the enemy is in Fear, Stun or Knockback
 
         if (currentSlow != null)
         {
