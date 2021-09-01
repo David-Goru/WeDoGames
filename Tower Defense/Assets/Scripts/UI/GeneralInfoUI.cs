@@ -11,6 +11,8 @@ public class GeneralInfoUI : MonoBehaviour
     void Start()
     {
         UI.Instance.GeneralInfoUI = this;
+
+        if (Master.Instance != null) UpdateBalanceText(Mathf.RoundToInt(Master.Instance.GetBalance()));
     }
 
     public void UpdateBalanceText(int balance)
