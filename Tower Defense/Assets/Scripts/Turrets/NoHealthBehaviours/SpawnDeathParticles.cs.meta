@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 36c4b1380a9bdd548acac4fcb902445d
+guid: 18fdf3a18eed89e42aaf9addaf5c3431
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - buildingInfo: {instanceID: 0}
-  - healParticlesPos: {instanceID: 0}
-  - healVFX: {fileID: 11400000, guid: 469fae293cdef3e439c8f9a5d8905c81, type: 2}
+  - deathVFX: {fileID: 11400000, guid: d8d8f6db0b0269c40b8a9077bfa32813, type: 2}
+  - particlesPos: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

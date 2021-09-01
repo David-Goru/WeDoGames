@@ -11,6 +11,7 @@ using UnityEngine;
 [RequireComponent(typeof(TurretStats))]
 public class Turret : MonoBehaviour, IPooledObject
 {
+    [SerializeField] Pool buildVFX = null;
     List<ITurretBehaviour> behaviours = new List<ITurretBehaviour>();
     TurretStats turretStats = null;
 
@@ -28,6 +29,7 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
+        ObjectPooler.GetInstance().SpawnObject(buildVFX.tag, transform.position);
         initializeTurretStats();
         InilitalizeBehaviours();
     }

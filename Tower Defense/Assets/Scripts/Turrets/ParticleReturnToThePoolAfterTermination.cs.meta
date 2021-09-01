@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: c394a309252cd0b48aaf902ac50060af
+guid: b2a644efd620f5540852514cc58ff223
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - buildVFX: {fileID: 11400000, guid: d986f8b398dd5bf46827657e88764554, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
