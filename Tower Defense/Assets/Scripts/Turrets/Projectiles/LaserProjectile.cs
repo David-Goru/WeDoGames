@@ -19,6 +19,7 @@ public class LaserProjectile : BasicProjectile
 
     protected override void initializate()
     {
+        base.initializate();
         enemiesCollided.Clear();
         isTargetAlive = true;
         nEnemiesCollided = 0;
@@ -30,7 +31,7 @@ public class LaserProjectile : BasicProjectile
         if (isTargetAlive)
         {
             chaseEnemy();
-            lastEnemyPos = target.position;
+            lastEnemyPos = enemyCol.bounds.center;
         }
         else
         {
@@ -78,7 +79,8 @@ public class LaserProjectile : BasicProjectile
         if (target != null) 
         { 
             this.target = target;
-            lastEnemyPos = target.position;
+            enemyCol = target.GetComponent<Collider>();
+            lastEnemyPos = enemyCol.bounds.center;
             isTargetAlive = true;
         }   
         else disable();

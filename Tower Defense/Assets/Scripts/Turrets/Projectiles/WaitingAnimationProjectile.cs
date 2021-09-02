@@ -9,6 +9,7 @@ public class WaitingAnimationProjectile : Projectile
     bool isAnimationEnded;
     float timer = 0f;
     float animationTime = 0f;
+    Collider enemyCol;
 
     void Awake()
     {
@@ -20,6 +21,7 @@ public class WaitingAnimationProjectile : Projectile
         isAnimationEnded = false;
         timer = 0f;
         anim.SetTrigger(parameterName);
+        enemyCol = target.GetComponent<Collider>();
     }
 
     protected override void updateProjectile()
@@ -35,7 +37,7 @@ public class WaitingAnimationProjectile : Projectile
 
     protected void chaseEnemy()
     {
-        transform.LookAt(target);
+        transform.LookAt(enemyCol.bounds.center);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 

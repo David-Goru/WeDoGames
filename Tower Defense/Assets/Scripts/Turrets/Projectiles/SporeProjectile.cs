@@ -12,6 +12,7 @@ public class SporeProjectile : Projectile
     bool isTargetAlive = true;
 
     Vector3 lastEnemyPos = Vector3.zero;
+    Collider enemyCol;
 
     void Awake()
     {
@@ -50,7 +51,7 @@ public class SporeProjectile : Projectile
         if (isTargetAlive)
         {
             chaseEnemy();
-            lastEnemyPos = target.position;
+            lastEnemyPos = enemyCol.bounds.center;
         }
         else
         {
@@ -72,6 +73,7 @@ public class SporeProjectile : Projectile
         {
             Transform nearestTarget = getNearestTarget(targets);
             target = nearestTarget;
+            enemyCol = target.GetComponent<Collider>();
             hasTarget = true;
         }
     }
@@ -94,7 +96,7 @@ public class SporeProjectile : Projectile
 
     void chaseEnemy()
     {
-        transform.LookAt(target);
+        transform.LookAt(enemyCol.bounds.center);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 

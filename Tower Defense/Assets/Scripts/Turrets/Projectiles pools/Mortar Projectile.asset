@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mortar Projectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 2912002044830419897, guid: d98be0e7bbc118e41b57d41d5bd36512, type: 3}
-  size: 500
+  size: 50
   tag: Mortar Projectile

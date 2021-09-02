@@ -19,7 +19,6 @@ public class ParticleReturnToThePoolAfterTermination : MonoBehaviour, IPooledObj
 
     void Update()
     {
-        print(particles.main.duration);
         if (timer >= particles.main.duration) objectPooler.ReturnToThePool(transform);
         else timer += Time.deltaTime;
     }

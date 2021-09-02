@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class BasicProjectile : Projectile
 {
+    protected Collider enemyCol;
+
+    protected override void initializate()
+    {
+        enemyCol = target.GetComponent<Collider>();
+    }
+
     protected override void updateProjectile()
     {
         if (!target.gameObject.activeSelf) disable();
@@ -13,7 +20,7 @@ public class BasicProjectile : Projectile
 
     protected void chaseEnemy()
     {
-        transform.LookAt(target);
+        transform.LookAt(enemyCol.bounds.center);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 

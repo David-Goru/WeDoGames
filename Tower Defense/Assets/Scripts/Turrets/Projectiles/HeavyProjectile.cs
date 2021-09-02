@@ -29,7 +29,7 @@ public class HeavyProjectile : Projectile
     public override void SetInfo(Transform target, Transform turret,  TurretStats turretStats, IEnemyDamageHandler enemyDamageHandler)
     {
         base.SetInfo(target, turret, turretStats, enemyDamageHandler);
-        lastEnemyPosition = target.position;
+        lastEnemyPosition = target.GetComponent<Collider>().bounds.center;
         initializeParameters();
     }
 
