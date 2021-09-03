@@ -10,6 +10,8 @@ public class ActiveMode : MonoBehaviour
     [SerializeField] AudioClip startActiveSound = null;
     GameObject activeArea = null;
 
+    public bool IsActive { get => isActive; set => isActive = value; }
+
     private void Start()
     {
         groundMask = LayerMask.GetMask("Terrain");
@@ -19,7 +21,8 @@ public class ActiveMode : MonoBehaviour
     {
         if (isActive)
         {
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) doActive();
+            if (Input.GetMouseButtonDown(1)) StopActiveMode();
+            else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) doActive();
             else
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

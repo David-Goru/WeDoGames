@@ -24,6 +24,8 @@ public class EntityInfoUI : MonoBehaviour
 
     public void ShowUI(Entity entity)
     {
+        if (Master.Instance.DoingAction()) return;
+
         Master.Instance.RunSound(clickEntitySound);
         int yPos = hasUpperScreenSpaceAvailable(240) ? 120 : -120;
         transform.position = Input.mousePosition + new Vector3(0, yPos, 0);

@@ -352,8 +352,8 @@ PrefabInstance:
       objectReference: {fileID: 8422964649612439516}
     - target: {fileID: 7127509067655045152, guid: 6cd35f76805dca14a9f3e64abc3e1f46,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopBuilding
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7127509067655045158, guid: 6cd35f76805dca14a9f3e64abc3e1f46,
         type: 3}
@@ -1501,7 +1501,7 @@ PrefabInstance:
     - target: {fileID: 221783578238661610, guid: a75dd6e3d05766f4a98bb38b2df5f39c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 372
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 221783578238661610, guid: a75dd6e3d05766f4a98bb38b2df5f39c,
         type: 3}
@@ -1546,7 +1546,7 @@ PrefabInstance:
     - target: {fileID: 221783578238661610, guid: a75dd6e3d05766f4a98bb38b2df5f39c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -201
+      value: -165
       objectReference: {fileID: 0}
     - target: {fileID: 221783578238661610, guid: a75dd6e3d05766f4a98bb38b2df5f39c,
         type: 3}

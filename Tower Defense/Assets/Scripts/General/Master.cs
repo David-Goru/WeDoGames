@@ -63,6 +63,11 @@ public class Master : MonoBehaviour
         return Instance.GetComponent<Waves>().WaveCompletedInLessThan(time);
     }
 
+    public bool DoingAction()
+    {
+        return BuildObject.enabled || ActiveMode.IsActive;
+    }
+
     public void StopAllActions()
     {
         StopBuilding();

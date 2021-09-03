@@ -3,7 +3,10 @@ using System.Collections;
 
 public class PlayerCamera : MonoBehaviour
 {
-    bool isRotating = false;
+    Coroutine rotating;
+    int currentDirection;
+    int currentRotation = 45;
+    int rotationObjective = 45;
 
     void Update()
     {
@@ -12,26 +15,33 @@ public class PlayerCamera : MonoBehaviour
 
     void rotate()
     {
-        if (isRotating) return;
+        int newDirection = Input.GetAxis("Mouse X") > 0 ? 1 : -1;
 
-        int direction = Input.GetAxis("Mouse X") > 0 ? 1 : -1;
-        StartCoroutine(snapRotation(direction));
+        if (newDirection == currentDirection) return;
+        if (rotating != null)
+        {
+            StopCoroutine(rotating);
+            rotating = null;
+        }
+        rotating = StartCoroutine(snapRotation(newDirection));
     }
 
     IEnumerator snapRotation(int direction)
     {
-        isRotating = true;
+        rotationObjective = rotationObjective + 90 * direction;
+        if (rotationObjective > 360) rotationObjective -= 360;
+        currentDirection = direction;
 
-        int degreesLeft = 90;
-        while (degreesLeft > 0)
+        while (currentRotation != rotationObjective)
         {
-            degreesLeft--;
             int yRotation = Mathf.RoundToInt(transform.rotation.eulerAngles.y + direction);
             transform.eulerAngles = new Vector3(30, yRotation, 0);
+            currentRotation += direction;
+            if (currentRotation > 360) currentRotation -= 360;
             yield return new WaitForSeconds(0.001f);
         }
 
         yield return new WaitForSeconds(0.1f);
-        isRotating = false;
+        currentDirection = 0;
     }
 }

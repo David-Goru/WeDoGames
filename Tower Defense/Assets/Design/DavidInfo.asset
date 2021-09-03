@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232628d55de1e0f4fa2a347b161bbdf0, type: 3}
   m_Name: DavidInfo
   m_EditorClassIdentifier: 
-  initialBalance: 500
+  initialBalance: 250
   turretsSet:
   - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
   - {fileID: 11400000, guid: 16ef39b4fdaa5d9468b5e2fc66238df3, type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7272536fe36e154a8618ae190fd6f86, type: 2}
   - {fileID: 11400000, guid: 29bbb812666d7e04f83605fd68e7fe00, type: 2}
   initialTurretsSet:
-  - {fileID: 11400000, guid: a2068d2dc6e1c2440af1009aebef74fb, type: 2}
+  - {fileID: 11400000, guid: 2baf7a85aa8577f44a4cac6eb01473ac, type: 2}
   - {fileID: 11400000, guid: 1055398023d9b7f41b5e8dc763fc4f4e, type: 2}
   - {fileID: 11400000, guid: 552c8ad270195d94f927fb918448b1bb, type: 2}
   upgradesSet:

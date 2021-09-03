@@ -134,6 +134,7 @@ public class TurretsUI : UIList
     void setTurretInfo(Transform objectUI, TurretInfo turretInfo)
     {
         objectUI.name = turretInfo.name;
+        objectUI.GetComponent<Button>().onClick.RemoveAllListeners();
         objectUI.GetComponent<Button>().onClick.AddListener(() => Master.StartBuilding(turretInfo));
         objectUI.GetComponent<HoverElement>().SetHoverText(turretInfo.Description);
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", turretInfo.name);
