@@ -21,7 +21,7 @@ MonoBehaviour:
   turretTier: 1
   Stats:
   - type: 0
-    value: 100
+    value: 80
   - type: 1
     value: 75
   - type: 2
@@ -29,7 +29,7 @@ MonoBehaviour:
   - type: 3
     value: 3
   - type: 4
-    value: 1
+    value: 0.75
   currentStats:
   - type: 0
     value: 100

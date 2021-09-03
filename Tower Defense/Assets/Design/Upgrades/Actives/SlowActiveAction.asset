@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SlowActiveAction
   m_EditorClassIdentifier: 
   cooldownUI: {fileID: 0}
-  activeCooldown: 5
+  activeCooldown: 6
   activeRange: 1.5
   ActiveAreaGO: {fileID: 5929062607093292285, guid: 30582cdc5dc27024f84955c99e13489f,
     type: 3}
-  slowTime: 3.5
+  slowTime: 5

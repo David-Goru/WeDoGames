@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 65
   damage: 4
-  coinsReward: 9
-  attackSpeed: 1.5
+  coinsReward: 19
+  attackSpeed: 2
   range: 1
-  defaultSpeed: 8
+  defaultSpeed: 5
   initRotationSpeed: 300

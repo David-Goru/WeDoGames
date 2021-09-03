@@ -17,4 +17,4 @@ MonoBehaviour:
   activeRange: 1.5
   ActiveAreaGO: {fileID: 1306938343930991527, guid: 7152283271e816b4e8238f22336a06c2,
     type: 3}
-  fearTime: 3.5
+  fearTime: 2.5

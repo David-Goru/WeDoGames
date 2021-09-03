@@ -17,4 +17,4 @@ MonoBehaviour:
   activeRange: 1.5
   ActiveAreaGO: {fileID: 6628740484811387119, guid: 956830521553893439f18dfe6e1bcc32,
     type: 3}
-  healingValue: 20
+  healingValue: 50

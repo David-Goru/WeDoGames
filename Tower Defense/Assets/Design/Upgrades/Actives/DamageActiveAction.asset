@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DamageActiveAction
   m_EditorClassIdentifier: 
   cooldownUI: {fileID: 0}
-  activeCooldown: 5
+  activeCooldown: 8
   activeRange: 1.5
   ActiveAreaGO: {fileID: 8573664846873477310, guid: f2f3876e3d7f29946af27e0388bf2bf4,
     type: 3}
-  damageValue: 20
+  damageValue: 70
