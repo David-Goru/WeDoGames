@@ -23,12 +23,12 @@ public class Projectile : MonoBehaviour, IPooledObject
         initializate();
     }
     
-    public virtual void SetInfo(Transform turret, TurretStats turretStats)
+    public virtual void SetInfo(Transform turret, TurretStats turretStats, IEnemyDamageHandler enemyDamageHandler)
     {
         this.target = null;
         this.turretStats = turretStats;
         this.turret = turret;
-        this.enemyDamageHandler = null;
+        this.enemyDamageHandler = enemyDamageHandler;
         initializate();
     }
 

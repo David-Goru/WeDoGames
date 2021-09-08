@@ -9,6 +9,7 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     [SerializeField] float radius = 0.5f;
     [SerializeField] float height = 0.5f;
     TurretStats turretStats;
+    IEnemyDamageHandler enemyDamageHandler;
     ObjectPooler objectPooler;
 
     List<ITurretShotBehaviour> shotBehaviours = new List<ITurretShotBehaviour>();
@@ -41,6 +42,7 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     {
         turretStats = GetComponentInParent<TurretStats>();
         objectPooler = ObjectPooler.GetInstance();
+        enemyDamageHandler = transform.parent.GetComponentInChildren<IEnemyDamageHandler>();
         shotBehaviours = GetComponents<ITurretShotBehaviour>().ToList();
     }
 
@@ -74,7 +76,7 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     void createAndInitializeProjectile()
     {
         GameObject obj = objectPooler.SpawnObject(projectilePool.tag, getRandomPositionAroundTurret(), Quaternion.identity);
-        obj.GetComponent<SporeProjectile>().SetInfo(transform.parent, turretStats);
+        obj.GetComponent<SporeProjectile>().SetInfo(transform.parent, turretStats, enemyDamageHandler);
         obj.GetComponent<SporeProjectile>().SetSpawnerInfo(onProjectileDisabled);
         projectilesSpawned += 1;
     }

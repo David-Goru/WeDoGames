@@ -110,6 +110,11 @@ public class SporeProjectile : Projectile
         if (other.transform == target) OnEnemyCollision(other);
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform == target) OnEnemyCollision(other);
+    }
+
     protected override void OnEnemyCollision(Collider other)
     {
         damageEnemy(other);
@@ -125,7 +130,7 @@ public class SporeProjectile : Projectile
         List<Transform> targets = targetsDetector.GetTargets(range, enemyLayer);
         foreach (Transform target in targets)
         {
-            if (target != mainEnemyTransform) target.GetComponent<IDamageable>().GetDamage(damage);
+            if (target != mainEnemyTransform) target.GetComponent<ITurretDamage>().OnTurretHit(turret, damage, enemyDamageHandler);
         }
     }
 
