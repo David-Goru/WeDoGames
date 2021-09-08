@@ -78,7 +78,7 @@ public class BuildObject : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R)) updateRotation();
 
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) placeObject();
+        if (buildButtonPressed() && !EventSystem.current.IsPointerOverGameObject()) placeObject();
     }
 
     public void StartBuilding(TurretInfo buildingInfo)
@@ -93,6 +93,11 @@ public class BuildObject : MonoBehaviour
 
         this.buildingInfo = buildingInfo;
         enabled = true;
+    }
+
+    bool buildButtonPressed()
+    {
+        return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
     }
 
     void updatePosition()

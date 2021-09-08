@@ -22,7 +22,7 @@ public class ActiveMode : MonoBehaviour
         if (isActive)
         {
             if (Input.GetMouseButtonDown(1)) StopActiveMode();
-            else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) doActive();
+            else if (activeButtonPressed() && !EventSystem.current.IsPointerOverGameObject()) doActive();
             else
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -67,6 +67,11 @@ public class ActiveMode : MonoBehaviour
             activeArea = null;
         }
         isActive = false;
+    }
+
+    bool activeButtonPressed()
+    {
+        return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
     }
 
     void doActive()
