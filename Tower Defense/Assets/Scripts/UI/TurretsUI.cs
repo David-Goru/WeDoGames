@@ -5,10 +5,14 @@ using UnityEngine.UI;
 public class TurretsUI : UIList
 {
     List<KeyValuePair<Transform, TurretInfo>> turretsSlots;
+    KeyCode[] keys;
+    int currentKey;
 
     void Start()
     {
         turretsSlots = new List<KeyValuePair<Transform, TurretInfo>>();
+        keys = new KeyCode[3] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
+        currentKey = 0;
         loadInitialSlots();
 
         UI.Instance.TurretsUI = this;
@@ -95,6 +99,7 @@ public class TurretsUI : UIList
                 if (turretsSlots[i].Value.TurretTier == TurretTier.FIRST)
                 {
                     turretsSlots[i] = new KeyValuePair<Transform, TurretInfo>(turretsSlots[i].Key, turretTransformation.TurretInfo);
+                    UI.UpdateKey(keys[i], () => Master.StartBuilding(turretsSlots[i].Value));
                     setTurretInfo(turretsSlots[i].Key, turretsSlots[i].Value);
                     break;
                 }
@@ -107,6 +112,7 @@ public class TurretsUI : UIList
                 if (turretsSlots[i].Value.TurretTier == TurretTier.SECOND && turretsSlots[i].Value.TurretElement == turretTransformation.TurretElement)
                 {
                     turretsSlots[i] = new KeyValuePair<Transform, TurretInfo>(turretsSlots[i].Key, turretTransformation.TurretInfo);
+                    UI.UpdateKey(keys[i], () => Master.StartBuilding(turretsSlots[i].Value));
                     setTurretInfo(turretsSlots[i].Key, turretsSlots[i].Value);
                     break;
                 }
@@ -116,29 +122,32 @@ public class TurretsUI : UIList
 
     void loadInitialSlots()
     {
-        foreach (TurretInfo buildingInfo in Master.Instance.MasterInfo.GetInitialTurretsSet())
+        foreach (TurretInfo turretInfo in Master.Instance.MasterInfo.GetInitialTurretsSet())
         {
-            turretsSlots.Add(new KeyValuePair<Transform, TurretInfo>(addTurretToUI(buildingInfo), buildingInfo));
+            turretsSlots.Add(new KeyValuePair<Transform, TurretInfo>(addTurretToUI(turretInfo), turretInfo));
         }
     }
 
-    Transform addTurretToUI(TurretInfo buildingInfo)
+    Transform addTurretToUI(TurretInfo turretInfo)
     {
         Transform objectUI = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        setTurretInfo(objectUI, buildingInfo);
+        setTurretInfo(objectUI, turretInfo, (currentKey + 1).ToString());
+        UI.AddKey(keys[currentKey], () => Master.StartBuilding(turretInfo));
+        currentKey++;
         objectUI.SetParent(ListUIObject, false);
 
         return objectUI;
     }
 
-    void setTurretInfo(Transform objectUI, TurretInfo turretInfo)
+    void setTurretInfo(Transform objectUI, TurretInfo turretInfo, string key = "None")
     {
         objectUI.name = turretInfo.name;
         objectUI.GetComponent<Button>().onClick.RemoveAllListeners();
         objectUI.GetComponent<Button>().onClick.AddListener(() => Master.StartBuilding(turretInfo));
         objectUI.GetComponent<HoverElement>().SetHoverText(turretInfo.Description);
         objectUI.Find("Name").GetComponent<Text>().text = string.Format("{0}", turretInfo.name);
-        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0} coins", turretInfo.GetStat(StatType.PRICE));
+        objectUI.Find("Cost").GetComponent<Text>().text = string.Format("{0}", turretInfo.GetStat(StatType.PRICE));
+        if (key != "None") objectUI.Find("Key").GetComponent<Text>().text = string.Format("{0}", key);
         objectUI.Find("Icon").GetComponent<Image>().sprite = turretInfo.Icon;
     }
 }

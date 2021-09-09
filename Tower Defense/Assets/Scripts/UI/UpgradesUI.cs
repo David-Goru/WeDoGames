@@ -113,7 +113,7 @@ public class UpgradesUI : UIList
     void addUpgradeToUI(Upgrade upgrade)
     {
         Transform button = Instantiate(ObjectUIPrefab, ListUIObject.position, ListUIObject.rotation).transform;
-        UI.SetButtonInfo(button, ListUIObject, upgrade.name, upgrade.Description, upgrade.Icon, () => addUpgradeAction(upgrade));
+        UI.SetButtonInfo(button, ListUIObject, upgrade.name, upgrade.Description, upgrade.Icon, () => addUpgradeAction(upgrade), upgrade is Active ? "Active" : "Turret");
         button.gameObject.SetActive(false);
         upgrade.ObjectUI = button;
     }

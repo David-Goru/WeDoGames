@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class ActivesUI : UIList
 {
     List<Active> activesAvailable = null;
     List<Active> activesEnabled = null;
+    KeyCode[] keys;
+    int currentKey = 0;
 
     public List<Active> ActivesAvailable { get => activesAvailable; }
 
     void Start()
     {
+        keys = new KeyCode[5] { KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T };
+
         activesAvailable = new List<Active>();
         activesEnabled = new List<Active>();
         loadUpgrades();
@@ -22,7 +27,12 @@ public class ActivesUI : UIList
     {
         activesAvailable.Remove((Active)upgrade);
         activesEnabled.Add((Active)upgrade);
-        ListUIObject.Find(upgrade.name).gameObject.SetActive(true);
+        Transform button = ListUIObject.Find(upgrade.name);
+        button.gameObject.SetActive(true);
+        button.Find("Key").GetComponent<Text>().text = keys[currentKey].ToString();
+        UI.AddKey(keys[currentKey], () => Master.Instance.ActiveMode.SetActive(((Active)upgrade).ActiveAction));
+        button.SetAsLastSibling();
+        currentKey++;
         showUI();
     }
 

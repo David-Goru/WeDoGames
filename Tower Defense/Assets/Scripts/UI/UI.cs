@@ -14,11 +14,34 @@ public class UI : MonoBehaviour
     [System.NonSerialized] public GeneralInfoUI GeneralInfoUI;
     [System.NonSerialized] public Chat Chat;
 
+    List<KeyBinding> keyBindings;
+    public List<KeyBinding> KeyBindings { get => keyBindings; set => keyBindings = value; }
+
     public static UI Instance;
 
     void Start()
     {
         Instance = this;
+        keyBindings = new List<KeyBinding>();
+    }
+
+    void Update()
+    {
+        foreach (KeyBinding keyBinding in keyBindings) keyBinding.Check();
+    }
+
+    public static void AddKey(KeyCode key, UnityAction action)
+    {
+        if (Instance == null) return;
+
+        Instance.KeyBindings.Add(new KeyBinding(key, action));
+    }
+
+    public static void UpdateKey(KeyCode key, UnityAction action)
+    {
+        if (Instance == null) return;
+
+        Instance.KeyBindings.Find(x => x.Key == key).Action = action;
     }
 
     public static void UpdateUI()
@@ -179,7 +202,7 @@ public class UI : MonoBehaviour
         if (Instance.Chat != null) Instance.Chat.AddCommand(commandName, commandAction);
     }
 
-    public static void SetButtonInfo(Transform button, Transform parent, string name, string description, Sprite icon, UnityEngine.Events.UnityAction action)
+    public static void SetButtonInfo(Transform button, Transform parent, string name, string description, Sprite icon, UnityAction action, string type = null)
     {
         Text nameText = button.Find("Name").GetComponent<Text>();
         Image iconImage = button.Find("Icon").GetComponent<Image>();
@@ -188,6 +211,7 @@ public class UI : MonoBehaviour
 
         button.name = name;
         nameText.text = name;
+        if (type != null) button.Find("Type").GetComponent<Text>().text = type;
         iconImage.sprite = icon;
         buttonComponent.onClick.AddListener(action);
         if (hoverElement) hoverElement.HoverText = description;
