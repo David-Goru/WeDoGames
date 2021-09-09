@@ -26,6 +26,6 @@ public class OptionsUI : MonoBehaviour
 
     public void ChangeSoundsVolume()
     {
-        soundsSource.SetFloat("Volume", -80 + Mathf.RoundToInt(100 * soundsSlider.value));
+        soundsSource.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
     }
 }

@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerCamera : MonoBehaviour
 {
+    [SerializeField] KeyCode rotateLeftButton = KeyCode.A;
+    [SerializeField] KeyCode rotateRightButton = KeyCode.D;
+
     Coroutine rotating;
     int currentDirection;
     int currentRotation = 45;
@@ -10,12 +13,14 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(2) && Mathf.Abs(Input.GetAxis("Mouse X")) > 0.2f) rotate();
+        if (Input.GetMouseButton(2) && Mathf.Abs(Input.GetAxis("Mouse X")) > 0.2f) rotate(Input.GetAxis("Mouse X"));
+        else if (Input.GetKey(rotateLeftButton)) rotate(1);
+        else if (Input.GetKey(rotateRightButton)) rotate(-1);
     }
 
-    void rotate()
+    void rotate(float direction)
     {
-        int newDirection = Input.GetAxis("Mouse X") > 0 ? 1 : -1;
+        int newDirection = direction > 0 ? 1 : -1;
 
         if (newDirection == currentDirection) return;
         if (rotating != null)
