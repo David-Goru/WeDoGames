@@ -27,6 +27,7 @@ public class UI : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0) return;
         foreach (KeyBinding keyBinding in keyBindings) keyBinding.Check();
     }
 

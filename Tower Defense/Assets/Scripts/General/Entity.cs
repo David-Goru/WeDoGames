@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
 
     private void OnMouseDown()
     {
-        UI.ShowEntityInfoUI(this);
+        if (Time.timeScale != 0) UI.ShowEntityInfoUI(this);
     }
 
     public bool IsDead { get => currentHP <= 0; }
