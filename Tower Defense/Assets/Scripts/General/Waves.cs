@@ -143,15 +143,26 @@ public class Waves : MonoBehaviour
 
     void spawnEnemies()
     {
+        List<int> alreadySpawned = new List<int>();
         for (int i = 0; i < wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count; i++)
         {
             List<int> possibleSpawners = getRandomSpawnerNum(i);
             for (int j = 0; j < wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].NumberOfEnemies; j++)
             {
                 int getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
+
+                while (alreadySpawned.Contains(getRandomSpawn))
+                {
+                    getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
+                }
+
+                alreadySpawned.Add(getRandomSpawn);
+
                 Vector3 randomPos = spawnersPositions[getRandomSpawn] + Vector3.forward * Random.Range(-3f, 3f) + Vector3.right * Random.Range(-3f, 3f);
                 objectPooler.SpawnObject(wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].Enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
                 EnemiesRemaining++;
+
+                if (alreadySpawned.Count == possibleSpawners.Count) alreadySpawned.Clear();
             }
         }
     }
