@@ -77,6 +77,7 @@ public class Attack : State
 	IEnumerator dealDamage()
     {
 		yield return new WaitForSeconds(attackDelay);
+		npc.EnemyAudioSource.Play();
 		attackTarget();
 	}
 

@@ -21,6 +21,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     protected Animator anim;
     protected State currentState;
     Material material;
+    AudioSource audioSource;
 
     Vector3[] path;
     Vector3 currentWaypoint;
@@ -75,12 +76,14 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     public int Damage { get => damage; }
     public Transform ParticlesSpawnPos { get => particlesSpawnPos; }
     public ObjectPooler ObjectPool { get => objectPool; }
+    public AudioSource EnemyAudioSource { get => audioSource; }
 
     void Awake()
     {
         setUpMaterial();
         anim = transform.Find("Model").GetComponent<Animator>();
         objectPool = ObjectPooler.GetInstance();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public virtual void OnObjectSpawn()
