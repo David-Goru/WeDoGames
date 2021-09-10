@@ -21,7 +21,7 @@ public class ActiveMode : MonoBehaviour
     {
         if (isActive)
         {
-            if (Input.GetMouseButtonDown(1)) StopActiveMode();
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape)) StopActiveMode();
             else if (activeButtonPressed() && !EventSystem.current.IsPointerOverGameObject()) doActive();
             else
             {

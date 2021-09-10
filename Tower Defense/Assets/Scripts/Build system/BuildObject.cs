@@ -11,7 +11,6 @@ public class BuildObject : MonoBehaviour
     [Header("References")]
     [SerializeField] Texture buildingGrid = null;
     [SerializeField] Grid grid = null;
-    [SerializeField] GameObject stopBuildingButton = null;
     [SerializeField] AudioClip buildSound = null;
 
     [Header("Debug")]
@@ -32,13 +31,6 @@ public class BuildObject : MonoBehaviour
         if (buildingGrid == null)
         {
             Debug.Log("Building grid not set");
-            enabled = false;
-            return;
-        }
-
-        if (stopBuildingButton == null)
-        {
-            Debug.Log("Stop building button not set");
             enabled = false;
             return;
         }
@@ -79,14 +71,13 @@ public class BuildObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) updateRotation();
 
         if (buildButtonPressed() && !EventSystem.current.IsPointerOverGameObject()) placeObject();
+        else if (cancelButtonPressed()) StopBuilding();
     }
 
     public void StartBuilding(TurretInfo buildingInfo)
     {
         if (!Master.Instance.CheckIfCanAfford(buildingInfo.GetStat(StatType.PRICE))) return;
         Master.Instance.StopAllActions();
-
-        stopBuildingButton.SetActive(true);
 
         ground.material.SetTexture("_BaseMap", buildingGrid);
         ground.material.SetTextureScale("_BaseMap", new Vector2(gridSize, gridSize));
@@ -98,6 +89,11 @@ public class BuildObject : MonoBehaviour
     bool buildButtonPressed()
     {
         return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
+    }
+
+    bool cancelButtonPressed()
+    {
+        return Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape);
     }
 
     void updatePosition()
@@ -188,8 +184,6 @@ public class BuildObject : MonoBehaviour
     public void StopBuilding()
     {
         if (enabled == false) return;
-
-        stopBuildingButton.SetActive(false);
 
         if (objectBlueprint != null)
         {

@@ -3,25 +3,25 @@ using UnityEngine.UI;
 
 public class CooldownUI : MonoBehaviour
 {
-    [SerializeField] Color enabledColor = new Color();
-    [SerializeField] Color disabledColor = new Color();
-    [SerializeField] Image UIimage = null;
     [SerializeField] Text cooldownText = null;
+    [SerializeField] Image cooldownBG = null;
 
     public void StartCooldown()
     {
-        UIimage.color = disabledColor;
+        cooldownBG.gameObject.SetActive(true);
     }
 
     public void EndCooldown()
     {
         hideCooldownText();
-        UIimage.color = enabledColor;
+        cooldownBG.gameObject.SetActive(false);
+        cooldownBG.fillAmount = 1;
     }
 
-    public void SetCooldownText(int remainingTime)
+    public void UpdateCooldown(float requiredTime, float currentTime = 0.0f)
     {
-        cooldownText.text = string.Format("{0}", remainingTime);
+        cooldownText.text = string.Format("{0}", Mathf.CeilToInt(requiredTime - currentTime));
+        cooldownBG.fillAmount = 1.0f - currentTime / requiredTime;
     }
 
     void hideCooldownText()

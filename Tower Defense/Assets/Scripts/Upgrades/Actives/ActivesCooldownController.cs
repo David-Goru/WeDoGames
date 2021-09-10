@@ -18,7 +18,7 @@ public class ActivesCooldownController : MonoBehaviour
             activesInCoolDown.Add(active);
             timers.Add(0f);
             active.cooldownUI.StartCooldown();
-            active.cooldownUI.SetCooldownText(Mathf.CeilToInt(active.activeCooldown));
+            active.cooldownUI.UpdateCooldown(active.activeCooldown);
         }
     }
 
@@ -33,7 +33,7 @@ public class ActivesCooldownController : MonoBehaviour
                 timers.RemoveAt(i);
                 activesInCoolDown.RemoveAt(i);
             }
-            else activesInCoolDown[i].cooldownUI.SetCooldownText(Mathf.CeilToInt(activesInCoolDown[i].activeCooldown - timers[i]));
+            else activesInCoolDown[i].cooldownUI.UpdateCooldown(activesInCoolDown[i].activeCooldown, timers[i]);
         }
     }
 

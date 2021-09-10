@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55ca98936469a4e46a8b4679cde28bee, type: 3}
-  m_Name: FearActive
+  m_Name: Heal
   m_EditorClassIdentifier: 
-  description: Fear enemies
+  description: Heal your turrets
   price: 0
-  icon: {fileID: 21300000, guid: 3e901aa07e31f924c949d08733461983, type: 3}
-  activeAction: {fileID: 11400000, guid: 6d64dc84643a0a4458d5af7fb21f5481, type: 2}
+  icon: {fileID: 21300000, guid: 1265cbcd32e341048ab3f336aab53f67, type: 3}
+  activeAction: {fileID: 11400000, guid: 83d709e13322234449589b78eaf07056, type: 2}
