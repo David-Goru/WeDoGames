@@ -87,7 +87,12 @@ MonoBehaviour:
   particlesSpawnPos: {fileID: 5238636873077324230}
   hitParticlesSpawnPos: {fileID: 4065778195201355495}
   deathParticlesSpawnPos: {fileID: 2576826186042872973}
-  audio: {fileID: 0}
+  attackSounds:
+  - {fileID: 8300000, guid: 6b17b18882cc382409f127f8bad8c7ba, type: 3}
+  - {fileID: 8300000, guid: 0db9adc5a6ae74245975e44e36572e75, type: 3}
+  - {fileID: 8300000, guid: aa2f97fbe676b6f44a3529425836136e, type: 3}
+  - {fileID: 8300000, guid: 3a37cc7da64b3c049a870776b818e300, type: 3}
+  - {fileID: 8300000, guid: fa99ad2e4062b1f488dd2ca41c69283c, type: 3}
   goal: {fileID: 0}
   currentTurret: {fileID: 0}
 --- !u!82 &-3548083298944133344

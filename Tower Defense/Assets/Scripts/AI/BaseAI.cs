@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
@@ -12,6 +13,10 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     [SerializeField] Transform particlesSpawnPos;
     [SerializeField] Transform hitParticlesSpawnPos;
     [SerializeField] Transform deathParticlesSpawnPos;
+
+    [Header("Attack sounds")]
+    [SerializeField] List<AudioClip> attackSounds = new List<AudioClip>();
+    List<AudioClip> usedAttackSounds = new List<AudioClip>();
 
     [Header("Debug")]
     [SerializeField] protected Transform goal;
@@ -76,7 +81,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     public int Damage { get => damage; }
     public Transform ParticlesSpawnPos { get => particlesSpawnPos; }
     public ObjectPooler ObjectPool { get => objectPool; }
-    public AudioSource EnemyAudioSource { get => audioSource; }
 
     void Awake()
     {
@@ -519,6 +523,23 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         isKnockbacked = false;
         isStunned = false;
         isFeared = false;
+    }
+
+    public void PlayRandomAttack()
+    {
+        AudioClip attackClip = attackSounds[Random.Range(0, attackSounds.Count)];
+
+        usedAttackSounds.Add(attackClip);
+        attackSounds.Remove(attackClip);
+
+        audioSource.clip = attackClip;
+        audioSource.Play();
+
+        if(attackSounds.Count == 0)
+        {
+            attackSounds.AddRange(usedAttackSounds);
+            usedAttackSounds.Clear();
+        }
     }
 
     /* Editor */
