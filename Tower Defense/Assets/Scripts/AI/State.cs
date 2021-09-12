@@ -52,7 +52,7 @@ public class State
 			nextState = new Move(npc, anim, npc.Goal);
 			stage = EVENT.EXIT;
 		}
-		else if (!npc.IsStunned && !npc.IsFeared && !npc.IsKnockbacked)
+		else if (npc.CurrentTurret == null && !npc.IsStunned && !npc.IsFeared && !npc.IsKnockbacked)
 		{
 			npc.CurrentTurret = turretTransform.transform;
 			nextState = new Move(npc, anim, turretTransform);
