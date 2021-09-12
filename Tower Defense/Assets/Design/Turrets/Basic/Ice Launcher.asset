@@ -10,34 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
-  m_Name: Fire Basic Turret
+  m_Name: Ice Launcher
   m_EditorClassIdentifier: 
-  turretPool: {fileID: 11400000, guid: d6cddcffc661a5b47870311e0f940527, type: 2}
-  turretBlueprintPool: {fileID: 11400000, guid: 6fc6b92fe5ae93044af2b5602ede351e,
+  turretPool: {fileID: 11400000, guid: 4cd4e9ad41decf94e88ff449226e649f, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: ea220346fab15bc45b1cc42944ab3092,
     type: 2}
-  description: Fire Basic Turret description
-  icon: {fileID: 21300000, guid: da8e3816eaa8c9e4798d93ef63d0f5b1, type: 3}
-  turretElement: 1
+  description: Ice Basic Turret description
+  icon: {fileID: 21300000, guid: cf90bf0656938ff45b232ce3177cbd36, type: 3}
+  turretElement: 2
   turretTier: 1
   Stats:
   - type: 0
     value: 80
   - type: 1
-    value: 75
+    value: 80
   - type: 2
-    value: 9
+    value: 7
   - type: 3
     value: 3
   - type: 4
-    value: 1
+    value: 0.7
+  - type: 6
+    value: 0.5
+  - type: 5
+    value: 3
   currentStats:
   - type: 0
     value: 100
   - type: 1
-    value: 75
+    value: 80
   - type: 2
-    value: 9
+    value: 7
   - type: 3
     value: 3
   - type: 4
-    value: 1
+    value: 0.7
+  - type: 6
+    value: 0.5
+  - type: 5
+    value: 3

@@ -10,34 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
-  m_Name: Basic Turret
+  m_Name: Laser
   m_EditorClassIdentifier: 
-  turretPool: {fileID: 11400000, guid: a298100e7207e264e805ca4fae693a92, type: 2}
-  turretBlueprintPool: {fileID: 11400000, guid: 69fa069c880212243a57c0bae90626f5,
+  turretPool: {fileID: 11400000, guid: 982478f9c285f03458cfa9552c8b8a49, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: ddc1c8d676c534b40b3a3f12b2560df2,
     type: 2}
-  description: Basic Turret description
-  icon: {fileID: 21300000, guid: d14f8afbfd5ef5a47b42e70f396610a7, type: 3}
-  turretElement: 0
-  turretTier: 0
+  description: 
+  icon: {fileID: 21300000, guid: b84f63b4c009e5346a4b9df5b5d2db7d, type: 3}
+  turretElement: 4
+  turretTier: 2
   Stats:
   - type: 0
-    value: 50
+    value: 100
   - type: 1
     value: 75
   - type: 2
-    value: 8
+    value: 7
   - type: 3
-    value: 3
+    value: 4
   - type: 4
+    value: 0.6
+  - type: 10
+    value: 3
+  - type: 16
     value: 1
   currentStats:
   - type: 0
-    value: 50
+    value: 100
   - type: 1
-    value: 75
+    value: 100
   - type: 2
-    value: 8
-  - type: 3
     value: 3
+  - type: 3
+    value: 4
   - type: 4
+    value: 2
+  - type: 10
+    value: 3
+  - type: 16
     value: 1

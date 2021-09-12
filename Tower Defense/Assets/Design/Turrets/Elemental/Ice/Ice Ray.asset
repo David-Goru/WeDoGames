@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
-  m_Name: Mortar Turret
+  m_Name: Ice Ray
   m_EditorClassIdentifier: 
-  turretPool: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
-  turretBlueprintPool: {fileID: 11400000, guid: e2bc268c5f8cd2d429159f8eb5f7c71b,
+  turretPool: {fileID: 11400000, guid: ff4e2d349fc54cc44ae95aff8063f636, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: 33a4e7b4da2c2814f8890b66a66bd453,
     type: 2}
   description: 
-  icon: {fileID: 21300000, guid: f35738a4ad4107b4d913bde5980dbef7, type: 3}
-  turretElement: 1
+  icon: {fileID: 21300000, guid: 17d7ba778969cf94880fe577c4e2cc0a, type: 3}
+  turretElement: 2
   turretTier: 2
   Stats:
   - type: 0
     value: 100
   - type: 1
-    value: 60
+    value: 80
   - type: 2
-    value: 12
+    value: 2.5
   - type: 3
-    value: 6
-  - type: 4
-    value: 1.25
-  - type: 8
+    value: 3
+  - type: 6
+    value: 0.5
+  - type: 5
     value: 1
   currentStats:
   - type: 0
@@ -40,8 +40,8 @@ MonoBehaviour:
   - type: 2
     value: 3
   - type: 3
-    value: 5
-  - type: 4
-    value: 2
-  - type: 8
+    value: 3
+  - type: 6
+    value: 0.5
+  - type: 5
     value: 1

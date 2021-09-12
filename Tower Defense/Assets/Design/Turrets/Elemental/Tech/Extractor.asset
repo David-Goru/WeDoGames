@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
-  m_Name: Extractor Turret
+  m_Name: Extractor
   m_EditorClassIdentifier: 
   turretPool: {fileID: 11400000, guid: 7166681c3565cc149ad4243cd95cf4c2, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 8e84fc7d63eb5564592dda17c802a66d,

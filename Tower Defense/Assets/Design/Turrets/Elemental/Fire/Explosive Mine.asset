@@ -10,42 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
-  m_Name: Laser Turret
+  m_Name: Explosive Mine
   m_EditorClassIdentifier: 
-  turretPool: {fileID: 11400000, guid: 982478f9c285f03458cfa9552c8b8a49, type: 2}
-  turretBlueprintPool: {fileID: 11400000, guid: ddc1c8d676c534b40b3a3f12b2560df2,
+  turretPool: {fileID: 11400000, guid: 191c3d97eafbee0419d42079df1f54f2, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: bce7400d1b9f58e429db40e0d164169f,
     type: 2}
   description: 
-  icon: {fileID: 21300000, guid: b84f63b4c009e5346a4b9df5b5d2db7d, type: 3}
-  turretElement: 4
+  icon: {fileID: 21300000, guid: d0d8a3228254ff043870b06fc0970706, type: 3}
+  turretElement: 1
   turretTier: 2
   Stats:
   - type: 0
     value: 100
   - type: 1
-    value: 75
-  - type: 2
-    value: 7
+    value: 90
   - type: 3
-    value: 4
+    value: 2
+  - type: 2
+    value: 16
   - type: 4
-    value: 0.6
-  - type: 10
-    value: 3
-  - type: 16
-    value: 1
+    value: 1.5
   currentStats:
   - type: 0
     value: 100
   - type: 1
     value: 100
+  - type: 3
+    value: 2
   - type: 2
     value: 3
-  - type: 3
-    value: 4
   - type: 4
     value: 2
-  - type: 10
-    value: 3
-  - type: 16
-    value: 1
