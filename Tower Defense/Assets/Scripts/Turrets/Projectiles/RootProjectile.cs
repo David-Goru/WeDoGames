@@ -34,11 +34,7 @@ public class RootProjectile : Projectile
 
     protected override void updateProjectile()
     {
-        if (!target.gameObject.activeSelf || lifeTimer >= lifeTime)
-        {
-            print("Disable");
-            disable();
-        }
+        if (!target.gameObject.activeSelf || lifeTimer >= lifeTime) disable();
         transform.position = target.position;
         blending = Mathf.Lerp(blending, 1f, blendSpeed * Time.deltaTime);
         material.SetFloat("Grow", blending);

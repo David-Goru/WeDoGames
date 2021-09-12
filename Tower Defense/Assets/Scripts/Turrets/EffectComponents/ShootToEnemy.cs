@@ -11,9 +11,11 @@ public class ShootToEnemy : EffectComponent
 
     List<ITurretAttackState> attackStateBehaviours = new List<ITurretAttackState>();
     List<ITurretShotBehaviour> shotBehaviours = new List<ITurretShotBehaviour>();
+
     ObjectPooler objectPooler;
     TurretStats turretStats;
     IEnemyDamageHandler enemyDamageHandler;
+
     float timer = 0;
     bool areTargetsInRange = false;
 

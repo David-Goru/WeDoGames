@@ -20,6 +20,7 @@ public class DetectClosestTargetInDonut : DetectClosestTarget
             }
         }
         if (minDistanceToTurret == Mathf.Infinity) areTargetsInRange = false;
+        else currentEnemyAI = currentTargets[0].GetComponent<BaseAI>();
     }
 
     protected override bool isEnemyStillInRange()

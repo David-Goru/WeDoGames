@@ -69,7 +69,8 @@ public class SporeProjectile : Projectile
     {
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         List<Transform> targets = targetsDetector.GetTargets(range, enemyLayer);
-        if(targets.Count > 0)
+        targets.RemoveAll((Transform enemy) => enemy.GetComponent<BaseAI>().IsDying);
+        if (targets.Count > 0)
         {
             Transform nearestTarget = getNearestTarget(targets);
             target = nearestTarget;

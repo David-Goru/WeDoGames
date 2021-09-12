@@ -13,6 +13,7 @@ public class DetectClosestTarget : CurrentTargetsOnRange
     ITargetsDetector targetsDetector;
     protected TurretStats turretStats;
     protected List<Transform> currentTargets = new List<Transform>();
+    protected BaseAI currentEnemyAI;
 
     float timer = 0;
 
@@ -40,15 +41,16 @@ public class DetectClosestTarget : CurrentTargetsOnRange
         areTargetsInRange = false;
         timer = 0f;
         currentTargets.Clear();
+        currentEnemyAI = null;
     }
 
     void UpdateTarget()
     {
-        if (!areTargetsInRange) detectEnemiesOnRangeAndSelectTheNearest();
+        if (currentEnemyAI == null) detectEnemiesOnRangeAndSelectTheNearest();
         else checkIfEnemyIsStillTargetableAndInRange();
 
         ////////////////////////////DEBUG////////////////////////////////////
-        if (areTargetsInRange) Debug.DrawLine(transform.position, currentTargets[0].transform.position, Color.green);
+        if (currentEnemyAI != null) Debug.DrawLine(transform.position, currentTargets[0].transform.position, Color.green);
         ////////////////////////////DEBUG////////////////////////////////////
     }
 
@@ -56,11 +58,13 @@ public class DetectClosestTarget : CurrentTargetsOnRange
     {
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         List<Transform> targetsOnRange = detectTargets(range);
+        targetsOnRange.RemoveAll((Transform enemy) => enemy.GetComponent<BaseAI>().IsDying);
         if (targetsOnRange.Count > 0)
         {
             areTargetsInRange = true;
             selectTheNearestEnemy(targetsOnRange);
         }
+        else areTargetsInRange = false;
     }
     
     protected List<Transform> detectTargets(float range)
@@ -82,6 +86,7 @@ public class DetectClosestTarget : CurrentTargetsOnRange
                 else currentTargets.Add(targetsOnRange[i]);
             }
         }
+        currentEnemyAI = currentTargets[0].GetComponent<BaseAI>();
     }
 
     void checkIfEnemyIsStillTargetableAndInRange()
@@ -103,7 +108,7 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     bool isEnemyStillTargetable()
     {
-        return (currentTargets[0] != null && currentTargets[0].gameObject.activeSelf);
+        return (currentTargets[0] != null && currentTargets[0].gameObject.activeSelf && !currentEnemyAI.IsDying);
     }
 
     protected virtual bool isEnemyStillInRange()
@@ -120,8 +125,8 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     void deleteCurrentEnemy()
     {
-        areTargetsInRange = false;
         currentTargets.Clear();
+        currentEnemyAI = null;
     }
 
     ////////////////////////////DEBUG////////////////////////////////////

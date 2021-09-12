@@ -50,14 +50,15 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
 
         List<Transform> targets = targetsDetector.GetTargets(range, targetLayer);
         areTargetsInRange = targets.Count > 0;
+        targets.RemoveAll((Transform enemy) => enemy.GetComponent<BaseAI>().IsDying);
         for (int i = 0; i < objectives; i++)
         {
             if (targets.Count <= 0) return;
-            SelectRandomTarget(targets);
+            selectRandomTarget(targets);
         }
     }
 
-    void SelectRandomTarget(List<Transform> targets)
+    void selectRandomTarget(List<Transform> targets)
     {
         int randomIndex = Random.Range(0, targets.Count);
         currentTargets.Add(targets[randomIndex]);
