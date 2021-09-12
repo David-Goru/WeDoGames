@@ -87,7 +87,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
-            if (turretDamageable != null) turretDamageable.OnTurretHit(transform, 1, enemyDamageHandler);
+            if (turretDamageable != null) turretDamageable.OnTurretHit(transform.parent, 1, enemyDamageHandler);
         }
     }
 }
