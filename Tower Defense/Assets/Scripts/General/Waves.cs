@@ -25,6 +25,9 @@ public class Waves : MonoBehaviour
 
     void Start()
     {
+        EnemiesRemaining = 0;
+        OnPlanningPhase = true;
+
         spawnersPositions = new List<Vector3>();
         foreach (Transform spawner in spawners) spawnersPositions.Add(spawner.position);
 
