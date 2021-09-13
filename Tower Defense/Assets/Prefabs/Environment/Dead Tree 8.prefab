@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8220068272363260322}
+  - component: {fileID: 3090459515970782528}
   m_Layer: 0
   m_Name: Dead Tree 8
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3090459515970782528
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5887677647852687739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.93524396, y: 0.93957037, z: 0.9428779}
+  m_Center: {x: -0.0016030669, y: 0.4647852, z: 0.016272306}
 --- !u!1001 &81765102552328896
 PrefabInstance:
   m_ObjectHideFlags: 0

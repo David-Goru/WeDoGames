@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9016189499825850269}
+  - component: {fileID: 2021125015002866377}
   m_Layer: 0
   m_Name: Metallic part 7
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2021125015002866377
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761059439192306029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16811968, y: 0.050000004, z: 0.20216763}
+  m_Center: {x: -0.014549457, y: 0.02, z: 0.013105243}
 --- !u!1001 &1146207194944933014
 PrefabInstance:
   m_ObjectHideFlags: 0

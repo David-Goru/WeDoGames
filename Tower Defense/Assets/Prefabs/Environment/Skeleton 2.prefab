@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5934020161800121399}
+  - component: {fileID: 3925669541538483304}
   m_Layer: 0
   m_Name: Skeleton 2
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3925669541538483304
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311978970208548723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16349432, y: 0.10885842, z: 0.22427374}
+  m_Center: {x: 0.013503473, y: 0.049429215, z: 0.006211117}
 --- !u!1001 &6007275454291581531
 PrefabInstance:
   m_ObjectHideFlags: 0
