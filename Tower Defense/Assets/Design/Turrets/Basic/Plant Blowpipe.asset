@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d646208b273793c4fa5ae9c9cb46370d, type: 3}
+  m_Name: Plant Blowpipe
+  m_EditorClassIdentifier: 
+  turretPool: {fileID: 11400000, guid: cf96598f6056251419184e71914d19bd, type: 2}
+  turretBlueprintPool: {fileID: 11400000, guid: 50df6a11e338dc3468725d62580382d5,
+    type: 2}
+  description: Plant Basic Turret description
+  icon: {fileID: 21300000, guid: e8c774489341488498315610d76ba3ae, type: 3}
+  turretElement: 3
+  turretTier: 1
+  Stats:
+  - type: 0
+    value: 80
+  - type: 1
+    value: 70
+  - type: 2
+    value: 7
+  - type: 3
+    value: 5
+  - type: 4
+    value: 0.6
+  - type: 7
+    value: 1
+  - type: 5
+    value: 3
+  currentStats:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 70
+  - type: 2
+    value: 7
+  - type: 3
+    value: 5
+  - type: 4
+    value: 0.6
+  - type: 7
+    value: 1
+  - type: 5
+    value: 3
