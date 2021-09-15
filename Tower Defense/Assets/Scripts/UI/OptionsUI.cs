@@ -18,7 +18,10 @@ public class OptionsUI : MonoBehaviour
         {
             float soundVolume = PlayerPrefs.GetFloat("SoundsVolume");
             soundsSlider.value = soundVolume;
+            soundsSource.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
         }
+
+        gameObject.SetActive(false);
     }
 
     public void ExitGame()
@@ -40,6 +43,6 @@ public class OptionsUI : MonoBehaviour
     public void ChangeSoundsVolume()
     {
         PlayerPrefs.SetFloat("SoundsVolume", soundsSlider.value);
-        soundsSource.SetFloat("Volume", soundsSlider.value == 0 ? -100 : Mathf.Log10(soundsSlider.value) * 20);
+        soundsSource.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
     }
 }

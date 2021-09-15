@@ -15621,7 +15621,7 @@ MonoBehaviour:
   gridSize: 11
   buildingGrid: {fileID: 2800000, guid: f7b82bac1d296f144924f1ab22bae71e, type: 3}
   grid: {fileID: 102513636}
-  buildSound: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
+  buildSound: {fileID: 8300000, guid: 31cc11156d6b87e41aeae5cece8f6ef9, type: 3}
   vertexSize: 0
   groundSprite: {fileID: 0}
   ground: {fileID: 0}
@@ -15731,7 +15731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activesCooldownController: {fileID: 537000336}
-  startActiveSound: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
+  startActiveSound: {fileID: 8300000, guid: c866e9aa543c3db4fa84c002eca7f33c, type: 3}
 --- !u!114 &537000336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35157,11 +35157,6 @@ PrefabInstance:
     - target: {fileID: 4763702275068226831, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_FontData.m_FontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4824925264119677618, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4881801010425622330, guid: 9c73d9b70784606418c6b501b172e0a8,
