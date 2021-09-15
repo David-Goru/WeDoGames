@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1996964862326505234
+--- !u!1 &1590542489953646718
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1996964862326505235}
-  - component: {fileID: 1996964862326505237}
-  - component: {fileID: 1996964862326505236}
-  - component: {fileID: 6742608073102569750}
-  - component: {fileID: -5970159045938550108}
-  - component: {fileID: -1873161339249410492}
+  - component: {fileID: 3252151823053654096}
+  - component: {fileID: 4268981139072852331}
+  - component: {fileID: 8787116606146518681}
   m_Layer: 0
-  m_Name: Fairy projectile
+  m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1996964862326505235
+--- !u!4 &3252151823053654096
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996964862326505234}
+  m_GameObject: {fileID: 1590542489953646718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.117796004, y: 0.117796004, z: 0.16252314}
-  m_Children:
-  - {fileID: 1996964862820559213}
-  - {fileID: 6005214132287905260}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &1996964862326505237
+  m_LocalPosition: {x: 0, y: 0.02, z: 0.396}
+  m_LocalScale: {x: 0.095205, y: 0.095205, z: 0.095205}
+  m_Children: []
+  m_Father: {fileID: 1996964862326505235}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!198 &4268981139072852331
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996964862326505234}
+  m_GameObject: {fileID: 1590542489953646718}
   serializedVersion: 7
   lengthInSec: 5
   simulationSpeed: 1
@@ -226,8 +221,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.2264151, g: 0, b: 0.0024154591, a: 0.8862745}
-      maxColor: {r: 0.553, g: 0.122185096, b: 0.11778903, a: 0.9490196}
+      minColor: {r: 0.22745098, g: 0, b: 0.10946248, a: 0.8862745}
+      maxColor: {r: 0.5529412, g: 0.11764705, b: 0.32612455, a: 0.9490196}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4755,14 +4750,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &1996964862326505236
+--- !u!199 &8787116606146518681
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996964862326505234}
+  m_GameObject: {fileID: 1590542489953646718}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -4822,6 +4817,42 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &1996964862326505234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1996964862326505235}
+  - component: {fileID: 6742608073102569750}
+  - component: {fileID: -5970159045938550108}
+  - component: {fileID: -1873161339249410492}
+  m_Layer: 0
+  m_Name: Fairy projectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1996964862326505235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996964862326505234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.117796004, y: 0.117796004, z: 0.16252314}
+  m_Children:
+  - {fileID: 1996964862820559213}
+  - {fileID: 6005214132287905260}
+  - {fileID: 3252151823053654096}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6742608073102569750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4979,8 +5010,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.4
-      minScalar: 0.7
+      scalar: 0.8
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5032,8 +5063,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 7
-      minScalar: 3
+      scalar: 10
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5148,8 +5179,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
-      minScalar: 4
+      scalar: 10
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5729,7 +5760,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9643,7 +9674,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3fa9f0d77e9e3784f85e5a10618370ee, type: 2}
+  - {fileID: 2100000, guid: 19fdc9b52a637b74cb8703c85883349c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
