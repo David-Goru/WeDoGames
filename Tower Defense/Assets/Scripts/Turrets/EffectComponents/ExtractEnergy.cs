@@ -10,6 +10,7 @@ public class ExtractEnergy : EffectComponent
     Master master;
 
     List<ITurretAttackState> attackStateBehaviours = new List<ITurretAttackState>();
+    List<ITurretShotBehaviour> shotBehaviours = new List<ITurretShotBehaviour>();
 
     bool onPlanningPhase = true;
     float timer = 0f;
@@ -29,6 +30,7 @@ public class ExtractEnergy : EffectComponent
         turretStats = GetComponentInParent<TurretStats>();
         master = Master.Instance;
         attackStateBehaviours = GetComponents<ITurretAttackState>().ToList();
+        shotBehaviours = GetComponents<ITurretShotBehaviour>().ToList();
     }
 
     public override void UpdateComponent()
@@ -64,6 +66,11 @@ public class ExtractEnergy : EffectComponent
         }
     }
 
+    void callShotBehaviours()
+    {
+        foreach (ITurretShotBehaviour shotBehaviour in shotBehaviours) shotBehaviour.OnShot();
+    }
+
     void initMembers()
     {
         onPlanningPhase = true;
@@ -72,8 +79,7 @@ public class ExtractEnergy : EffectComponent
 
     void extract()
     {
-        print(master);
-        print(turretStats);
+        callShotBehaviours();
         master.UpdateBalance(turretStats.GetStatValue(StatType.ENERGYTOEXTRACT));
     }
 
