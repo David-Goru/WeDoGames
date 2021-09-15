@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846bdecf0a6abdd4d81af9138a5e1b10, type: 3}
   m_Name: Inhibitor Turret
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2433775430965953527, guid: 82bd38d5832bcb946894e1ccf9d3f371, type: 3}
+  prefab: {fileID: 3770879655208757967, guid: 8abbd0db21fc4c94db0bb33838c35308, type: 3}
   size: 20
   tag: Inhibitor Turret Blueprint
