@@ -21373,6 +21373,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 47.107002, y: -35.127003, z: -6.834}
+--- !u!114 &740668198 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9004210262111475144, guid: 9c73d9b70784606418c6b501b172e0a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1137308905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &741255041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34923,6 +34935,23 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 976210099795571369, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: masterSlider
+      value: 
+      objectReference: {fileID: 740668198}
+    - target: {fileID: 976210099795571369, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: masterSource
+      value: 
+      objectReference: {fileID: 24300002, guid: be17c9c930efc9846aff736fd15aac45,
+        type: 2}
+    - target: {fileID: 976210099795571369, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: soundsSource
+      value: 
+      objectReference: {fileID: -6232420100251702221, guid: be17c9c930efc9846aff736fd15aac45,
+        type: 2}
     - target: {fileID: 1050384777653041618, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -35024,6 +35053,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2152957486971270446, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152957486971270446, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152957486971270446, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2220846615345795268, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_Material
@@ -35044,41 +35088,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontStyle
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266449107772717515, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 2266449107772717515, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.94480044
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266449107772717515, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.95199996
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266449107772717515, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.83680797
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266449107772717515, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266449107772717515, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266449107772717515, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_FillOrigin
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2277690977513133884, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
@@ -35542,31 +35551,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -43
       objectReference: {fileID: 0}
-    - target: {fileID: 8044700948968331609, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044700948968331609, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 8044700948968331609, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.82872856
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044700948968331609, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.831
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044700948968331609, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.694716
-      objectReference: {fileID: 0}
     - target: {fileID: 8180840076608040904, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_Value
@@ -35652,6 +35636,16 @@ PrefabInstance:
       propertyPath: clickSound
       value: 
       objectReference: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
+    - target: {fileID: 8519093940445312987, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519093940445312987, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8522223281436480315, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -42761,7 +42755,7 @@ AudioSource:
   m_GameObject: {fileID: 1312689821}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: be17c9c930efc9846aff736fd15aac45,
+  OutputAudioMixerGroup: {fileID: -6232420100251702221, guid: be17c9c930efc9846aff736fd15aac45,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0

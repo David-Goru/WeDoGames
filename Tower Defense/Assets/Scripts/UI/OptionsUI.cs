@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class OptionsUI : MonoBehaviour
 {
+    [SerializeField] Slider masterSlider;
     [SerializeField] Slider soundsSlider;
     [SerializeField] Slider musicSlider;
-    [SerializeField] AudioMixer soundsSource;
+    [SerializeField] AudioMixerGroup masterSource;
+    [SerializeField] AudioMixerGroup soundsSource;
     AudioSource musicSource;
 
     void Start()
@@ -18,7 +20,7 @@ public class OptionsUI : MonoBehaviour
         {
             float soundVolume = PlayerPrefs.GetFloat("SoundsVolume");
             soundsSlider.value = soundVolume;
-            soundsSource.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
+            soundsSource.audioMixer.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
         }
 
         gameObject.SetActive(false);
@@ -35,6 +37,12 @@ public class OptionsUI : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void ChangeMasterVolume()
+    {
+        PlayerPrefs.SetFloat("MasterVolume", masterSlider.value);
+        masterSource.audioMixer.SetFloat("Volume", Mathf.Log10(masterSlider.value) * 20);
+    }
+
     public void ChangeMusicVolume()
     {
         //musicSource.volume = musicSlider.value;
@@ -43,6 +51,6 @@ public class OptionsUI : MonoBehaviour
     public void ChangeSoundsVolume()
     {
         PlayerPrefs.SetFloat("SoundsVolume", soundsSlider.value);
-        soundsSource.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
+        soundsSource.audioMixer.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
     }
 }
