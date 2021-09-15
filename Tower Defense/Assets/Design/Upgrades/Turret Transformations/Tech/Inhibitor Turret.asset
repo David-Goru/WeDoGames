@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
+  m_Name: Inhibitor Turret
+  m_EditorClassIdentifier: 
+  description: Upgrade your turret into an Inhibito Turret
+  icon: {fileID: 21300000, guid: 45c3809b362b75e4da639392c8708eb1, type: 3}
+  turret: {fileID: 11400000, guid: d17c709415905c94ab3fb265cdb19ff9, type: 2}
+  turretTier: 2
+  turretElement: 4
+  turretInfo: {fileID: 11400000, guid: 95990ebd7ebbfa4409deb5279fee115f, type: 2}
+  parentTurretInfo: {fileID: 11400000, guid: f7272536fe36e154a8618ae190fd6f86, type: 2}
