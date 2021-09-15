@@ -18,7 +18,7 @@ public class Fear : State
 		fearVFX.transform.SetParent(npc.ParticlesSpawnPos);
 		fearVFX.transform.localScale = new Vector3(1f, 1f, 1f);
 
-		anim.SetTrigger("MOVE");
+		anim.SetTrigger("FEAR");
 		base.Enter();
 
 		PathData fearPosition = new PathData(-npc.transform.forward * 20.0f);
@@ -44,7 +44,7 @@ public class Fear : State
 	public override void Exit()
 	{
 		npc.PathReached = false;
-		anim.ResetTrigger("MOVE");
+		anim.ResetTrigger("FEAR");
 		if(fearVFX != null) npc.ObjectPool.ReturnToThePool(fearVFX.transform);
 		npc.IsFeared = false;
 
