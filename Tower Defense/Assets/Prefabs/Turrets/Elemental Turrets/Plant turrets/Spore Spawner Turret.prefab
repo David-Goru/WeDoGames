@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 6275928706609203339}
   - component: {fileID: 2950118971777348852}
   - component: {fileID: 5840024076560886389}
+  - component: {fileID: 3505223796193349635}
   - component: {fileID: 1176999755}
   m_Layer: 0
   m_Name: SpecialEffect
@@ -366,6 +367,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2988053427147499558}
   parameter: Shoot
+--- !u!114 &3505223796193349635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384287399998719305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be28bbe96cf8e2e448c4a5ce0c2e11c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1176999755}
 --- !u!82 &1176999755
 AudioSource:
   m_ObjectHideFlags: 0
@@ -377,7 +391,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: be17c9c930efc9846aff736fd15aac45,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fb138b6f8f4f0b04a95b53ca6d70a8d4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
