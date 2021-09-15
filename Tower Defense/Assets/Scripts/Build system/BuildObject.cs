@@ -23,6 +23,7 @@ public class BuildObject : MonoBehaviour
     [SerializeField] Vector3 lastPos;
     [SerializeField] bool buildable = false;
     [SerializeField] ObjectPooler objectPooler;
+    [SerializeField] LayerMask environmentObjectLayer;
 
     public float VertexSize { get => vertexSize; }
 
@@ -154,7 +155,8 @@ public class BuildObject : MonoBehaviour
         if (!Master.Instance.UpdateBalance(-buildingInfo.GetStat(StatType.PRICE))) return;
         GameObject turretPlaced = objectPooler.SpawnObject(buildingInfo.GetBuildingPool().tag, objectBlueprint.transform.position, objectBlueprint.transform.rotation);
         grid.SetWalkableNodes(false, objectBlueprint.transform.position, turretPlaced.GetComponent<BuildingRange>().Range, turretPlaced.transform);
-        
+
+        removeEnvirontmentObjects(objectBlueprint.transform.position);
         blueprintMaterial.SetColor("_Color", Color.black);
         objectPooler.ReturnToThePool(objectBlueprint.transform);
         objectBlueprint = null;
@@ -167,6 +169,12 @@ public class BuildObject : MonoBehaviour
         StartCoroutine("delayCheckPath");
 
         StopBuilding();
+    }
+
+    void removeEnvirontmentObjects(Vector3 position)
+    {
+        Collider[] objects = Physics.OverlapBox(position, Vector3.one / 2, Quaternion.identity, environmentObjectLayer);
+        foreach (Collider col in objects) Destroy(col.gameObject);
     }
 
     private IEnumerator delayCheckPath()

@@ -15631,6 +15631,9 @@ MonoBehaviour:
   lastPos: {x: 0, y: 0, z: 0}
   buildable: 0
   objectPooler: {fileID: 0}
+  environmentObjectLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!4 &537000328
 Transform:
   m_ObjectHideFlags: 0

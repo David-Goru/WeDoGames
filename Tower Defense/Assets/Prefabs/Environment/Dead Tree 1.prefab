@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8700079823701758543}
   - component: {fileID: 5540592539513780201}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dead Tree 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
