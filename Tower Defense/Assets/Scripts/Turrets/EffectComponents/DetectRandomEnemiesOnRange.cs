@@ -50,7 +50,7 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
 
         List<Transform> targets = targetsDetector.GetTargets(range, targetLayer);
         areTargetsInRange = targets.Count > 0;
-        targets.RemoveAll((Transform enemy) => enemy.GetComponent<BaseAI>().IsDying);
+        targets.RemoveAll((Transform enemy) => TurretUtilities.IsEnemyDying(enemy));
         for (int i = 0; i < objectives; i++)
         {
             if (targets.Count <= 0) return;

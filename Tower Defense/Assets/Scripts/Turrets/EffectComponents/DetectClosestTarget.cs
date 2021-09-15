@@ -58,7 +58,7 @@ public class DetectClosestTarget : CurrentTargetsOnRange
     {
         float range = turretStats.GetStatValue(StatType.ATTACKRANGE);
         List<Transform> targetsOnRange = detectTargets(range);
-        targetsOnRange.RemoveAll((Transform enemy) => enemy.GetComponent<BaseAI>().IsDying);
+        targetsOnRange.RemoveAll((Transform enemy) => TurretUtilities.IsEnemyDying(enemy));
         if (targetsOnRange.Count > 0)
         {
             areTargetsInRange = true;
