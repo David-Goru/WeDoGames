@@ -73,8 +73,10 @@ public class LaserProjectile : BasicProjectile
 
     private void searchAnotherTarget()
     {
+        transform.position = lastEnemyPos;
         float range = turretStats.GetStatValue(StatType.PROJECTILERANGE);
         List<Transform> targets = targetsDetector.GetTargets(range, enemyLayer);
+        targets.RemoveAll((Transform enemy) => TurretUtilities.IsEnemyDying(enemy));
         Transform target = getNearestTarget(targets);
         if (target != null) 
         { 
