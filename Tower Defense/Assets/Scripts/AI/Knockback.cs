@@ -18,6 +18,8 @@ public class Knockback : State
 
 	public override void Enter()
 	{
+		npc.IsKnockbacked = true;
+
 		anim.SetTrigger("IDLE");
 		base.Enter();
 

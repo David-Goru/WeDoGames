@@ -78,6 +78,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
     public float FearDuration { get => fearDuration; set => fearDuration = value; }
     public bool IsFeared { get => isFeared; set => isFeared = value; }
     public float AttackSpeed { get => attackSpeed; }
+    public float Speed { get => speed; set => speed = value; }
     public int Damage { get => damage; }
     public Transform ParticlesSpawnPos { get => particlesSpawnPos; }
     public ObjectPooler ObjectPool { get => objectPool; }
@@ -312,7 +313,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         currentState.Exit();
 
         stunDuration = secondsStunned;
-        isStunned = true;
 
         if (currentTurret != null) currentState = new Stun(this, anim, currentTurret);
         else currentState = new Stun(this, anim, goal);
@@ -352,8 +352,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         resetSlowValues();
 
         objectPool.ReturnToThePool(slowVFX.transform);
-        currentSlow = null;
         slowVFX = null;
+        currentSlow = null;
     }
 
     void resetSlowValues()
@@ -417,28 +417,13 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         }
 
         StopCoroutine("FollowPath");
-        StartCoroutine(fearEnemy(fearSeconds)); //Fear also slows enemies
 
         currentState.Exit();
 
         fearDuration = fearSeconds;
-        isFeared = true;
 
         if (currentTurret != null) currentState = new Fear(this, anim, currentTurret);
         else currentState = new Fear(this, anim, goal);
-    }
-
-    IEnumerator fearEnemy(float secondsFear)
-    {
-        speed = info.DefaultSpeed / 2;
-
-        anim.SetFloat("animSpeed", 0.5f);
-
-        yield return new WaitForSeconds(secondsFear);
-
-        speed = info.DefaultSpeed;
-
-        anim.SetFloat("animSpeed", 1f);
     }
 
 
@@ -450,7 +435,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         pushDistance = knockbackDistance;
         pushDirection = knockbackDirection;
-        isKnockbacked = true;
 
         if (currentTurret != null) currentState = new Knockback(this, anim, currentTurret);
         else currentState = new Knockback(this, anim, goal);
