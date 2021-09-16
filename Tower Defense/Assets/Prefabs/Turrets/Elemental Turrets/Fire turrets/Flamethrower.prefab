@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 8288088174157906053}
   - component: {fileID: 7069237036794196098}
   - component: {fileID: 1126432276268281606}
-  - component: {fileID: 2022179568}
+  - component: {fileID: 3576366471932081412}
   - component: {fileID: 2022179569}
   m_Layer: 0
   m_Name: SpecialEffect
@@ -856,7 +856,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2022179568
+--- !u!114 &3576366471932081412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -865,11 +865,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8288088174157906054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7be41c3aad8086347b317b325da5f1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopOnExit: 1
   audioSource: {fileID: 1126432276268281606}
+  startingClip: {fileID: 8300000, guid: c3c3497b742834041b451b3dd58e2178, type: 3}
+  loopingClip: {fileID: 8300000, guid: 6b661d25c8f76a94292c6ed8812c733a, type: 3}
+  endingClip: {fileID: 8300000, guid: 2743be8b5a605e0498b170edcac0ffb0, type: 3}
 --- !u!114 &2022179569
 MonoBehaviour:
   m_ObjectHideFlags: 0

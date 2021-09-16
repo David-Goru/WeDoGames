@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SporeProjectile : Projectile
@@ -14,9 +15,12 @@ public class SporeProjectile : Projectile
     Vector3 lastEnemyPos = Vector3.zero;
     Collider enemyCol;
 
+    AudioSource audioSource;
+
     void Awake()
     {
         targetsDetector = GetComponent<ITargetsDetector>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected override void initializate()
@@ -118,6 +122,7 @@ public class SporeProjectile : Projectile
 
     protected override void OnEnemyCollision(Collider other)
     {
+        audioSource.Play();
         damageEnemy(other);
         damageSurroundingEnemies(other.transform);
         disable();

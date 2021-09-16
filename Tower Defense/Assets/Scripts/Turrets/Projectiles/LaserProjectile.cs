@@ -12,9 +12,12 @@ public class LaserProjectile : BasicProjectile
     bool isTargetAlive = true;
     int nEnemiesCollided = 0;
 
+    AudioSource audioSource;
+
     private void Awake()
     {
         targetsDetector = GetComponent<ITargetsDetector>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected override void initializate()
@@ -53,6 +56,7 @@ public class LaserProjectile : BasicProjectile
 
     protected override void OnEnemyCollision(Collider enemy)
     {
+        audioSource.Play();
         damageEnemy(enemy);
         enemiesCollided.Add(enemy.transform);
         checkIfCanSearchAnotherTarget();
