@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
-  m_Name: Inhibitor Turret
+  m_Name: Laser
   m_EditorClassIdentifier: 
-  description: Upgrade your turret into an Inhibito Turret
-  icon: {fileID: 21300000, guid: 45c3809b362b75e4da639392c8708eb1, type: 3}
-  turret: {fileID: 11400000, guid: d17c709415905c94ab3fb265cdb19ff9, type: 2}
+  description: Changes electricity with a bouncing laser.
+  icon: {fileID: 21300000, guid: b84f63b4c009e5346a4b9df5b5d2db7d, type: 3}
+  turret: {fileID: 11400000, guid: 982478f9c285f03458cfa9552c8b8a49, type: 2}
   turretTier: 2
   turretElement: 4
-  turretInfo: {fileID: 11400000, guid: 95990ebd7ebbfa4409deb5279fee115f, type: 2}
+  turretInfo: {fileID: 11400000, guid: 5c19e185367e69641be53fb5990c4b7d, type: 2}
   parentTurretInfo: {fileID: 11400000, guid: f7272536fe36e154a8618ae190fd6f86, type: 2}

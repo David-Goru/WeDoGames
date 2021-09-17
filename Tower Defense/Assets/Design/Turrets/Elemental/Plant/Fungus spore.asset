@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: 73f89b4dc743d1349a793c21dea21cd8, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 4ad6cc1303619464fa7244006135c795,
     type: 2}
-  description: 
+  description: Use a colony of spores to damage your enemies.
   icon: {fileID: 21300000, guid: a88aeae75d5800645a62df3d13e07987, type: 3}
   turretElement: 3
   turretTier: 2
@@ -40,13 +40,13 @@ MonoBehaviour:
   - type: 0
     value: 100
   - type: 1
-    value: 100
+    value: 75
   - type: 2
-    value: 3
+    value: 9
   - type: 3
     value: 3
   - type: 4
-    value: 2
+    value: 1
   - type: 13
     value: 3
   - type: 14

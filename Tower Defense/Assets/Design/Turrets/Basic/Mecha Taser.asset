@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: 13bc13cf2891000489c1ef6da7fd5213, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: a6881fa5a5c687e44acce5e0a1864850,
     type: 2}
-  description: Tech Basic Turret description
+  description: Shoots an electric sphere to the enemy.
   icon: {fileID: 21300000, guid: d4b98ffe9469e0d4fb5bf2b503903cc0, type: 3}
   turretElement: 4
   turretTier: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
     value: 0.75
   currentStats:
   - type: 0
-    value: 100
+    value: 80
   - type: 1
     value: 75
   - type: 2
@@ -40,4 +40,4 @@ MonoBehaviour:
   - type: 3
     value: 3
   - type: 4
-    value: 1
+    value: 0.75

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ca98936469a4e46a8b4679cde28bee, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
-  description: Damage enemies
-  price: 0
+  description: Hurts enemies in the selected area.
   icon: {fileID: 21300000, guid: a3fec122387b4fb4c96ada2394454031, type: 3}
   activeAction: {fileID: 11400000, guid: 81c7931512c8d2b43ba0166ac46c9ec1, type: 2}

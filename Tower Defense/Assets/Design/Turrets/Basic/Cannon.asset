@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: a298100e7207e264e805ca4fae693a92, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 69fa069c880212243a57c0bae90626f5,
     type: 2}
-  description: Basic Turret description
+  description: The most basic design.
   icon: {fileID: 21300000, guid: d14f8afbfd5ef5a47b42e70f396610a7, type: 3}
   turretElement: 0
   turretTier: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: d6cddcffc661a5b47870311e0f940527, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 6fc6b92fe5ae93044af2b5602ede351e,
     type: 2}
-  description: Fire Basic Turret description
+  description: Shoots fire bullets to the enemy.
   icon: {fileID: 21300000, guid: da8e3816eaa8c9e4798d93ef63d0f5b1, type: 3}
   turretElement: 1
   turretTier: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
     value: 1
   currentStats:
   - type: 0
-    value: 100
+    value: 80
   - type: 1
     value: 75
   - type: 2

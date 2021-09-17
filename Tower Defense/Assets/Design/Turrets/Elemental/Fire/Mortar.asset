@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: e2bc268c5f8cd2d429159f8eb5f7c71b,
     type: 2}
-  description: 
+  description: Launches a long-range projectile with high damage.
   icon: {fileID: 21300000, guid: f35738a4ad4107b4d913bde5980dbef7, type: 3}
   turretElement: 1
   turretTier: 2
@@ -36,12 +36,12 @@ MonoBehaviour:
   - type: 0
     value: 100
   - type: 1
-    value: 100
+    value: 60
   - type: 2
-    value: 3
+    value: 12
   - type: 3
-    value: 5
+    value: 6
   - type: 4
-    value: 2
+    value: 1.25
   - type: 8
     value: 1

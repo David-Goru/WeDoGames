@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: ab036d1a1f2f5e4479c0561d19d4ec68, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 3f84993e42b19424c81ec7760a6abeda,
     type: 2}
-  description: 
+  description: Spray some fire in an conal area.
   icon: {fileID: 21300000, guid: ebd8c5b15bead494ca0c1c8dbcacc716, type: 3}
   turretElement: 1
   turretTier: 2
@@ -25,7 +25,7 @@ MonoBehaviour:
   - type: 1
     value: 40
   - type: 2
-    value: 5
+    value: 7
   - type: 9
     value: 45
   - type: 3

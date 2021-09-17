@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ca98936469a4e46a8b4679cde28bee, type: 3}
   m_Name: Slow
   m_EditorClassIdentifier: 
-  description: Slow enemies
-  price: 0
+  description: Slow enemies in the selected area.
   icon: {fileID: 21300000, guid: 6894e826969e4e140995e1d10449dd19, type: 3}
   activeAction: {fileID: 11400000, guid: 7c55805ab194d8d47895bf87ae28d5ad, type: 2}

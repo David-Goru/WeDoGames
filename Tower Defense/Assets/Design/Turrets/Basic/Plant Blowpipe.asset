@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: cf96598f6056251419184e71914d19bd, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 50df6a11e338dc3468725d62580382d5,
     type: 2}
-  description: Plant Basic Turret description
+  description: Shoots a poisoning dart to the enemy.
   icon: {fileID: 21300000, guid: e8c774489341488498315610d76ba3ae, type: 3}
   turretElement: 3
   turretTier: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
     value: 3
   currentStats:
   - type: 0
-    value: 100
+    value: 80
   - type: 1
     value: 70
   - type: 2

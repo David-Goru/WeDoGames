@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ca98936469a4e46a8b4679cde28bee, type: 3}
   m_Name: Stun
   m_EditorClassIdentifier: 
-  description: Stun enemies
-  price: 0
+  description: Stun enemies in the selected area.
   icon: {fileID: 21300000, guid: 664da68afb155a14c99ea55c9dd6f12c, type: 3}
   activeAction: {fileID: 11400000, guid: 94cd0b4da589c8f4885714198c7959f1, type: 2}

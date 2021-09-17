@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
-  m_Name: Over Growth Upgrade
+  m_Name: Stinger sniper
   m_EditorClassIdentifier: 
-  description: Upgrade your turret into an over growth
-  price: 100
-  icon: {fileID: 21300000, guid: c6c482589e02bec4ea91f34c16278e8f, type: 3}
-  turret: {fileID: 11400000, guid: 4ea70856248bf1449bbbd121555b834c, type: 2}
+  description: Fires concentrated toxins at long distances.
+  icon: {fileID: 21300000, guid: 3a1a08c6e150a3d4999cf3889b83b898, type: 3}
+  turret: {fileID: 11400000, guid: 0cb943c0189582e4b8d75a14ae299d30, type: 2}
   turretTier: 2
   turretElement: 3
-  turretInfo: {fileID: 11400000, guid: 552c8ad270195d94f927fb918448b1bb, type: 2}
+  turretInfo: {fileID: 11400000, guid: 1055398023d9b7f41b5e8dc763fc4f4e, type: 2}
   parentTurretInfo: {fileID: 11400000, guid: a2068d2dc6e1c2440af1009aebef74fb, type: 2}

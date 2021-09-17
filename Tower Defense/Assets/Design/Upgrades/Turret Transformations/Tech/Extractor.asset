@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
-  m_Name: Energy Extractor Upgrade
+  m_Name: Extractor
   m_EditorClassIdentifier: 
-  description: Upgrade your turret into an Energy Extractor
-  price: 100
+  description: For when you need more coins.
   icon: {fileID: 21300000, guid: 45c3809b362b75e4da639392c8708eb1, type: 3}
   turret: {fileID: 11400000, guid: 7166681c3565cc149ad4243cd95cf4c2, type: 2}
   turretTier: 2

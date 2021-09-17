@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7318dc4174fca24e82a93f462266790, type: 3}
   m_Name: More AR
   m_EditorClassIdentifier: 
-  description: Attack rate is reduced by 0.1
+  description: Attack rate is reduced by 0.05
   icon: {fileID: 21300000, guid: 9be5782bac8ae7f42a201103db358a4d, type: 3}
   element: 0
   stats:

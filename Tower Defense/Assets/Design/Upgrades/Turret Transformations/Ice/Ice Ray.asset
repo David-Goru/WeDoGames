@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
-  m_Name: Ice Ray Upgrade
+  m_Name: Ice Ray
   m_EditorClassIdentifier: 
-  description: Upgrade your turret into an ice ray
-  price: 100
+  description: Cools an enemy slowing him down.
   icon: {fileID: 21300000, guid: 17d7ba778969cf94880fe577c4e2cc0a, type: 3}
   turret: {fileID: 11400000, guid: ff4e2d349fc54cc44ae95aff8063f636, type: 2}
   turretTier: 2

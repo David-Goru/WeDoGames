@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
-  m_Name: Explosive Upgrade
+  m_Name: Flamethrower
   m_EditorClassIdentifier: 
-  description: Upgrade your turret into a explosive
-  price: 100
-  icon: {fileID: 21300000, guid: d0d8a3228254ff043870b06fc0970706, type: 3}
+  description: Less bullets more fire.
+  icon: {fileID: 21300000, guid: ebd8c5b15bead494ca0c1c8dbcacc716, type: 3}
   turret: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
   turretTier: 2
   turretElement: 1
-  turretInfo: {fileID: 11400000, guid: 4004f277c82f7e64d97df91ab87ef101, type: 2}
+  turretInfo: {fileID: 11400000, guid: 18e7fabf9c40e084284864b2abff8711, type: 2}
   parentTurretInfo: {fileID: 11400000, guid: 16ef39b4fdaa5d9468b5e2fc66238df3, type: 2}

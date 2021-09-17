@@ -15,7 +15,7 @@ MonoBehaviour:
   turretPool: {fileID: 11400000, guid: d17c709415905c94ab3fb265cdb19ff9, type: 2}
   turretBlueprintPool: {fileID: 11400000, guid: 80a391b40b33fa842867af3028ec1ee1,
     type: 2}
-  description: 
+  description: Emits a shrill sound that reduces the enemy's damage capability.
   icon: {fileID: 21300000, guid: 811d76e94e1b7694f93aebd7b548578c, type: 3}
   turretElement: 4
   turretTier: 2
