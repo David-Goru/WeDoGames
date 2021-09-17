@@ -238,7 +238,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         }
 
         if (checkDeath()) return;
-        if (currentTurret == null || currentState.Target == goal)
+        if (currentTurret == null || currentState.Target == Nexus.Instance.transform)
         {
             currentTurretDamage = enemyDamage;
             currentState.OnTurretHit(turretTransform);
