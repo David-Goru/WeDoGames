@@ -8,7 +8,7 @@ public class PlayerCamera : MonoBehaviour
 
     Coroutine rotating;
     int currentDirection;
-    int currentRotation = 45;
+    public static int currentRotation = 45;
     int rotationObjective = 45;
 
     void Update()
@@ -45,6 +45,10 @@ public class PlayerCamera : MonoBehaviour
             transform.eulerAngles = new Vector3(30, yRotation, 0);
             currentRotation += direction;
             if (currentRotation > 360) currentRotation -= 360;
+            foreach (GameObject turret in Master.Instance.ActiveTurrets)
+            {
+                turret.GetComponentInChildren<RectTransform>().Rotate(-Vector3.forward * direction);
+            }
             yield return new WaitForSeconds(0.001f);
         }
 

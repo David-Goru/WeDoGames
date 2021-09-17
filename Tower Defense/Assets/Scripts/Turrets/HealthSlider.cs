@@ -11,6 +11,7 @@ public class HealthSlider : MonoBehaviour
     {
         sliderImage.fillAmount = 1f;
         sliderImage.color = fullHealthColor;
+        transform.rotation = Quaternion.Euler(90f, 0f, -PlayerCamera.currentRotation + 90f);
     }
 
     public void SetFillAmount(float value)
