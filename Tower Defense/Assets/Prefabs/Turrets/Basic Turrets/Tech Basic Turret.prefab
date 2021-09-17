@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4249099258024524334}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Effect particles positions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ AudioSource:
   m_GameObject: {fileID: 4411196050328941695}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: be17c9c930efc9846aff736fd15aac45,
+  OutputAudioMixerGroup: {fileID: -6232420100251702221, guid: be17c9c930efc9846aff736fd15aac45,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 67d97bc5c15f0304fbb2ab36be238135, type: 3}
   m_PlayOnAwake: 0
@@ -481,7 +481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2413559423115496842}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

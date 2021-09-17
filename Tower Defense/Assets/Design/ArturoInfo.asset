@@ -21,9 +21,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7272536fe36e154a8618ae190fd6f86, type: 2}
   - {fileID: 11400000, guid: 29bbb812666d7e04f83605fd68e7fe00, type: 2}
   initialTurretsSet:
-  - {fileID: 11400000, guid: 8ac2883eb82a40f449d6fd6536aff741, type: 2}
+  - {fileID: 11400000, guid: 60dd8000b03610e4c8160703fc170a7f, type: 2}
   - {fileID: 11400000, guid: 95990ebd7ebbfa4409deb5279fee115f, type: 2}
-  - {fileID: 11400000, guid: 5c19e185367e69641be53fb5990c4b7d, type: 2}
+  - {fileID: 11400000, guid: 2baf7a85aa8577f44a4cac6eb01473ac, type: 2}
   upgradesSet:
   - {fileID: 11400000, guid: b3d2acb8ddbfc804f95a3e25c613ce7b, type: 2}
   enemiesSet:

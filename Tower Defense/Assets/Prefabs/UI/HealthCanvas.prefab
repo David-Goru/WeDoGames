@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.07371559, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -203,6 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419666333984974217}
   - component: {fileID: 2438128323864656865}
+  - component: {fileID: 5506857361777206450}
   m_Layer: 5
   m_Name: HealthSlider
   m_TagString: Untagged
@@ -282,6 +283,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5506857361777206450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408425741109680723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3060f71b49ab38342ac965864189c8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullHealthColor: {r: 0, g: 1, b: 0.08237815, a: 1}
+  noHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  sliderImage: {fileID: 8290924781869950107}
 --- !u!1 &8836121568206060080
 GameObject:
   m_ObjectHideFlags: 0

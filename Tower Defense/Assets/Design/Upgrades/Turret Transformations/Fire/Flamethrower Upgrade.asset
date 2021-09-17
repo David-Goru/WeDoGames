@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Flamethrower Upgrade
   m_EditorClassIdentifier: 
   description: Upgrade your turret into a flamethrower
-  price: 100
-  icon: {fileID: 21300000, guid: a181c3533b211da469bd86ce619aa640, type: 3}
+  icon: {fileID: 21300000, guid: ebd8c5b15bead494ca0c1c8dbcacc716, type: 3}
   turret: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
   turretTier: 2
   turretElement: 1

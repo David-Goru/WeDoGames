@@ -15679,7 +15679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca5fc5f2b82a642a34a24997f2525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesInfo: {fileID: 11400000, guid: 69c084df68b0d3c42bc60d1379a9e279, type: 2}
+  wavesInfo: {fileID: 11400000, guid: 40eeabba892506a43a037cbb8dd13eb7, type: 2}
   objectivesInfo: {fileID: 11400000, guid: 94ff138bb8708d1439f696e6c4f91f6f, type: 2}
   spawners: {fileID: 1032362607}
   signals:
