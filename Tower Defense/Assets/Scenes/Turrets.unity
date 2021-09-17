@@ -1991,6 +1991,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flamethrower projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 3220001938646341533, guid: 22259a48629ede3469f263e451148c5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3220001938681844644, guid: 22259a48629ede3469f263e451148c5a,
         type: 3}
       propertyPath: ShapeModule.angle

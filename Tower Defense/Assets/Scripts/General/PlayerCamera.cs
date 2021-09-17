@@ -16,13 +16,18 @@ public class PlayerCamera : MonoBehaviour
         if (UI.Instance.Chat.gameObject.activeSelf) return;
 
         if (Input.GetMouseButton(2) && Mathf.Abs(Input.GetAxis("Mouse X")) > 0.2f) rotate(Input.GetAxis("Mouse X"));
-        else if (Input.GetKey(rotateLeftButton)) rotate(1);
-        else if (Input.GetKey(rotateRightButton)) rotate(-1);
+        else if (Input.GetKey(rotateLeftButton)) rotate(-1);
+        else if (Input.GetKey(rotateRightButton)) rotate(1);
+    }
+
+    public void Rotate(int direction)
+    {
+        rotate(direction);
     }
 
     void rotate(float direction)
     {
-        int newDirection = direction > 0 ? 1 : -1;
+        int newDirection = direction > 0 ? -1 : 1;
 
         if (newDirection == currentDirection) return;
         if (rotating != null)
