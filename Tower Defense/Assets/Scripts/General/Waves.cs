@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Waves : MonoBehaviour
 {
@@ -13,8 +14,7 @@ public class Waves : MonoBehaviour
     [SerializeField] GameObject[] signals = null;
     [SerializeField] Transform objectivesList = null;
     [SerializeField] GameObject objectivePrefab = null;
-    [SerializeField] AudioClip waveStartSound = null;
-    [SerializeField] AudioClip waveFinishSound = null;
+    [SerializeField] AudioMixerGroup drums = null;
 
     List<Vector3> spawnersPositions; 
     int currentWave = 0;
@@ -118,7 +118,7 @@ public class Waves : MonoBehaviour
         UI.UpdateWaveText(currentWave);
         UI.ForceCloseUpgrades();
         UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
-        Master.Instance.RunSound(waveStartSound);
+        startDrums();
         Master.Instance.WavesWithoutBuildingTurrets++;
         Master.Instance.NoActivesUsedInLastWave = true;
     }
@@ -139,7 +139,7 @@ public class Waves : MonoBehaviour
     {
         timer = 0;
         OnPlanningPhase = true;
-        Master.Instance.RunSound(waveFinishSound);
+        stopDrums();
         setSignalsVisuals(true);
         UI.OpenUpgrades(3);
     }
@@ -201,6 +201,38 @@ public class Waves : MonoBehaviour
     void changeSignalState(int signalIndex, bool newState)
     {
         signals[signalIndex].gameObject.SetActive(newState);
+    }
+
+    void startDrums()
+    {
+        StartCoroutine(fadeInDrums());
+    }
+
+    IEnumerator fadeInDrums()
+    {
+        int volume = -80;
+        while (volume < 0)
+        {
+            volume++;
+            drums.audioMixer.SetFloat("DrumsVolume", volume);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    void stopDrums()
+    {
+        StartCoroutine(fadeOutDrums());
+    }
+
+    IEnumerator fadeOutDrums()
+    {
+        int volume = 0;
+        while (volume > -80)
+        {
+            volume--;
+            drums.audioMixer.SetFloat("DrumsVolume", volume);
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     public bool WaveCompletedInLessThan(float time)
