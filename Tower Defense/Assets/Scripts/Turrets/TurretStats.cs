@@ -10,6 +10,8 @@ public class TurretStats : Entity, IHealable
     [SerializeField] TurretInfo buildingInfo = null;
     [SerializeField] Transform healParticlesPos = null;
     [SerializeField] Pool healVFX = null;
+
+    IRangeViewable rangeViewable;
     ObjectPooler objectPooler;
 
     public TurretInfo BuildingInfo { get => buildingInfo; set => buildingInfo = value; }
@@ -17,6 +19,7 @@ public class TurretStats : Entity, IHealable
     void Awake()
     {
         objectPooler = ObjectPooler.GetInstance();
+        rangeViewable = GetComponentInChildren<IRangeViewable>();
     }
 
     void Start()
@@ -24,11 +27,34 @@ public class TurretStats : Entity, IHealable
         Initialize();
     }
 
+    void Update()
+    {
+        if (rangeViewable.IsRangeActive && Input.GetMouseButton(0) && mouseIsOutOfTurret())
+        {
+            rangeViewable.HideRange();
+        }
+    }
+
+    bool mouseIsOutOfTurret()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        return !Physics.Raycast(ray, out hit) || hit.transform != transform;
+    }
+
     public void Initialize()
     {
         title = buildingInfo.name;
         currentHP = (int)GetStatValue(StatType.MAXHEALTH);
         maxHP = currentHP;
+    }
+
+    protected override void OnMouseDown()
+    {
+        base.OnMouseDown();
+        if(Master.Instance.DoingAction() || rangeViewable.IsRangeActive) return;
+
+        rangeViewable.ShowRange();
     }
 
     public float SearchStatValue(StatType statType)

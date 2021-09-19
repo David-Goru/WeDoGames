@@ -3,6 +3,29 @@ using UnityEngine;
 
 public class DetectClosestTargetInDonut : DetectClosestTarget
 {
+    [SerializeField] Pool restrictedAreaPool;
+    Transform restrictedAreaObject;
+
+    public override void ShowRange()
+    {
+        base.ShowRange();
+        if (restrictedAreaPool != null)
+        {
+            restrictedAreaObject = ObjectPooler.GetInstance().SpawnObject(restrictedAreaPool.tag, transform.position).transform;
+            restrictedAreaObject.localScale = Vector3.one * turretStats.GetStatValue(StatType.MINIMUMRANGE) * 2;
+        }
+    }
+
+    public override void HideRange()
+    {
+        base.HideRange();
+        if (restrictedAreaObject != null)
+        {
+            ObjectPooler.GetInstance().ReturnToThePool(restrictedAreaObject);
+            restrictedAreaObject = null;
+        }
+    }
+
     protected override void selectTheNearestEnemy(List<Transform> targetsOnRange)
     {
         float minDistanceToTurret = Mathf.Infinity;

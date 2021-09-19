@@ -83,6 +83,8 @@ public class ObjectPooler : MonoBehaviour
 
     GameObject checkIfPoolHasAnUnusedItem(string tag)
     {
+        if (!PoolDictionary.ContainsKey(tag)) Debug.LogError(tag + " is not in dictionary");
+
         foreach (GameObject item in PoolDictionary[tag])
         {
             if (!item.activeSelf) // If there is an unused item in the pool

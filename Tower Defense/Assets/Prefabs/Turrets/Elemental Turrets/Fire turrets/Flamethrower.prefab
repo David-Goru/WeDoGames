@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 4225172840542540977}
   - component: {fileID: 39723852402180819}
   - component: {fileID: 9198167298672499341}
+  - component: {fileID: 5738338801185980207}
   m_Layer: 0
   m_Name: DamageHandler
   m_TagString: Untagged
@@ -510,6 +511,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 11400000, guid: d8d8f6db0b0269c40b8a9077bfa32813, type: 2}
   particlesPos: {fileID: 269808829698946481}
+--- !u!114 &5738338801185980207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422178488608694110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f624df62dd320e47b8c5a4889e68d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6670163531098274116
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35f6b31ca543254baa3d0cc6244ba3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaPool: {fileID: 11400000, guid: 36410f9cdeab3e342b906837a59cc60a, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -742,6 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791e60b574856b2468b40ee1d38d5a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaPool: {fileID: 11400000, guid: 36410f9cdeab3e342b906837a59cc60a, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256

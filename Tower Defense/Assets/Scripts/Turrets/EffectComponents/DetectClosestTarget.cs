@@ -11,7 +11,6 @@ public class DetectClosestTarget : CurrentTargetsOnRange
 
     [SerializeField] LayerMask targetLayer = 0;
     ITargetsDetector targetsDetector;
-    protected TurretStats turretStats;
     protected List<Transform> currentTargets = new List<Transform>();
     protected BaseAI currentEnemyAI;
 

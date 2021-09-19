@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// This is a class
-/// </summary>
-public class DisableTurret : TurretNoHealth
+﻿public class DisableTurret : TurretNoHealth
 {
     public override void OnTurretNoHealth()
     {

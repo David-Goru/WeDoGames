@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour
     public int CurrentHP { get => currentHP; set => currentHP = value; }
     public int MaxHP { get => maxHP; set => maxHP = value; }
 
-    private void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
         if (Time.timeScale != 0) UI.ShowEntityInfoUI(this);
     }

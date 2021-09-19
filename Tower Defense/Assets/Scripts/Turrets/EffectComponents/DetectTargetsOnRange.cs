@@ -8,7 +8,6 @@ public class DetectTargetsOnRange : CurrentTargetsOnRange
 {
     [SerializeField] LayerMask targetLayer = 0;
     ITargetsDetector targetsDetector;
-    TurretStats turretStats;
     List<Transform> currentTargets = new List<Transform>();
 
     public override List<Transform> CurrentTargets { get => currentTargets; }

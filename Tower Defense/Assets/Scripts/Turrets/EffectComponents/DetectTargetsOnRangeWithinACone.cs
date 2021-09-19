@@ -5,7 +5,6 @@ using UnityEditor;
 public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
 {
     ITargetsDetector targetsDetector;
-    TurretStats turretStats;
     [SerializeField] LayerMask targetLayer = 0;
     [SerializeField] Transform centerPointPivot = null;
 

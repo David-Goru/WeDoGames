@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SpawnProjectilesAroundTurret : EffectComponent
+public class SpawnProjectilesAroundTurret : EffectComponent, IRangeViewable
 {
     [SerializeField] Pool projectilePool = null;
+    [SerializeField] Pool areaPool = null;
+
     [SerializeField] float radius = 0.5f;
     [SerializeField] float height = 0.5f;
     TurretStats turretStats;
@@ -13,10 +15,15 @@ public class SpawnProjectilesAroundTurret : EffectComponent
     ObjectPooler objectPooler;
 
     List<ITurretShotBehaviour> shotBehaviours = new List<ITurretShotBehaviour>();
+    
+    Transform areaObject;
+    bool isRangeActive;
 
     int projectilesSpawned = 0;
     bool isFull = false;
     float timer = 0f;
+
+    public bool IsRangeActive => isRangeActive;
 
     event Action onProjectileDisabled;
 
@@ -98,9 +105,28 @@ public class SpawnProjectilesAroundTurret : EffectComponent
         }
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         onProjectileDisabled -= decrementProjectilesSpawned;
     }
 
+    public void ShowRange()
+    {
+        isRangeActive = true;
+        if (areaPool != null)
+        {
+            areaObject = ObjectPooler.GetInstance().SpawnObject(areaPool.tag, transform.position).transform;
+            areaObject.localScale = Vector3.one * (turretStats.GetStatValue(StatType.ATTACKRANGE) + radius) * 2;
+        }
+    }
+
+    public void HideRange()
+    {
+        isRangeActive = false;
+        if (areaObject != null)
+        {
+            ObjectPooler.GetInstance().ReturnToThePool(areaObject);
+            areaObject = null;
+        }
+    }
 }

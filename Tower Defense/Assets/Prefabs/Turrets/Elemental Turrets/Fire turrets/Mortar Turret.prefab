@@ -4968,6 +4968,7 @@ GameObject:
   - component: {fileID: 4308770069397051691}
   - component: {fileID: 1695111596730803418}
   - component: {fileID: 4946555609628129546}
+  - component: {fileID: 6858516739990712257}
   m_Layer: 0
   m_Name: DamageHandler
   m_TagString: Untagged
@@ -5051,6 +5052,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 11400000, guid: d8d8f6db0b0269c40b8a9077bfa32813, type: 2}
   particlesPos: {fileID: 757062969830246729}
+--- !u!114 &6858516739990712257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3258698007255321256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f624df62dd320e47b8c5a4889e68d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3292178733780381858
 GameObject:
   m_ObjectHideFlags: 0
@@ -10261,7 +10274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5275737887537206364
 Transform:
   m_ObjectHideFlags: 0
@@ -10346,6 +10359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509777429886525907}
   - component: {fileID: 6781190574183378597}
+  - component: {fileID: 273574244798044291}
   m_Layer: 2
   m_Name: ColliderForEnemiesToDetectYou
   m_TagString: TurretTrigger
@@ -10380,6 +10394,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &273574244798044291
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848038110795061030}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &5931832289947480728
 GameObject:
   m_ObjectHideFlags: 0
@@ -10548,10 +10578,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2770e8a8e8770449ad99a5cac9d1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaPool: {fileID: 11400000, guid: 36410f9cdeab3e342b906837a59cc60a, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
   debugRange: 3.5
+  restrictedAreaPool: {fileID: 11400000, guid: 25ac86c5e22e59b45976ab13aa87b1d8, type: 2}
   debugMinimumRange: 1.5
 --- !u!82 &7033327303584210775
 AudioSource:
@@ -10743,12 +10775,12 @@ PrefabInstance:
     - target: {fileID: 2375963730371718072, guid: ff0a202a694529148adeddd6ce0b82bf,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2375963730371718072, guid: ff0a202a694529148adeddd6ce0b82bf,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7313546499741724537, guid: ff0a202a694529148adeddd6ce0b82bf,
         type: 3}

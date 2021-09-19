@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6943938781841312965}
   - component: {fileID: 5168202462953551887}
   m_Layer: 12
-  m_Name: 'Area turrets '
+  m_Name: Restricted Area Turrets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8fd33d6ec025c064dbcde535f117f13f, type: 2}
+  - {fileID: 2100000, guid: b5fb1a274279af546bf364f06b0c5b60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
