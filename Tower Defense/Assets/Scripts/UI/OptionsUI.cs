@@ -10,18 +10,30 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] Slider musicSlider;
     [SerializeField] AudioMixerGroup masterSource;
     [SerializeField] AudioMixerGroup soundsSource;
-    AudioSource musicSource;
+    [SerializeField] AudioMixerGroup musicSource;
 
     void Start()
     {
-        //musicSource = GameObject.Find("Music").GetComponent<AudioSource>();
-                
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            float masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+            masterSlider.value = masterVolume;
+        }
+        masterSource.audioMixer.SetFloat("MasterVolume", Mathf.Log10(masterSlider.value) * 20);
+
         if (PlayerPrefs.HasKey("SoundsVolume"))
         {
             float soundVolume = PlayerPrefs.GetFloat("SoundsVolume");
             soundsSlider.value = soundVolume;
-            soundsSource.audioMixer.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
         }
+        soundsSource.audioMixer.SetFloat("SoundsVolume", Mathf.Log10(soundsSlider.value) * 20);
+
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            float musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+            musicSlider.value = musicVolume;
+        }
+        musicSource.audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20);
 
         gameObject.SetActive(false);
     }
@@ -40,17 +52,18 @@ public class OptionsUI : MonoBehaviour
     public void ChangeMasterVolume()
     {
         PlayerPrefs.SetFloat("MasterVolume", masterSlider.value);
-        masterSource.audioMixer.SetFloat("Volume", Mathf.Log10(masterSlider.value) * 20);
-    }
-
-    public void ChangeMusicVolume()
-    {
-        //musicSource.volume = musicSlider.value;
+        masterSource.audioMixer.SetFloat("MasterVolume", Mathf.Log10(masterSlider.value) * 20);
     }
 
     public void ChangeSoundsVolume()
     {
         PlayerPrefs.SetFloat("SoundsVolume", soundsSlider.value);
-        soundsSource.audioMixer.SetFloat("Volume", Mathf.Log10(soundsSlider.value) * 20);
+        soundsSource.audioMixer.SetFloat("SoundsVolume", Mathf.Log10(soundsSlider.value) * 20);
+    }
+
+    public void ChangeMusicVolume()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        musicSource.audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20);
     }
 }
