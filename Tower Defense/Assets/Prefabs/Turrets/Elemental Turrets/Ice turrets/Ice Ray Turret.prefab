@@ -158,10 +158,10 @@ GameObject:
   - component: {fileID: 178153675194372646}
   - component: {fileID: 6384457409502361933}
   - component: {fileID: 6157477616902100360}
-  - component: {fileID: 5932413576417325369}
   - component: {fileID: 1603023481}
-  - component: {fileID: 1603023482}
   - component: {fileID: 1603023471}
+  - component: {fileID: 1973523021208118046}
+  - component: {fileID: 5932413576417325369}
   m_Layer: 0
   m_Name: SpecialEffect
   m_TagString: Untagged
@@ -381,6 +381,52 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1603023481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482186905065672075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 9148968226131861196}
+  parameterName: IsShooting
+--- !u!114 &1603023471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482186905065672075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df7552f5c7b85c4a95a74beccb6ae09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objs:
+  - {fileID: 3946473291496106791}
+  - {fileID: 6633907000683103645}
+  initialState: 0
+--- !u!114 &1973523021208118046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482186905065672075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be41c3aad8086347b317b325da5f1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 5932413576417325369}
+  startingClip: {fileID: 8300000, guid: a8fed3be3af37294e941c0c18f64322e, type: 3}
+  loopingClip: {fileID: 8300000, guid: c304756733e3ebf44b7777f4686badf2, type: 3}
+  endingClip: {fileID: 8300000, guid: 0113795ab7893d648b65e67c5f69c0e1, type: 3}
 --- !u!82 &5932413576417325369
 AudioSource:
   m_ObjectHideFlags: 0
@@ -394,7 +440,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -478,50 +524,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1603023481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482186905065672075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734f92483361894ca662148e1ee82a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 9148968226131861196}
-  parameterName: IsShooting
---- !u!114 &1603023482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482186905065672075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a5760d1ac11f64db27c17c133fd9b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopOnExit: 1
-  audioSource: {fileID: 5932413576417325369}
---- !u!114 &1603023471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482186905065672075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df7552f5c7b85c4a95a74beccb6ae09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objs:
-  - {fileID: 3946473291496106791}
-  - {fileID: 6633907000683103645}
-  initialState: 0
 --- !u!1 &2686005251380540535
 GameObject:
   m_ObjectHideFlags: 0
