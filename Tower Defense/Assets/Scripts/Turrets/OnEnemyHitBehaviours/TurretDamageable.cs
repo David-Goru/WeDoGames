@@ -9,20 +9,16 @@ public class TurretDamageable : EnemyDamage
 {
     List<TurretNoHealth> turretNoHealthBehaviours;
     TurretStats turretStats;
-    HealthSlider healthSlider;
 
     void Awake()
     {
         turretStats = GetComponentInParent<TurretStats>();
         turretNoHealthBehaviours = GetComponents<TurretNoHealth>().ToList();
-        healthSlider = transform.parent.GetComponentInChildren<HealthSlider>();
     }
 
     public override void OnEnemyHit(int damage)
     {
-        turretStats.CurrentHP -= damage;
-        float maxHp = turretStats.MaxHP;
-        healthSlider.SetFillAmount(turretStats.CurrentHP / maxHp);
+        turretStats.SetHP(turretStats.CurrentHP -= damage);
 
         if (turretStats.CurrentHP <= 0)
         {

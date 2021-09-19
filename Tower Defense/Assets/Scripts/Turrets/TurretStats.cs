@@ -11,6 +11,7 @@ public class TurretStats : Entity, IHealable
     [SerializeField] Transform healParticlesPos = null;
     [SerializeField] Pool healVFX = null;
 
+    HealthSlider healthSlider;
     IRangeViewable rangeViewable;
     ObjectPooler objectPooler;
 
@@ -18,6 +19,7 @@ public class TurretStats : Entity, IHealable
 
     void Awake()
     {
+        healthSlider = GetComponentInChildren<HealthSlider>();
         objectPooler = ObjectPooler.GetInstance();
         rangeViewable = GetComponentInChildren<IRangeViewable>();
     }
@@ -72,9 +74,16 @@ public class TurretStats : Entity, IHealable
         return buildingInfo.GetStat(type);
     }
 
+    public void SetHP(int hp)
+    {
+        currentHP = hp;
+        healthSlider.SetFillAmount((float)currentHP / maxHP);
+    }
+
     public void Heal(int healValue)
     {
-        currentHP = Mathf.Clamp(currentHP + healValue, 0, maxHP);
+        int hp = Mathf.Clamp(currentHP + healValue, 0, maxHP);
+        SetHP(hp);
         objectPooler.SpawnObject(healVFX.tag, healParticlesPos.position);
     }
 }
