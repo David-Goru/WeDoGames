@@ -9,6 +9,6 @@
 
     public override void OnTurretNoHealth()
     {
-        rangeViewable.HideRange();
+        if (rangeViewable != null) rangeViewable.HideRange();
     }
 }

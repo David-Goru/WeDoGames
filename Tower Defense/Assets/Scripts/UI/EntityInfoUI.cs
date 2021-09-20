@@ -17,7 +17,7 @@ public class EntityInfoUI : MonoBehaviour
     {
         if (!isVisible()) return;
 
-        if (Input.GetMouseButton(0) && mouseIsOutOfUI()) hideUI();
+        if (Input.GetMouseButton(0) && mouseIsOutOfEntity()) hideUI();
         else if (entityIsNotAvailable()) hideUI();
         else updateUI();
     }
@@ -25,6 +25,7 @@ public class EntityInfoUI : MonoBehaviour
     public void ShowUI(Entity entity)
     {
         if (Master.Instance.DoingAction()) return;
+        if (currentEntity != null) currentEntity.CloseUI();
 
         Master.Instance.RunSound(clickEntitySound);
         int yPos = hasUpperScreenSpaceAvailable(240) ? 120 : -120;
@@ -42,11 +43,18 @@ public class EntityInfoUI : MonoBehaviour
     void showUI()
     {
         updateUI();
+        if (currentEntity != null) currentEntity.ShowUI();
         changeVisibility(true);
+    }
+
+    public void HideUI()
+    {
+        hideUI();
     }
 
     void hideUI()
     {
+        if (currentEntity != null) currentEntity.CloseUI();
         changeVisibility(false);
     }
 
@@ -60,7 +68,7 @@ public class EntityInfoUI : MonoBehaviour
         return gameObject.activeSelf;
     }
 
-    bool mouseIsOutOfUI()
+    bool mouseIsOutOfEntity()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

@@ -11,6 +11,11 @@ public class PlayerCamera : MonoBehaviour
     public static int currentRotation = 45;
     int rotationObjective = 45;
 
+    private void Start()
+    {
+        currentRotation = 45;
+    }
+
     void Update()
     {
         if (UI.Instance.Chat.gameObject.activeSelf) return;
@@ -27,6 +32,7 @@ public class PlayerCamera : MonoBehaviour
 
     void rotate(float direction)
     {
+        UI.Instance.EntityInfo.HideUI();
         int newDirection = direction > 0 ? -1 : 1;
 
         if (newDirection == currentDirection) return;
@@ -46,13 +52,13 @@ public class PlayerCamera : MonoBehaviour
 
         while (currentRotation != rotationObjective)
         {
-            int yRotation = Mathf.RoundToInt(transform.rotation.eulerAngles.y + direction);
+            int yRotation = Mathf.RoundToInt(transform.rotation.eulerAngles.y + direction * 2);
             transform.eulerAngles = new Vector3(30, yRotation, 0);
-            currentRotation += direction;
+            currentRotation += direction * 2;
             if (currentRotation > 360) currentRotation -= 360;
             foreach (GameObject turret in Master.Instance.ActiveTurrets)
             {
-                turret.GetComponentInChildren<RectTransform>().Rotate(-Vector3.forward * direction);
+                turret.GetComponentInChildren<RectTransform>().Rotate(-Vector3.forward * direction * 2);
             }
             yield return new WaitForSeconds(0.001f);
         }

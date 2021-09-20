@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-/// <summary>
-/// This class stores all the stats of the turret
-/// </summary>
 public class TurretStats : Entity, IHealable
 {
     [SerializeField] TurretInfo buildingInfo = null;
@@ -29,19 +24,24 @@ public class TurretStats : Entity, IHealable
         Initialize();
     }
 
-    void Update()
+    public override void CloseUI()
     {
-        if (rangeViewable.IsRangeActive && Input.GetMouseButton(0) && mouseIsOutOfTurret())
-        {
-            rangeViewable.HideRange();
-        }
+        hideRange();
     }
 
-    bool mouseIsOutOfTurret()
+    public override void ShowUI()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        return !Physics.Raycast(ray, out hit) || hit.transform != transform;
+        showRange();
+    }
+
+    void hideRange()
+    {
+        if (rangeViewable != null) rangeViewable.HideRange();
+    }
+
+    void showRange()
+    {
+        if (rangeViewable != null) rangeViewable.ShowRange();
     }
 
     public void Initialize()
@@ -49,14 +49,6 @@ public class TurretStats : Entity, IHealable
         title = buildingInfo.name;
         currentHP = (int)GetStatValue(StatType.MAXHEALTH);
         maxHP = currentHP;
-    }
-
-    protected override void OnMouseDown()
-    {
-        base.OnMouseDown();
-        if(Master.Instance.DoingAction() || rangeViewable.IsRangeActive) return;
-
-        rangeViewable.ShowRange();
     }
 
     public float SearchStatValue(StatType statType)

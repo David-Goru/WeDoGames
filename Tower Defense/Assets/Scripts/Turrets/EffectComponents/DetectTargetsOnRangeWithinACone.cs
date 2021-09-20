@@ -45,6 +45,7 @@ public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
         return Vector3.Angle(centerPointPivot.forward, dirToEnemy) <= angle;
     }
 
+#if UNITY_EDITOR
     ////////////////////////////DEBUG////////////////////////////////////
     [SerializeField] float debugRange = 2f;
     [SerializeField] float debugAngle = 45f;
@@ -61,5 +62,5 @@ public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
         Handles.DrawSolidArc(centerPointPivot.position, Vector3.up, fromVector, debugAngle, debugRange);
     }
     ////////////////////////////DEBUG////////////////////////////////////
-
+#endif
 }

@@ -224,7 +224,7 @@ public class Waves : MonoBehaviour
     IEnumerator fadeInDrums()
     {
         int volume = -80;
-        while (volume < 0)
+        while (volume < 20)
         {
             volume++;
             drums.audioMixer.SetFloat("DrumsVolume", volume);
@@ -239,7 +239,7 @@ public class Waves : MonoBehaviour
 
     IEnumerator fadeOutDrums()
     {
-        int volume = 0;
+        int volume = 20;
         while (volume > -80)
         {
             volume--;

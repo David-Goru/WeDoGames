@@ -20,6 +20,11 @@ public class OptionsUI : MonoBehaviour
     float fps = 0.0f;
     float updatesPerSecond = 5.0f;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         if (PlayerPrefs.HasKey("MasterVolume"))
@@ -42,6 +47,12 @@ public class OptionsUI : MonoBehaviour
             musicSlider.value = musicVolume;
         }
         musicSource.audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20);
+
+        if (PlayerPrefs.HasKey("PostProcessing"))
+        {
+            bool postProcessingOn = PlayerPrefs.GetInt("PostProcessing") == 1;
+            postProcessing.isOn = postProcessingOn;
+        }
 
         gameObject.SetActive(false);
     }
@@ -91,5 +102,6 @@ public class OptionsUI : MonoBehaviour
     public void UpdatePostProcessing()
     {
         postProcessingObject.SetActive(postProcessing.isOn);
+        PlayerPrefs.SetInt("PostProcessing", postProcessing.isOn ? 1 : 0);
     }
 }

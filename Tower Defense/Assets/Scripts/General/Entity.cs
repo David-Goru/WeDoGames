@@ -15,5 +15,8 @@ public class Entity : MonoBehaviour
         if (Time.timeScale != 0) UI.ShowEntityInfoUI(this);
     }
 
+    public virtual void CloseUI() { }
+    public virtual void ShowUI() { }
+
     public bool IsDead { get => currentHP <= 0; }
 }

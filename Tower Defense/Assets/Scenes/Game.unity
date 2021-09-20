@@ -19028,7 +19028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656153023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.0001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35023,27 +35023,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 6.7
       objectReference: {fileID: 0}
-    - target: {fileID: 1772820192316355895, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6e72cf0640f91f842895832d8b27ab8b,
-        type: 3}
-    - target: {fileID: 1772820192316355895, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.2830189
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772820192316355895, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.2830189
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772820192316355895, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.2830189
-      objectReference: {fileID: 0}
     - target: {fileID: 1793068970312909303, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -35201,11 +35180,6 @@ PrefabInstance:
     - target: {fileID: 3996622132139955186, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601970958901894132, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_IsOn
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4763702275068226831, guid: 9c73d9b70784606418c6b501b172e0a8,
@@ -35675,6 +35649,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 6415622160726463836, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6478325093837293679, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_RootOrder
@@ -35852,32 +35831,6 @@ PrefabInstance:
       propertyPath: clickSound
       value: 
       objectReference: {fileID: 8300000, guid: 67100e59daa1182489cc0f0f0ab934ed, type: 3}
-    - target: {fileID: 8513091809735825216, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8513091809735825216, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9875911776fbf6d45a80638e81ff3751,
-        type: 3}
-    - target: {fileID: 8513091809735825216, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8513091809735825216, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8513091809735825216, guid: 9c73d9b70784606418c6b501b172e0a8,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8519093940445312987, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -35989,7 +35942,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.5981871
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8971322757149870843, guid: 9c73d9b70784606418c6b501b172e0a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c73d9b70784606418c6b501b172e0a8, type: 3}
 --- !u!224 &1137308906 stripped
 RectTransform:
