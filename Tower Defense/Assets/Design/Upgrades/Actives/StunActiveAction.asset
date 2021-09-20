@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: StunActiveAction
   m_EditorClassIdentifier: 
   cooldownUI: {fileID: 0}
-  activeCooldown: 6
+  activeCooldown: 8
   activeRange: 1.5
   ActiveAreaGO: {fileID: 2494665615294443307, guid: 6af9d0588fd7b9f49a6f530f6ef81e76,
     type: 3}
-  stunTime: 6
+  stunTime: 4
