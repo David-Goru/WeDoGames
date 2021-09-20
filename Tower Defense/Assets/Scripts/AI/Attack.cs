@@ -56,7 +56,7 @@ public class Attack : State
 
 	public override void Exit()
 	{
-		npc.StopCoroutine(currentDamage);
+		if(currentDamage != null) npc.StopCoroutine(currentDamage);
 		anim.ResetTrigger("ATTACK");
 		anim.SetFloat("animSpeed", npc.Info.DefaultSpeed);
 		base.Exit();
