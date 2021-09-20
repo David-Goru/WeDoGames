@@ -54,7 +54,7 @@ public class OptionsUI : MonoBehaviour
             postProcessing.isOn = postProcessingOn;
         }
 
-        gameObject.SetActive(false);
+        GetComponent<Canvas>().enabled = false;
     }
 
     void Update()
