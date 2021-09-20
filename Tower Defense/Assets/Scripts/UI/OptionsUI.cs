@@ -11,6 +11,14 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] AudioMixerGroup masterSource;
     [SerializeField] AudioMixerGroup soundsSource;
     [SerializeField] AudioMixerGroup musicSource;
+    [SerializeField] GameObject postProcessingObject;
+    [SerializeField] Toggle postProcessing;
+    [SerializeField] Text fpsCounter;
+
+    int frameCount = 0;
+    float deltaTime = 0.0f;
+    float fps = 0.0f;
+    float updatesPerSecond = 5.0f;
 
     void Start()
     {
@@ -36,6 +44,19 @@ public class OptionsUI : MonoBehaviour
         musicSource.audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20);
 
         gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        frameCount++;
+        deltaTime += Time.deltaTime;
+        if (deltaTime > 1.0 / updatesPerSecond)
+        {
+            fps = frameCount / deltaTime;
+            frameCount = 0;
+            deltaTime -= 1.0f / updatesPerSecond;
+            fpsCounter.text = fps.ToString("0.00 FPS").Replace(",", ".");
+        }
     }
 
     public void ExitGame()
@@ -65,5 +86,10 @@ public class OptionsUI : MonoBehaviour
     {
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
         musicSource.audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20);
+    }
+
+    public void UpdatePostProcessing()
+    {
+        postProcessingObject.SetActive(postProcessing.isOn);
     }
 }
