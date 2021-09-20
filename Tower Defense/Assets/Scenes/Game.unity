@@ -15691,6 +15691,9 @@ MonoBehaviour:
   objectivePrefab: {fileID: 1725602169141735929, guid: 0b323531152029e4ea1e3ebe89b54a57,
     type: 3}
   drums: {fileID: 215161608742405565, guid: be17c9c930efc9846aff736fd15aac45, type: 2}
+  winScreenUI: {fileID: 831220645}
+  waveStartSound: {fileID: 8300000, guid: dc7c505fa1f4bfc4a84aed83f953edb6, type: 3}
+  waveEndSound: {fileID: 8300000, guid: 337261cc48bf5b84680702261ca4c499, type: 3}
 --- !u!114 &537000331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24573,6 +24576,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf6650fb5c1d89e4baf938c47676823f, type: 3}
+--- !u!1 &831220645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7809699318945542838, guid: 9c73d9b70784606418c6b501b172e0a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1137308905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &831567341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52217,7 +52226,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -61171,7 +61180,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

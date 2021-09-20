@@ -15,6 +15,9 @@ public class Waves : MonoBehaviour
     [SerializeField] Transform objectivesList = null;
     [SerializeField] GameObject objectivePrefab = null;
     [SerializeField] AudioMixerGroup drums = null;
+    [SerializeField] GameObject winScreenUI = null;
+    [SerializeField] AudioClip waveStartSound = null;
+    [SerializeField] AudioClip waveEndSound = null;
 
     List<Vector3> spawnersPositions; 
     int currentWave = 0;
@@ -119,6 +122,7 @@ public class Waves : MonoBehaviour
         UI.ForceCloseUpgrades();
         UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
         startDrums();
+        Master.Instance.RunSound(waveStartSound);
         Master.Instance.WavesWithoutBuildingTurrets++;
         Master.Instance.NoActivesUsedInLastWave = true;
     }
@@ -138,10 +142,19 @@ public class Waves : MonoBehaviour
     void endWave()
     {
         timer = 0;
-        OnPlanningPhase = true;
         stopDrums();
-        setSignalsVisuals(true);
-        UI.OpenUpgrades(3);
+        Master.Instance.RunSound(waveEndSound);
+        if (waveIndex >= 15)
+        {
+            winScreenUI.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            OnPlanningPhase = true;
+            setSignalsVisuals(true);
+            UI.OpenUpgrades(3);
+        }
     }
 
     void spawnEnemies()

@@ -2,8 +2,8 @@
 
 public class Nexus : Entity
 {
-    [SerializeField] private int StartingHP = 0;
-    [SerializeField] private GameObject endScreenUI = null;
+    [SerializeField] int StartingHP = 0;
+    [SerializeField] GameObject endScreenUI = null;
 
     public bool IsFullHealth { get => currentHP == maxHP; }
     public bool IsAlive { get => currentHP > 0; }
