@@ -7,6 +7,11 @@ public class HealthSlider : MonoBehaviour
     [SerializeField] Color noHealthColor;
     [SerializeField] Image sliderImage;
 
+    private void Awake()
+    {
+        GetComponent<Canvas>().worldCamera = Camera.main;
+    }
+
     void OnEnable()
     {
         sliderImage.fillAmount = 1f;
