@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: Rat
   m_EditorClassIdentifier: 
-  maxHealth: 65
+  maxHealth: 70
   damage: 4
-  coinsReward: 19
+  coinsReward: 15
   attackSpeed: 2
   range: 1
-  defaultSpeed: 5
+  defaultSpeed: 4
   initRotationSpeed: 300

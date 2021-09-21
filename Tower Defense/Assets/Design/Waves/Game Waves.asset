@@ -275,56 +275,56 @@ MonoBehaviour:
       UP: 1
   - EnemyWave:
     - Enemy: {fileID: 11400000, guid: fe81f61df2e34b0498987e01c8b03516, type: 2}
-      NumberOfEnemies: 7
+      NumberOfEnemies: 10
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: 9195ec200e632344bac23106d783e89f, type: 2}
-      NumberOfEnemies: 7
+      NumberOfEnemies: 5
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      NumberOfEnemies: 20
+      NumberOfEnemies: 15
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: 32407b2f5c3ef3242a56197b95e261c4, type: 2}
-      NumberOfEnemies: 12
+      NumberOfEnemies: 10
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: c0234dbddfa978748ac7d06d3360073c, type: 2}
-      NumberOfEnemies: 7
+      NumberOfEnemies: 5
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      NumberOfEnemies: 20
+      NumberOfEnemies: 15
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
   - EnemyWave:
     - Enemy: {fileID: 11400000, guid: fe81f61df2e34b0498987e01c8b03516, type: 2}
-      NumberOfEnemies: 15
+      NumberOfEnemies: 11
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: 9195ec200e632344bac23106d783e89f, type: 2}
-      NumberOfEnemies: 9
+      NumberOfEnemies: 6
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: 95d76977a438ad24eb2b1c986f0a01fd, type: 2}
-      NumberOfEnemies: 20
+      NumberOfEnemies: 17
       DOWN: 1
       RIGHT: 1
       LEFT: 1
@@ -336,13 +336,13 @@ MonoBehaviour:
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: c0234dbddfa978748ac7d06d3360073c, type: 2}
-      NumberOfEnemies: 9
+      NumberOfEnemies: 6
       DOWN: 1
       RIGHT: 1
       LEFT: 1
       UP: 1
     - Enemy: {fileID: 11400000, guid: 2329f0a495a909b40ae1a5037cfb9cbc, type: 2}
-      NumberOfEnemies: 20
+      NumberOfEnemies: 17
       DOWN: 1
       RIGHT: 1
       LEFT: 1
