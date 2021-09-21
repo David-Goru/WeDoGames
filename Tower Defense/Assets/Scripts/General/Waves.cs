@@ -18,6 +18,7 @@ public class Waves : MonoBehaviour
     [SerializeField] GameObject winScreenUI = null;
     [SerializeField] AudioClip waveStartSound = null;
     [SerializeField] AudioClip waveEndSound = null;
+    [SerializeField] AudioSource audioSource = null;
 
     List<Vector3> spawnersPositions; 
     int currentWave = 0;
@@ -122,7 +123,8 @@ public class Waves : MonoBehaviour
         UI.ForceCloseUpgrades();
         UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
         startDrums();
-        Master.Instance.RunSound(waveStartSound);
+        audioSource.clip = waveStartSound;
+        audioSource.Play();
         Master.Instance.WavesWithoutBuildingTurrets++;
         Master.Instance.NoActivesUsedInLastWave = true;
     }
@@ -143,7 +145,8 @@ public class Waves : MonoBehaviour
     {
         timer = 0;
         stopDrums();
-        Master.Instance.RunSound(waveEndSound);
+        audioSource.clip = waveEndSound;
+        audioSource.Play();
         if (waveIndex >= 15)
         {
             winScreenUI.SetActive(true);
@@ -224,7 +227,7 @@ public class Waves : MonoBehaviour
     IEnumerator fadeInDrums()
     {
         int volume = -80;
-        while (volume < 20)
+        while (volume < 10)
         {
             volume++;
             drums.audioMixer.SetFloat("DrumsVolume", volume);
@@ -239,7 +242,7 @@ public class Waves : MonoBehaviour
 
     IEnumerator fadeOutDrums()
     {
-        int volume = 20;
+        int volume = 10;
         while (volume > -80)
         {
             volume--;
