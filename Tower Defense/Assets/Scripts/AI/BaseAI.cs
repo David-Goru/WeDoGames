@@ -91,6 +91,11 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        OnObjectSpawn();
+    }
+
     public virtual void OnObjectSpawn()
     {
         title = info.name;
@@ -115,7 +120,12 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         if(deathVFX != null) objectPool.ReturnToThePool(deathVFX.transform);
 
-        ActiveEnemies.Instance.enemiesList.Add(this);
+        //ActiveEnemies.Instance.enemiesList.Add(this);
+    }
+
+    private void Update()
+    {
+        EnemyUpdate();
     }
 
     public virtual void EnemyUpdate()
