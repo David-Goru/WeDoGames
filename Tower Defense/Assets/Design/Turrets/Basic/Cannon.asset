@@ -21,7 +21,7 @@ MonoBehaviour:
   turretTier: 0
   Stats:
   - type: 0
-    value: 50
+    value: 100
   - type: 1
     value: 600
   - type: 2
