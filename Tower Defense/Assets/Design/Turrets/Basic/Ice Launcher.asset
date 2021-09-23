@@ -23,9 +23,9 @@ MonoBehaviour:
   - type: 0
     value: 80
   - type: 1
-    value: 80
+    value: 700
   - type: 2
-    value: 7
+    value: 60
   - type: 3
     value: 3
   - type: 4
