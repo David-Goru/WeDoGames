@@ -69,7 +69,7 @@ public class UpgradesUI : UIList
             }
         }
 
-        showUI();
+        if (upgradesAvailable.Count > 0) showUI();
     }
 
     public void ForceCloseUpgrades()

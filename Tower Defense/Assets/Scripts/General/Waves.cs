@@ -41,8 +41,14 @@ public class Waves : MonoBehaviour
 
         objectPooler = ObjectPooler.GetInstance();
         UI.UpdateWaveText(currentWave);
-        setSignalsVisuals(true);
+        StartCoroutine(lateStart());
         setUpObjectives();
+    }
+
+    IEnumerator lateStart()
+    {
+        yield return new WaitForSeconds(0.01f);
+        setSignalsVisuals(true);
     }
 
     void Update()

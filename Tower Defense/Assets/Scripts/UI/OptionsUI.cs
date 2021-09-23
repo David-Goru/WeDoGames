@@ -14,15 +14,22 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] GameObject postProcessingObject;
     [SerializeField] Toggle postProcessing;
     [SerializeField] Text fpsCounter;
+    [SerializeField] GameObject winScreen;
 
     int frameCount = 0;
     float deltaTime = 0.0f;
     float fps = 0.0f;
     float updatesPerSecond = 5.0f;
+    static bool firstPlay = true;
 
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        if (firstPlay)
+        {
+            Time.timeScale = 0;
+            winScreen.SetActive(true);
+        }
     }
 
     void Start()
@@ -75,9 +82,15 @@ public class OptionsUI : MonoBehaviour
         Application.Quit();
     }
 
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+    }
+
     public void RestartGame()
     {
         Time.timeScale = 1;
+        firstPlay = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
