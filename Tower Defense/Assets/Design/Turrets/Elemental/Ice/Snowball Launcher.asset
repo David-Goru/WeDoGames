@@ -21,15 +21,15 @@ MonoBehaviour:
   turretTier: 2
   Stats:
   - type: 0
-    value: 200
+    value: 450
   - type: 1
     value: 750
   - type: 2
-    value: 50
+    value: 80
   - type: 3
     value: 3
   - type: 4
-    value: 1.2
+    value: 1.8
   - type: 12
     value: 2
   - type: 10
@@ -40,15 +40,15 @@ MonoBehaviour:
     value: 2
   currentStats:
   - type: 0
-    value: 100
+    value: 450
   - type: 1
     value: 750
   - type: 2
-    value: 90
+    value: 80
   - type: 3
     value: 3
   - type: 4
-    value: 1.2
+    value: 1.8
   - type: 12
     value: 2
   - type: 10

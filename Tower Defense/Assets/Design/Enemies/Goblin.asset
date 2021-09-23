@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   maxHealth: 200
-  damage: 50
-  coinsReward: 18
+  damage: 60
+  coinsReward: 80
   attackSpeed: 0.65
   range: 0.5
   defaultSpeed: 2

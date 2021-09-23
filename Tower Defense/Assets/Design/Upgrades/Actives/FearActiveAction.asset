@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FearActiveAction
   m_EditorClassIdentifier: 
   cooldownUI: {fileID: 0}
-  activeCooldown: 5
+  activeCooldown: 30
   activeRange: 1.5
   ActiveAreaGO: {fileID: 1306938343930991527, guid: 7152283271e816b4e8238f22336a06c2,
     type: 3}
-  fearTime: 2.5
+  fearTime: 5

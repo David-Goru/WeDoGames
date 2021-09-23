@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HealActiveAction
   m_EditorClassIdentifier: 
   cooldownUI: {fileID: 0}
-  activeCooldown: 6
+  activeCooldown: 60
   activeRange: 1.5
   ActiveAreaGO: {fileID: 6628740484811387119, guid: 956830521553893439f18dfe6e1bcc32,
     type: 3}
-  healingValue: 100
+  healingValue: 500

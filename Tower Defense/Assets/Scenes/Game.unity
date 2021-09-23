@@ -46344,6 +46344,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 598189076902940236, guid: bdf677b35d409ad429dc96dbd8b42642,
         type: 3}
+      propertyPath: StartingHP
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 598189076902940236, guid: bdf677b35d409ad429dc96dbd8b42642,
+        type: 3}
       propertyPath: endScreenUI
       value: 
       objectReference: {fileID: 1137308909}

@@ -22,11 +22,11 @@ MonoBehaviour:
   turretTier: 2
   Stats:
   - type: 0
-    value: 200
+    value: 550
   - type: 1
     value: 600
   - type: 2
-    value: 5
+    value: 20
   - type: 3
     value: 3
   - type: 5
@@ -35,11 +35,11 @@ MonoBehaviour:
     value: 0.5
   currentStats:
   - type: 0
-    value: 150
+    value: 550
   - type: 1
     value: 600
   - type: 2
-    value: 10
+    value: 20
   - type: 3
     value: 3
   - type: 5
