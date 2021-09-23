@@ -814,6 +814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mortar Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 4790984498408443622, guid: f58bb226fa509614ca6d05e3bec399b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5275737887537206364, guid: f58bb226fa509614ca6d05e3bec399b2,
         type: 3}
       propertyPath: m_RootOrder
@@ -868,6 +873,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416931326447279970, guid: f58bb226fa509614ca6d05e3bec399b2,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416931326447279970, guid: f58bb226fa509614ca6d05e3bec399b2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58bb226fa509614ca6d05e3bec399b2, type: 3}
@@ -3857,12 +3872,12 @@ PrefabInstance:
     - target: {fileID: 4927314414776255622, guid: 980710e7a73fb044a825e5532e780e8c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927314414776255622, guid: 980710e7a73fb044a825e5532e780e8c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6663482345343404503, guid: 980710e7a73fb044a825e5532e780e8c,
         type: 3}
@@ -3927,7 +3942,7 @@ PrefabInstance:
     - target: {fileID: 6663482345343404504, guid: 980710e7a73fb044a825e5532e780e8c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 980710e7a73fb044a825e5532e780e8c, type: 3}
