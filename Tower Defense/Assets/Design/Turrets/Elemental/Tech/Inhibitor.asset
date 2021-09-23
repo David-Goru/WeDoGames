@@ -29,7 +29,7 @@ MonoBehaviour:
   - type: 5
     value: 1
   - type: 18
-    value: 10
+    value: 0.5
   currentStats:
   - type: 0
     value: 300
