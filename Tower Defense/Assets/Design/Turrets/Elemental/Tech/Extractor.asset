@@ -25,15 +25,15 @@ MonoBehaviour:
   - type: 1
     value: 150
   - type: 4
-    value: 5
+    value: 2.5
   - type: 17
-    value: 100
+    value: 25
   currentStats:
   - type: 0
     value: 500
   - type: 1
     value: 150
   - type: 4
-    value: 5
+    value: 2.5
   - type: 17
-    value: 100
+    value: 25
