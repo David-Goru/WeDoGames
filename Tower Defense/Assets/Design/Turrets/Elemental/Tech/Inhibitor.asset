@@ -29,14 +29,14 @@ MonoBehaviour:
   - type: 5
     value: 1
   - type: 18
-    value: 0.5
+    value: 10
   currentStats:
   - type: 0
     value: 100
   - type: 1
-    value: 70
+    value: 600
   - type: 3
-    value: 3
+    value: 5
   - type: 5
     value: 1
   - type: 18
