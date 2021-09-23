@@ -26,6 +26,10 @@ public class Waves : MonoBehaviour
     float timer = 0f;
     ObjectPooler objectPooler;
     Objective[] gameObjectives;
+    bool isSpawning = false;
+    float spawnTimer = 0.0f;
+    int currentEnemyType = 0;
+    int currentEnemyNumber = 0;
 
     void Start()
     {
@@ -44,6 +48,16 @@ public class Waves : MonoBehaviour
     void Update()
     {
         updateWaveState();
+
+        if (isSpawning)
+        {
+            if (spawnTimer <= 0)
+            {
+                spawnTimer = 0.25f;
+                spawnEnemies();
+            }
+            spawnTimer -= Time.deltaTime;
+        }
     }
 
     void setUpObjectives()
@@ -116,9 +130,9 @@ public class Waves : MonoBehaviour
         currentWave++;
         timer = 0;
         OnPlanningPhase = false;
-        spawnEnemies();
+        isSpawning = true;
+        spawnTimer = 0.0f;
         setSignalsVisuals(false);
-        if (waveIndex < wavesInfo.EnemyWaves.Count - 1) waveIndex++;
         UI.UpdateWaveText(currentWave);
         UI.ForceCloseUpgrades();
         UI.UpdateWaveTimerText(Mathf.RoundToInt(0));
@@ -143,6 +157,7 @@ public class Waves : MonoBehaviour
 
     void endWave()
     {
+        if (waveIndex < wavesInfo.EnemyWaves.Count - 1) waveIndex++;
         timer = 0;
         stopDrums();
         audioSource.clip = waveEndSound;
@@ -163,10 +178,26 @@ public class Waves : MonoBehaviour
     void spawnEnemies()
     {
         List<int> alreadySpawned = new List<int>();
-        for (int i = 0; i < wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count; i++)
+        int enemiesCounter = 0;
+
+        if (currentEnemyType >= wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count)
+        {
+            isSpawning = false;
+            currentEnemyType = 0;
+            currentEnemyNumber = 0;
+            return;
+        }
+
+        if (currentEnemyNumber >= wavesInfo.EnemyWaves[waveIndex].EnemyWave[currentEnemyType].NumberOfEnemies)
+        {
+            currentEnemyType++;
+            currentEnemyNumber = 0;
+        }
+
+        for (int i = currentEnemyType; i < wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count; i++)
         {
             List<int> possibleSpawners = getRandomSpawnerNum(i);
-            for (int j = 0; j < wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].NumberOfEnemies; j++)
+            for (int j = currentEnemyNumber; j < wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].NumberOfEnemies; j++)
             {
                 int getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
 
@@ -182,8 +213,28 @@ public class Waves : MonoBehaviour
                 EnemiesRemaining++;
 
                 if (alreadySpawned.Count == possibleSpawners.Count) alreadySpawned.Clear();
+                currentEnemyNumber++;
+                enemiesCounter++;
+
+                if (currentEnemyNumber >= wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].NumberOfEnemies)
+                {
+                    currentEnemyType++;
+                    currentEnemyNumber = 0;
+                }
+
+                if (enemiesCounter >= 5) return;
+            }
+
+            currentEnemyType++;
+            if (currentEnemyType >= wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count)
+            {
+                isSpawning = false;
+                currentEnemyType = 0;
+                currentEnemyNumber = 0;
             }
         }
+
+        isSpawning = false;
     }
 
     void setSignalsVisuals(bool newState)

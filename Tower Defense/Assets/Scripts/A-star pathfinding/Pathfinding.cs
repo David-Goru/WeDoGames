@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -29,9 +28,6 @@ public class Pathfinding : MonoBehaviour
     private int distanceX;
     private int distanceY;
 
-    //For testing diagnostics and optimization
-    private Stopwatch sw;
-
     private float randomOffset = 0.25f;
 
     private void Awake()
@@ -47,9 +43,6 @@ public class Pathfinding : MonoBehaviour
 
     private IEnumerator FindPath(Vector3 startPos, PathData targetPos, float range)
     {
-        sw = new Stopwatch();
-        sw.Start();
-
         Vector3[] waypoints = new Vector3[0];
         pathSuccess = false;
 
@@ -91,7 +84,6 @@ public class Pathfinding : MonoBehaviour
 
                 if (currentNode == targetNode || targetPos.building != null && currentNode.parentTransform == targetPos.building)
                 {
-                    sw.Stop();
                     pathSuccess = true;
                     break;
                 }
@@ -118,7 +110,7 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
-        
+
         yield return null;
         waypoints = RetracePath(startNode, currentNode, Mathf.RoundToInt(range));
         requestManager.FinishedProcessingPath(waypoints, pathSuccess);

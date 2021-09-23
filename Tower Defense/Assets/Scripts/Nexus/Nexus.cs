@@ -27,12 +27,13 @@ public class Nexus : Entity
     {
         currentHP -= Mathf.RoundToInt(damage);
 
-        UI.UpdateNexusLifeText(currentHP);
-
         if (currentHP <= 0)
         {
+            currentHP = 0;
             endScreenUI.SetActive(true);
             Time.timeScale = 0;
         }
+
+        UI.UpdateNexusLifeText(currentHP);
     }
 }

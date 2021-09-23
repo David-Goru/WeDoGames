@@ -25,9 +25,9 @@ MonoBehaviour:
   - type: 1
     value: 1000
   - type: 2
-    value: 35
+    value: 45
   - type: 3
-    value: 3
+    value: 4
   - type: 4
     value: 0.75
   currentStats:
@@ -36,7 +36,7 @@ MonoBehaviour:
   - type: 1
     value: 1000
   - type: 2
-    value: 35
+    value: 45
   - type: 3
     value: 3
   - type: 4
