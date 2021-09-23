@@ -25,7 +25,7 @@ public class RootProjectile : Projectile
         lifeTimer = 0f;
         damage = turretStats.GetStatValue(StatType.DAMAGE);
         damageInterval = 1 / damage;
-        lifeTime = turretStats.GetStatValue(StatType.ATTACKSPEED);
+        lifeTime = turretStats.GetStatValue(StatType.EFFECTDURATION);
         blending = 0f;
         turretDamage = target.GetComponent<ITurretDamage>();
         material.SetFloat("Grow", blending);
