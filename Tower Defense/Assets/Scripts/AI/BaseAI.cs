@@ -98,6 +98,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         maxHP = Info.MaxHealth;
         resetEnemyCC();
         returnToPoolVFX();
+        overrideCoroutines();
         changeMaterialColor(Color.white);
         speed = info.DefaultSpeed;
         rotationSpeed = info.InitRotationSpeed;
@@ -189,6 +190,14 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
         anim.ResetTrigger("DIE");
         isDying = false;
+    }
+
+    void overrideCoroutines()
+    {
+        currentSlow = null;
+        currentDamageReduction = null;
+        currentPoison = null;
+        currentDeath = null;
     }
 
     void returnToPoolVFX()
@@ -459,6 +468,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         yield return new WaitForSeconds(seconds);
 
         damage = info.Damage;
+
+        currentDamageReduction = null;
     }
 
     public void GetDamage(int _damage)
