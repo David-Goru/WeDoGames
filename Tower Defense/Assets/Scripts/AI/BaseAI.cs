@@ -168,6 +168,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
             anim.SetTrigger("DIE");
             coinVFX = objectPool.SpawnObject("CoinVFX", particlesSpawnPos.position);
+            Master.Instance.UpdateBalance(info.CoinsReward);
 
             StopAllCoroutines();
 
@@ -185,7 +186,6 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
         ObjectPooler.GetInstance().ReturnToThePool(this.transform);
         Waves.KillEnemy();
         ActiveEnemies.Instance.enemiesList.Remove(this);
-        Master.Instance.UpdateBalance(info.CoinsReward);
 
         anim.ResetTrigger("DIE");
         isDying = false;
