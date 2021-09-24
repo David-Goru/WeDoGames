@@ -138,7 +138,7 @@ public class Waves : MonoBehaviour
     {
         if (OnPlanningPhase)
         {
-            Master.Instance.ActiveMode.ResetCooldowns(timer);
+            Master.Instance.ActiveMode.ResetCooldowns(wavesInfo.PlanningTime - timer);
             timer = wavesInfo.PlanningTime + 1;
             OnPlanningPhase = false;
             startWave();
@@ -183,7 +183,7 @@ public class Waves : MonoBehaviour
         stopDrums();
         audioSource.clip = waveEndSound;
         audioSource.Play();
-        if (waveIndex >= (wavesInfo.EnemyWaves.Count -1))
+        if (waveIndex >= wavesInfo.EnemyWaves.Count)
         {
             winScreenUI.SetActive(true);
             Time.timeScale = 0;
@@ -202,61 +202,61 @@ public class Waves : MonoBehaviour
         List<int> alreadySpawned = new List<int>();
         int enemiesCounter = 0;
 
-        if (currentEnemyType >= wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count)
+        if (allEnemyTypesSpawned())
         {
-            isSpawning = false;
-            currentEnemyType = 0;
-            currentEnemyNumber = 0;
+            stopSpawning();
             return;
         }
 
-        if (currentEnemyNumber >= wavesInfo.EnemyWaves[waveIndex].EnemyWave[currentEnemyType].NumberOfEnemies)
-        {
-            currentEnemyType++;
-            currentEnemyNumber = 0;
-        }
+        if (allEnemiesFromCurrentTypeSpawned()) increaseCurrentEnemyType();
 
-        for (int i = currentEnemyType; i < wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count; i++)
+        while (enemiesCounter < 5 && !allEnemyTypesSpawned())
         {
-            List<int> possibleSpawners = getRandomSpawnerNum(i);
-            for (int j = currentEnemyNumber; j < wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].NumberOfEnemies; j++)
+            List<int> possibleSpawners = getRandomSpawnerNum(currentEnemyType);
+            int getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
+
+            while (alreadySpawned.Contains(getRandomSpawn))
             {
-                int getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
-
-                while (alreadySpawned.Contains(getRandomSpawn))
-                {
-                    getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
-                }
-
-                alreadySpawned.Add(getRandomSpawn);
-
-                Vector3 randomPos = spawnersPositions[getRandomSpawn] + Vector3.forward * Random.Range(-3f, 3f) + Vector3.right * Random.Range(-3f, 3f);
-                objectPooler.SpawnObject(wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].Enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
-                EnemiesRemaining++;
-
-                if (alreadySpawned.Count == possibleSpawners.Count) alreadySpawned.Clear();
-                currentEnemyNumber++;
-                enemiesCounter++;
-
-                if (currentEnemyNumber >= wavesInfo.EnemyWaves[waveIndex].EnemyWave[i].NumberOfEnemies)
-                {
-                    currentEnemyType++;
-                    currentEnemyNumber = 0;
-                }
-
-                if (enemiesCounter >= 5) return;
+                getRandomSpawn = possibleSpawners[Random.Range(0, possibleSpawners.Count)];
             }
 
-            currentEnemyType++;
-            if (currentEnemyType >= wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count)
-            {
-                isSpawning = false;
-                currentEnemyType = 0;
-                currentEnemyNumber = 0;
-            }
+            alreadySpawned.Add(getRandomSpawn);
+
+            Vector3 randomPos = spawnersPositions[getRandomSpawn] + Vector3.forward * Random.Range(-3f, 3f) + Vector3.right * Random.Range(-3f, 3f);
+            objectPooler.SpawnObject(wavesInfo.EnemyWaves[waveIndex].EnemyWave[currentEnemyType].Enemy.tag, randomPos, Quaternion.Euler(0, 0, 0));
+            EnemiesRemaining++;
+
+            if (alreadySpawned.Count == possibleSpawners.Count) alreadySpawned.Clear();
+            currentEnemyNumber++;
+            enemiesCounter++;
+
+            if (allEnemiesFromCurrentTypeSpawned()) increaseCurrentEnemyType();
         }
 
+        if (allEnemyTypesSpawned()) stopSpawning();
+    }
+
+    bool allEnemiesFromCurrentTypeSpawned()
+    {
+        return currentEnemyNumber >= wavesInfo.EnemyWaves[waveIndex].EnemyWave[currentEnemyType].NumberOfEnemies;
+    }
+
+    void increaseCurrentEnemyType()
+    {
+        currentEnemyType++;
+        currentEnemyNumber = 0;
+    }
+
+    bool allEnemyTypesSpawned()
+    {
+        return currentEnemyType >= wavesInfo.EnemyWaves[waveIndex].EnemyWave.Count;
+    }
+
+    void stopSpawning()
+    {
         isSpawning = false;
+        currentEnemyType = 0;
+        currentEnemyNumber = 0;
     }
 
     void setSignalsVisuals(bool newState)

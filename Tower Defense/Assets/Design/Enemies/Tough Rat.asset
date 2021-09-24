@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: Tough Rat
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 350
   damage: 70
-  coinsReward: 40
+  coinsReward: 30
   attackSpeed: 2
   range: 1
   defaultSpeed: 4

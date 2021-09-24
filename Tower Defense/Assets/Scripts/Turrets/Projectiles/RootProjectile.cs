@@ -10,6 +10,7 @@ public class RootProjectile : Projectile
     float damageTimer = 0f;
     float lifeTimer = 0f;
     float damageInterval = 0f;
+    int damagePerTick = 0;
     float lifeTime = 0f;
     float blending = 0f;
     ITurretDamage turretDamage = null;
@@ -24,7 +25,8 @@ public class RootProjectile : Projectile
         damageTimer = 0f;
         lifeTimer = 0f;
         damage = turretStats.GetStatValue(StatType.DAMAGE);
-        damageInterval = 1 / damage;
+        damageInterval = damage > 20 ? 1 / 20 : 1 / damage;
+        damagePerTick = damage > 20 ? Mathf.RoundToInt(damage / 20) : 1;
         lifeTime = turretStats.GetStatValue(StatType.EFFECTDURATION);
         blending = 0f;
         turretDamage = target.GetComponent<ITurretDamage>();
@@ -49,6 +51,6 @@ public class RootProjectile : Projectile
 
     void doDamage()
     {
-        if (turretDamage != null) turretDamage.OnTurretHit(turret, 1, enemyDamageHandler);
+        if (turretDamage != null) turretDamage.OnTurretHit(turret, damagePerTick, enemyDamageHandler);
     }
 }

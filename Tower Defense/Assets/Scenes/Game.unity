@@ -6779,7 +6779,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1137308905}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &222958631
+--- !u!114 &222958636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35360,6 +35360,16 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4883686697786050599, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883686697786050599, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883686697786050599, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
       propertyPath: m_FontData.m_FontStyle
       value: 0
       objectReference: {fileID: 0}
@@ -35369,6 +35379,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: f688b241dc4231d40ad87d539730baea,
         type: 3}
+    - target: {fileID: 4883686697804472019, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 4883686697804472019, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_FontData.m_FontStyle
