@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 public class Nexus : Entity
 {
     [SerializeField] int StartingHP = 0;
     [SerializeField] GameObject endScreenUI = null;
+    [SerializeField] AudioMixer soundsMixer = null;
 
     public bool IsFullHealth { get => currentHP == maxHP; }
     public bool IsAlive { get => currentHP > 0; }
@@ -23,6 +25,11 @@ public class Nexus : Entity
         currentHP = maxHP;
     }
 
+    void stopSounds()
+    {
+        soundsMixer.SetFloat("SoundsVolume", -80);
+    }
+
     public void GetHit(float damage)
     {
         currentHP -= Mathf.RoundToInt(damage);
@@ -30,6 +37,7 @@ public class Nexus : Entity
         if (currentHP <= 0)
         {
             currentHP = 0;
+            stopSounds();
             endScreenUI.SetActive(true);
             Time.timeScale = 0;
         }

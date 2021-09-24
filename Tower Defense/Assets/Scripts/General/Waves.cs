@@ -20,6 +20,7 @@ public class Waves : MonoBehaviour
     [SerializeField] AudioClip waveStartSound = null;
     [SerializeField] AudioClip waveEndSound = null;
     [SerializeField] AudioSource audioSource = null;
+    [SerializeField] AudioMixer soundsMixer = null;
     [SerializeField] Button fastForwardButton = null;
 
     List<Vector3> spawnersPositions; 
@@ -183,9 +184,10 @@ public class Waves : MonoBehaviour
         stopDrums();
         audioSource.clip = waveEndSound;
         audioSource.Play();
-        if (waveIndex >= wavesInfo.EnemyWaves.Count)
+        if (currentWave >= wavesInfo.EnemyWaves.Count)
         {
             winScreenUI.SetActive(true);
+            stopSounds();
             Time.timeScale = 0;
         }
         else
@@ -195,6 +197,11 @@ public class Waves : MonoBehaviour
             setSignalsVisuals(true);
             UI.OpenUpgrades(3);
         }
+    }
+
+    void stopSounds()
+    {
+        soundsMixer.SetFloat("SoundsVolume", -80);
     }
 
     void spawnEnemies()

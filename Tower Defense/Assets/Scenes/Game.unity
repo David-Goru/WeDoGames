@@ -15719,6 +15719,7 @@ MonoBehaviour:
   waveStartSound: {fileID: 8300000, guid: dc7c505fa1f4bfc4a84aed83f953edb6, type: 3}
   waveEndSound: {fileID: 8300000, guid: 337261cc48bf5b84680702261ca4c499, type: 3}
   audioSource: {fileID: 537000333}
+  soundsMixer: {fileID: 24100000, guid: be17c9c930efc9846aff736fd15aac45, type: 2}
   fastForwardButton: {fileID: 1244291459}
 --- !u!114 &537000331
 MonoBehaviour:

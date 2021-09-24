@@ -43,7 +43,7 @@ public class Chat : MonoBehaviour
 
     bool isPlayerChangingUIVisibility()
     {
-        return Input.GetKeyDown(changeVisibilityKey) && input.text == "";
+        return false; // Input.GetKeyDown(changeVisibilityKey) && input.text == "";
     }
 
     void changeUIVisibility()
