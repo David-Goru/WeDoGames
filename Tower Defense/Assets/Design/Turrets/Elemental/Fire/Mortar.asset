@@ -25,9 +25,9 @@ MonoBehaviour:
   - type: 1
     value: 900
   - type: 2
-    value: 100
+    value: 110
   - type: 3
-    value: 7
+    value: 8
   - type: 4
     value: 1.5
   - type: 8
@@ -36,7 +36,7 @@ MonoBehaviour:
   - type: 0
     value: 450
   - type: 1
-    value: 400
+    value: 900
   - type: 2
     value: 100
   - type: 3
