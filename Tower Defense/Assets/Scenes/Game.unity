@@ -34908,6 +34908,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 434785947161345672, guid: 9c73d9b70784606418c6b501b172e0a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 927377834646097214, guid: 9c73d9b70784606418c6b501b172e0a8,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -46376,6 +46381,12 @@ PrefabInstance:
       propertyPath: endScreenUI
       value: 
       objectReference: {fileID: 1137308909}
+    - target: {fileID: 598189076902940236, guid: bdf677b35d409ad429dc96dbd8b42642,
+        type: 3}
+      propertyPath: soundsMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: be17c9c930efc9846aff736fd15aac45,
+        type: 2}
     - target: {fileID: 6359129234597582134, guid: bdf677b35d409ad429dc96dbd8b42642,
         type: 3}
       propertyPath: m_Name
