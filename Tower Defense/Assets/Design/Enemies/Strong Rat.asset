@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Strong Rat
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  damage: 10
-  coinsReward: 70
+  damage: 20
+  coinsReward: 50
   attackSpeed: 2
   range: 1
   defaultSpeed: 4

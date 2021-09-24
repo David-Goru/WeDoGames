@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: Strong Fairy
   m_EditorClassIdentifier: 
-  maxHealth: 2500
-  damage: 30
-  coinsReward: 170
+  maxHealth: 2000
+  damage: 45
+  coinsReward: 150
   attackSpeed: 0.65
   range: 6
   defaultSpeed: 2

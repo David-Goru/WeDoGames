@@ -15,6 +15,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     float timer = 0f;
     float damageInterval = 0f;
     float damage = 0f;
+    int damagePerTick = 0;
 
     bool areTargetsInRange = false;
 
@@ -66,7 +67,8 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
     {
         timer = 0f;
         damage = turretStats.GetStatValue(StatType.DAMAGE);
-        damageInterval = 1 / damage;
+        damageInterval = damage > 20 ? 1 / 20 : 1 / damage;
+        damagePerTick = damage > 20 ? Mathf.RoundToInt(damage / 20) : 1;
         areTargetsInRange = false;
     }
 
@@ -87,7 +89,7 @@ public class ConstantDamageToEnemiesInRange : EffectComponent
         foreach (Transform target in targetDetection.CurrentTargets)
         {
             ITurretDamage turretDamageable = target.GetComponent<ITurretDamage>();
-            if (turretDamageable != null) turretDamageable.OnTurretHit(transform.parent, 1, enemyDamageHandler);
+            if (turretDamageable != null) turretDamageable.OnTurretHit(transform.parent, damagePerTick, enemyDamageHandler);
         }
     }
 }
