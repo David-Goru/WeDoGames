@@ -14,6 +14,7 @@ public class DetectTargetsOnRangeWithinACone : CurrentTargetsOnRange
     {
         turretStats = GetComponentInParent<TurretStats>();
         targetsDetector = GetComponent<ITargetsDetector>();
+        areTargetsInRange = false;
     }
 
     public override void UpdateComponent()

@@ -14,6 +14,7 @@ public class DetectRandomEnemiesOnRange : CurrentTargetsOnRange
     {
         getDependencies();
         currentTargets.Clear();
+        areTargetsInRange = false;
     }
 
 

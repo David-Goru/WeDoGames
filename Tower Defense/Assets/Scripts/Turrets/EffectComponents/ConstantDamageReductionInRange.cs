@@ -66,9 +66,11 @@ public class ConstantDamageReductionInRange : EffectComponent
     {
         foreach (Transform target in targetDetection.CurrentTargets)
         {
+            if (!target.gameObject.activeSelf) continue;
             IDamageReductible damageReductible = target.GetComponent<IDamageReductible>();
             if (damageReductible != null) damageReductible.ReduceDamage(damageReductionDuration, damageReduction);
         }
+
     }
 
     void getStats()
