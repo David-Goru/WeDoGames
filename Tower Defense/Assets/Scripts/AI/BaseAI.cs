@@ -315,7 +315,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Stun(float secondsStunned)
     {
-        if (!gameObject.activeSelf || isKnockbacked) return; //Can't stun an enemy that is knockbacked
+        if (!gameObject.activeSelf || isKnockbacked || isDying) return; //Can't stun an enemy that is knockbacked
 
         StopCoroutine("FollowPath");
 
@@ -329,7 +329,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Slow(float secondsSlowed, float slowReduction)
     {
-        if (!gameObject.activeSelf || isEnemyUnderCC()) return; //Can't be slowed if the enemy is in Fear, Stun or Knockback
+        if (!gameObject.activeSelf || isEnemyUnderCC() || isDying) return; //Can't be slowed if the enemy is in Fear, Stun or Knockback
 
         if (currentSlow != null)
         {
@@ -376,7 +376,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Poison(float secondsPoisoned, int damagePerSecond)
     {
-        if (!gameObject.activeSelf) return;
+        if (!gameObject.activeSelf || isDying) return;
 
         if (currentPoison != null)
         {
@@ -414,7 +414,7 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Fear(float fearSeconds)
     {
-        if (!gameObject.activeSelf || isKnockbacked || isStunned) return; //Can't fear an enemy that is knockbacked or stunned
+        if (!gameObject.activeSelf || isKnockbacked || isStunned || isDying) return; //Can't fear an enemy that is knockbacked or stunned
 
         if (currentSlow != null) //Override slow
         {
@@ -438,6 +438,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void Knockback(float knockbackDistance, Vector3 knockbackDirection)
     {
+        if (!gameObject.activeSelf || isDying) return;
+
         StopCoroutine("FollowPath");
 
         currentState.Exit();
@@ -451,6 +453,8 @@ public class BaseAI : Entity, ITurretDamage, IPooledObject, IStunnable, ISlowabl
 
     public void ReduceDamage(float secondsDamageReduced, float damageReduction)
     {
+        if (!gameObject.activeSelf || isDying) return;
+
         if(currentDamageReduction != null)
         {
             StopCoroutine(currentDamageReduction);
