@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
   m_Name: Mortar
   m_EditorClassIdentifier: 
-  description: Long range with area damage.
+  description: Long range with area damage. HP+, Range++, Area
   icon: {fileID: 21300000, guid: f35738a4ad4107b4d913bde5980dbef7, type: 3}
   turret: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
   turretTier: 2

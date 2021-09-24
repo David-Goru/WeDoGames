@@ -22,16 +22,6 @@ public class OptionsUI : MonoBehaviour
     float updatesPerSecond = 5.0f;
     static bool firstPlay = true;
 
-    private void Awake()
-    {
-        Application.targetFrameRate = 60;
-        if (firstPlay)
-        {
-            Time.timeScale = 0;
-            winScreen.SetActive(true);
-        }
-    }
-
     void Start()
     {
         if (PlayerPrefs.HasKey("MasterVolume"))
@@ -62,6 +52,14 @@ public class OptionsUI : MonoBehaviour
         }
 
         GetComponent<Canvas>().enabled = false;
+
+        Application.targetFrameRate = 60;
+        if (firstPlay)
+        {
+            Time.timeScale = 0;
+            winScreen.SetActive(true);
+        }
+        else Time.timeScale = 1;
     }
 
     void Update()
@@ -85,6 +83,7 @@ public class OptionsUI : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
+        firstPlay = false;
     }
 
     public void RestartGame()

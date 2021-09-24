@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ac1e19fa155e54090dddf0c40bec44, type: 3}
   m_Name: Flamethrower
   m_EditorClassIdentifier: 
-  description: Less bullets more fire.
+  description: Less bullets more fire. HP+, Damage+, Area
   icon: {fileID: 21300000, guid: ebd8c5b15bead494ca0c1c8dbcacc716, type: 3}
   turret: {fileID: 11400000, guid: 674b94020d88847409ffcaeb61fbd5b3, type: 2}
   turretTier: 2

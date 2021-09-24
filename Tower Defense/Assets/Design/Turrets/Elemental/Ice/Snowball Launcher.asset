@@ -23,7 +23,7 @@ MonoBehaviour:
   - type: 0
     value: 450
   - type: 1
-    value: 750
+    value: 1000
   - type: 2
     value: 80
   - type: 3
@@ -33,7 +33,7 @@ MonoBehaviour:
   - type: 12
     value: 2
   - type: 10
-    value: 1
+    value: 2
   - type: 5
     value: 2
   - type: 11
@@ -42,7 +42,7 @@ MonoBehaviour:
   - type: 0
     value: 450
   - type: 1
-    value: 750
+    value: 1000
   - type: 2
     value: 80
   - type: 3

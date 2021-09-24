@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92cd4b7a0909a34c96ecdab42c0440d, type: 3}
   m_Name: Strong Rat
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  damage: 5
+  maxHealth: 1000
+  damage: 10
   coinsReward: 70
   attackSpeed: 2
   range: 1

@@ -11,6 +11,21 @@ public class ActivesCooldownController : MonoBehaviour
         updateCooldowns();
     }
 
+    public void ResetCooldowns(float time)
+    {
+        for (int i = activesInCoolDown.Count - 1; i >= 0; i--)
+        {
+            timers[i] += time;
+            if (timers[i] >= activesInCoolDown[i].activeCooldown)
+            {
+                activesInCoolDown[i].cooldownUI.EndCooldown();
+                timers.RemoveAt(i);
+                activesInCoolDown.RemoveAt(i);
+            }
+            else activesInCoolDown[i].cooldownUI.UpdateCooldown(activesInCoolDown[i].activeCooldown, timers[i]);
+        }
+    }
+
     public void StartCooldown(ActiveAction active)
     {
         if (!CheckIfIsInCooldown(active))

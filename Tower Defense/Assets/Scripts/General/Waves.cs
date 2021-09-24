@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class Waves : MonoBehaviour
@@ -19,6 +20,7 @@ public class Waves : MonoBehaviour
     [SerializeField] AudioClip waveStartSound = null;
     [SerializeField] AudioClip waveEndSound = null;
     [SerializeField] AudioSource audioSource = null;
+    [SerializeField] Button fastForwardButton = null;
 
     List<Vector3> spawnersPositions; 
     int currentWave = 0;
@@ -53,8 +55,6 @@ public class Waves : MonoBehaviour
 
     void Update()
     {
-        updateWaveState();
-
         if (isSpawning)
         {
             if (spawnTimer <= 0)
@@ -64,6 +64,8 @@ public class Waves : MonoBehaviour
             }
             spawnTimer -= Time.deltaTime;
         }
+
+        updateWaveState();
     }
 
     void setUpObjectives()
@@ -111,6 +113,7 @@ public class Waves : MonoBehaviour
     {
         if (OnPlanningPhase)
         {
+            if (Input.GetKeyDown(KeyCode.F)) fastForwardPlanningPhase();
             if (planningPhaseFinished()) startWave();
             else updatePlanningPhase();
         }
@@ -131,8 +134,20 @@ public class Waves : MonoBehaviour
         return EnemiesRemaining == 0;
     }
 
+    public void fastForwardPlanningPhase()
+    {
+        if (OnPlanningPhase)
+        {
+            Master.Instance.ActiveMode.ResetCooldowns(timer);
+            timer = wavesInfo.PlanningTime + 1;
+            OnPlanningPhase = false;
+            startWave();
+        }
+    }
+
     void startWave()
     {
+        fastForwardButton.interactable = false;
         currentWave++;
         timer = 0;
         OnPlanningPhase = false;
@@ -168,13 +183,14 @@ public class Waves : MonoBehaviour
         stopDrums();
         audioSource.clip = waveEndSound;
         audioSource.Play();
-        if (waveIndex >= 15)
+        if (waveIndex >= (wavesInfo.EnemyWaves.Count -1))
         {
             winScreenUI.SetActive(true);
             Time.timeScale = 0;
         }
         else
         {
+            fastForwardButton.interactable = true;
             OnPlanningPhase = true;
             setSignalsVisuals(true);
             UI.OpenUpgrades(3);

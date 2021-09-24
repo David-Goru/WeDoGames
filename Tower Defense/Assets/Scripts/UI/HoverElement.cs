@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class HoverElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    string hoverText = "";
+    [SerializeField] string hoverText = "";
     bool isHovering = false;
 
     public string HoverText { set => hoverText = value; }

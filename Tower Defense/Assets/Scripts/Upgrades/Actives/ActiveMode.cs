@@ -17,6 +17,11 @@ public class ActiveMode : MonoBehaviour
         groundMask = LayerMask.GetMask("Terrain");
     }
 
+    public void ResetCooldowns(float time)
+    {
+        activesCooldownController.ResetCooldowns(time);
+    }
+
     void Update()
     {
         if (isActive)
