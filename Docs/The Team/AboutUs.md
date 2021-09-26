@@ -11,5 +11,5 @@ We are game developers. Which means that we... Do... Games :D
 > Artist
 * **Jorge Lorenzo**
 > Designer
-* **Fernando [Lastname]**
+* **Fernando Conde**
 > Sound designer and music composer
