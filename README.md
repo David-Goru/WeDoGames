@@ -14,7 +14,9 @@ We Do games!!!
 - [x] Sprint 11 (22 Aug, 2021)
 - [x] Sprint 12 (29 Aug, 2021)
 - [x] Sprint 13 (8 Sep, 2021)
-- [ ] Sprint 14 (20 Sep, 2021)
+- [x] Sprint 14 (20 Sep, 2021)
+
+Demo available at: https://wedogames-studio.itch.io/nexus-defense
 
 # Tower Defense
 3D rogue-lite tower defense.
