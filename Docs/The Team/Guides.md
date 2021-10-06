@@ -10,5 +10,7 @@
 > - Script Template can be changed at "[UnityEditorPath]\Hub\Editor\[UnityVersion]\Editor\Data\Resources\ScriptTemplates" (for example: "C:\Program Files\Unity\Hub\Editor\2020.3.14f1\Editor\Data\Resources\ScriptTemplates") using available templates on "Project folder/Assets/ScriptTemplates".
 
 # How to test
+TODO
 
 # How to import art
+TODO

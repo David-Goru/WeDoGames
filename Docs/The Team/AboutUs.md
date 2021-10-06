@@ -2,11 +2,11 @@ We are game developers. Which means that we... Do... Games :D
 
 # Meet the team
 * **Arturo Barbosa**
-> Turrets programmer
+> Programmer
 * **Sergio Ferreras**
-> AI programmer
+> Programmer
 * **David Gómez**
-> UI and building system programmer
+> Programmer
 * **Cristian Cantos**
 > Artist
 * **Jorge Lorenzo**
