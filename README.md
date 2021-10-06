@@ -11,4 +11,4 @@ We Do games!!!
 
 # We Do Games?
 [About Us](https://github.com/David-Goru/WeDoGames/tree/master/Docs/The%20Team/AboutUs.md) | 
-[Guides](https://github.com/David-Goru/WeDoGames/tree/master/Docs/Tower%20Defense/Guides.md)
+[Guides](https://github.com/David-Goru/WeDoGames/tree/master/Docs/The%20Team/Guides.md)
