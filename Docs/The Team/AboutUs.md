@@ -2,14 +2,14 @@ We are game developers. Which means that we... Do... Games :D
 
 # Meet the team
 * **Arturo Barbosa**
-> Programmer
+> Programmer | [Info](https://www.linkedin.com/in/a101199/)
 * **Sergio Ferreras**
-> Programmer
+> Programmer | [Info](https://github.com/SergioPucela)
 * **David Gómez**
-> Programmer
+> Programmer | [Info](https://david-goru.github.io/)
 * **Cristian Cantos**
-> Artist
+> Artist | [Info](https://kerokroac.wixsite.com/website)
 * **Jorge Lorenzo**
-> Designer
+> Designer | [Info](https://twitter.com/Reco_Support)
 * **Fernando Conde**
-> Sound designer and music composer
+> Sound designer and music composer | [Info](https://www.linkedin.com/in/fernando-conde-municio-951210214/?originalSubdomain=es)
