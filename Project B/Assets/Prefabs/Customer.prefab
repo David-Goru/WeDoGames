@@ -163,4 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be31fc0af75a0bf4a914646f1e0fd09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerWaitingPlaces: []
+  productsToAsk:
+  - Chip RT-XD
+  - Tecnomi X
+  - R-00 MB'A
+  waitingTime: 15
