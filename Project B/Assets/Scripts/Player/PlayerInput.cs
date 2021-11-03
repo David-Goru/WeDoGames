@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour, IMovementInput
 {
-    Vector3 forward, right;
+    private Vector3 forward, right;
 
-    void Start()
+    private void Start()
     {
         calculateInputFromCamera();
     }
@@ -18,17 +18,17 @@ public class PlayerInput : MonoBehaviour, IMovementInput
         right = Quaternion.Euler(new Vector3(0f, 90f, 0f)) * forward;
     }
 
-    public bool moveInputRecieved()
+    public bool MoveInputRecieved()
     {
         return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
     }
 
-    public Vector3 horizontalDirection()
+    public Vector3 HorizontalDirection()
     {
         return right * Input.GetAxis("Horizontal");
     }
 
-    public Vector3 verticalDirection()
+    public Vector3 VerticalDirection()
     {
         return forward * Input.GetAxis("Vertical");
     }
