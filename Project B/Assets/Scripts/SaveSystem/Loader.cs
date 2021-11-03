@@ -12,12 +12,6 @@ public class Loader : MonoBehaviour, IGameInitializer
 
     private bool isNameValid;
 
-    private void Start()
-    {
-        //For testing. This should be called by Game
-        Initialize();
-    }
-
     private void tryToCreateGame()
     {
         if (isNameValid) createGame();
