@@ -106,10 +106,26 @@ public class Build : MonoBehaviour
         }
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (furnitureSelected.Data.BuildableAboveFurniture && Physics.Raycast(ray, out var hit, 100, buildableFurniture)) return hit.point;
-        if (furnitureSelected.Data.BuildableAboveFloor && Physics.Raycast(ray, out hit, 100, buildableFloor)) return hit.point;
+        if (furnitureSelected.Data.BuildableAboveFurniture && Physics.Raycast(ray, out var hit, 100, buildableFurniture)) return positionAboveParent(hit);
+        if (furnitureSelected.Data.BuildableAboveFloor && Physics.Raycast(ray, out hit, 100, buildableFloor)) return roundedPosition(hit.point, 2.0f);
         
         return new Vector3(0, 100, 0);
+    }
+
+    private static Vector3 roundedPosition(Vector3 rawPosition, float divisions = 1.0f)
+    {
+        float x = Mathf.RoundToInt(rawPosition.x * divisions) / divisions;
+        float z = Mathf.RoundToInt(rawPosition.z * divisions) / divisions;
+
+        return new Vector3(x, rawPosition.y, z);
+    }
+
+    private static Vector3 positionAboveParent(RaycastHit hit)
+    {
+        Vector3 position = hit.transform.parent.position;
+        position.y = hit.point.y;
+
+        return position;
     }
 
     private void place()
