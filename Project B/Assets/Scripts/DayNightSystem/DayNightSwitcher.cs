@@ -8,7 +8,7 @@ public class DayNightSwitcher : MonoBehaviour
 
     void Awake()
     {
-        dayNightSwitchables = GetComponentsInChildren<IDayNightSwitchable>();
+        dayNightSwitchables = transform.parent.GetComponentsInChildren<IDayNightSwitchable>();
     }
 
     void Start()

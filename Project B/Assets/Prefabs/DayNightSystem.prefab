@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1941930610539031535}
   - component: {fileID: 1941930610539031536}
   m_Layer: 0
-  m_Name: Day_Night System
+  m_Name: DayNightSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
