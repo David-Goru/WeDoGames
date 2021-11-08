@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour, ILoadable
 
     private Quaternion newRotation;
     private Vector3 heading;
+    private Vector3 lastFrameMovement;
 
     private bool isCreated; //Temporal
 
@@ -24,10 +25,24 @@ public class PlayerMovement : MonoBehaviour, ILoadable
 
     private void Update()
     {
-        if (isCreated)
-        {
-            if (input.MoveInputRecieved()) movePlayer();
-        }
+        if (isCreated) checkForPlayerInput();
+    }
+
+    private void FixedUpdate()
+    {
+        if (lastFrameMovement != Vector3.zero) movePlayer();
+    }
+
+    private void checkForPlayerInput()
+    {
+        if (input.MoveInputRecieved()) calculateLastFramePos();
+        else if(lastFrameMovement != Vector3.zero) lastFrameMovement = Vector3.zero;
+    }
+
+    private void calculateLastFramePos()
+    {
+        Vector3 movementDirectionAndMagnitude = input.HorizontalDirection() + input.VerticalDirection();
+        lastFrameMovement = Vector3.ClampMagnitude(movementDirectionAndMagnitude, 1.0f);
     }
 
     private void movePlayer()
