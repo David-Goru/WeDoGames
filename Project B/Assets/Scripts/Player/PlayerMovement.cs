@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour, ILoadable
 
     private void FixedUpdate()
     {
-        if (lastFrameMovement != Vector3.zero) movePlayer();
+        if (isMoving()) movePlayer();
     }
 
     private void checkForPlayerInput()
@@ -57,5 +57,10 @@ public class PlayerMovement : MonoBehaviour, ILoadable
     {
         heading = Vector3.Normalize(input.HorizontalDirection() + input.VerticalDirection());
         newRotation = Quaternion.LookRotation(heading);
+    }
+
+    private bool isMoving()
+    {
+        return lastFrameMovement != Vector3.zero;
     }
 }

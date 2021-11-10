@@ -264,9 +264,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3263205369207587938, guid: 45a82e6313ba13d468d26d0755c0b7f6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155176257114767161, guid: 45a82e6313ba13d468d26d0755c0b7f6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5155176257167492563, guid: 45a82e6313ba13d468d26d0755c0b7f6, type: 3}
       propertyPath: m_Name
       value: CounterSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155176257167492563, guid: 45a82e6313ba13d468d26d0755c0b7f6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5155176257167492572, guid: 45a82e6313ba13d468d26d0755c0b7f6, type: 3}
       propertyPath: m_RootOrder
@@ -557,17 +569,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7003927124112389580, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7834215407312611857, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
       propertyPath: m_Name
       value: Game
-      objectReference: {fileID: 0}
-    - target: {fileID: 8033833489249524994, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92358ce963cdd914690bf87658448b4f, type: 3}

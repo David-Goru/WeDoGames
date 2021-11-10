@@ -165,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 5412739920527077438, guid: 8d80efc1b74ea984ebddae3a0d4979d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5412739920527077439, guid: 8d80efc1b74ea984ebddae3a0d4979d5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -271,6 +275,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6985397187410261166, guid: 814945b1d2f05164bb498e16960e064d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991948700993158308, guid: 814945b1d2f05164bb498e16960e064d, type: 3}
+      propertyPath: secondsBetweenFootsteps
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 814945b1d2f05164bb498e16960e064d, type: 3}
 --- !u!4 &8590868821373564607 stripped
@@ -350,6 +362,10 @@ PrefabInstance:
     - target: {fileID: 1941930610539031534, guid: 54e7c09506f11a44fb92139343b055e0, type: 3}
       propertyPath: m_Name
       value: DayNightSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941930610539031534, guid: 54e7c09506f11a44fb92139343b055e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1941930610539031535, guid: 54e7c09506f11a44fb92139343b055e0, type: 3}
       propertyPath: m_RootOrder
