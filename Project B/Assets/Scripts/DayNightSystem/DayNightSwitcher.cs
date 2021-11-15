@@ -1,28 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DayNightSwitcher : MonoBehaviour
+public class DayNightSwitcher : MonoBehaviour, ISwitchablesInstaller, ISwitchDetectable
 {
-    IDayNightSwitchable[] dayNightSwitchables;
+    private IDayNightSwitchable[] dayNightSwitchables;
 
-    void Awake()
+    public void SetSwitchableObjects(IDayNightSwitchable[] switchables)
     {
-        dayNightSwitchables = transform.parent.GetComponentsInChildren<IDayNightSwitchable>();
-    }
-
-    void Start()
-    {
+        dayNightSwitchables = switchables;
         startDay();
     }
 
-    void startDay()
+    public void OnDayDetection()
     {
-        foreach (var dayNightSystem in dayNightSwitchables) dayNightSystem.OnDayStart();
+        startDay();
+        print("Day Started");
     }
 
-    void startNight()
+    public void OnNightDetection()
     {
-        foreach (var dayNightSystem in dayNightSwitchables) dayNightSystem.OnNightStart();
+        startNight();
+        print("Night Started");
+    }
+
+    private void startDay()
+    {
+        foreach (var switchableObject in dayNightSwitchables) switchableObject.OnDayStart();
+    }
+
+    private void startNight()
+    {
+        foreach (var switchableObject in dayNightSwitchables) switchableObject.OnNightStart();
     }
 }

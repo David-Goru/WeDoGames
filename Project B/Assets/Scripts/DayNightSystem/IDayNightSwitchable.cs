@@ -1,6 +1,6 @@
 ﻿public interface IDayNightSwitchable
 {
-    void OnDayStart();
+    public void OnDayStart();
 
-    void OnNightStart();
+    public void OnNightStart();
 }
