@@ -19,13 +19,14 @@ public class DayNightInstaller : MonoBehaviour, ILoadable
 
     private void getDependencies()
     {
-        switchablesInstaller = transform.parent.GetComponentInChildren<ISwitchablesInstaller>();
-        detectorsInstaller = transform.parent.GetComponentInChildren<IDetectorsInstaller>();
-        switchDetectableInstaller = transform.parent.GetComponentInChildren<ISwitchDetectableInstaller>();
-        switchables = transform.parent.GetComponentsInChildren<IDayNightSwitchable>();
-        dayDetectors = transform.parent.GetComponentsInChildren<IDayDetector>();
-        nightDetectors = transform.parent.GetComponentsInChildren<INightDetector>();
-        switchDetectable = transform.parent.GetComponentInChildren<ISwitchDetectable>();
+        var parent = transform.parent;
+        switchablesInstaller = parent.GetComponentInChildren<ISwitchablesInstaller>();
+        detectorsInstaller = parent.GetComponentInChildren<IDetectorsInstaller>();
+        switchDetectableInstaller = parent.GetComponentInChildren<ISwitchDetectableInstaller>();
+        switchables = parent.GetComponentsInChildren<IDayNightSwitchable>();
+        dayDetectors = parent.GetComponentsInChildren<IDayDetector>();
+        nightDetectors = parent.GetComponentsInChildren<INightDetector>();
+        switchDetectable = parent.GetComponentInChildren<ISwitchDetectable>();
     }
 
     private void setDependencies()

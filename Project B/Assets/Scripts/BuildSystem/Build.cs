@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class Build : MonoBehaviour
+public class Build : MonoBehaviour, IDayNightSwitchable
 {
+    [SerializeField] private GameObject buildUIPrefab;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private KeyCode rotationKey;
     [SerializeField] private LayerMask buildableFloor;
     [SerializeField] private LayerMask buildableFurniture;
-    
+
+    private GameObject ui;
     private Furniture furnitureSelected;
     private bool isMoving;
     private Vector3 initialPosition;
@@ -15,6 +17,12 @@ public class Build : MonoBehaviour
     private int currentYRotation;
     private Vector3 lastMousePosition;
     private bool canBePlaced;
+
+    private void Awake()
+    {
+        ui = Instantiate(buildUIPrefab, GameObject.Find("UI").transform);
+        ui.SetActive(false);
+    }
 
     public void StartBuilding(Furniture furniture)
     {
@@ -149,5 +157,15 @@ public class Build : MonoBehaviour
         Transform model = furnitureTransform.Find("Model");
         model.GetComponent<Renderer>().material.color = Color.white;
         enabled = false;
+    }
+
+    public void OnDayStart()
+    {
+        ui.SetActive(false);
+    }
+
+    public void OnNightStart()
+    {
+        ui.SetActive(true);
     }
 }

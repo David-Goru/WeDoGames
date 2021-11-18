@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour, IMovementInput
         right = Quaternion.Euler(new Vector3(0f, 90f, 0f)) * forward;
     }
 
-    public bool MoveInputRecieved()
+    public bool MoveInputReceived()
     {
         return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
     }

@@ -35,8 +35,8 @@ public class PlayerMovement : MonoBehaviour, ILoadable
 
     private void checkForPlayerInput()
     {
-        if (input.MoveInputRecieved()) calculateLastFramePos();
-        else if(lastFrameMovement != Vector3.zero) lastFrameMovement = Vector3.zero;
+        if (input.MoveInputReceived()) calculateLastFramePos();
+        else if (lastFrameMovement != Vector3.zero) lastFrameMovement = Vector3.zero;
     }
 
     private void calculateLastFramePos()

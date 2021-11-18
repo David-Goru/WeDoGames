@@ -24,7 +24,7 @@ public class PlayerSound : MonoBehaviour, ILoadable
         if (isCreated)
         {
             seconds -= Time.deltaTime;
-            if(input.MoveInputRecieved() && seconds <= 0f)
+            if(input.MoveInputReceived() && seconds <= 0f)
             {
                 audioSource.clip = walkSounds[Random.Range(0, walkSounds.Count)];
                 audioSource.pitch = Random.Range(0.75f, 1.25f);

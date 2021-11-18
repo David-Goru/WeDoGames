@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062661485a818a1489ad46fc23c83a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildUIPrefab: {fileID: 2674154428942928728}
   mainCamera: {fileID: 0}
   rotationKey: 114
   buildableFloor:

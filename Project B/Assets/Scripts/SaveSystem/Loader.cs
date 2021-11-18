@@ -11,6 +11,15 @@ public class Loader : MonoBehaviour, IGameInitializer
     private GameObject ui;
 
     private bool isNameValid;
+    
+    public void Initialize()
+    {
+        ui = Instantiate(loaderUIPrefab, GameObject.Find("UI").transform);
+
+        Button[] buttons = ui.GetComponentsInChildren<Button>();
+        buttons[0].onClick.AddListener(displayCreateUI);
+        buttons[1].onClick.AddListener(displayLoadUI);
+    }
 
     private void tryToCreateGame()
     {
@@ -19,8 +28,7 @@ public class Loader : MonoBehaviour, IGameInitializer
 
     private void checkName(string s)
     {
-        if (s != "") isNameValid = true;
-        else isNameValid = false;
+        isNameValid = s != "";
     }
 
     private void createGame()
@@ -37,32 +45,13 @@ public class Loader : MonoBehaviour, IGameInitializer
         }
     }
 
-    public void Initialize()
-    {
-        ui = Instantiate(loaderUIPrefab, GameObject.Find("UI").transform);
-
-        //I need to improve this
-        Button[] buttons = ui.GetComponentsInChildren<Button>();
-        bool first = true;
-
-        foreach(Button button in buttons)
-        {
-            if (first)
-            {
-                button.onClick.AddListener(() => displayCreateUI());
-                first = false;
-            }
-            else button.onClick.AddListener(() => displayLoadUI());
-        }
-    }
-
     private void displayCreateUI()
     {
         ui.SetActive(false);
 
         ui = Instantiate(createUIPrefab, GameObject.Find("UI").transform);
-        ui.GetComponentInChildren<Button>().onClick.AddListener(() => tryToCreateGame());
-        ui.GetComponentInChildren<InputField>().onEndEdit.AddListener((string s) => checkName(s));
+        ui.GetComponentInChildren<Button>().onClick.AddListener(tryToCreateGame);
+        ui.GetComponentInChildren<InputField>().onEndEdit.AddListener(checkName);
     }
 
     private void displayLoadUI()
