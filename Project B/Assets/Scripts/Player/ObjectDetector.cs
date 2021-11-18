@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ObjectDetector : MonoBehaviour, ILoadable
 {
-    private Vector3 offset = new Vector3(0f, 0.5f, 0f);
-    private RaycastHit hit;
+    private readonly Vector3 offset = new Vector3(0f, 0.5f, 0f);
 
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float interactRange;
@@ -17,6 +16,7 @@ public class ObjectDetector : MonoBehaviour, ILoadable
 
     private void checkForObjects()
     {
+        RaycastHit hit;
         if (Physics.Raycast(transform.position + offset, transform.forward, out hit, interactRange, layerMask)) //Can I interact with this object?
         {
             Debug.Log("Facing an interactable object");
