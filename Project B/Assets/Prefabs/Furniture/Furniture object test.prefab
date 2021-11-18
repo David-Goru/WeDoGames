@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7097852954900009413}
   - component: {fileID: 5303381808030601564}
   - component: {fileID: 5672760868976849087}
-  - component: {fileID: 2810833548066221397}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2810833548066221397
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2437931643501199528}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9087963250792852023
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2958086111133734437}
   - component: {fileID: 8821839685503975868}
+  - component: {fileID: 6132089527072363852}
   m_Layer: 0
   m_Name: Furniture object test
   m_TagString: Untagged
@@ -143,3 +130,16 @@ MonoBehaviour:
     name: Floor object test
     buildableAboveFloor: 0
     buildableAboveFurniture: 1
+--- !u!65 &6132089527072363852
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9087963250792852023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.1, z: 0.8}
+  m_Center: {x: 0, y: 0.05, z: 0}

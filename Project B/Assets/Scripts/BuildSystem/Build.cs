@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Build : MonoBehaviour
 {
@@ -16,6 +14,7 @@ public class Build : MonoBehaviour
     private int initialYRotation;
     private int currentYRotation;
     private Vector3 lastMousePosition;
+    private bool canBePlaced;
 
     public void StartBuilding(Furniture furniture)
     {
@@ -43,6 +42,7 @@ public class Build : MonoBehaviour
     private void start()
     {
         lastMousePosition = Vector3.negativeInfinity;
+        furnitureSelected.transform.localScale = Vector3.one * 1.1f;
         enabled = true;
     }
 
@@ -60,6 +60,8 @@ public class Build : MonoBehaviour
         lastMousePosition = Input.mousePosition;
         currentPosition = getFurniturePosition();
         furnitureSelected.transform.position = currentPosition;
+        checkIfCanBePlaced();
+        updateVisuals();
     }
 
     private void rotate()
@@ -85,16 +87,19 @@ public class Build : MonoBehaviour
         var furnitureTransform = furnitureSelected.transform;
         furnitureTransform.position = initialPosition;
         furnitureTransform.eulerAngles = new Vector3(0, initialYRotation, 0);
+        furnitureTransform.localScale = Vector3.one;
     }
 
     private void tryToPlace()
     {
-        if (checkIfCanPlace()) place();
+        if (canBePlaced) place();
     }
 
-    private bool checkIfCanPlace()
+    private void checkIfCanBePlaced()
     {
-        return true;
+        Collider[] hitColliders = new Collider[2];
+        int numberOfHitCollidersFound = Physics.OverlapSphereNonAlloc(currentPosition + Vector3.up * 0.01f, 0.005f, hitColliders);
+        canBePlaced = numberOfHitCollidersFound <= 1; // 1 = the object in hand
     }
 
     private Vector3 getFurniturePosition()
@@ -107,7 +112,7 @@ public class Build : MonoBehaviour
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (furnitureSelected.Data.BuildableAboveFurniture && Physics.Raycast(ray, out var hit, 100, buildableFurniture)) return positionAboveParent(hit);
-        if (furnitureSelected.Data.BuildableAboveFloor && Physics.Raycast(ray, out hit, 100, buildableFloor)) return roundedPosition(hit.point, 2.0f);
+        if (furnitureSelected.Data.BuildableAboveFloor && Physics.Raycast(ray, out hit, 100, buildableFloor)) return roundedPosition(hit.point);
         
         return new Vector3(0, 100, 0);
     }
@@ -128,8 +133,21 @@ public class Build : MonoBehaviour
         return position;
     }
 
+    private void updateVisuals()
+    {
+        Color newColor = canBePlaced ? Color.green : Color.red;
+
+        Transform model = furnitureSelected.transform.Find("Model");
+        model.GetComponent<Renderer>().material.color = newColor;
+    }
+
     private void place()
     {
+        Transform furnitureTransform = furnitureSelected.transform;
+        furnitureTransform.localScale = Vector3.one;
+        
+        Transform model = furnitureTransform.Find("Model");
+        model.GetComponent<Renderer>().material.color = Color.white;
         enabled = false;
     }
 }
