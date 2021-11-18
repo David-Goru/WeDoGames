@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSound : MonoBehaviour, ILoadable
 {
-    private AudioSource walkSound; //Basic implementation for now
-
+    [SerializeField] private List<AudioClip> walkSounds; //Basic implementation for now
     [SerializeField] private float secondsBetweenFootsteps;
+
+    private AudioSource audioSource;
     private float seconds;
 
     private IMovementInput input;
@@ -13,7 +15,7 @@ public class PlayerSound : MonoBehaviour, ILoadable
 
     private void Start()
     {
-        walkSound = GetComponentInChildren<AudioSource>();
+        audioSource = GetComponentInChildren<AudioSource>();
         input = GetComponent<IMovementInput>();
     }
 
@@ -24,7 +26,9 @@ public class PlayerSound : MonoBehaviour, ILoadable
             seconds -= Time.deltaTime;
             if(input.MoveInputRecieved() && seconds <= 0f)
             {
-                walkSound.Play();
+                audioSource.clip = walkSounds[Random.Range(0, walkSounds.Count)];
+                audioSource.pitch = Random.Range(0.75f, 1.25f);
+                audioSource.Play();
                 seconds = secondsBetweenFootsteps;
             }
         }
