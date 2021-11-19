@@ -569,38 +569,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9bce67b50ddd54a4cb7a8b07a2987093, type: 3}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9e169bc0686be0c42a12c02f08b4598b, type: 3}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8318b39b70dbc3c4da7c80841a45f227, type: 3}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 21edbf845b201f74baa0f857e4ac1a07, type: 3}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: f4d2ee64c6a8cb340bf78b4f8ca2d1ec, type: 3}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5ab58983b39eae849896935c3662bda2, type: 3}
-    - target: {fileID: 5916400319331923195, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
-      propertyPath: walkSounds.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: 41d3d2f33913d8442bad3b4c5439009c, type: 3}
     - target: {fileID: 7834215407312611857, guid: 92358ce963cdd914690bf87658448b4f, type: 3}
       propertyPath: m_Name
       value: Game

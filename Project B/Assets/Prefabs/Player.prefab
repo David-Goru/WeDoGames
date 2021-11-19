@@ -301,6 +301,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e710f2b00698bf49bcee65afc679c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSounds:
+  - {fileID: 8300000, guid: 9bce67b50ddd54a4cb7a8b07a2987093, type: 3}
+  - {fileID: 8300000, guid: 9e169bc0686be0c42a12c02f08b4598b, type: 3}
+  - {fileID: 8300000, guid: 8318b39b70dbc3c4da7c80841a45f227, type: 3}
+  - {fileID: 8300000, guid: 21edbf845b201f74baa0f857e4ac1a07, type: 3}
+  - {fileID: 8300000, guid: f4d2ee64c6a8cb340bf78b4f8ca2d1ec, type: 3}
+  - {fileID: 8300000, guid: 5ab58983b39eae849896935c3662bda2, type: 3}
+  - {fileID: 8300000, guid: 41d3d2f33913d8442bad3b4c5439009c, type: 3}
   secondsBetweenFootsteps: 0.25
 --- !u!114 &5461379891342425825
 MonoBehaviour:
