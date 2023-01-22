@@ -53,7 +53,10 @@ public class OptionsUI : MonoBehaviour
 
         GetComponent<Canvas>().enabled = false;
 
+#if !UNITY_EDITOR
         Application.targetFrameRate = 60;
+#endif
+        
         if (firstPlay)
         {
             Time.timeScale = 0;

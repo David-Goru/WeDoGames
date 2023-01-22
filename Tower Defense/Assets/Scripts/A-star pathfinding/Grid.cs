@@ -29,10 +29,7 @@ public class Grid : MonoBehaviour
     private bool walkable;
     private Transform parentTransform;
 
-    //For helping me find the neighbours of a node
-    private List<Node> neighbours;
-    private int checkX;
-    private int checkY;
+    public static Node[] neighbours;
 
 
     private void Awake()
@@ -46,6 +43,7 @@ public class Grid : MonoBehaviour
         gridSizeX = Mathf.FloorToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.FloorToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
+        neighbours = new Node[8];
     }
 
     public int MaxSize
@@ -85,27 +83,27 @@ public class Grid : MonoBehaviour
         }
     }
 
-    public List<Node> GetNeighbours(Node node)
+    public void GetNeighbours(Node node)
     {
-        neighbours = new List<Node>();
+        var currentNeighbour = 0;
 
-        for (int x = -1; x <= 1; x++)
+        for (var x = -1; x <= 1; x++)
         {
-            for (int y = -1; y <= 1; y++)
+            for (var y = -1; y <= 1; y++)
             {
                 if (x == 0 && y == 0) continue; //This is not a neighbour, it's the node we passed as an argument
-
-                checkX = node.gridX + x;
-                checkY = node.gridY + y;
+                
+                var checkX = node.gridX + x;
+                var checkY = node.gridY + y;
 
                 if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY) //This is a neighbour of node
                 {
-                    neighbours.Add(grid[checkX, checkY]);
+                    neighbours[currentNeighbour] = grid[checkX, checkY];
                 }
+                else neighbours[currentNeighbour] = null;
+                currentNeighbour++;
             }
         }
-
-        return neighbours;
     }
 
     public Node NodeFromWorldPos(Vector3 worldPosition)
@@ -161,10 +159,12 @@ public class Grid : MonoBehaviour
         {
             nodesToVisit = nodeList.ToList();
             nodeList.Clear();
-            foreach(Node node in nodesToVisit)
+            foreach (Node node in nodesToVisit)
             {
-                foreach(Node neighbour in GetNeighbours(node))
+                GetNeighbours(node);
+                foreach (Node neighbour in neighbours)
                 {
+                    if (neighbour == null) continue;
                     if (!visitedNodes.Contains(neighbour))
                     {
                         nodeList.Add(neighbour);

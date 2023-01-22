@@ -54,10 +54,11 @@ public class Pathfinding : MonoBehaviour
             int tries = 0; // This is a weird way to find a possible path when starting from a non walkable vertex, so if this loop goes longer than 100...
             while (!startNode.walkable && tries < 100)
             {
-                List<Node> neighbours = grid.GetNeighbours(startNode);
+                grid.GetNeighbours(startNode);
                 bool neighbourFound = false;
-                foreach (Node node in neighbours)
+                foreach (Node node in Grid.neighbours)
                 {
+                    if (node == null) continue;
                     if (node.walkable)
                     {
                         startNode = node;
@@ -66,7 +67,7 @@ public class Pathfinding : MonoBehaviour
                     }
                 }
 
-                if (!neighbourFound) startNode = neighbours[neighbours.Count - 1];
+                if (!neighbourFound) startNode = Grid.neighbours[0];
                 tries++;
             }
         }
@@ -88,8 +89,10 @@ public class Pathfinding : MonoBehaviour
                     break;
                 }
 
-                foreach (Node neighbour in grid.GetNeighbours(currentNode))
+                grid.GetNeighbours(currentNode);
+                foreach (Node neighbour in Grid.neighbours)
                 {
+                    if (neighbour == null) continue;
                     if (closedSet.Contains(neighbour)) continue; //if neighbour is not traversable or is in closedSet, skip to next neighbour
                     if (!neighbour.walkable && neighbour.parentTransform != targetPos.building) continue;
 

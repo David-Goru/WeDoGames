@@ -206,7 +206,6 @@ public class Waves : MonoBehaviour
 
     void spawnEnemies()
     {
-        List<int> alreadySpawned = new List<int>();
         int enemiesCounter = 0;
 
         if (allEnemyTypesSpawned())
@@ -217,6 +216,7 @@ public class Waves : MonoBehaviour
 
         if (allEnemiesFromCurrentTypeSpawned()) increaseCurrentEnemyType();
 
+        List<int> alreadySpawned = new List<int>();
         while (enemiesCounter < 5 && !allEnemyTypesSpawned())
         {
             List<int> possibleSpawners = getRandomSpawnerNum(currentEnemyType);
